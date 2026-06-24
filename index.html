@@ -281,7 +281,7 @@
     .depo-author { font-size: 13px; font-weight: 900; color: var(--text); margin-top: 4px; }
     .depo-via { font-size: 11px; color: rgba(255,255,255,0.28); margin-top: 2px; }
     @media (max-width: 720px) { .depo-grid { grid-template-columns: 1fr 1fr; } }
-    @media (max-width: 480px) { .depo-grid { grid-template-columns: 1fr; } }
+    @media (max-width: 360px) { .depo-grid { grid-template-columns: 1fr; } }
 
     /* ── TRUST BAR ── */
     .trust-bar {
@@ -587,6 +587,8 @@
 
     /* ── RESPONSIVE ── */
     @media (max-width: 860px) {
+      .section { padding: 56px 0; }
+      .section-heading { margin-bottom: 24px; }
       .verticais-grid { grid-template-columns: repeat(2, 1fr); }
       .time-grid { grid-template-columns: repeat(2, 1fr); }
       .prova-grid { grid-template-columns: 1fr; }
@@ -599,6 +601,89 @@
       .stats-row { grid-template-columns: repeat(3, 1fr); }
       .nav-logo span { display: none; }
       .trust-inner { justify-content: flex-start; overflow-x: auto; flex-wrap: nowrap; padding: 0 16px; }
+      /* Trust bar: mostrar apenas 3 itens mais relevantes no mobile */
+      .trust-item:nth-child(2), .trust-item:nth-child(4) { display: none; }
+    }
+
+    /* ── MOBILE FIRST ── */
+    @media (max-width: 540px) {
+      .section { padding: 44px 0; }
+      .cta-final { padding: 48px 0; }
+      .depoimentos { padding: 48px 0; }
+      .prova { padding: 44px 0; }
+      h2 { font-size: clamp(22px, 6vw, 34px); letter-spacing: -0.5px; }
+
+      /* Hero */
+      .hero-content { padding: 10px 20px 44px; }
+      .hero-actions { flex-direction: column; gap: 10px; }
+      .hero-actions a { width: 100%; text-align: center; font-size: 15px; padding: 14px 20px; }
+      .hero-badges { flex-direction: column; gap: 8px; margin: 14px 0 18px; }
+      .hero-badge-walk, .hero-badge-agenda { width: 100%; justify-content: center; font-size: 12px; }
+      .hero-micro { flex-direction: column; gap: 3px; margin-top: 12px; font-size: 12px; }
+      .hero-micro span::before { display: none; }
+
+      /* Section headings */
+      .section-heading .label { font-size: 10px; }
+      .section-heading p { font-size: 14px; margin-top: 8px; }
+
+      /* Verticais */
+      .vertical-card { padding: 20px 16px; border-radius: 16px; }
+      .vertical-icon { font-size: 28px; margin-bottom: 10px; }
+      .vertical-card h3 { font-size: 16px; }
+      .vertical-card p { font-size: 12px; margin-bottom: 10px; line-height: 1.45; }
+      .vertical-tag { font-size: 10px; padding: 3px 8px; }
+      /* vertical-link: pill visual para sinalizar que é clicável */
+      .vertical-link { display: inline-flex; align-items: center; gap: 4px; background: rgba(223,183,108,0.1); border: 1px solid rgba(223,183,108,0.22); border-radius: 999px; padding: 6px 12px; font-size: 11px; font-weight: 800; margin-top: 12px; }
+
+      /* Team — touch targets adequados */
+      .team-info { padding: 12px 12px 14px; }
+      .team-info strong { font-size: 14px; }
+      .team-info span { font-size: 11px; }
+      .team-vertical { font-size: 10px; padding: 2px 8px; margin-top: 6px; }
+      .team-wa { font-size: 13px; margin-top: 8px; min-height: 44px; display: flex; align-items: center; justify-content: center; gap: 6px; padding: 4px 0; }
+
+      /* Depoimentos */
+      .depo-card { padding: 18px 16px; border-radius: 14px; gap: 8px; }
+      .depo-text { font-size: 13px; line-height: 1.65; }
+      .depo-author { font-size: 12px; }
+      .depo-via { font-size: 10px; }
+      .depo-stars { font-size: 12px; letter-spacing: 1px; }
+
+      /* Prova social */
+      .stats-row { gap: 8px; }
+      .stat { padding: 12px 8px; border-radius: 12px; }
+      .stat strong { font-size: 20px; }
+      .stat span { font-size: 10px; }
+      .prova-copy p { font-size: 14px; line-height: 1.65; }
+
+      /* Horários */
+      .horario-card { padding: 20px 16px; border-radius: 16px; }
+      .horario-card h3 { font-size: 16px; margin-bottom: 12px; }
+      .horario-row { font-size: 13px; padding: 9px 0; }
+      .mapa-card iframe { height: 200px; }
+      .mapa-info { padding: 14px 16px; flex-direction: column; align-items: flex-start; gap: 10px; }
+      .btn-mapa { font-size: 12px; padding: 9px 14px; width: 100%; justify-content: center; }
+
+      /* CTA final */
+      .cta-final h2 { font-size: clamp(22px, 6vw, 34px); }
+      .cta-final p { font-size: 15px; }
+      .cta-final .actions { flex-direction: column; gap: 10px; align-items: stretch; }
+      .cta-final .actions a { width: 100%; text-align: center; font-size: 15px; padding: 14px 20px; }
+
+      /* WA float — full-width como sticky CTA */
+      .wa-float { left: 12px; right: 12px; bottom: 16px; padding: 13px 20px; font-size: 14px; gap: 8px; justify-content: center; border-radius: 16px; }
+
+      /* Hero sub — mais ar entre as linhas */
+      .hero-sub { line-height: 1.75; }
+
+      /* Footer */
+      .footer-links { gap: 14px; font-size: 12px; }
+    }
+
+    @media (max-width: 380px) {
+      h2 { font-size: 22px; }
+      .vertical-card p { display: none; }
+      .stat strong { font-size: 18px; }
     }
   </style>
   <!-- Google Analytics 4 — substituir G-WYRS5RBYGM pelo Measurement ID real -->
@@ -726,7 +811,7 @@
     <div class="time-grid">
       <div class="team-card reveal reveal-delay-1">
         <div class="team-foto">
-          <img src="./assets/fotos/piercing/debby com touquinha.png" alt="Debby — Piercing" loading="lazy" />
+          <img src="./assets/fotos/estudio/debby.jpeg" alt="Debby — Piercing" loading="lazy" />
         </div>
         <div class="team-info">
           <strong>Debby</strong>
@@ -941,7 +1026,7 @@
       entries.forEach(function(e){
         if(e.isIntersecting){ e.target.classList.add('visible'); obs.unobserve(e.target); }
       });
-    }, { threshold: 0.12 });
+    }, { threshold: 0.05 });
     els.forEach(function(el){ obs.observe(el); });
   })();
 </script>

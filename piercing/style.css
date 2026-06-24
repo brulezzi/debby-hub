@@ -452,7 +452,7 @@ blockquote {
   color: var(--text);
   padding: 14px;
   border-radius: 14px;
-  font-size: 15px;
+  font-size: 16px; /* previne zoom automático no iOS */
   outline: none;
 }
 
@@ -644,6 +644,72 @@ blockquote {
 /* Responsivo titânio */
 @media (max-width: 640px) {
   .titanio-grid { grid-template-columns: 1fr; }
+}
+
+/* ── MOBILE FIRST — 540px e abaixo ── */
+@media (max-width: 540px) {
+  .section { padding: 48px 0; }
+  .section-heading { margin-bottom: 24px; }
+
+  h1 { font-size: clamp(34px, 9vw, 42px); letter-spacing: -2px; }
+  h2 { font-size: clamp(26px, 7vw, 36px); letter-spacing: -1px; }
+  .subheadline { font-size: 16px; margin-bottom: 22px; }
+  .microcopy { font-size: 13px; }
+
+  /* Métricas do hero — layout horizontal (número | rótulo) */
+  .hero-metrics { grid-template-columns: 1fr; gap: 8px; }
+  .hero-metrics div { display: flex; align-items: center; gap: 16px; padding: 12px 16px; border-radius: 14px; text-align: left; }
+  .hero-metrics strong { display: block; font-size: 22px; color: var(--gold); min-width: 72px; text-align: center; line-height: 1; margin-bottom: 0; flex-shrink: 0; }
+  .hero-metrics span { font-size: 13px; color: var(--muted); line-height: 1.4; }
+
+  /* Checkin callout */
+  .checkin-callout { gap: 12px; padding: 16px; border-radius: 16px; }
+
+  /* Grid de perf — 3 colunas no mobile (melhor que 2) */
+  .piercing-grid { grid-template-columns: repeat(3, 1fr); gap: 8px; }
+  .piercing-grid div { padding: 12px 8px; font-size: 12px; border-radius: 12px; }
+
+  /* Prova / depoimentos */
+  blockquote { padding: 18px 16px; border-radius: 14px; font-size: 14px; }
+
+  /* Passos */
+  .steps div { padding: 14px 12px; border-radius: 14px; }
+  .steps strong { width: 32px; height: 32px; font-size: 13px; margin-bottom: 10px; }
+  .steps span { font-size: 13px; }
+
+  /* Info / location */
+  .info-card, .location-box, .form-box { padding: 20px 16px; border-radius: 20px; }
+  .info-card p { font-size: 14px; }
+
+  /* FAQ */
+  .faq-list details { padding: 16px 18px; border-radius: 14px; }
+  .faq-list summary { font-size: 14px; padding: 4px 0; min-height: 44px; display: flex; align-items: center; }
+  .faq-list p { font-size: 13px; }
+
+  /* Titânio */
+  .titanio-card { padding: 20px 18px; border-radius: 18px; }
+  .titanio-header { flex-direction: column; align-items: flex-start; gap: 8px; margin-bottom: 16px; }
+  .titanio-lista li { font-size: 13px; }
+  .titanio-recomendacao { font-size: 12px; }
+
+  /* Form check-in */
+  .form-box h2 { font-size: 22px; }
+  .form-box p { font-size: 14px; }
+  .form-group label { font-size: 13px; margin-bottom: 6px; }
+  .form-group input, .form-group select { padding: 12px; border-radius: 12px; }
+  .radio-option { padding: 10px 12px; font-size: 13px; min-height: 44px; }
+  .btn-submit { min-height: 52px; font-size: 15px; }
+
+  /* Esconde a foto no form (prioridade é o formulário) */
+  .studio-card { display: none; }
+
+  /* Float WA já está full-width em ≤640px */
+}
+
+@media (max-width: 380px) {
+  h1 { font-size: 32px; letter-spacing: -1.5px; }
+  h2 { font-size: 24px; }
+  .piercing-grid { grid-template-columns: repeat(2, 1fr); }
 }
 
 .floating-whatsapp {

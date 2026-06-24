@@ -90,6 +90,13 @@
     .footer-links a{color:var(--muted)} .footer-links a:hover{color:var(--gold)}
     .wa-float{position:fixed;bottom:24px;right:20px;z-index:999;display:flex;align-items:center;gap:10px;background:var(--green);color:white;font-weight:900;font-size:14px;padding:13px 20px;border-radius:999px;box-shadow:0 8px 30px rgba(37,211,102,0.35)}
 
+    /* Prof hint — mini-card da prof acima do form, visível só no mobile */
+    .prof-hint{display:flex;align-items:center;gap:12px;background:rgba(223,183,108,0.06);border:1px solid rgba(223,183,108,0.15);border-radius:12px;padding:12px 14px;margin-bottom:20px}
+    .prof-hint img{width:44px;height:44px;border-radius:50%;object-fit:cover;object-position:center top;flex-shrink:0}
+    .prof-hint strong{display:block;font-size:14px;font-weight:900}
+    .prof-hint span{font-size:12px;color:var(--muted)}
+    @media(min-width:861px){.prof-hint{display:none}}
+
     @media(max-width:860px){
       .hero{padding:40px 0 32px}
       .hero-inner{grid-template-columns:1fr;gap:20px}
@@ -141,8 +148,8 @@
       /* CTA */
       .cta-final{padding:44px 0}
       .cta-final .btn-primary{width:100%;justify-content:center}
-      /* WA float */
-      .wa-float{right:12px;bottom:16px;padding:11px 16px;font-size:13px;gap:7px}
+      /* WA float full-width */
+      .wa-float{left:12px;right:12px;bottom:16px;padding:13px 20px;font-size:14px;gap:8px;justify-content:center;border-radius:16px}
     }
   </style>
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-WYRS5RBYGM"></script>
@@ -173,7 +180,6 @@
       </div>
       <div class="micro">
         <span>Com agendamento</span>
-        <span>Ter–Sex 10h–19h · Sáb 10h–17h</span>
         <span>Av. Andrade Neves, 365</span>
       </div>
     </div>
@@ -268,6 +274,13 @@
       </div>
       <div>
         <div class="form-card" style="background:var(--card);border:1px solid var(--border);border-radius:24px;padding:28px">
+          <div class="prof-hint">
+            <img src="../assets/fotos/estudio/rauany.jpeg" alt="Rauany" />
+            <div>
+              <strong>Rauany</strong>
+              <span>Lash Designer · confirma pelo WhatsApp</span>
+            </div>
+          </div>
           <h3 style="margin-bottom:20px">Solicitar horário</h3>
           <form id="form-cilios" onsubmit="enviarWA(event)">
             <div class="form-group"><label>Seu nome</label><input type="text" id="nome" placeholder="Como posso te chamar?" required /></div>
@@ -301,7 +314,32 @@
                 </optgroup>
               </select>
             </div>
-            <div class="form-group"><label>Dia e horário de preferência</label><input type="text" id="horario" placeholder="Ex: terça à tarde" /></div>
+            <div class="form-group">
+              <label>Dia de preferência</label>
+              <select id="dia" required>
+                <option value="">Escolhe o dia...</option>
+                <option>Terça-feira</option>
+                <option>Quarta-feira</option>
+                <option>Quinta-feira</option>
+                <option>Sexta-feira</option>
+                <option>Sábado</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Horário de preferência</label>
+              <select id="horario">
+                <option value="">Escolhe o horário...</option>
+                <option>10h – 11h</option>
+                <option>11h – 12h</option>
+                <option>12h – 13h</option>
+                <option>13h – 14h</option>
+                <option>14h – 15h</option>
+                <option>15h – 16h</option>
+                <option>16h – 17h</option>
+                <option>17h – 18h</option>
+                <option>18h – 19h (Ter–Sex)</option>
+              </select>
+            </div>
             <button type="submit" class="btn-submit" data-track="form-submit-cilios">💬 Enviar pedido de agendamento →</button>
             <p class="form-note">Você será redirecionada ao WhatsApp da Rauany para confirmar.</p>
           </form>
@@ -346,8 +384,9 @@ function enviarWA(e){
   const nome=document.getElementById('nome').value;
   const tel=document.getElementById('telefone').value;
   const servico=document.getElementById('servico').value;
+  const dia=document.getElementById('dia').value||'a combinar';
   const horario=document.getElementById('horario').value||'a combinar';
-  const msg=`Oi Rauany! Vim pelo site e quero agendar 😊\n\n👤 Nome: ${nome}\n📱 WhatsApp: ${tel}\n✨ Serviço: ${servico}\n📅 Preferência: ${horario}`;
+  const msg=`Oi Rauany! Vim pelo site e quero agendar 😊\n\n👤 Nome: ${nome}\n📱 WhatsApp: ${tel}\n✨ Serviço: ${servico}\n📅 Dia: ${dia}\n🕐 Horário: ${horario}`;
   window.open(`https://wa.me/5519994338102?text=${encodeURIComponent(msg)}`,'_blank');
 }
 // Ancla de sobrancelha direto pela URL
