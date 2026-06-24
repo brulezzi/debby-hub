@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sex Shop | Estúdio da Debby — Campinas SP</title>
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box}
+    :root{--bg:#0f1013;--card:#1f222a;--text:#f4f1ea;--muted:#a8a8a8;--gold:#dfb76c;--border:rgba(255,255,255,0.09);--green:#25d366}
+    html{overflow-x:hidden} body{font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;min-height:100vh;display:flex;flex-direction:column}
+    a{color:inherit;text-decoration:none}
+    .container{width:min(1120px,92%);margin:0 auto}
+    nav{padding:16px 0;border-bottom:1px solid var(--border)}
+    .nav-inner{display:flex;align-items:center;justify-content:space-between}
+    .nav-logo{font-size:13px;font-weight:900;letter-spacing:3px;color:var(--gold);text-transform:uppercase}
+    .nav-logo span{display:block;font-size:10px;color:var(--muted);font-weight:400;letter-spacing:1px}
+    .nav-back{font-size:13px;color:var(--muted)} .nav-back:hover{color:var(--gold)}
+    .hero{flex:1;display:flex;align-items:center;justify-content:center;padding:80px 0;text-align:center}
+    .hero-inner{max-width:560px}
+    .badge{display:inline-flex;align-items:center;gap:8px;background:rgba(223,183,108,0.1);border:1px solid rgba(223,183,108,0.25);border-radius:999px;padding:6px 18px;font-size:12px;font-weight:800;color:var(--gold);letter-spacing:1px;text-transform:uppercase;margin-bottom:24px}
+    .icon{font-size:72px;margin-bottom:24px;display:block}
+    h1{font-size:clamp(32px,6vw,52px);font-weight:900;letter-spacing:-1.5px;line-height:1.0;margin-bottom:16px}
+    h1 em{font-style:normal;color:var(--gold)}
+    .sub{font-size:17px;color:var(--muted);line-height:1.7;margin-bottom:32px}
+    .sub strong{color:var(--text)}
+    .info-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:36px;text-align:left}
+    .info-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:20px}
+    .info-card span{font-size:22px;display:block;margin-bottom:8px}
+    .info-card strong{display:block;font-size:14px;font-weight:900;margin-bottom:4px}
+    .info-card p{font-size:13px;color:var(--muted)}
+    .actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+    .btn-gold{display:inline-flex;align-items:center;gap:8px;background:var(--gold);color:#151515;font-weight:900;font-size:15px;padding:14px 26px;border-radius:999px}
+    .btn-outline{display:inline-flex;align-items:center;gap:8px;background:transparent;border:1.5px solid rgba(255,255,255,0.2);color:var(--text);font-weight:700;font-size:14px;padding:12px 22px;border-radius:999px}
+    .coming-soon{display:inline-flex;align-items:center;gap:6px;background:rgba(223,183,108,0.08);border:1px solid rgba(223,183,108,0.2);border-radius:999px;padding:8px 16px;font-size:12px;font-weight:800;color:var(--gold);margin-bottom:20px}
+    footer{padding:20px 0;border-top:1px solid var(--border);text-align:center;font-size:13px;color:var(--muted)}
+    footer strong{color:var(--gold)}
+    .footer-links{display:flex;gap:20px;justify-content:center;margin-top:8px;flex-wrap:wrap}
+    .footer-links a{color:var(--muted)} .footer-links a:hover{color:var(--gold)}
+    .wa-float{position:fixed;bottom:24px;right:20px;z-index:999;display:flex;align-items:center;gap:10px;background:var(--green);color:white;font-weight:900;font-size:14px;padding:13px 20px;border-radius:999px;box-shadow:0 8px 30px rgba(37,211,102,0.35)}
+    @media(max-width:600px){.info-cards{grid-template-columns:1fr}}
+  </style>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-WYRS5RBYGM"></script>
+  <script>
+    window.dataLayer=window.dataLayer||[];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js',new Date());
+    gtag('config','G-WYRS5RBYGM');
+    document.addEventListener('click',function(e){
+      var el=e.target.closest('[data-track]');
+      if(el){gtag('event','click',{event_category:'cta',event_label:el.dataset.track});}
+    });
+  </script>
+</head>
+<body>
+
+<nav>
+  <div class="container nav-inner">
+    <a href="../" class="nav-back">← Voltar ao estúdio</a>
+    <div class="nav-logo">Estúdio da Debby<span>Sex Shop</span></div>
+    <a href="https://wa.me/5519988404390?text=Oi%2C%20tenho%20interesse%20no%20sex%20shop!" style="background:var(--gold);color:#151515;font-weight:900;font-size:13px;padding:10px 18px;border-radius:999px;">WhatsApp</a>
+  </div>
+</nav>
+
+<main class="hero">
+  <div class="container hero-inner">
+    <div class="coming-soon">🚧 Página em construção</div>
+    <span class="icon">🌹</span>
+    <h1>Prazer também<br/>faz parte do <em>seu cuidado.</em></h1>
+    <p class="sub">
+      Ambiente discreto, sem julgamento — produtos selecionados para você se sentir bem consigo mesma.
+      <strong>O catálogo completo chega em breve aqui no site.</strong>
+    </p>
+
+    <div class="info-cards">
+      <div class="info-card">
+        <span>📍</span>
+        <strong>Venha visitar</strong>
+        <p>Produtos disponíveis direto na loja, com atendimento discreto e sem julgamento.</p>
+      </div>
+      <div class="info-card">
+        <span>🕐</span>
+        <strong>Horários</strong>
+        <p>Ter–Sex 10h–19h<br/>Sáb 10h–17h</p>
+      </div>
+      <div class="info-card">
+        <span>💳</span>
+        <strong>Formas de pagamento</strong>
+        <p>Pix · Cartão de crédito · Dinheiro</p>
+      </div>
+    </div>
+
+    <div class="actions">
+      <a href="https://wa.me/5519988404390?text=Oi%2C%20tenho%20interesse%20nos%20produtos%20do%20sex%20shop!" class="btn-gold">💬 Falar no WhatsApp →</a>
+      <a href="../" class="btn-outline">← Ver todos os serviços</a>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="container">
+    <strong>Estúdio da Debby</strong> · Av. Andrade Neves, 365 · Centro · Campinas · SP
+    <div class="footer-links">
+      <a href="../">Hub do Estúdio</a>
+      <a href="../piercing/">Piercing</a>
+      <a href="../unhas/">Unhas</a>
+      <a href="../cilios/">Cílios</a>
+      <a href="https://instagram.com/debbypiercing" target="_blank">@debbypiercing</a>
+    </div>
+  </div>
+</footer>
+
+<a href="https://wa.me/5519988404390?text=Oi%2C%20vim%20pelo%20site%20e%20tenho%20interesse%20no%20sex%20shop!" class="wa-float">💬 WhatsApp</a>
+
+</body>
+</html>

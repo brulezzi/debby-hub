@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Unhas com a Duda | Estúdio da Debby — Campinas SP</title>
+  <meta name="description" content="Manicure, pedicure, gel, alongamento e blindagem com a Eduarda. Agende seu horário no Estúdio da Debby, Centro de Campinas." />
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box}
+    :root{--bg:#0f1013;--bg-soft:#17191f;--card:#1f222a;--text:#f4f1ea;--muted:#a8a8a8;--gold:#dfb76c;--border:rgba(255,255,255,0.09);--green:#25d366}
+    html{scroll-behavior:smooth;overflow-x:hidden}
+    body{font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;overflow-x:hidden}
+    a{color:inherit;text-decoration:none}
+    .container{width:min(1120px,92%);margin:0 auto}
+
+    /* TOPBAR */
+    .topbar{background:rgba(223,183,108,0.06);border-bottom:1px solid rgba(223,183,108,0.15);padding:10px 0;text-align:center;font-size:13px;color:var(--muted)}
+    .topbar strong{color:var(--gold)}
+    .topbar a{color:var(--gold)}
+
+    /* NAV */
+    nav{padding:16px 0;border-bottom:1px solid var(--border)}
+    .nav-inner{display:flex;align-items:center;justify-content:space-between;gap:16px}
+    .nav-logo{font-size:13px;font-weight:900;letter-spacing:3px;color:var(--gold);text-transform:uppercase}
+    .nav-logo span{display:block;font-size:10px;letter-spacing:1px;color:var(--muted);font-weight:400}
+    .nav-back{font-size:13px;color:var(--muted);display:flex;align-items:center;gap:6px}
+    .nav-back:hover{color:var(--gold)}
+    .btn-wa{background:var(--green);color:white;font-weight:900;font-size:13px;padding:10px 20px;border-radius:999px;white-space:nowrap}
+
+    /* HERO */
+    .hero{padding:60px 0 50px;border-bottom:1px solid var(--border);background:linear-gradient(180deg,rgba(223,183,108,0.05) 0%,transparent 100%)}
+    .hero-inner{display:grid;grid-template-columns:1fr 380px;gap:48px;align-items:center}
+    .pill{display:inline-flex;align-items:center;gap:7px;background:rgba(223,183,108,0.1);border:1px solid rgba(223,183,108,0.25);border-radius:999px;padding:5px 14px;font-size:11px;font-weight:800;color:var(--gold);letter-spacing:1px;text-transform:uppercase;margin-bottom:16px}
+    h1{font-size:clamp(34px,6vw,60px);line-height:1.0;letter-spacing:-2px;font-weight:900;margin-bottom:16px}
+    h1 em{font-style:normal;color:var(--gold)}
+    h2{font-size:clamp(26px,4vw,40px);line-height:1.05;letter-spacing:-1px;font-weight:900;margin-bottom:14px}
+    h2 em{font-style:normal;color:var(--gold)}
+    h3{font-size:20px;font-weight:900;margin-bottom:8px}
+    .sub{font-size:17px;color:var(--muted);margin-bottom:28px;line-height:1.6;max-width:520px}
+    .actions{display:flex;gap:12px;flex-wrap:wrap}
+    .btn-primary{display:inline-flex;align-items:center;gap:8px;background:var(--gold);color:#151515;font-weight:900;font-size:15px;padding:14px 26px;border-radius:999px;transition:.2s}
+    .btn-secondary{display:inline-flex;align-items:center;gap:8px;background:transparent;border:1.5px solid rgba(255,255,255,0.2);color:var(--text);font-weight:700;font-size:14px;padding:12px 22px;border-radius:999px;transition:.2s}
+    .micro{display:flex;gap:16px;flex-wrap:wrap;margin-top:16px;font-size:13px;color:var(--muted)}
+    .micro span::before{content:"·";color:var(--gold);margin-right:6px}
+    .micro span:first-child::before{display:none}
+
+    /* PROF CARD */
+    .prof-card{background:var(--card);border:1px solid var(--border);border-radius:24px;padding:28px;text-align:center}
+    .prof-foto{width:140px;height:140px;border-radius:50%;margin:0 auto 16px;overflow:hidden;background:rgba(223,183,108,0.1);border:3px solid rgba(223,183,108,0.25);display:flex;align-items:center;justify-content:center;font-size:48px}
+    .prof-foto img{width:100%;height:100%;object-fit:cover;object-position:center top}
+    .prof-card strong{display:block;font-size:20px;font-weight:900;margin-bottom:4px}
+    .prof-card span{font-size:13px;color:var(--muted)}
+    .prof-tag{display:inline-block;margin:10px auto 0;background:rgba(223,183,108,0.1);color:var(--gold);font-size:11px;font-weight:800;padding:4px 12px;border-radius:999px}
+    .prof-wa{display:flex;align-items:center;justify-content:center;gap:8px;margin-top:14px;background:var(--green);color:white;font-weight:900;font-size:14px;padding:12px 20px;border-radius:999px}
+
+    /* SECTION */
+    .section{padding:64px 0}
+    .section-label{font-size:11px;font-weight:800;color:var(--gold);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:10px}
+
+    /* SERVIÇOS */
+    .servicos-wrapper{display:grid;grid-template-columns:1fr 1fr;gap:32px}
+    .servico-grupo{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:24px}
+    .grupo-header{display:flex;align-items:center;gap:12px;margin-bottom:18px;padding-bottom:14px;border-bottom:1px solid var(--border)}
+    .grupo-icon{font-size:28px}
+    .grupo-header h3{margin:0}
+    .servico-item{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid rgba(255,255,255,0.05)}
+    .servico-item:last-child{border-bottom:none}
+    .servico-nome{font-size:14px;color:var(--text)}
+    .servico-detalhes{display:flex;align-items:center;gap:14px;flex-shrink:0;margin-left:12px}
+    .servico-tempo{font-size:12px;color:var(--muted)}
+    .servico-preco{font-size:16px;font-weight:900;color:var(--gold);white-space:nowrap}
+    .badge-sub{font-size:10px;font-weight:800;background:rgba(223,183,108,0.1);color:var(--gold);border-radius:999px;padding:2px 8px;margin-left:6px}
+
+    /* COMO FUNCIONA */
+    .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+    .step{background:var(--card);border:1px solid var(--border);border-radius:18px;padding:24px 20px;position:relative}
+    .step-num{font-size:36px;font-weight:900;color:rgba(223,183,108,0.2);line-height:1;margin-bottom:12px}
+    .step h3{font-size:16px;margin-bottom:6px}
+    .step p{font-size:13px;color:var(--muted);line-height:1.5}
+
+    /* COMBOS DESTAQUE */
+    .combos-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+    .combo-card{background:linear-gradient(135deg,rgba(223,183,108,0.1),rgba(223,183,108,0.03));border:1px solid rgba(223,183,108,0.25);border-radius:20px;padding:28px;text-align:center}
+    .combo-card strong{display:block;font-size:32px;font-weight:900;color:var(--gold);margin:8px 0 4px}
+    .combo-card .nome{font-size:16px;font-weight:900;margin-bottom:6px}
+    .combo-card .tempo{font-size:13px;color:var(--muted)}
+
+    /* AGENDAMENTO */
+    .agendar-section{background:#111217;border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+    .agendar-inner{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+    .form-group{margin-bottom:16px}
+    .form-group label{display:block;font-size:13px;font-weight:700;color:var(--muted);margin-bottom:6px}
+    .form-group input,.form-group select,.form-group textarea{width:100%;background:rgba(255,255,255,0.06);border:1px solid var(--border);border-radius:12px;padding:12px 16px;color:var(--text);font-size:14px;font-family:Arial,sans-serif;outline:none;transition:.2s}
+    .form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:rgba(223,183,108,0.4)}
+    .form-group select option{background:#1f222a;color:var(--text)}
+    .btn-submit{width:100%;background:var(--gold);color:#151515;font-weight:900;font-size:16px;padding:16px;border-radius:999px;border:none;cursor:pointer;transition:.2s;margin-top:6px}
+    .btn-submit:hover{opacity:.9}
+    .form-note{font-size:12px;color:var(--muted);text-align:center;margin-top:10px}
+
+    /* CTA FINAL */
+    .cta-final{text-align:center;padding:64px 0;background:linear-gradient(135deg,rgba(223,183,108,0.06),transparent)}
+    .cta-final p{color:var(--muted);font-size:16px;margin:12px auto 28px;max-width:420px}
+
+    /* FOOTER */
+    footer{background:#0a0b0d;border-top:1px solid var(--border);padding:24px 0;text-align:center;font-size:13px;color:var(--muted)}
+    footer strong{color:var(--gold)}
+    .footer-links{display:flex;gap:20px;justify-content:center;margin-top:10px;flex-wrap:wrap}
+    .footer-links a{color:var(--muted)}
+    .footer-links a:hover{color:var(--gold)}
+
+    /* WA FLOAT */
+    .wa-float{position:fixed;bottom:24px;right:20px;z-index:999;display:flex;align-items:center;gap:10px;background:var(--green);color:white;font-weight:900;font-size:14px;padding:13px 20px;border-radius:999px;box-shadow:0 8px 30px rgba(37,211,102,0.35)}
+
+    /* RESPONSIVE */
+    @media(max-width:860px){
+      .hero-inner{grid-template-columns:1fr}
+      .servicos-wrapper{grid-template-columns:1fr}
+      .agendar-inner{grid-template-columns:1fr}
+      .steps{grid-template-columns:1fr 1fr}
+      .combos-grid{grid-template-columns:1fr 1fr}
+      .prof-card{max-width:320px;margin:0 auto}
+    }
+    @media(max-width:540px){
+      .steps{grid-template-columns:1fr}
+      h1{letter-spacing:-1px}
+    }
+  </style>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-WYRS5RBYGM"></script>
+  <script>
+    window.dataLayer=window.dataLayer||[];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js',new Date());
+    gtag('config','G-WYRS5RBYGM');
+    document.addEventListener('click',function(e){
+      var el=e.target.closest('[data-track]');
+      if(el){gtag('event','click',{event_category:'cta',event_label:el.dataset.track});}
+    });
+  </script>
+</head>
+<body>
+
+<div class="topbar">
+  <strong>Estúdio da Debby</strong> · Ter–Sex 10h–19h · Sáb 10h–17h ·
+  <a href="https://wa.me/5519995838910?text=Oi%20Duda%2C%20quero%20agendar%20um%20hor%C3%A1rio!">Agendar agora →</a>
+</div>
+
+<nav>
+  <div class="container nav-inner">
+    <a href="../" class="nav-back">← Voltar ao estúdio</a>
+    <div class="nav-logo">
+      Estúdio da Debby
+      <span>Nail Design — com a Duda</span>
+    </div>
+    <a href="https://wa.me/5519995838910?text=Oi%20Duda%2C%20quero%20agendar!" class="btn-wa" data-track="nav-wa-duda">💬 Agendar</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="container hero-inner">
+    <div>
+      <div class="pill">💅 Nail Design · Estúdio da Debby</div>
+      <h1>Unhas que duram.<br/>Unhas que <em>combinam com você.</em></h1>
+      <p class="sub">Manicure, pedicure, gel, alongamento e blindagem — com a Duda, nail designer especializada. Você escolhe o estilo, ela entrega perfeito.</p>
+      <div class="actions">
+        <a href="#agendar" class="btn-primary" data-track="hero-agendar">📅 Quero agendar →</a>
+        <a href="#servicos" class="btn-secondary" data-track="hero-servicos">Ver serviços e preços</a>
+      </div>
+      <div class="micro">
+        <span>Com agendamento</span>
+        <span>Ter–Sex 10h–19h · Sáb 10h–17h</span>
+        <span>Av. Andrade Neves, 365</span>
+      </div>
+    </div>
+    <div class="prof-card">
+      <div class="prof-foto"><img src="../assets/fotos/estudio/eduarda.jpeg" alt="Eduarda (Duda) — Nail Designer" /></div>
+      <strong>Eduarda (Duda)</strong>
+      <span>Nail Designer Especializada</span>
+      <div class="prof-tag">💅 Unhas · Manicure · Gel</div>
+      <a href="https://wa.me/5519995838910?text=Oi%20Duda%2C%20quero%20agendar!" class="prof-wa" data-track="prof-wa-duda">
+        💬 Agendar com a Duda
+      </a>
+    </div>
+  </div>
+</header>
+
+<!-- COMO FUNCIONA -->
+<section class="section">
+  <div class="container">
+    <div class="section-label">Como funciona</div>
+    <h2 style="margin-bottom:32px">Simples assim. <em>Sem complicação.</em></h2>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">01</div>
+        <h3>Escolhe o serviço</h3>
+        <p>Manicure, gel, alongamento, pedicure — veja os preços e escolhe o que quer.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">02</div>
+        <h3>Agenda pelo WhatsApp</h3>
+        <p>Manda mensagem para a Duda e confirma o dia e horário que funciona pra você.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">03</div>
+        <h3>Chega no horário</h3>
+        <p>Av. Andrade Neves, 365 — Centro de Campinas. A Duda já vai estar te esperando.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">04</div>
+        <h3>Sai do jeito que queria</h3>
+        <p>Unhas feitas com cuidado, material de qualidade, do seu estilo. Volta quando quiser.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVIÇOS -->
+<section class="section" id="servicos" style="background:#111217;border-top:1px solid var(--border);border-bottom:1px solid var(--border)">
+  <div class="container">
+    <div class="section-label">O que a Duda faz</div>
+    <h2 style="margin-bottom:32px">Todos os <em>serviços e preços.</em></h2>
+    <div class="servicos-wrapper">
+
+      <div class="servico-grupo">
+        <div class="grupo-header">
+          <span class="grupo-icon">💅</span>
+          <div>
+            <h3>Unhas — Especiais</h3>
+            <span style="font-size:12px;color:var(--muted)">Serviços premium com a Duda</span>
+          </div>
+        </div>
+        <div class="servico-item">
+          <span class="servico-nome">Alongamento Molde F1<span class="badge-sub">Aplicação</span></span>
+          <div class="servico-detalhes"><span class="servico-tempo">1h30–2h</span><span class="servico-preco">R$ 145</span></div>
+        </div>
+        <div class="servico-item">
+          <span class="servico-nome">Alongamento Molde F1<span class="badge-sub">Manutenção</span></span>
+          <div class="servico-detalhes"><span class="servico-tempo">1h–1h30</span><span class="servico-preco">R$ 115</span></div>
+        </div>
+        <div class="servico-item">
+          <span class="servico-nome">Banho de Gel</span>
+          <div class="servico-detalhes"><span class="servico-tempo">1h</span><span class="servico-preco">R$ 90</span></div>
+        </div>
+        <div class="servico-item">
+          <span class="servico-nome">Blindagem</span>
+          <div class="servico-detalhes"><span class="servico-tempo">50min</span><span class="servico-preco">R$ 70</span></div>
+        </div>
+        <div class="servico-item">
+          <span class="servico-nome">Postiça Realista</span>
+          <div class="servico-detalhes"><span class="servico-preco">R$ 80</span></div>
+        </div>
+        <div class="servico-item">
+          <span class="servico-nome">Remoção de Alongamento</span>
+          <div class="servico-detalhes"><span class="servico-tempo">30–40min</span><span class="servico-preco">R$ 40</span></div>
+        </div>
+        <div class="servico-item">
+          <span class="servico-nome">Manutenção Unitária</span>
+          <div class="servico-detalhes"><span class="servico-tempo">10–20min</span><span class="servico-preco">R$ 15</span></div>
+        </div>
+      </div>
+
+      <div class="servico-grupo">
+        <div class="grupo-header">
+          <span class="grupo-icon">🌸</span>
+          <div>
+            <h3>Manicure & Pedicure</h3>
+            <span style="font-size:12px;color:var(--muted)">Clássico, gel e combinados</span>
+          </div>
+        </div>
+        <div class="servico-item">
+          <span class="servico-nome">Manicure Tradicional</span>
+          <div class="servico-detalhes"><span class="servico-tempo">40min</span><span class="servico-preco">R$ 35</span></div>
+        </div>
+        <div class="servico-item">
+          <span class="servico-nome">Esmaltação em Gel — Mão</span>
+          <div class="servico-detalhes"><span class="servico-tempo">50min</span><span class="servico-preco">R$ 45</span></div>
+        </div>
+        <div class="servico-item">
+          <span class="servico-nome">Pedicure Tradicional</span>
+          <div class="servico-detalhes"><span class="servico-tempo">50min</span><span class="servico-preco">R$ 45</span></div>
+        </div>
+        <div class="servico-item">
+          <span class="servico-nome">Esmaltação em Gel — Pé</span>
+          <div class="servico-detalhes"><span class="servico-tempo">1h</span><span class="servico-preco">R$ 55</span></div>
+        </div>
+
+        <div style="margin-top:20px;padding-top:16px;border-top:1px solid var(--border)">
+          <p style="font-size:12px;font-weight:800;color:var(--gold);letter-spacing:1px;text-transform:uppercase;margin-bottom:12px">⭐ Combos mais pedidos</p>
+          <div class="servico-item">
+            <span class="servico-nome">Combo Pé + Mão Tradicional</span>
+            <div class="servico-detalhes"><span class="servico-tempo">1h20</span><span class="servico-preco">R$ 75</span></div>
+          </div>
+          <div class="servico-item">
+            <span class="servico-nome">Combo Pé + Mão em Gel</span>
+            <div class="servico-detalhes"><span class="servico-tempo">1h30</span><span class="servico-preco">R$ 95</span></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- AGENDAMENTO -->
+<section class="section agendar-section" id="agendar">
+  <div class="container">
+    <div class="agendar-inner">
+      <div>
+        <div class="section-label">Agendar horário</div>
+        <h2>Garante o seu<br/><em>dia e hora.</em></h2>
+        <p style="color:var(--muted);font-size:16px;margin-top:10px;line-height:1.7">
+          Preenche aqui e a Duda confirma o horário pelo WhatsApp. Simples assim.
+        </p>
+        <div style="margin-top:28px;display:flex;flex-direction:column;gap:14px">
+          <div style="display:flex;align-items:center;gap:12px;font-size:14px;color:var(--muted)">
+            <span style="color:var(--gold);font-size:20px">📅</span>
+            Terça a Sexta: 10h às 19h
+          </div>
+          <div style="display:flex;align-items:center;gap:12px;font-size:14px;color:var(--muted)">
+            <span style="color:var(--gold);font-size:20px">📅</span>
+            Sábado: 10h às 17h
+          </div>
+          <div style="display:flex;align-items:center;gap:12px;font-size:14px;color:var(--muted)">
+            <span style="color:var(--gold);font-size:20px">📍</span>
+            Av. Andrade Neves, 365 — Centro, Campinas
+          </div>
+          <div style="display:flex;align-items:center;gap:12px;font-size:14px;color:var(--muted)">
+            <span style="color:var(--green);font-size:20px">💬</span>
+            <a href="https://wa.me/5519995838910" style="color:var(--green)">(19) 99583-8910</a>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div style="background:var(--card);border:1px solid var(--border);border-radius:24px;padding:28px">
+          <h3 style="margin-bottom:20px">Solicitar horário</h3>
+          <form id="form-agendamento" onsubmit="enviarWhatsApp(event)">
+            <div class="form-group">
+              <label>Seu nome</label>
+              <input type="text" id="nome" placeholder="Como posso te chamar?" required />
+            </div>
+            <div class="form-group">
+              <label>WhatsApp</label>
+              <input type="tel" id="telefone" placeholder="(19) 9 9999-9999" required />
+            </div>
+            <div class="form-group">
+              <label>Serviço desejado</label>
+              <select id="servico" required>
+                <option value="">Escolhe o serviço...</option>
+                <optgroup label="— Manicure & Pedicure">
+                  <option>Manicure Tradicional — R$ 35</option>
+                  <option>Esmaltação em Gel — Mão — R$ 45</option>
+                  <option>Pedicure Tradicional — R$ 45</option>
+                  <option>Esmaltação em Gel — Pé — R$ 55</option>
+                  <option>Combo Pé + Mão Tradicional — R$ 75</option>
+                  <option>Combo Pé + Mão em Gel — R$ 95</option>
+                </optgroup>
+                <optgroup label="— Unhas Especiais">
+                  <option>Blindagem — R$ 70</option>
+                  <option>Postiça Realista — R$ 80</option>
+                  <option>Banho de Gel — R$ 90</option>
+                  <option>Alongamento Molde F1 Manutenção — R$ 115</option>
+                  <option>Alongamento Molde F1 Aplicação — R$ 145</option>
+                </optgroup>
+                <optgroup label="— Manutenção">
+                  <option>Manutenção Unitária — R$ 15</option>
+                  <option>Remoção de Alongamento — R$ 40</option>
+                </optgroup>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Dia e horário de preferência</label>
+              <input type="text" id="horario" placeholder="Ex: sexta-feira à tarde" />
+            </div>
+            <button type="submit" class="btn-submit" data-track="form-submit-unhas">
+              💬 Enviar pedido de agendamento →
+            </button>
+            <p class="form-note">Você será redirecionada ao WhatsApp da Duda para confirmar.</p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA FINAL -->
+<section class="cta-final">
+  <div class="container">
+    <h2>Pronta para agendar?</h2>
+    <p>A Duda responde rápido. Garante seu horário antes que encha.</p>
+    <a href="https://wa.me/5519995838910?text=Oi%20Duda%2C%20quero%20agendar%20um%20hor%C3%A1rio!" class="btn-primary" data-track="cta-final-wa">
+      💬 Falar com a Duda agora →
+    </a>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <strong>Estúdio da Debby</strong> — Nail Design com a Duda<br/>
+    Av. Andrade Neves, 365 · Centro · Campinas · SP
+    <div class="footer-links">
+      <a href="../">← Voltar ao estúdio</a>
+      <a href="../cilios/">Cílios & Sobrancelha</a>
+      <a href="../piercing/">Piercing</a>
+      <a href="https://instagram.com/debbypiercing" target="_blank">@debbypiercing</a>
+    </div>
+  </div>
+</footer>
+
+<a href="https://wa.me/5519995838910?text=Oi%20Duda%2C%20quero%20agendar!" class="wa-float" data-track="wa-flutuante-unhas">
+  💬 Agendar com a Duda
+</a>
+
+<script>
+function enviarWhatsApp(e) {
+  e.preventDefault();
+  const nome = document.getElementById('nome').value;
+  const tel = document.getElementById('telefone').value;
+  const servico = document.getElementById('servico').value;
+  const horario = document.getElementById('horario').value || 'a combinar';
+  const msg = `Oi Duda! Vim pelo site e quero agendar 😊\n\n👤 Nome: ${nome}\n📱 WhatsApp: ${tel}\n💅 Serviço: ${servico}\n📅 Preferência: ${horario}`;
+  window.open(`https://wa.me/5519995838910?text=${encodeURIComponent(msg)}`, '_blank');
+}
+document.querySelectorAll('[data-track]').forEach(el=>{
+  el.addEventListener('click',function(){
+    const ev=this.getAttribute('data-track');
+    if(typeof gtag!=='undefined')gtag('event','click',{event_category:'cta',event_label:ev});
+    if(typeof fbq!=='undefined')fbq('track','Lead',{content_name:ev});
+  });
+});
+</script>
+</body>
+</html>

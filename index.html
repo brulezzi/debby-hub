@@ -1,0 +1,916 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Estúdio da Debby — Beleza · Estilo · Autoestima | Campinas SP</title>
+  <meta name="description" content="Piercing, unhas, cílios, sobrancelha, moda e sex shop em um só lugar. Centro de Campinas. Sem complicação — você chega, é atendida." />
+  <link rel="canonical" href="https://estudiodadebbypiercing.com.br/" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Estúdio da Debby — Beleza · Estilo · Autoestima" />
+  <meta property="og:description" content="Um espaço completo para você se sentir do jeito que sempre quis." />
+  <meta property="og:image" content="./assets/fotos/estudio/hero-hub.jpeg" />
+  <meta property="og:url" content="https://estudiodadebbypiercing.com.br/" />
+  <meta property="og:type" content="website" />
+
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg: #0f1013;
+      --bg-soft: #17191f;
+      --card: #1f222a;
+      --text: #f4f1ea;
+      --muted: #a8a8a8;
+      --gold: #dfb76c;
+      --border: rgba(255,255,255,0.09);
+      --green: #25d366;
+      --shadow: 0 24px 80px rgba(0,0,0,0.35);
+    }
+
+    html { scroll-behavior: smooth; overflow-x: hidden; }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .container {
+      width: min(1120px, 92%);
+      margin: 0 auto;
+    }
+
+    /* ── TOPBAR ── */
+    .topbar {
+      background: rgba(223,183,108,0.06);
+      border-bottom: 1px solid rgba(223,183,108,0.15);
+      padding: 10px 0;
+      text-align: center;
+      font-size: 13px;
+      color: var(--muted);
+    }
+    .topbar strong { color: var(--gold); }
+
+    /* ── NAV ── */
+    nav {
+      padding: 18px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-inner {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+      text-align: center;
+    }
+    .nav-tagline {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      color: var(--muted);
+      text-transform: uppercase;
+    }
+    .nav-logo {
+      font-size: 16px;
+      font-weight: 900;
+      letter-spacing: 4px;
+      color: var(--gold);
+      text-transform: uppercase;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      position: relative;
+      min-height: 92vh;
+      background: var(--bg);
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+    }
+    .hero-content {
+      padding: 80px clamp(20px, 6vw, 80px);
+      max-width: 620px;
+      position: relative;
+      z-index: 2;
+    }
+    .hero-portrait {
+      position: absolute;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      width: 46%;
+      overflow: hidden;
+    }
+    .hero-portrait img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
+      filter: brightness(0.72);
+    }
+    .hero-portrait::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, var(--bg) 0%, rgba(15,16,19,0.6) 35%, transparent 70%);
+      z-index: 1;
+    }
+    @media (max-width: 860px) {
+      .hero-portrait { display: none; }
+      .hero-content { padding: 60px 20px 72px; max-width: 100%; }
+    }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      background: rgba(223,183,108,0.12);
+      border: 1px solid rgba(223,183,108,0.3);
+      border-radius: 999px;
+      padding: 5px 14px;
+      font-size: 11px;
+      font-weight: 800;
+      color: var(--gold);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 18px;
+    }
+    h1 {
+      font-size: clamp(32px, 4.5vw, 58px);
+      line-height: 1.05;
+      letter-spacing: -1.5px;
+      margin-bottom: 20px;
+      font-weight: 900;
+    }
+    h1 em { font-style: normal; color: var(--gold); }
+    .hero-sub {
+      font-size: 18px;
+      color: var(--muted);
+      margin-bottom: 32px;
+      max-width: 520px;
+      line-height: 1.6;
+    }
+    .hero-actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background: var(--gold);
+      color: #151515;
+      font-weight: 900;
+      font-size: 15px;
+      padding: 15px 28px;
+      border-radius: 999px;
+      transition: .2s;
+    }
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background: transparent;
+      border: 1.5px solid rgba(255,255,255,0.2);
+      color: var(--text);
+      font-weight: 700;
+      font-size: 15px;
+      padding: 15px 24px;
+      border-radius: 999px;
+      transition: .2s;
+    }
+    .hero-micro {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+      margin-top: 20px;
+      font-size: 13px;
+      color: var(--muted);
+    }
+    .hero-micro span::before { content: "·"; color: var(--gold); margin-right: 6px; }
+    .hero-micro span:first-child::before { display: none; }
+
+    .hero-badges {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin: 16px 0 20px;
+    }
+    .hero-badge-walk, .hero-badge-agenda {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      font-weight: 700;
+      padding: 7px 14px;
+      border-radius: 999px;
+    }
+    .hero-badge-walk {
+      background: rgba(223,183,108,0.15);
+      border: 1px solid rgba(223,183,108,0.4);
+      color: var(--gold);
+    }
+    .hero-badge-agenda {
+      background: rgba(37,211,102,0.1);
+      border: 1px solid rgba(37,211,102,0.35);
+      color: #25d366;
+    }
+
+    /* ── DEPOIMENTOS ── */
+    .depoimentos { padding: 80px 0; }
+    .depo-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; margin-top: 40px; }
+    .depo-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .depo-stars { color: #f59e0b; font-size: 14px; letter-spacing: 2px; }
+    .depo-text { font-size: 14px; color: var(--muted); line-height: 1.7; flex: 1; }
+    .depo-author { font-size: 13px; font-weight: 900; color: var(--text); margin-top: 4px; }
+    .depo-via { font-size: 11px; color: rgba(255,255,255,0.28); margin-top: 2px; }
+    @media (max-width: 720px) { .depo-grid { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 480px) { .depo-grid { grid-template-columns: 1fr; } }
+
+    /* ── TRUST BAR ── */
+    .trust-bar {
+      background: rgba(223,183,108,0.05);
+      border-top: 1px solid rgba(223,183,108,0.1);
+      border-bottom: 1px solid rgba(223,183,108,0.1);
+      padding: 14px 0;
+      overflow: hidden;
+    }
+    .trust-inner {
+      display: flex;
+      justify-content: center;
+      gap: 0;
+      flex-wrap: wrap;
+    }
+    .trust-item {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--text);
+      padding: 6px 20px;
+      border-right: 1px solid var(--border);
+      white-space: nowrap;
+    }
+    .trust-item:last-child { border-right: none; }
+    .trust-icon { color: var(--gold); font-size: 15px; }
+
+    /* ── PROOF SOCIAL ── */
+    .prova {
+      background: #111217;
+      padding: 56px 0;
+      border-top: 1px solid var(--border);
+    }
+    .prova-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: center;
+    }
+    .prova-foto {
+      border-radius: 20px;
+      overflow: hidden;
+      aspect-ratio: 3/4;
+    }
+    .prova-foto img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .prova-copy .label {
+      font-size: 11px;
+      font-weight: 800;
+      color: var(--gold);
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+    h2 { font-size: clamp(26px, 5vw, 44px); line-height: 1.05; letter-spacing: -1px; margin-bottom: 14px; font-weight: 900; }
+    h2 em { font-style: normal; color: var(--gold); }
+    .prova-copy p { color: var(--muted); font-size: 16px; line-height: 1.7; margin-bottom: 14px; }
+    .prova-copy p strong { color: var(--text); }
+    .stats-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-top: 24px;
+    }
+    .stat {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 16px 12px;
+      text-align: center;
+    }
+    .stat strong { display: block; font-size: 26px; font-weight: 900; color: var(--gold); line-height: 1; margin-bottom: 4px; }
+    .stat span { font-size: 12px; color: var(--muted); }
+
+    /* ── VERTICAIS ── */
+    .section { padding: 72px 0; }
+    .section-heading { max-width: 600px; margin-bottom: 40px; }
+    .section-heading .label { font-size: 11px; font-weight: 800; color: var(--gold); letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 10px; }
+    .section-heading p { color: var(--muted); font-size: 16px; margin-top: 10px; }
+
+    .verticais-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+    .vertical-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 28px 22px;
+      transition: .25s;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+    }
+    .vertical-card:hover { border-color: rgba(223,183,108,0.3); transform: translateY(-3px); }
+    .vertical-card.destaque { border-color: rgba(223,183,108,0.25); background: linear-gradient(135deg, rgba(223,183,108,0.07), var(--card)); }
+    .vertical-icon { font-size: 36px; margin-bottom: 14px; display: block; }
+    .vertical-card h3 { font-size: 18px; font-weight: 900; margin-bottom: 6px; }
+    .vertical-card p { font-size: 13px; color: var(--muted); line-height: 1.5; margin-bottom: 14px; }
+    .vertical-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 11px;
+      font-weight: 800;
+      padding: 4px 10px;
+      border-radius: 999px;
+      letter-spacing: 0.5px;
+    }
+    .tag-walk { background: rgba(37,211,102,0.12); color: #25d366; }
+    .tag-agenda { background: rgba(223,183,108,0.12); color: var(--gold); }
+    .tag-em-breve { background: rgba(255,255,255,0.06); color: var(--muted); }
+    .vertical-link {
+      display: block;
+      margin-top: 14px;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--gold);
+    }
+
+    /* ── TIME ── */
+    .time-section { background: #111217; }
+    .time-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+    .team-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      overflow: hidden;
+      text-align: center;
+    }
+    .team-foto {
+      width: 100%;
+      aspect-ratio: 3/4;
+      overflow: hidden;
+    }
+    .team-foto img { width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block; transition: transform .3s; }
+    .team-card:hover .team-foto img { transform: scale(1.04); }
+    .team-info { padding: 16px 14px 20px; }
+    .team-info strong { display: block; font-size: 16px; font-weight: 900; margin-bottom: 3px; }
+    .team-info span { font-size: 12px; color: var(--muted); }
+    .team-vertical {
+      display: inline-block;
+      margin-top: 8px;
+      font-size: 11px;
+      font-weight: 800;
+      color: var(--gold);
+      background: rgba(223,183,108,0.1);
+      border-radius: 999px;
+      padding: 3px 10px;
+    }
+    .team-wa {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      margin-top: 10px;
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--green);
+    }
+
+    /* ── HORÁRIOS ── */
+    .horarios-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: start;
+    }
+    .horario-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 28px;
+    }
+    .horario-card h3 { font-size: 18px; font-weight: 900; margin-bottom: 16px; }
+    .horario-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 14px;
+    }
+    .horario-row:last-child { border-bottom: none; }
+    .horario-row .dia { color: var(--muted); }
+    .horario-row .hora { font-weight: 700; color: var(--text); }
+    .horario-row .fechado { color: rgba(255,255,255,0.3); }
+    .mapa-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      overflow: hidden;
+    }
+    .mapa-card iframe {
+      width: 100%;
+      height: 280px;
+      border: 0;
+      display: block;
+    }
+    .mapa-info {
+      padding: 18px 22px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .mapa-info p { font-size: 14px; color: var(--muted); }
+    .mapa-info strong { display: block; font-size: 15px; color: var(--text); margin-bottom: 3px; }
+    .btn-mapa {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(223,183,108,0.1);
+      border: 1px solid rgba(223,183,108,0.25);
+      color: var(--gold);
+      font-weight: 900;
+      font-size: 13px;
+      padding: 10px 18px;
+      border-radius: 999px;
+      white-space: nowrap;
+    }
+
+    /* ── CTA FINAL ── */
+    .cta-final {
+      background: linear-gradient(135deg, rgba(223,183,108,0.08), rgba(223,183,108,0.02));
+      border-top: 1px solid rgba(223,183,108,0.15);
+      text-align: center;
+      padding: 72px 0;
+    }
+    .cta-final h2 { margin-bottom: 12px; }
+    .cta-final p { color: var(--muted); font-size: 17px; margin-bottom: 32px; max-width: 480px; margin-left: auto; margin-right: auto; }
+    .cta-final .actions { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #0a0b0d;
+      border-top: 1px solid var(--border);
+      padding: 32px 0;
+      text-align: center;
+      font-size: 13px;
+      color: var(--muted);
+    }
+    footer strong { color: var(--gold); }
+    .footer-links { display: flex; gap: 24px; justify-content: center; margin-top: 12px; flex-wrap: wrap; }
+    .footer-links a { color: var(--muted); transition: color .2s; }
+    .footer-links a:hover { color: var(--gold); }
+
+    /* ── WHATSAPP FLUTUANTE ── */
+    .wa-float {
+      position: fixed;
+      bottom: 24px;
+      right: 20px;
+      z-index: 999;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: #25d366;
+      color: white;
+      font-weight: 900;
+      font-size: 14px;
+      padding: 13px 20px;
+      border-radius: 999px;
+      box-shadow: 0 8px 30px rgba(37,211,102,0.35);
+      transition: .2s;
+    }
+    .wa-float:hover { transform: translateY(-2px); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 860px) {
+      .verticais-grid { grid-template-columns: repeat(2, 1fr); }
+      .time-grid { grid-template-columns: repeat(2, 1fr); }
+      .prova-grid { grid-template-columns: 1fr; }
+      .prova-foto { aspect-ratio: 16/9; }
+      .horarios-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 540px) {
+      .verticais-grid { grid-template-columns: repeat(2, 1fr); }
+      .time-grid { grid-template-columns: repeat(2, 1fr); }
+      .stats-row { grid-template-columns: repeat(3, 1fr); }
+      .nav-logo span { display: none; }
+      .trust-inner { justify-content: flex-start; overflow-x: auto; flex-wrap: nowrap; padding: 0 16px; }
+    }
+  </style>
+  <!-- Google Analytics 4 — substituir G-WYRS5RBYGM pelo Measurement ID real -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-WYRS5RBYGM"></script>
+  <script>
+    window.dataLayer=window.dataLayer||[];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js',new Date());
+    gtag('config','G-WYRS5RBYGM');
+    document.addEventListener('click',function(e){
+      var el=e.target.closest('[data-track]');
+      if(el){gtag('event','click',{event_category:'cta',event_label:el.dataset.track});}
+    });
+  </script>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="container nav-inner">
+    <div class="nav-tagline">Beleza · Estilo · Autoestima</div>
+    <div class="nav-logo">Estúdio da Debby</div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-content">
+    <h1>A autoestima começa<br/>com um gesto de coragem.<br/><em>Realce sua beleza.</em></h1>
+    <p class="hero-sub">
+      Piercing, unhas, cílios, sobrancelha, moda e sex shop — profissionais especialistas e dedicadas pra cada serviço. Você chega, é bem atendida do começo ao fim, e sai do jeito que queria.
+    </p>
+    <div class="hero-badges">
+      <span class="hero-badge-walk">✓ Piercing · Moda · Sex Shop — só chegar</span>
+      <span class="hero-badge-agenda">📅 Unhas · Cílios · Sobrancelha — com hora marcada</span>
+    </div>
+    <div class="hero-actions">
+      <a href="#verticais" class="btn-primary" data-track="hero-ver-servicos">Ver tudo que fazemos →</a>
+      <a href="#horarios" class="btn-secondary" data-track="hero-como-chegar">Como chegar</a>
+    </div>
+    <div class="hero-micro">
+      <span>Av. Andrade Neves, 365</span>
+      <span>25 mil seguidores no Instagram</span>
+      <span>Pix · Cartão · Dinheiro</span>
+    </div>
+  </div>
+  <div class="hero-portrait">
+    <img src="./assets/fotos/piercing/debby com touquinha.png" alt="Debby — Fundadora e Piercer" />
+  </div>
+</header>
+
+<!-- TRUST BAR -->
+<div class="trust-bar">
+  <div class="container trust-inner">
+    <div class="trust-item"><span class="trust-icon">💎</span> +1.000 perfurações/mês</div>
+    <div class="trust-item"><span class="trust-icon">📸</span> 25 mil seguidores no Instagram</div>
+    <div class="trust-item"><span class="trust-icon">⭐</span> 9 anos de estúdio — desde 2016</div>
+    <div class="trust-item"><span class="trust-icon">📍</span> Centro de Campinas · Av. Andrade Neves, 365</div>
+    <div class="trust-item"><span class="trust-icon">🛡️</span> Ambiente limpo e seguro</div>
+  </div>
+</div>
+
+<!-- PROVA SOCIAL -->
+<section class="prova">
+  <div class="container prova-grid">
+    <div class="prova-foto">
+      <img src="./assets/fotos/estudio/loja-cheia.jpeg" alt="Estúdio da Debby cheio de clientes" loading="lazy" />
+    </div>
+    <div class="prova-copy">
+      <div class="label">Por que a Debby?</div>
+      <h2>Um estúdio que<br/>as pessoas<br/><em>recomendam.</em></h2>
+      <p>Não é só o serviço. É a experiência. Você chega, é bem recebida, sai do jeito que queria — e volta. É assim há mais de <strong>9 anos no centro de Campinas</strong>.</p>
+      <p>Piercing com joias de qualidade. Unhas que duram. Cílios que realçam. Tudo com quem sabe o que está fazendo.</p>
+      <div class="stats-row">
+        <div class="stat"><strong>1.000+</strong><span>perfurações por mês</span></div>
+        <div class="stat"><strong>25 mil</strong><span>seguidores no Instagram</span></div>
+        <div class="stat"><strong>9 anos</strong><span>especialista desde 2016</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DEPOIMENTOS -->
+<section class="depoimentos">
+  <div class="container">
+    <div class="section-heading">
+      <div class="label">O que as clientes dizem</div>
+      <h2>Mais de <em>1.000 clientes</em><br/>por mês têm algo a dizer.</h2>
+      <p>Avaliações reais — sem filtro, sem edição.</p>
+    </div>
+    <div class="depo-grid">
+
+      <div class="depo-card">
+        <div class="depo-stars">★★★★★</div>
+        <p class="depo-text">"Fui furar e ainda levei minha filha, amei o lugar, muito aconchegante e lindo. Fui super bem atendida na recepção e a Debby é um amor de pessoa, maravilhosa — furou super rápido que nem senti dor. Ótima profissional, recomendo!!"</p>
+        <div class="depo-author">Paloma Stephany</div>
+        <div class="depo-via">Google · um mês atrás</div>
+      </div>
+
+      <div class="depo-card">
+        <div class="depo-stars">★★★★★</div>
+        <p class="depo-text">"Muito atenciosa, cuidadosa e profissional em cada detalhe. Passa segurança, higiene impecável e ainda deixa a gente super à vontade. O resultado ficou perfeito, amei."</p>
+        <div class="depo-author">Katia Santos</div>
+        <div class="depo-via">Google · um mês atrás</div>
+      </div>
+
+      <div class="depo-card">
+        <div class="depo-stars">★★★★★</div>
+        <p class="depo-text">"Ambiente super agradável, atendimento maravilhoso e muito profissional! Me senti segura e bem atendida do começo ao fim. O trabalho ficou perfeito, com muito cuidado e higiene. Recomendo demais!"</p>
+        <div class="depo-author">Mariza Rocha</div>
+        <div class="depo-via">Google · um mês atrás</div>
+      </div>
+
+      <div class="depo-card">
+        <div class="depo-stars">★★★★★</div>
+        <p class="depo-text">"Levei minha filha para fazer perfuração no nariz — era o sonho dela. Pesquisei muito até encontrar o Estúdio da Debby. Fomos muito bem atendidas, minha filha estava com medo e a Debby super simpática tranquilizou ela. Recomendo muito!!!"</p>
+        <div class="depo-author">Aline Souza</div>
+        <div class="depo-via">Google · um mês atrás</div>
+      </div>
+
+      <div class="depo-card">
+        <div class="depo-stars">★★★★★</div>
+        <p class="depo-text">"Ela atende super bem, quase todas minhas perfurações foi com ela e os resultados ficaram ótimos!! Já estou até com saudade de ir por outro piercing kk!! Amo muito."</p>
+        <div class="depo-author">Bruna Eduarda</div>
+        <div class="depo-via">Google · um mês atrás</div>
+      </div>
+
+      <div class="depo-card">
+        <div class="depo-stars">★★★★★</div>
+        <p class="depo-text">"Ótima profissional. Fiz minha primeira perfuração no umbigo — em menos de 5 meses já cicatrizou, não tive nenhum problema!"</p>
+        <div class="depo-author">Ana Luiza De Souza Soares Silva</div>
+        <div class="depo-via">Google · um mês atrás</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- VERTICAIS -->
+<section class="section" id="verticais">
+  <div class="container">
+    <div class="section-heading">
+      <div class="label">O que fazemos</div>
+      <h2>Tudo que você<br/>precisa, <em>aqui.</em></h2>
+      <p>Escolha o que você veio buscar — cada especialidade tem sua profissional dedicada.</p>
+    </div>
+
+    <div class="verticais-grid">
+
+      <!-- PIERCING -->
+      <a href="./piercing/" class="vertical-card destaque" data-track="vertical-piercing">
+        <span class="vertical-icon">💎</span>
+        <h3>Piercing</h3>
+        <p>Joias em aço cirúrgico, PVD Gold e titânio. Do simples ao exclusivo — você escolhe a joia, a Debby faz.</p>
+        <span class="vertical-tag tag-walk">✓ Só chegar</span>
+        <span class="vertical-link">Ver joias e preços →</span>
+      </a>
+
+      <!-- UNHAS -->
+      <a href="./unhas/" class="vertical-card" data-track="vertical-unhas">
+        <span class="vertical-icon">💅</span>
+        <h3>Unhas</h3>
+        <p>Manicure, pedicure, gel, alongamento e blindagem com a Duda — nail designer especializada.</p>
+        <span class="vertical-tag tag-agenda">📅 Com agendamento</span>
+        <span class="vertical-link">Agendar com a Duda →</span>
+      </a>
+
+      <!-- CÍLIOS -->
+      <a href="./cilios/" class="vertical-card" data-track="vertical-cilios">
+        <span class="vertical-icon">✨</span>
+        <h3>Cílios</h3>
+        <p>Volume Brasileiro, Mega Volume, Fox Eyes e mais. Extensão que dura e realça seu olhar com a Rauany.</p>
+        <span class="vertical-tag tag-agenda">📅 Com agendamento</span>
+        <span class="vertical-link">Agendar com a Rauany →</span>
+      </a>
+
+      <!-- SOBRANCELHA -->
+      <a href="./cilios/#sobrancelha" class="vertical-card" data-track="vertical-sobrancelha">
+        <span class="vertical-icon">🌿</span>
+        <h3>Sobrancelha</h3>
+        <p>Design personalizado e henna premium com a Rauany. Moldura o rosto, define o olhar.</p>
+        <span class="vertical-tag tag-agenda">📅 Com agendamento</span>
+        <span class="vertical-link">Ver serviços →</span>
+      </a>
+
+      <!-- MODAS -->
+      <a href="./modas/" class="vertical-card" data-track="vertical-modas">
+        <span class="vertical-icon">👗</span>
+        <h3>Moda Feminina</h3>
+        <p>Peças selecionadas para completar o look. Estilo acessível, sem precisar ir ao shopping.</p>
+        <span class="vertical-tag tag-walk">✓ Só chegar</span>
+        <span class="vertical-link">Ver mais →</span>
+      </a>
+
+      <!-- SEX SHOP -->
+      <a href="./sexshop/" class="vertical-card" data-track="vertical-sexshop">
+        <span class="vertical-icon">🌹</span>
+        <h3>Sex Shop</h3>
+        <p>Produtos selecionados em ambiente discreto, sem julgamento. Porque prazer também faz parte.</p>
+        <span class="vertical-tag tag-walk">✓ Só chegar</span>
+        <span class="vertical-link">Ver mais →</span>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- TIME -->
+<section class="section time-section" id="time">
+  <div class="container">
+    <div class="section-heading">
+      <div class="label">Quem vai te atender</div>
+      <h2>Profissionais que<br/><em>entendem você.</em></h2>
+      <p>Cada uma com sua especialidade. Todas dedicadas a fazer você sair melhor do que entrou.</p>
+    </div>
+
+    <div class="time-grid">
+
+      <div class="team-card">
+        <div class="team-foto">
+          <img src="./assets/fotos/estudio/debby.jpeg" alt="Debby — Piercing" loading="lazy" />
+        </div>
+        <div class="team-info">
+          <strong>Debby</strong>
+          <span>Fundadora · Piercer</span>
+          <div class="team-vertical">💎 Piercing</div>
+          <a href="https://wa.me/5519988404390?text=Oi%20Debby%2C%20vim%20pelo%20site!" class="team-wa" data-track="team-wa-debby">
+            📱 WhatsApp
+          </a>
+        </div>
+      </div>
+
+      <div class="team-card">
+        <div class="team-foto">
+          <img src="./assets/fotos/estudio/eduarda.jpeg" alt="Duda — Nail Designer" loading="lazy" />
+        </div>
+        <div class="team-info">
+          <strong>Eduarda (Duda)</strong>
+          <span>Nail Designer</span>
+          <div class="team-vertical">💅 Unhas</div>
+          <a href="https://wa.me/5519995838910?text=Oi%20Duda%2C%20quero%20agendar%20um%20hor%C3%A1rio!" class="team-wa" data-track="team-wa-duda">
+            📱 Agendar
+          </a>
+        </div>
+      </div>
+
+      <div class="team-card">
+        <div class="team-foto">
+          <img src="./assets/fotos/estudio/rauany.jpeg" alt="Rauany — Cílios e Sobrancelha" loading="lazy" />
+        </div>
+        <div class="team-info">
+          <strong>Rauany</strong>
+          <span>Lash Designer</span>
+          <div class="team-vertical">✨ Cílios · Sobrancelha</div>
+          <a href="https://wa.me/5519994338102?text=Oi%20Rauany%2C%20quero%20agendar!" class="team-wa" data-track="team-wa-rauany">
+            📱 Agendar
+          </a>
+        </div>
+      </div>
+
+      <div class="team-card">
+        <div class="team-foto">
+          <img src="./assets/fotos/estudio/hernandez.jpeg" alt="Hernandez — Moda e Sex Shop" loading="lazy" />
+        </div>
+        <div class="team-info">
+          <strong>Hernandez</strong>
+          <span>Moda & Sex Shop</span>
+          <div class="team-vertical">👗 Modas · Sex Shop</div>
+          <a href="https://wa.me/5519988404390?text=Oi%2C%20vim%20pelo%20site!" class="team-wa" data-track="team-wa-hernandez">
+            📱 WhatsApp
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- HORÁRIOS E LOCALIZAÇÃO -->
+<section class="section" id="horarios">
+  <div class="container">
+    <div class="section-heading">
+      <div class="label">Onde e quando</div>
+      <h2>Venha nos <em>visitar.</em></h2>
+    </div>
+
+    <div class="horarios-grid">
+      <div class="horario-card">
+        <h3>Horários</h3>
+        <div class="horario-row"><span class="dia">Segunda-feira</span><span class="fechado">Fechado</span></div>
+        <div class="horario-row"><span class="dia">Terça a Sexta</span><span class="hora">10h às 19h</span></div>
+        <div class="horario-row"><span class="dia">Sábado</span><span class="hora">10h às 17h</span></div>
+        <div class="horario-row"><span class="dia">Domingo</span><span class="fechado">Fechado</span></div>
+
+        <div style="margin-top:24px;padding-top:20px;border-top:1px solid var(--border);">
+          <p style="font-size:13px;color:var(--muted);margin-bottom:12px;">Fale direto com a gente:</p>
+          <div style="display:flex;flex-direction:column;gap:10px;">
+            <a href="https://wa.me/5519988404390" class="team-wa" style="justify-content:flex-start;font-size:14px;" data-track="horario-wa-piercing">
+              📱 Piercing — (19) 98840-4390
+            </a>
+            <a href="https://wa.me/5519995838910" class="team-wa" style="justify-content:flex-start;font-size:14px;" data-track="horario-wa-unhas">
+              📱 Unhas — (19) 99583-8910
+            </a>
+            <a href="https://wa.me/5519994338102" class="team-wa" style="justify-content:flex-start;font-size:14px;" data-track="horario-wa-cilios">
+              📱 Cílios — (19) 99433-8102
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="mapa-card">
+        <iframe
+          src="https://maps.google.com/maps?q=Avenida+Andrade+Neves+365+Campinas+SP&output=embed"
+          allowfullscreen
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          title="Localização Estúdio da Debby">
+        </iframe>
+        <div class="mapa-info">
+          <div>
+            <strong>Av. Andrade Neves, 365</strong>
+            <p>Centro · Campinas · SP</p>
+          </div>
+          <a href="https://share.google/MZhn2SoMy7AFTXnsM" target="_blank" rel="noopener" class="btn-mapa" data-track="abrir-mapa">
+            📍 Abrir no Maps
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA FINAL -->
+<section class="cta-final">
+  <div class="container">
+    <div class="eyebrow" style="margin:0 auto 18px;">✦ Pronta para se cuidar?</div>
+    <h2>O primeiro passo<br/>é <em>você querer.</em></h2>
+    <p>Venha do jeito que você está. A gente cuida do resto.</p>
+    <div class="actions">
+      <a href="https://wa.me/5519988404390?text=Oi%20Debby%2C%20vim%20pelo%20site%20e%20quero%20saber%20mais!" class="btn-primary" data-track="cta-final-wa">
+        💬 Falar no WhatsApp
+      </a>
+      <a href="./piercing/" class="btn-secondary" data-track="cta-final-piercing">
+        Ver joias de piercing →
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <strong>Estúdio da Debby</strong> — Beleza · Estilo · Autoestima<br/>
+    Av. Andrade Neves, 365 · Centro · Campinas · SP
+    <div class="footer-links">
+      <a href="./piercing/" data-track="footer-piercing">Piercing</a>
+      <a href="./unhas/" data-track="footer-unhas">Unhas</a>
+      <a href="./cilios/" data-track="footer-cilios">Cílios & Sobrancelha</a>
+      <a href="https://instagram.com/debbypiercing" target="_blank" rel="noopener" data-track="footer-instagram">@debbypiercing</a>
+      <a href="#horarios" data-track="footer-horarios">Horários</a>
+    </div>
+  </div>
+</footer>
+
+<!-- WHATSAPP FLUTUANTE -->
+<a href="https://wa.me/5519988404390?text=Oi%20Debby%2C%20vim%20pelo%20site!" class="wa-float" data-track="wa-flutuante">
+  💬 WhatsApp
+</a>
+
+<!-- TRACKING: rastreio de cliques por data-track -->
+<script>
+  document.querySelectorAll('[data-track]').forEach(el => {
+    el.addEventListener('click', function() {
+      const ev = this.getAttribute('data-track');
+      if (typeof gtag !== 'undefined') gtag('event', 'click', { event_category: 'cta', event_label: ev });
+      if (typeof fbq !== 'undefined') fbq('track', 'Lead', { content_name: ev });
+    });
+  });
+</script>
+
+</body>
+</html>

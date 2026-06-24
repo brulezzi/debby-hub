@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cílios & Sobrancelha com a Rauany | Estúdio da Debby — Campinas SP</title>
+  <meta name="description" content="Extensão de cílios e design de sobrancelha com a Rauany. Volume Brasileiro, Mega Volume, Fox Eyes, henna. Agende no Estúdio da Debby, Campinas." />
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box}
+    :root{--bg:#0f1013;--bg-soft:#17191f;--card:#1f222a;--text:#f4f1ea;--muted:#a8a8a8;--gold:#dfb76c;--border:rgba(255,255,255,0.09);--green:#25d366}
+    html{scroll-behavior:smooth;overflow-x:hidden}
+    body{font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;overflow-x:hidden}
+    a{color:inherit;text-decoration:none}
+    .container{width:min(1120px,92%);margin:0 auto}
+    .topbar{background:rgba(223,183,108,0.06);border-bottom:1px solid rgba(223,183,108,0.15);padding:10px 0;text-align:center;font-size:13px;color:var(--muted)}
+    .topbar strong{color:var(--gold)} .topbar a{color:var(--gold)}
+    nav{padding:16px 0;border-bottom:1px solid var(--border)}
+    .nav-inner{display:flex;align-items:center;justify-content:space-between;gap:16px}
+    .nav-logo{font-size:13px;font-weight:900;letter-spacing:3px;color:var(--gold);text-transform:uppercase}
+    .nav-logo span{display:block;font-size:10px;letter-spacing:1px;color:var(--muted);font-weight:400}
+    .nav-back{font-size:13px;color:var(--muted)} .nav-back:hover{color:var(--gold)}
+    .btn-wa{background:var(--green);color:white;font-weight:900;font-size:13px;padding:10px 20px;border-radius:999px;white-space:nowrap}
+    .pill{display:inline-flex;align-items:center;gap:7px;background:rgba(223,183,108,0.1);border:1px solid rgba(223,183,108,0.25);border-radius:999px;padding:5px 14px;font-size:11px;font-weight:800;color:var(--gold);letter-spacing:1px;text-transform:uppercase;margin-bottom:16px}
+    h1{font-size:clamp(34px,6vw,60px);line-height:1.0;letter-spacing:-2px;font-weight:900;margin-bottom:16px}
+    h1 em{font-style:normal;color:var(--gold)}
+    h2{font-size:clamp(26px,4vw,40px);line-height:1.05;letter-spacing:-1px;font-weight:900;margin-bottom:14px}
+    h2 em{font-style:normal;color:var(--gold)}
+    h3{font-size:20px;font-weight:900;margin-bottom:8px}
+    .sub{font-size:17px;color:var(--muted);margin-bottom:28px;line-height:1.6;max-width:520px}
+    .actions{display:flex;gap:12px;flex-wrap:wrap}
+    .btn-primary{display:inline-flex;align-items:center;gap:8px;background:var(--gold);color:#151515;font-weight:900;font-size:15px;padding:14px 26px;border-radius:999px;transition:.2s}
+    .btn-secondary{display:inline-flex;align-items:center;gap:8px;background:transparent;border:1.5px solid rgba(255,255,255,0.2);color:var(--text);font-weight:700;font-size:14px;padding:12px 22px;border-radius:999px}
+    .micro{display:flex;gap:16px;flex-wrap:wrap;margin-top:16px;font-size:13px;color:var(--muted)}
+    .micro span::before{content:"·";color:var(--gold);margin-right:6px}
+    .micro span:first-child::before{display:none}
+    .hero{padding:60px 0 50px;border-bottom:1px solid var(--border);background:linear-gradient(180deg,rgba(223,183,108,0.05) 0%,transparent 100%)}
+    .hero-inner{display:grid;grid-template-columns:1fr 380px;gap:48px;align-items:center}
+    .prof-card{background:var(--card);border:1px solid var(--border);border-radius:24px;padding:28px;text-align:center}
+    .prof-foto{width:140px;height:140px;border-radius:50%;margin:0 auto 16px;overflow:hidden;background:rgba(223,183,108,0.1);border:3px solid rgba(223,183,108,0.25);display:flex;align-items:center;justify-content:center;font-size:48px}
+    .prof-foto img{width:100%;height:100%;object-fit:cover;object-position:center top}
+    .prof-card strong{display:block;font-size:20px;font-weight:900;margin-bottom:4px}
+    .prof-card span{font-size:13px;color:var(--muted)}
+    .prof-tag{display:inline-block;margin:10px auto 0;background:rgba(223,183,108,0.1);color:var(--gold);font-size:11px;font-weight:800;padding:4px 12px;border-radius:999px}
+    .prof-wa{display:flex;align-items:center;justify-content:center;gap:8px;margin-top:14px;background:var(--green);color:white;font-weight:900;font-size:14px;padding:12px 20px;border-radius:999px}
+    .section{padding:64px 0}
+    .section-label{font-size:11px;font-weight:800;color:var(--gold);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:10px}
+
+    /* TABS CÍLIOS / SOBRANCELHA */
+    .tabs{display:flex;gap:8px;margin-bottom:32px}
+    .tab{padding:10px 24px;border-radius:999px;font-size:14px;font-weight:800;cursor:pointer;border:1.5px solid var(--border);background:transparent;color:var(--muted);transition:.2s}
+    .tab.active{background:var(--gold);color:#151515;border-color:var(--gold)}
+    .panel{display:none} .panel.active{display:block}
+
+    /* TABELA DE SERVIÇOS */
+    .servicos-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+    .servico-grupo{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:24px}
+    .grupo-header{display:flex;align-items:center;gap:12px;margin-bottom:18px;padding-bottom:14px;border-bottom:1px solid var(--border)}
+    .grupo-icon{font-size:28px}
+    .servico-item{display:flex;justify-content:space-between;align-items:center;padding:11px 0;border-bottom:1px solid rgba(255,255,255,0.05)}
+    .servico-item:last-child{border-bottom:none}
+    .servico-nome{font-size:14px;color:var(--text)}
+    .servico-detalhes{display:flex;align-items:center;gap:12px;flex-shrink:0;margin-left:12px}
+    .servico-tempo{font-size:12px;color:var(--muted)}
+    .servico-preco{font-size:16px;font-weight:900;color:var(--gold);white-space:nowrap}
+    .servico-preco-mnt{font-size:13px;font-weight:700;color:var(--muted);white-space:nowrap}
+
+    /* STEPS */
+    .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+    .step{background:var(--card);border:1px solid var(--border);border-radius:18px;padding:24px 20px}
+    .step-num{font-size:36px;font-weight:900;color:rgba(223,183,108,0.2);line-height:1;margin-bottom:12px}
+    .step h3{font-size:16px;margin-bottom:6px}
+    .step p{font-size:13px;color:var(--muted);line-height:1.5}
+
+    /* FORM */
+    .agendar-section{background:#111217;border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+    .agendar-inner{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+    .form-group{margin-bottom:16px}
+    .form-group label{display:block;font-size:13px;font-weight:700;color:var(--muted);margin-bottom:6px}
+    .form-group input,.form-group select,.form-group textarea{width:100%;background:rgba(255,255,255,0.06);border:1px solid var(--border);border-radius:12px;padding:12px 16px;color:var(--text);font-size:14px;font-family:Arial,sans-serif;outline:none;transition:.2s}
+    .form-group input:focus,.form-group select:focus{border-color:rgba(223,183,108,0.4)}
+    .form-group select option{background:#1f222a;color:var(--text)}
+    .btn-submit{width:100%;background:var(--gold);color:#151515;font-weight:900;font-size:16px;padding:16px;border-radius:999px;border:none;cursor:pointer;margin-top:6px}
+    .form-note{font-size:12px;color:var(--muted);text-align:center;margin-top:10px}
+
+    .cta-final{text-align:center;padding:64px 0;background:linear-gradient(135deg,rgba(223,183,108,0.06),transparent)}
+    .cta-final p{color:var(--muted);font-size:16px;margin:12px auto 28px;max-width:420px}
+    footer{background:#0a0b0d;border-top:1px solid var(--border);padding:24px 0;text-align:center;font-size:13px;color:var(--muted)}
+    footer strong{color:var(--gold)}
+    .footer-links{display:flex;gap:20px;justify-content:center;margin-top:10px;flex-wrap:wrap}
+    .footer-links a{color:var(--muted)} .footer-links a:hover{color:var(--gold)}
+    .wa-float{position:fixed;bottom:24px;right:20px;z-index:999;display:flex;align-items:center;gap:10px;background:var(--green);color:white;font-weight:900;font-size:14px;padding:13px 20px;border-radius:999px;box-shadow:0 8px 30px rgba(37,211,102,0.35)}
+
+    @media(max-width:860px){
+      .hero-inner{grid-template-columns:1fr}
+      .servicos-grid{grid-template-columns:1fr}
+      .agendar-inner{grid-template-columns:1fr}
+      .steps{grid-template-columns:1fr 1fr}
+      .prof-card{max-width:320px;margin:0 auto}
+    }
+    @media(max-width:540px){.steps{grid-template-columns:1fr}}
+  </style>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-WYRS5RBYGM"></script>
+  <script>
+    window.dataLayer=window.dataLayer||[];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js',new Date());
+    gtag('config','G-WYRS5RBYGM');
+    document.addEventListener('click',function(e){
+      var el=e.target.closest('[data-track]');
+      if(el){gtag('event','click',{event_category:'cta',event_label:el.dataset.track});}
+    });
+  </script>
+</head>
+<body>
+
+<div class="topbar">
+  <strong>Estúdio da Debby</strong> · Ter–Sex 10h–19h · Sáb 10h–17h ·
+  <a href="https://wa.me/5519994338102?text=Oi%20Rauany%2C%20quero%20agendar!">Agendar agora →</a>
+</div>
+
+<nav>
+  <div class="container nav-inner">
+    <a href="../" class="nav-back">← Voltar ao estúdio</a>
+    <div class="nav-logo">
+      Estúdio da Debby
+      <span>Cílios & Sobrancelha — com a Rauany</span>
+    </div>
+    <a href="https://wa.me/5519994338102?text=Oi%20Rauany%2C%20quero%20agendar!" class="btn-wa" data-track="nav-wa-rauany">💬 Agendar</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="container hero-inner">
+    <div>
+      <div class="pill">✨ Cílios & Sobrancelha · Estúdio da Debby</div>
+      <h1>Olhar que chama<br/>atenção por onde<br/><em>você passar.</em></h1>
+      <p class="sub">Extensão de cílios e design de sobrancelha com a Rauany — lash designer especializada. Volume natural ou dramático, você decide.</p>
+      <div class="actions">
+        <a href="#agendar" class="btn-primary" data-track="hero-agendar-cilios">📅 Quero agendar →</a>
+        <a href="#servicos" class="btn-secondary" data-track="hero-servicos-cilios">Ver serviços e preços</a>
+      </div>
+      <div class="micro">
+        <span>Com agendamento</span>
+        <span>Ter–Sex 10h–19h · Sáb 10h–17h</span>
+        <span>Av. Andrade Neves, 365</span>
+      </div>
+    </div>
+    <div class="prof-card">
+      <div class="prof-foto"><img src="../assets/fotos/estudio/rauany.jpeg" alt="Rauany — Lash Designer" /></div>
+      <strong>Rauany</strong>
+      <span>Lash Designer Especializada</span>
+      <div class="prof-tag">✨ Cílios · Sobrancelha · Henna</div>
+      <a href="https://wa.me/5519994338102?text=Oi%20Rauany%2C%20quero%20agendar!" class="prof-wa" data-track="prof-wa-rauany">
+        💬 Agendar com a Rauany
+      </a>
+    </div>
+  </div>
+</header>
+
+<!-- COMO FUNCIONA -->
+<section class="section">
+  <div class="container">
+    <div class="section-label">Como funciona</div>
+    <h2 style="margin-bottom:32px">Processo simples. <em>Resultado real.</em></h2>
+    <div class="steps">
+      <div class="step"><div class="step-num">01</div><h3>Escolhe o estilo</h3><p>Volume Brasileiro, Fox Eyes, Mega Volume — veja as opções e escolhe o que combina com seu rosto.</p></div>
+      <div class="step"><div class="step-num">02</div><h3>Agenda com a Rauany</h3><p>Manda mensagem e ela confirma o dia e horário. Rápido e sem burocracia.</p></div>
+      <div class="step"><div class="step-num">03</div><h3>Chega no horário</h3><p>Av. Andrade Neves, 365 — Centro de Campinas. A Rauany te espera com tudo preparado.</p></div>
+      <div class="step"><div class="step-num">04</div><h3>Sai transformada</h3><p>Olhar novo, autoestima lá em cima. E quando precisar de manutenção, a Rauany já sabe o seu estilo.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVIÇOS -->
+<section class="section" id="servicos" style="background:#111217;border-top:1px solid var(--border);border-bottom:1px solid var(--border)">
+  <div class="container">
+    <div class="section-label">Serviços e preços</div>
+    <h2 style="margin-bottom:24px">Tudo que a <em>Rauany faz.</em></h2>
+    <div class="tabs">
+      <button class="tab active" onclick="showTab('cilios',this)">✨ Cílios</button>
+      <button class="tab" onclick="showTab('sobrancelha',this)" id="tab-sob">🌿 Sobrancelha</button>
+    </div>
+
+    <div id="cilios" class="panel active">
+      <div class="servicos-grid">
+        <div class="servico-grupo">
+          <div class="grupo-header"><span class="grupo-icon">✨</span><div><h3>Aplicação completa</h3><span style="font-size:12px;color:var(--muted)">Primeira vez ou fios caídos</span></div></div>
+          <div class="servico-item"><span class="servico-nome">Volume Marrom</span><div class="servico-detalhes"><span class="servico-tempo">1h30</span><span class="servico-preco">R$ 125</span></div></div>
+          <div class="servico-item"><span class="servico-nome">Volume Brasileiro</span><div class="servico-detalhes"><span class="servico-tempo">1h30</span><span class="servico-preco">R$ 135</span></div></div>
+          <div class="servico-item"><span class="servico-nome">Volume Egípcio</span><div class="servico-detalhes"><span class="servico-tempo">1h40</span><span class="servico-preco">R$ 145</span></div></div>
+          <div class="servico-item"><span class="servico-nome">Volume Glam</span><div class="servico-detalhes"><span class="servico-tempo">1h40</span><span class="servico-preco">R$ 150</span></div></div>
+          <div class="servico-item"><span class="servico-nome">Volume Inglês</span><div class="servico-detalhes"><span class="servico-tempo">1h40</span><span class="servico-preco">R$ 155</span></div></div>
+          <div class="servico-item"><span class="servico-nome">Fox Eyes</span><div class="servico-detalhes"><span class="servico-tempo">1h40</span><span class="servico-preco">R$ 175</span></div></div>
+          <div class="servico-item"><span class="servico-nome">Mega Volume</span><div class="servico-detalhes"><span class="servico-tempo">2h</span><span class="servico-preco">R$ 180</span></div></div>
+        </div>
+        <div class="servico-grupo">
+          <div class="grupo-header"><span class="grupo-icon">🔄</span><div><h3>Manutenção</h3><span style="font-size:12px;color:var(--muted)">Reposição de fios caídos</span></div></div>
+          <div class="servico-item"><span class="servico-nome">Volume Marrom</span><div class="servico-detalhes"><span class="servico-tempo">1h30</span><span class="servico-preco">R$ 85</span></div></div>
+          <div class="servico-item"><span class="servico-nome">Volume Brasileiro</span><div class="servico-detalhes"><span class="servico-tempo">1h30</span><span class="servico-preco">R$ 90</span></div></div>
+          <div class="servico-item"><span class="servico-nome">Volume Egípcio</span><div class="servico-detalhes"><span class="servico-tempo">1h40</span><span class="servico-preco">R$ 100</span></div></div>
+          <div class="servico-item"><span class="servico-nome">Volume Glam</span><div class="servico-detalhes"><span class="servico-tempo">1h40</span><span class="servico-preco">R$ 105</span></div></div>
+          <div class="servico-item"><span class="servico-nome">Volume Inglês</span><div class="servico-detalhes"><span class="servico-tempo">1h40</span><span class="servico-preco">R$ 110</span></div></div>
+          <div class="servico-item"><span class="servico-nome">Fox Eyes</span><div class="servico-detalhes"><span class="servico-tempo">1h40</span><span class="servico-preco">R$ 120</span></div></div>
+          <div class="servico-item"><span class="servico-nome">Mega Volume</span><div class="servico-detalhes"><span class="servico-tempo">2h</span><span class="servico-preco">R$ 120</span></div></div>
+          <div class="servico-item" style="padding-top:14px;margin-top:4px;border-top:1px solid var(--border)"><span class="servico-nome">Remoção de Extensão</span><div class="servico-detalhes"><span class="servico-tempo">30min</span><span class="servico-preco">R$ 40</span></div></div>
+        </div>
+      </div>
+    </div>
+
+    <div id="sobrancelha" class="panel">
+      <div style="max-width:600px">
+        <div class="servico-grupo">
+          <div class="grupo-header"><span class="grupo-icon">🌿</span><div><h3>Design de Sobrancelha</h3><span style="font-size:12px;color:var(--muted)">Com a Rauany</span></div></div>
+          <div class="servico-item"><span class="servico-nome">Design Personalizado</span><div class="servico-detalhes"><span class="servico-tempo">30min</span><span class="servico-preco">R$ 45</span></div></div>
+          <div class="servico-item"><span class="servico-nome">Design + Henna Premium</span><div class="servico-detalhes"><span class="servico-tempo">40min</span><span class="servico-preco">R$ 65</span></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AGENDAMENTO -->
+<section class="section agendar-section" id="agendar">
+  <div class="container">
+    <div class="agendar-inner">
+      <div>
+        <div class="section-label">Agendar horário</div>
+        <h2>Garante o seu<br/><em>dia e hora.</em></h2>
+        <p style="color:var(--muted);font-size:16px;margin-top:10px;line-height:1.7">Preenche aqui e a Rauany confirma pelo WhatsApp. Fácil e rápido.</p>
+        <div style="margin-top:28px;display:flex;flex-direction:column;gap:14px">
+          <div style="display:flex;align-items:center;gap:12px;font-size:14px;color:var(--muted)"><span style="color:var(--gold);font-size:20px">📅</span>Terça a Sexta: 10h às 19h</div>
+          <div style="display:flex;align-items:center;gap:12px;font-size:14px;color:var(--muted)"><span style="color:var(--gold);font-size:20px">📅</span>Sábado: 10h às 17h</div>
+          <div style="display:flex;align-items:center;gap:12px;font-size:14px;color:var(--muted)"><span style="color:var(--gold);font-size:20px">📍</span>Av. Andrade Neves, 365 — Centro, Campinas</div>
+          <div style="display:flex;align-items:center;gap:12px;font-size:14px;color:var(--muted)"><span style="color:var(--green);font-size:20px">💬</span><a href="https://wa.me/5519994338102" style="color:var(--green)">(19) 99433-8102</a></div>
+        </div>
+      </div>
+      <div>
+        <div style="background:var(--card);border:1px solid var(--border);border-radius:24px;padding:28px">
+          <h3 style="margin-bottom:20px">Solicitar horário</h3>
+          <form id="form-cilios" onsubmit="enviarWA(event)">
+            <div class="form-group"><label>Seu nome</label><input type="text" id="nome" placeholder="Como posso te chamar?" required /></div>
+            <div class="form-group"><label>WhatsApp</label><input type="tel" id="telefone" placeholder="(19) 9 9999-9999" required /></div>
+            <div class="form-group">
+              <label>Serviço desejado</label>
+              <select id="servico" required>
+                <option value="">Escolhe o serviço...</option>
+                <optgroup label="— Cílios: Aplicação">
+                  <option>Volume Marrom — Aplicação — R$ 125</option>
+                  <option>Volume Brasileiro — Aplicação — R$ 135</option>
+                  <option>Volume Egípcio — Aplicação — R$ 145</option>
+                  <option>Volume Glam — Aplicação — R$ 150</option>
+                  <option>Volume Inglês — Aplicação — R$ 155</option>
+                  <option>Fox Eyes — Aplicação — R$ 175</option>
+                  <option>Mega Volume — Aplicação — R$ 180</option>
+                </optgroup>
+                <optgroup label="— Cílios: Manutenção">
+                  <option>Volume Marrom — Manutenção — R$ 85</option>
+                  <option>Volume Brasileiro — Manutenção — R$ 90</option>
+                  <option>Volume Egípcio — Manutenção — R$ 100</option>
+                  <option>Volume Glam — Manutenção — R$ 105</option>
+                  <option>Volume Inglês — Manutenção — R$ 110</option>
+                  <option>Fox Eyes — Manutenção — R$ 120</option>
+                  <option>Mega Volume — Manutenção — R$ 120</option>
+                  <option>Remoção de Extensão — R$ 40</option>
+                </optgroup>
+                <optgroup label="— Sobrancelha">
+                  <option>Design Personalizado — R$ 45</option>
+                  <option>Design + Henna Premium — R$ 65</option>
+                </optgroup>
+              </select>
+            </div>
+            <div class="form-group"><label>Dia e horário de preferência</label><input type="text" id="horario" placeholder="Ex: terça à tarde" /></div>
+            <button type="submit" class="btn-submit" data-track="form-submit-cilios">💬 Enviar pedido de agendamento →</button>
+            <p class="form-note">Você será redirecionada ao WhatsApp da Rauany para confirmar.</p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-final">
+  <div class="container">
+    <h2>Pronta para transformar<br/>o seu <em>olhar?</em></h2>
+    <p>A Rauany responde rápido. Garante seu horário.</p>
+    <a href="https://wa.me/5519994338102?text=Oi%20Rauany%2C%20quero%20agendar!" class="btn-primary" data-track="cta-final-rauany">💬 Falar com a Rauany agora →</a>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <strong>Estúdio da Debby</strong> — Cílios & Sobrancelha com a Rauany<br/>
+    Av. Andrade Neves, 365 · Centro · Campinas · SP
+    <div class="footer-links">
+      <a href="../">← Voltar ao estúdio</a>
+      <a href="../unhas/">Unhas com a Duda</a>
+      <a href="../piercing/">Piercing</a>
+      <a href="https://instagram.com/debbypiercing" target="_blank">@debbypiercing</a>
+    </div>
+  </div>
+</footer>
+
+<a href="https://wa.me/5519994338102?text=Oi%20Rauany%2C%20quero%20agendar!" class="wa-float" data-track="wa-flutuante-cilios">💬 Agendar com a Rauany</a>
+
+<script>
+function showTab(id,btn){
+  document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(b=>b.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  btn.classList.add('active');
+}
+function enviarWA(e){
+  e.preventDefault();
+  const nome=document.getElementById('nome').value;
+  const tel=document.getElementById('telefone').value;
+  const servico=document.getElementById('servico').value;
+  const horario=document.getElementById('horario').value||'a combinar';
+  const msg=`Oi Rauany! Vim pelo site e quero agendar 😊\n\n👤 Nome: ${nome}\n📱 WhatsApp: ${tel}\n✨ Serviço: ${servico}\n📅 Preferência: ${horario}`;
+  window.open(`https://wa.me/5519994338102?text=${encodeURIComponent(msg)}`,'_blank');
+}
+// Ancla de sobrancelha direto pela URL
+if(location.hash==='#sobrancelha'){
+  document.getElementById('sobrancelha').classList.add('active');
+  document.getElementById('cilios').classList.remove('active');
+  document.querySelectorAll('.tab').forEach(b=>b.classList.remove('active'));
+  document.getElementById('tab-sob').classList.add('active');
+}
+document.querySelectorAll('[data-track]').forEach(el=>{
+  el.addEventListener('click',function(){
+    const ev=this.getAttribute('data-track');
+    if(typeof gtag!=='undefined')gtag('event','click',{event_category:'cta',event_label:ev});
+    if(typeof fbq!=='undefined')fbq('track','Lead',{content_name:ev});
+  });
+});
+</script>
+</body>
+</html>

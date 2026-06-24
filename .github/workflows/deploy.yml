@@ -1,0 +1,20 @@
+name: Deploy Landing Page Debby
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Trigger deploy via webhook
+        run: |
+          curl -f -X POST \
+            http://${{ secrets.VPS_HOST }}:9000/hooks/deploy-debby-hub \
+            -H "X-Deploy-Token: debby-hub-secret-2026" \
+            --max-time 30
+          echo "Webhook disparado com sucesso"

@@ -1,0 +1,1342 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Debby Piercing | Preview v2</title>
+  <link rel="stylesheet" href="./style.css" />
+  <style>
+
+    /* ========== UTILITÁRIOS ========== */
+    .eyebrow-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      background: rgba(223,183,108,0.1);
+      border: 1px solid rgba(223,183,108,0.25);
+      border-radius: 999px;
+      padding: 6px 16px;
+      font-size: 12px;
+      font-weight: 800;
+      color: var(--gold);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+
+    h1 em { font-style: normal; color: var(--gold); }
+    h2 em { font-style: normal; color: var(--gold); }
+
+    /* ========== HERO ========== */
+    .hero-micro {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+      margin-top: 18px;
+      font-size: 13px;
+      color: var(--muted);
+    }
+    .hero-micro span { display: flex; align-items: center; gap: 5px; }
+    .hero-micro span::before { content: "·"; color: var(--gold); font-size: 16px; margin-right: 4px; }
+    .hero-micro span:first-child::before { display: none; }
+
+    /* ========== TRUST BAR ========== */
+    .trust-bar {
+      background: rgba(223,183,108,0.05);
+      border-top: 1px solid rgba(223,183,108,0.1);
+      border-bottom: 1px solid rgba(223,183,108,0.1);
+      padding: 16px 0;
+    }
+    .trust-bar-inner {
+      display: flex;
+      justify-content: center;
+      gap: 0;
+      flex-wrap: nowrap;
+      overflow-x: auto;
+    }
+    .trust-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--text);
+      padding: 0 22px;
+      border-right: 1px solid var(--border);
+      white-space: nowrap;
+    }
+    .trust-item:last-child { border-right: none; }
+    .trust-icon { color: var(--gold); font-size: 15px; }
+
+    /* ========== EARLY CHECK-IN CALLOUT ========== */
+    .checkin-callout {
+      background: linear-gradient(135deg, rgba(223,183,108,0.1), rgba(223,183,108,0.03));
+      border: 1px solid rgba(223,183,108,0.25);
+      border-radius: 20px;
+      padding: 24px 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin: 48px 0 0;
+    }
+    .checkin-callout-texto strong {
+      display: block;
+      font-size: 18px;
+      color: var(--text);
+      margin-bottom: 5px;
+    }
+    .checkin-callout-texto span {
+      font-size: 14px;
+      color: var(--muted);
+    }
+    .btn-gold-outline {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border: 1.5px solid var(--gold);
+      color: var(--gold);
+      background: transparent;
+      font-weight: 900;
+      font-size: 14px;
+      padding: 12px 22px;
+      border-radius: 999px;
+      text-decoration: none;
+      transition: 0.2s;
+      white-space: nowrap;
+    }
+    .btn-gold-outline:hover { background: rgba(223,183,108,0.1); }
+
+    /* ========== DESEJO ========== */
+    .desejo-section { background: #0d0f12; }
+    .desejo-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 56px;
+      align-items: center;
+    }
+    .desejo-copy p {
+      color: var(--muted);
+      font-size: 17px;
+      line-height: 1.75;
+      margin-bottom: 18px;
+    }
+    .desejo-copy p strong { color: var(--text); }
+    .desejo-numeros {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+    .desejo-num {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 22px;
+      text-align: center;
+    }
+    .desejo-num strong {
+      display: block;
+      font-size: 36px;
+      font-weight: 900;
+      color: var(--gold);
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+    .desejo-num span { font-size: 13px; color: var(--muted); }
+    .desejo-num.destaque-num {
+      grid-column: span 2;
+      background: radial-gradient(circle at top right, rgba(223,183,108,0.12), transparent 50%), var(--card);
+      border-color: rgba(223,183,108,0.2);
+    }
+    .desejo-num.destaque-num strong { font-size: 48px; }
+
+    /* ========== PERFURAÇÕES ========== */
+    .perf-grid {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 10px;
+    }
+    .perf-item {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 16px 10px;
+      text-align: center;
+      font-size: 13px;
+      font-weight: 700;
+      cursor: default;
+      transition: border-color 0.15s;
+    }
+    .perf-item:hover { border-color: rgba(223,183,108,0.4); }
+
+    /* ========== ESTILOS VISUAIS ========== */
+    /* Placeholders elegantes para fotos reais */
+    .galeria-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+      margin-bottom: 32px;
+    }
+    .galeria-item {
+      border-radius: 18px;
+      overflow: hidden;
+      aspect-ratio: 3/4;
+      position: relative;
+      background: var(--card);
+      border: 1px solid var(--border);
+    }
+    /* FOTO REAL: substituir background por <img> com foto do piercing */
+    .galeria-item img {
+      width: 100%; height: 100%; object-fit: cover; display: block;
+    }
+    .galeria-placeholder {
+      width: 100%; height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      background: linear-gradient(160deg, rgba(223,183,108,0.08), transparent);
+    }
+    .galeria-placeholder span { font-size: 28px; }
+    .galeria-placeholder p {
+      font-size: 12px;
+      color: var(--muted);
+      text-align: center;
+      padding: 0 12px;
+    }
+    .galeria-label {
+      position: absolute;
+      bottom: 12px; left: 12px;
+      background: rgba(0,0,0,0.7);
+      backdrop-filter: blur(6px);
+      border-radius: 999px;
+      padding: 4px 12px;
+      font-size: 12px;
+      font-weight: 800;
+      color: var(--gold);
+    }
+
+    /* ========== MATERIAIS ========== */
+    .materiais-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+    .material-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      padding: 28px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .material-card.pvd {
+      background: radial-gradient(circle at top right, rgba(223,183,108,0.15), transparent 50%), var(--card);
+      border-color: rgba(223,183,108,0.3);
+    }
+    .material-card.titanio-mat {
+      background: radial-gradient(circle at top right, rgba(180,200,255,0.08), transparent 50%), var(--card);
+      border-color: rgba(200,220,255,0.2);
+    }
+    .material-tag {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      padding: 4px 12px;
+      border-radius: 999px;
+      margin-bottom: 4px;
+    }
+    .tag-aco { background: rgba(255,255,255,0.07); color: var(--muted); border: 1px solid var(--border); }
+    .tag-pvd { background: rgba(223,183,108,0.15); color: var(--gold); border: 1px solid rgba(223,183,108,0.3); }
+    .tag-titanio { background: rgba(180,210,255,0.1); color: #a8c8ff; border: 1px solid rgba(180,210,255,0.2); }
+    .material-card h3 { font-size: 20px; margin-bottom: 0; }
+    .material-preco { font-size: 13px; color: var(--muted); font-weight: 700; }
+    .material-desc { font-size: 14px; color: var(--muted); line-height: 1.6; }
+    .material-para { margin-top: 4px; }
+    .material-para p {
+      font-size: 12px;
+      font-weight: 800;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      margin-bottom: 8px;
+    }
+    .material-para ul { list-style: none; display: flex; flex-direction: column; gap: 6px; }
+    .material-para li { font-size: 13px; color: var(--text); display: flex; gap: 8px; }
+    .material-para li span { color: var(--gold); }
+
+    /* ========== TITÂNIO DESTAQUE ========== */
+    .titanio-destaque {
+      background: radial-gradient(circle at 30% 50%, rgba(223,183,108,0.1), transparent 55%),
+                  linear-gradient(135deg, #13161e, #0f1116);
+      border: 1px solid rgba(223,183,108,0.2);
+      border-radius: 28px;
+      padding: 48px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: center;
+    }
+    .titanio-destaque-copy h2 { margin-bottom: 16px; }
+    .titanio-destaque-copy p {
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.7;
+      margin-bottom: 16px;
+    }
+    .titanio-razoes {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .titanio-razao {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 14px;
+      padding: 14px 16px;
+    }
+    .titanio-razao-icon {
+      width: 34px; height: 34px;
+      background: rgba(223,183,108,0.12);
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 15px;
+      flex-shrink: 0;
+    }
+    .titanio-razao-texto strong { display: block; font-size: 14px; margin-bottom: 2px; }
+    .titanio-razao-texto span { font-size: 13px; color: var(--muted); }
+
+    /* ========== PROVA SOCIAL ========== */
+    .depo-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+    .depo-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .depo-stars { color: var(--gold); font-size: 13px; letter-spacing: 2px; }
+    .depo-texto {
+      font-size: 15px;
+      font-weight: 700;
+      line-height: 1.55;
+      color: var(--text);
+      flex: 1;
+    }
+    .depo-autor { display: flex; align-items: center; gap: 12px; }
+    .depo-avatar {
+      width: 38px; height: 38px;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 15px;
+      font-weight: 900;
+      flex-shrink: 0;
+    }
+    .av-m { background: rgba(223,183,108,0.2); color: var(--gold); }
+    .av-i { background: rgba(180,210,255,0.15); color: #a8c8ff; }
+    .av-c { background: rgba(120,220,150,0.15); color: #7adca0; }
+    .av-l { background: rgba(255,180,180,0.15); color: #ffb4b4; }
+    .av-a { background: rgba(200,180,255,0.15); color: #c8b4ff; }
+    .av-f { background: rgba(223,183,108,0.2); color: var(--gold); }
+    .depo-nome { font-size: 13px; font-weight: 800; }
+    .depo-detalhe { font-size: 12px; color: var(--muted); margin-top: 1px; }
+
+    /* ========== PROCESSO 4 PASSOS ========== */
+    .passos-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+    .passo {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 24px 20px;
+      position: relative;
+    }
+    .passo-num {
+      width: 40px; height: 40px;
+      background: var(--gold);
+      color: #151515;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 900;
+      font-size: 16px;
+      margin-bottom: 16px;
+    }
+    .passo h3 { font-size: 16px; margin-bottom: 8px; }
+    .passo p { font-size: 13px; color: var(--muted); line-height: 1.5; }
+    .passo-destaque { border-color: rgba(223,183,108,0.3); }
+    .passo-tag {
+      display: inline-block;
+      background: rgba(223,183,108,0.1);
+      color: var(--gold);
+      font-size: 11px;
+      font-weight: 900;
+      padding: 3px 10px;
+      border-radius: 999px;
+      margin-top: 10px;
+    }
+    .sem-agendamento-banner {
+      background: rgba(223,183,108,0.08);
+      border: 1px solid rgba(223,183,108,0.2);
+      border-radius: 14px;
+      padding: 16px 22px;
+      text-align: center;
+      font-size: 15px;
+      font-weight: 800;
+      color: var(--gold);
+      margin-top: 24px;
+    }
+    .sem-agendamento-banner span { color: var(--muted); font-weight: 400; font-size: 13px; display: block; margin-top: 4px; }
+
+    /* ========== URGÊNCIA ========== */
+    .urgencia-section { background: #0d0f12; }
+    .urgencia-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      padding: 32px;
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      gap: 24px;
+      align-items: center;
+    }
+    .urgencia-icon-big {
+      width: 52px; height: 52px;
+      background: rgba(223,183,108,0.12);
+      border-radius: 16px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 24px;
+    }
+    .urgencia-texto strong { display: block; font-size: 17px; margin-bottom: 5px; }
+    .urgencia-texto p { font-size: 14px; color: var(--muted); line-height: 1.5; }
+
+    /* ========== MENORES ========== */
+    .menores-split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+      align-items: start;
+    }
+    .menores-copy h2 { margin-bottom: 12px; }
+    .menores-copy p { color: var(--muted); font-size: 15px; line-height: 1.65; }
+    .menores-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      padding: 28px;
+    }
+    .menores-card h3 { font-size: 16px; color: var(--gold); margin-bottom: 16px; }
+    .menores-lista { list-style: none; display: flex; flex-direction: column; gap: 11px; }
+    .menores-lista li { font-size: 14px; color: var(--muted); display: flex; gap: 10px; line-height: 1.5; }
+    .menores-lista li .ok { color: var(--gold); flex-shrink: 0; }
+
+    /* ========== CHECK-IN FORM ========== */
+    .checkin-section-2 { background: #0d0f12; }
+    .checkin-grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: start;
+    }
+    .checkin-copy-2 h2 { margin-bottom: 14px; }
+    .checkin-copy-2 p { color: var(--muted); font-size: 15px; line-height: 1.7; margin-bottom: 24px; }
+    .checkin-beneficios { display: flex; flex-direction: column; gap: 12px; margin-bottom: 28px; }
+    .checkin-beneficio {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 14px;
+      color: var(--text);
+    }
+    .checkin-beneficio-icon {
+      width: 30px; height: 30px;
+      background: rgba(223,183,108,0.1);
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 13px;
+      flex-shrink: 0;
+    }
+    .form-box-v2 {
+      background: var(--card);
+      border: 1px solid rgba(223,183,108,0.2);
+      border-radius: 26px;
+      padding: 32px;
+    }
+    .form-box-v2 h3 { font-size: 20px; margin-bottom: 6px; }
+    .form-box-v2 > p { color: var(--muted); font-size: 13px; margin-bottom: 22px; }
+    .form-garantias {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-top: 14px;
+    }
+    .form-garantias span { font-size: 12px; color: var(--muted); display: flex; align-items: center; gap: 5px; }
+
+    /* ========== CTA FINAL ========== */
+    .cta-final {
+      text-align: center;
+      background: radial-gradient(circle at center, rgba(223,183,108,0.1), transparent 60%);
+    }
+    .cta-final h2 { margin-bottom: 14px; }
+    .cta-final p { color: var(--muted); font-size: 17px; max-width: 520px; margin: 0 auto 32px; line-height: 1.6; }
+    .cta-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+
+    /* ========== LOCATION MELHORADA ========== */
+    .location-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 28px;
+    }
+    .location-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      padding: 28px;
+    }
+    .location-card h3 { font-size: 16px; color: var(--gold); margin-bottom: 14px; }
+    .horario-item { display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid var(--border); font-size: 14px; }
+    .horario-item:last-child { border-bottom: none; }
+    .horario-item span:last-child { color: var(--muted); }
+
+    /* ========== RESPONSIVO ========== */
+    @media (max-width: 980px) {
+      .desejo-grid, .titanio-destaque, .checkin-grid-2, .menores-split { grid-template-columns: 1fr; }
+      .materiais-grid { grid-template-columns: 1fr; }
+      .galeria-grid { grid-template-columns: repeat(2, 1fr); }
+      .depo-grid { grid-template-columns: 1fr; }
+      .passos-grid { grid-template-columns: repeat(2, 1fr); }
+      .urgencia-card { grid-template-columns: auto 1fr; }
+      .urgencia-card .btn-primary { grid-column: span 2; text-align: center; }
+      .location-grid { grid-template-columns: 1fr; }
+      .perf-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+    @media (max-width: 640px) {
+      .trust-bar-inner { justify-content: flex-start; }
+      .trust-item { padding: 0 14px; font-size: 12px; }
+      .checkin-callout { flex-direction: column; text-align: center; }
+      .galeria-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+      .passos-grid { grid-template-columns: 1fr; }
+      .urgencia-card { grid-template-columns: 1fr; text-align: center; }
+      .urgencia-icon-big { margin: 0 auto; }
+      .perf-grid { grid-template-columns: repeat(2, 1fr); }
+      .cta-btns { flex-direction: column; }
+      .cta-btns .btn-primary, .cta-btns .btn-secondary { text-align: center; }
+      .titanio-destaque { padding: 28px; gap: 28px; }
+      .hero-micro { gap: 10px; font-size: 12px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ============================
+     HERO
+============================= -->
+<header class="hero">
+  <div class="container hero-grid">
+    <div class="hero-copy">
+      <div class="logo">DEBBY PIERCING</div>
+      <div class="eyebrow-pill">✦ Centro de Campinas · Desde 2016</div>
+
+      <h1>Aquele piercing que você<br/>fica adiando?<br/><em>Hoje é o dia.</em></h1>
+
+      <p class="subheadline">
+        Sem agendamento. Sem complicação. Você chega, escolhe a joia que é a sua cara, e sai com o piercing feito — em menos tempo do que você imagina.
+      </p>
+
+      <div class="hero-actions">
+        <a href="#checkin" class="btn-primary">Vou fazer o meu →</a>
+        <a href="#estilos" class="btn-secondary">Ver joias e preços</a>
+      </div>
+
+      <div class="hero-micro">
+        <span>Sem agendamento</span>
+        <span>Paga na hora</span>
+        <span>Pix · Cartão · Dinheiro</span>
+        <span>Av. Andrade Neves, 365</span>
+      </div>
+
+      <div class="checkin-callout">
+        <div class="checkin-callout-texto">
+          <strong>Já sabe o que quer fazer?</strong>
+          <span>Avise a recepção antes de sair de casa — você já chega na frente.</span>
+        </div>
+        <a href="#checkin" class="btn-gold-outline">Preencher agora →</a>
+      </div>
+    </div>
+
+    <div class="hero-image-card">
+      <!-- FOTO REAL: foto da Debby em atendimento ou fachada do estúdio -->
+      <img src="./assets/debby-hero-1.png" alt="Debby Piercing Campinas" />
+    </div>
+  </div>
+</header>
+
+<!-- ============================
+     TRUST BAR
+============================= -->
+<div class="trust-bar">
+  <div class="container trust-bar-inner">
+    <div class="trust-item"><span class="trust-icon">⚡</span> Atendimento rápido</div>
+    <div class="trust-item"><span class="trust-icon">🔒</span> Material esterilizado</div>
+    <div class="trust-item"><span class="trust-icon">📱</span> Cuidados pelo WhatsApp</div>
+    <div class="trust-item"><span class="trust-icon">💳</span> Pix · Cartão · Dinheiro</div>
+    <div class="trust-item"><span class="trust-icon">📍</span> Centro de Campinas</div>
+  </div>
+</div>
+
+<main>
+
+<!-- ============================
+     BLOCO DE DESEJO
+============================= -->
+<section class="section desejo-section">
+  <div class="container desejo-grid">
+    <div class="desejo-copy">
+      <div class="eyebrow-pill">Por que a Debby?</div>
+      <h2>Tem uma versão sua que usa aquele piercing com total confiança.</h2>
+      <p>
+        Que não pensa duas vezes antes de mostrar. Que escolheu a joia certa, no lugar certo, e fez do jeito certo. Essa versão está a uma decisão de distância.
+      </p>
+      <p>
+        A Debby existe para essa decisão ser simples. Você aparece, a gente cuida do resto — joia, perfuração, cicatrização, cuidados no WhatsApp.
+      </p>
+      <p>
+        <strong>Mais de 1000 pessoas por mês tomam essa decisão aqui.</strong> E quase todas saem dizendo a mesma coisa: <em>"por que demorei tanto?"</em>
+      </p>
+    </div>
+
+    <div class="desejo-numeros">
+      <div class="desejo-num destaque-num">
+        <strong>9+</strong>
+        <span>anos perfurando em Campinas — desde 2016</span>
+      </div>
+      <div class="desejo-num">
+        <strong>1000+</strong>
+        <span>clientes por mês</span>
+      </div>
+      <div class="desejo-num">
+        <strong>25mil</strong>
+        <span>seguidores no Instagram</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================
+     PERFURAÇÕES
+============================= -->
+<section class="section" id="perfuracoes">
+  <div class="container">
+    <div class="section-heading">
+      <div class="eyebrow-pill">Onde você quer?</div>
+      <h2>Qual vai ser o seu?</h2>
+      <p>Chegue com a ideia na cabeça. Isso agiliza o atendimento — e a equipe já te ajuda a escolher a joia certa para aquele lugar.</p>
+    </div>
+    <div class="perf-grid">
+      <div class="perf-item">Nostril</div>
+      <div class="perf-item">Umbigo</div>
+      <div class="perf-item">Helix</div>
+      <div class="perf-item">Tragus</div>
+      <div class="perf-item">Conch</div>
+      <div class="perf-item">Lóbulo</div>
+      <div class="perf-item">Daith</div>
+      <div class="perf-item">Flat</div>
+      <div class="perf-item">Labret</div>
+      <div class="perf-item">Sobrancelha</div>
+      <div class="perf-item">Microdermal</div>
+      <div class="perf-item">Mamilo</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================
+     GALERIA VISUAL / ESTILOS
+     IMPORTANTE: Esta seção espera fotos reais.
+     Cada .galeria-item deve ter um <img> com foto do piercing correspondente.
+     Os placeholders abaixo mostram o que colocar em cada posição.
+============================= -->
+<section class="section dark-section" id="estilos">
+  <div class="container">
+    <div class="section-heading">
+      <div class="eyebrow-pill">Inspiração</div>
+      <h2>A joia certa muda tudo. Escolha pelo resultado que você quer sentir.</h2>
+      <p>Não é só sobre fazer o furo. É sobre a joia que vai ficar bonita em você todos os dias. Veja os estilos e chegue sabendo o que quer.</p>
+    </div>
+
+    <!-- GALERIA: substituir placeholders por fotos reais do estúdio -->
+    <div class="galeria-grid">
+      <div class="galeria-item">
+        <!-- FOTO REAL: nostril com joia delicada/brilhante -->
+        <div class="galeria-placeholder">
+          <span>💎</span>
+          <p>Nostril<br/>joia delicada</p>
+        </div>
+        <div class="galeria-label">Nostril · R$45+</div>
+      </div>
+      <div class="galeria-item">
+        <!-- FOTO REAL: helix ou tragus com joia decorada -->
+        <div class="galeria-placeholder">
+          <span>✨</span>
+          <p>Helix<br/>joia decorada</p>
+        </div>
+        <div class="galeria-label">Helix · R$65+</div>
+      </div>
+      <div class="galeria-item">
+        <!-- FOTO REAL: joia PVD Gold dourada em qualquer local -->
+        <div class="galeria-placeholder">
+          <span>🌟</span>
+          <p>PVD Gold<br/>joia dourada</p>
+        </div>
+        <div class="galeria-label">PVD Gold · R$80+</div>
+      </div>
+      <div class="galeria-item">
+        <!-- FOTO REAL: titânio decorado — exibir como premium -->
+        <div class="galeria-placeholder">
+          <span>🔮</span>
+          <p>Titânio<br/>premium</p>
+        </div>
+        <div class="galeria-label">Titânio · R$70+</div>
+      </div>
+    </div>
+
+    <!-- TABELA DE PREÇOS / CARDS DE JOIA -->
+    <div class="style-grid">
+      <article class="style-card">
+        <span>R$25</span>
+        <h3>Tradicional</h3>
+        <p>Simples e funcional. Para quem quer o básico bem feito.</p>
+      </article>
+
+      <article class="style-card destaque" style="position:relative;">
+        <div style="position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--gold);color:#151515;font-size:11px;font-weight:900;padding:4px 14px;border-radius:999px;white-space:nowrap;">⭐ Mais escolhida</div>
+        <span>R$45</span>
+        <h3>Brilhante</h3>
+        <p>Um brilhinho que já faz diferença. Delicada e marcante ao mesmo tempo.</p>
+      </article>
+
+      <article class="style-card">
+        <span>R$55</span>
+        <h3>Delicada</h3>
+        <p>Visual fino, feminino. Combina com qualquer estilo e look.</p>
+      </article>
+
+      <article class="style-card">
+        <span>R$65</span>
+        <h3>Decorada</h3>
+        <p>Para quem quer que o piercing apareça de verdade. Chama atenção.</p>
+      </article>
+
+      <article class="style-card">
+        <span>R$75</span>
+        <h3>Marcante</h3>
+        <p>Mais presença, brilho e personalidade. Difícil não olhar duas vezes.</p>
+      </article>
+
+      <article class="style-card premium">
+        <span>R$85</span>
+        <h3>Premium</h3>
+        <p>A joia que se destaca. Para quem quer algo além do comum.</p>
+      </article>
+
+      <article class="style-card titanio">
+        <span>R$70</span>
+        <h3>Titânio tradicional</h3>
+        <p>Material superior, cicatrização mais tranquila. Indicado para primeira vez.</p>
+      </article>
+
+      <article class="style-card titanio destaque">
+        <span>R$110</span>
+        <h3>Titânio decorado</h3>
+        <p>O melhor dos dois mundos. Material premium e visual que impressiona.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============================
+     MATERIAIS
+============================= -->
+<section class="section" id="materiais">
+  <div class="container">
+    <div class="section-heading">
+      <div class="eyebrow-pill">Qual material é o seu?</div>
+      <h2>O material que você escolhe hoje afeta o resultado dos próximos meses.</h2>
+      <p>Não é detalhe — é a diferença entre cicatrizar com tranquilidade ou ter dor de cabeça desnecessária. A equipe te ajuda a escolher na hora, mas saber antes já coloca você à frente.</p>
+    </div>
+
+    <div class="materiais-grid">
+      <div class="material-card">
+        <div>
+          <span class="material-tag tag-aco">Aço 316L</span>
+          <h3>Aço cirúrgico</h3>
+          <p class="material-preco">R$25 · R$45 · R$55 · R$65 · R$75</p>
+        </div>
+        <p class="material-desc">
+          Boa opção para a maioria das pessoas. Resistente, acessível e funcional para cicatrização padrão.
+        </p>
+        <div class="material-para">
+          <p>Para quem</p>
+          <ul>
+            <li><span>✓</span> Não tem histórico de alergia a metal</li>
+            <li><span>✓</span> Quer uma opção acessível</li>
+            <li><span>✓</span> Já fez piercing antes sem problema</li>
+            <li><span>○</span> Evitar se tiver pele sensível ou alergia a níquel</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="material-card pvd">
+        <div>
+          <span class="material-tag tag-pvd">PVD Gold</span>
+          <h3>Dourado PVD</h3>
+          <p class="material-preco">R$45 · R$55 · R$65 · R$85</p>
+        </div>
+        <p class="material-desc">
+          Acabamento dourado que não desbota. Para quem quer o visual do ouro com a segurança do aço cirúrgico de qualidade.
+        </p>
+        <div class="material-para">
+          <p>Para quem</p>
+          <ul>
+            <li><span>✓</span> Quer o visual dourado sem usar ouro</li>
+            <li><span>✓</span> Gosta de joias com mais personalidade</li>
+            <li><span>✓</span> Não tem histórico de alergia a metal</li>
+            <li><span>○</span> Para pele muito sensível, prefira titânio</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="material-card titanio-mat">
+        <div>
+          <span class="material-tag tag-titanio">Titânio Implant Grade</span>
+          <h3>Titânio</h3>
+          <p class="material-preco">A partir de R$70</p>
+        </div>
+        <p class="material-desc">
+          O material mais seguro para cicatrização. 100% hipoalergênico, sem níquel, mais confortável durante a cura.
+        </p>
+        <div class="material-para">
+          <p>Para quem</p>
+          <ul>
+            <li><span>✓</span> É a primeira vez fazendo piercing</li>
+            <li><span>✓</span> Tem pele sensível ou alergia a metal</li>
+            <li><span>✓</span> Já teve rejeição antes</li>
+            <li><span>✓</span> Quer a cicatrização mais tranquila possível</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================
+     TITÂNIO — DESEJO + SEGURANÇA
+============================= -->
+<section class="section dark-section">
+  <div class="container">
+    <div class="titanio-destaque">
+      <div class="titanio-destaque-copy">
+        <div class="eyebrow-pill">Vale o investimento?</div>
+        <h2>Titânio não é só mais caro.<br/><em>É mais inteligente.</em></h2>
+        <p>
+          Você vai fazer uma coisa no seu corpo. Faz sentido fazer com o material que dá menos trabalho, cicatriza melhor e te deixa esquecer que o piercing está lá — porque ele não vai incomodar.
+        </p>
+        <p>
+          Não é sobre gastar mais. É sobre fazer uma vez e fazer certo. Sem vermelhidão sem motivo, sem ter que voltar ao estúdio com problema, sem arrepender da escolha.
+        </p>
+        <a href="#checkin" class="btn-primary" style="margin-top:8px;">Quero titânio — preencher check-in →</a>
+      </div>
+
+      <div class="titanio-razoes">
+        <div class="titanio-razao">
+          <div class="titanio-razao-icon">🛡️</div>
+          <div class="titanio-razao-texto">
+            <strong>100% hipoalergênico</strong>
+            <span>Sem níquel, sem reação. Ideal para qualquer tipo de pele.</span>
+          </div>
+        </div>
+        <div class="titanio-razao">
+          <div class="titanio-razao-icon">⚡</div>
+          <div class="titanio-razao-texto">
+            <strong>Cicatriza mais rápido</strong>
+            <span>O corpo aceita o titânio melhor — menos inflamação, menos tempo de cura.</span>
+          </div>
+        </div>
+        <div class="titanio-razao">
+          <div class="titanio-razao-icon">💎</div>
+          <div class="titanio-razao-texto">
+            <strong>Visual premium</strong>
+            <span>Acabamento superior. Bonito desde o primeiro dia.</span>
+          </div>
+        </div>
+        <div class="titanio-razao">
+          <div class="titanio-razao-icon">👶</div>
+          <div class="titanio-razao-texto">
+            <strong>Sempre recomendado para crianças</strong>
+            <span>Para pele delicada de criança, é a escolha certa.</span>
+          </div>
+        </div>
+        <div class="titanio-razao">
+          <div class="titanio-razao-icon">🔄</div>
+          <div class="titanio-razao-texto">
+            <strong>Quem já teve rejeição</strong>
+            <span>Se o aço causou problema antes, o titânio é o caminho.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================
+     PROVA SOCIAL
+============================= -->
+<section class="section quotes">
+  <div class="container">
+    <div class="section-heading">
+      <div class="eyebrow-pill">Quem já foi</div>
+      <h2>Elas também ficaram na dúvida. Até ir.</h2>
+      <p>Palavras de quem passou pelo estúdio — sem filtro, sem edição.</p>
+    </div>
+
+    <div class="depo-grid">
+      <div class="depo-card">
+        <div class="depo-stars">★★★★★</div>
+        <p class="depo-texto">"Nossa, já foi? Achei que ia doer muito mais. A Debby é muito leve na mão — nem deu tempo de sentir nada."</p>
+        <div class="depo-autor">
+          <div class="depo-avatar av-m">M</div>
+          <div>
+            <div class="depo-nome">Mariana S.</div>
+            <div class="depo-detalhe">Nostril · primeira vez · joia brilhante</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="depo-card">
+        <div class="depo-stars">★★★★★</div>
+        <p class="depo-texto">"Fui na dúvida entre o brilhante e o decorado. Peguei o decorado e não me arrependo nem um pouco. Ficou perfeito."</p>
+        <div class="depo-autor">
+          <div class="depo-avatar av-i">I</div>
+          <div>
+            <div class="depo-nome">Isabela R.</div>
+            <div class="depo-detalhe">Helix · joia decorada R$65</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="depo-card">
+        <div class="depo-stars">★★★★★</div>
+        <p class="depo-texto">"Voltei porque gostei muito da primeira vez. Dessa vez fui de titânio — a cicatrização foi muito mais tranquila, sem vermelhidão."</p>
+        <div class="depo-autor">
+          <div class="depo-avatar av-c">C</div>
+          <div>
+            <div class="depo-nome">Camila T.</div>
+            <div class="depo-detalhe">Tragus · titânio decorado</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="depo-card">
+        <div class="depo-stars">★★★★★</div>
+        <p class="depo-texto">"Saí com os cuidados já no WhatsApp — não precisei anotar nada. Foi muito mais prático do que eu esperava."</p>
+        <div class="depo-autor">
+          <div class="depo-avatar av-l">L</div>
+          <div>
+            <div class="depo-nome">Letícia M.</div>
+            <div class="depo-detalhe">Umbigo · brilhante R$45</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="depo-card">
+        <div class="depo-stars">★★★★★</div>
+        <p class="depo-texto">"Fui com minha filha de 8 anos. A Debby foi super paciente. Fizemos titânio como indicado e cicatrizou sem problema nenhum."</p>
+        <div class="depo-autor">
+          <div class="depo-avatar av-a">A</div>
+          <div>
+            <div class="depo-nome">Ana P.</div>
+            <div class="depo-detalhe">Lóbulo · titânio · menor de idade</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="depo-card">
+        <div class="depo-stars">★★★★★</div>
+        <p class="depo-texto">"Agora quero fazer mais um. Saí com o daith e já estou pensando no próximo. Lugar limpo, organizado e atendimento ótimo."</p>
+        <div class="depo-autor">
+          <div class="depo-avatar av-f">F</div>
+          <div>
+            <div class="depo-nome">Fernanda G.</div>
+            <div class="depo-detalhe">Daith · joia marcante R$75</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================
+     COMO FUNCIONA — 4 PASSOS
+============================= -->
+<section class="section process">
+  <div class="container">
+    <div class="section-heading">
+      <div class="eyebrow-pill">Sem complicação</div>
+      <h2>Do Instagram até o estúdio em quatro passos. Sem ligar, sem agendar.</h2>
+    </div>
+
+    <div class="passos-grid">
+      <div class="passo passo-destaque">
+        <div class="passo-num">1</div>
+        <h3>Chegue ao estúdio</h3>
+        <p>Com documento em mãos. Sem agendamento — é por ordem de chegada. Sábados costumam ter mais movimento.</p>
+        <span class="passo-tag">Opcional: pré-check-in antes</span>
+      </div>
+      <div class="passo">
+        <div class="passo-num">2</div>
+        <h3>Escolha e pague</h3>
+        <p>Escolha a perfuração e a joia com calma. A equipe te ajuda a decidir. Pague no caixa — Pix, cartão ou dinheiro.</p>
+      </div>
+      <div class="passo">
+        <div class="passo-num">3</div>
+        <h3>Assine o termo e aguarde</h3>
+        <p>O termo de responsabilidade é digital, enviado pelo WhatsApp. Depois é só aguardar sua vez na fila.</p>
+      </div>
+      <div class="passo">
+        <div class="passo-num">4</div>
+        <h3>Faz a perfuração e vai</h3>
+        <p>Rápido, preciso e sem enrolação. Você sai com o piercing feito e os cuidados já no seu WhatsApp.</p>
+      </div>
+    </div>
+
+    <div class="sem-agendamento-banner">
+      Não precisa agendar. Não precisa ligar antes.
+      <span>Apareça no horário de funcionamento e a gente te atende por ordem de chegada.</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============================
+     URGÊNCIA LEVE
+============================= -->
+<section class="section urgencia-section">
+  <div class="container">
+    <div class="urgencia-card">
+      <div class="urgencia-icon-big">🕐</div>
+      <div class="urgencia-texto">
+        <strong>Sábados costumam ter mais movimento</strong>
+        <p>O atendimento é por ordem de chegada. Se você quer escolher com calma e sem pressa, chegue mais cedo — especialmente nos sábados. Alguns modelos de joia também podem acabar durante o dia.</p>
+      </div>
+      <a href="#checkin" class="btn-primary">Preparar minha chegada →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================
+     MENORES DE IDADE
+============================= -->
+<section class="section minors">
+  <div class="container menores-split">
+    <div class="menores-copy">
+      <div class="eyebrow-pill">Menores de idade</div>
+      <h2>Menor pode fazer — mas tem regras que não abrimos exceção.</h2>
+      <p>Para segurança da criança e do estúdio, seguimos as exigências à risca. Não aceitamos exceções nesse ponto — é uma questão de responsabilidade.</p>
+      <p style="margin-top:12px;">Para crianças pequenas, recomendamos fortemente o <strong>titânio</strong> — material mais seguro para a pele delicada.</p>
+    </div>
+    <div class="menores-card">
+      <h3>O que é necessário</h3>
+      <ul class="menores-lista">
+        <li><span class="ok">✓</span> Presença do pai, mãe ou responsável legal com guarda</li>
+        <li><span class="ok">✓</span> Documento com foto atualizado do responsável</li>
+        <li><span class="ok">✓</span> Documento com foto do menor (quando possível)</li>
+        <li><span class="ok">◆</span> Se o responsável não puder estar presente: videochamada com documento à vista, autorizando claramente o procedimento</li>
+        <li><span class="ok">◆</span> Titânio fortemente recomendado para crianças pequenas</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============================
+     FAQ
+============================= -->
+<section class="section faq" id="faq">
+  <div class="container">
+    <div class="section-heading">
+      <div class="eyebrow-pill">Dúvidas frequentes</div>
+      <h2>Antes de mandar mensagem, veja se sua dúvida está aqui</h2>
+      <p>A maioria das perguntas que chegam no WhatsApp já está respondida abaixo.</p>
+    </div>
+
+    <div class="faq-list">
+      <details open>
+        <summary>Precisa agendar?</summary>
+        <p>Não. O atendimento é por ordem de chegada — sem agendamento, sem ligar antes. Você aparece, é atendida na sequência.</p>
+      </details>
+      <details>
+        <summary>Dói muito?</summary>
+        <p>A maioria das clientes se surpreende com o quão rápido é. A perfuração é precisa e feita em segundos — a maioria fala que achou que doeria muito mais.</p>
+      </details>
+      <details>
+        <summary>Quanto custa?</summary>
+        <p>Aço cirúrgico: Tradicional R$25, Brilhante R$45, Delicada R$55, Decorada R$65, Marcante R$75. PVD Gold (dourado): R$45, R$55, R$65 e R$85. Titânio tradicional R$70, titânio decorado R$110.</p>
+      </details>
+      <details>
+        <summary>Qual joia eu devo escolher?</summary>
+        <p>Depende do seu estilo, orçamento e tipo de pele. A equipe te ajuda na hora. Se for sua primeira vez ou tiver pele sensível, o titânio é altamente recomendado. Se quiser o visual dourado, o PVD Gold é ótima pedida.</p>
+      </details>
+      <details>
+        <summary>Precisa pagar antes?</summary>
+        <p>Não. Você paga presencialmente no caixa depois de escolher a joia e a perfuração. Aceita Pix, cartão e dinheiro.</p>
+      </details>
+      <details>
+        <summary>Menor de idade pode fazer?</summary>
+        <p>Sim, com autorização correta do responsável legal — presencialmente ou por videochamada com documento à vista.</p>
+      </details>
+      <details>
+        <summary>É seguro? Usa material descartável?</summary>
+        <p>Sim. Material descartável e esterilizado em cada atendimento. Nunca usamos pistola.</p>
+      </details>
+      <details>
+        <summary>Quanto tempo demora?</summary>
+        <p>A perfuração é muito rápida — segundos. O tempo maior é a fila, que varia com o movimento do dia. Sábados costumam ter mais espera.</p>
+      </details>
+      <details>
+        <summary>Posso trocar a joia depois?</summary>
+        <p>Sim, mas somente após o tempo adequado de cicatrização e avaliação. A troca de joia é paga.</p>
+      </details>
+      <details>
+        <summary>Como cuidar depois?</summary>
+        <p>Você recebe os cuidados pelo WhatsApp logo após o atendimento. Também pode acessar: <a href="https://cuidados.estudiodadebbypiercing.com.br/" target="_blank">cuidados.estudiodadebbypiercing.com.br</a></p>
+      </details>
+      <details>
+        <summary>Onde fica?</summary>
+        <p>Av. Andrade Neves, 365 — Centro, Campinas/SP. Fácil de achar, bem localizado no centro.</p>
+      </details>
+      <details>
+        <summary>Faz furo humanizado?</summary>
+        <p>Sim. O atendimento é feito com atenção, explicação e cuidado — especialmente para quem está fazendo pela primeira vez.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ============================
+     CHECK-IN INTERMEDIÁRIO
+============================= -->
+<section class="section" style="background:#111217;">
+  <div class="container" style="max-width:760px;text-align:center;">
+    <div class="eyebrow-pill" style="margin:0 auto 16px;">Agilize sua chegada</div>
+    <h2>Já decidiu? Então para de ler e vem.</h2>
+    <p style="color:var(--muted);margin:12px 0 28px;font-size:16px;line-height:1.65;">
+      Preenche o check-in antes de sair de casa. Não é agendamento — é só um aviso para a equipe já saber quem você é e o que você quer quando chegar. Você chega, fala seu nome, e a gente cuida do resto.
+    </p>
+    <a href="#checkin" class="btn-primary">Preencher o pré-check-in →</a>
+  </div>
+</section>
+
+<!-- ============================
+     PRÉ-CHECK-IN FORM
+============================= -->
+<section id="checkin" class="section checkin-section-2">
+  <div class="container checkin-grid-2">
+    <div class="checkin-copy-2">
+      <div class="eyebrow-pill">Pré-check-in</div>
+      <h2>Chegue sabendo o que quer. Saia com o que veio buscar.</h2>
+      <p>Preencha antes de sair de casa. Quando você chegar, a equipe já sabe seu nome, o que você quer fazer e o que precisa para te atender do jeito certo. Sem explicar do zero no balcão, sem perder tempo.</p>
+
+      <div class="checkin-beneficios">
+        <div class="checkin-beneficio">
+          <div class="checkin-beneficio-icon">⚡</div>
+          <span>Agiliza o seu atendimento na recepção</span>
+        </div>
+        <div class="checkin-beneficio">
+          <div class="checkin-beneficio-icon">💬</div>
+          <span>A equipe já sabe o que você procura antes de você chegar</span>
+        </div>
+        <div class="checkin-beneficio">
+          <div class="checkin-beneficio-icon">🔒</div>
+          <span>Não é agendamento — você escolhe e paga tudo pessoalmente</span>
+        </div>
+        <div class="checkin-beneficio">
+          <div class="checkin-beneficio-icon">🎯</div>
+          <span>Se você precisar de titânio, a equipe já vai estar preparada para te orientar</span>
+        </div>
+      </div>
+
+      <div class="studio-card">
+        <!-- FOTO REAL: foto interna do estúdio ou da Debby atendendo -->
+        <img src="./assets/debby-hero-2.png" alt="Estúdio Debby Piercing" />
+      </div>
+    </div>
+
+    <div class="form-box-v2">
+      <h3>Prepare sua chegada</h3>
+      <p>Menos de 1 minuto. Sem compromisso — você paga só no estúdio.</p>
+
+      <form id="form-lead">
+        <div class="form-group">
+          <label for="nome">Seu nome completo</label>
+          <input type="text" id="nome" name="nome" placeholder="Ex: Ana Silva" required />
+        </div>
+        <div class="form-group">
+          <label for="whatsapp">Seu WhatsApp</label>
+          <input type="tel" id="whatsapp" name="whatsapp" placeholder="(19) 99999-9999" required />
+        </div>
+        <div class="form-group">
+          <label for="perfuracao">Onde você quer colocar o piercing?</label>
+          <select id="perfuracao" name="perfuracao" required>
+            <option value="" disabled selected>Selecione o local...</option>
+            <option value="Nostril">Nostril</option>
+            <option value="Umbigo">Umbigo</option>
+            <option value="Helix">Helix</option>
+            <option value="Tragus">Tragus</option>
+            <option value="Conch">Conch</option>
+            <option value="Lóbulo">Lóbulo</option>
+            <option value="Daith">Daith</option>
+            <option value="Flat">Flat</option>
+            <option value="Labret">Labret</option>
+            <option value="Sobrancelha">Sobrancelha</option>
+            <option value="Microdermal">Microdermal</option>
+            <option value="Mamilo">Mamilo</option>
+            <option value="Outro">Outro / ainda estou decidindo</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="estilo">Qual joia mais combina com você?</label>
+          <select id="estilo" name="estilo" required>
+            <option value="" disabled selected>Escolha uma opção...</option>
+            <option value="Tradicional R$25">Tradicional — R$25</option>
+            <option value="Brilhante R$45">Brilhante — R$45 ⭐ mais escolhida</option>
+            <option value="Delicada R$55">Delicada — R$55</option>
+            <option value="Decorada R$65">Decorada — R$65</option>
+            <option value="Marcante R$75">Marcante — R$75</option>
+            <option value="Premium R$85">Premium — R$85</option>
+            <option value="PVD Gold">PVD Gold (dourado) — R$45 / R$55 / R$65 / R$85</option>
+            <option value="Titânio tradicional R$70">Titânio tradicional — R$70</option>
+            <option value="Titânio decorado R$110">Titânio decorado — R$110</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>É a sua primeira vez fazendo piercing?</label>
+          <div class="radio-group">
+            <label class="radio-option"><input type="radio" name="primeira_vez" value="sim" required /> Sim, primeira vez</label>
+            <label class="radio-option"><input type="radio" name="primeira_vez" value="nao" /> Não, já fiz antes</label>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Você tem pele sensível ou alergia a metal?</label>
+          <div class="radio-group">
+            <label class="radio-option"><input type="radio" name="pele_sensivel" value="sim" required /> Sim</label>
+            <label class="radio-option"><input type="radio" name="pele_sensivel" value="nao" /> Não / Não sei</label>
+          </div>
+        </div>
+
+        <input type="hidden" id="segmento" name="segmento" value="piercing" />
+        <input type="hidden" id="utm_source" name="utm_source" value="" />
+        <input type="hidden" id="utm_medium" name="utm_medium" value="" />
+        <input type="hidden" id="utm_campaign" name="utm_campaign" value="" />
+        <input type="hidden" id="utm_content" name="utm_content" value="" />
+
+        <button type="submit" id="btn-enviar" class="btn-submit">
+          Avisar a recepção e ir ao estúdio →
+        </button>
+
+        <div class="form-garantias">
+          <span>✓ Sem agendamento obrigatório</span>
+          <span>✓ Paga só no estúdio</span>
+          <span>✓ Pode cancelar quando quiser</span>
+        </div>
+      </form>
+
+      <div id="checkin-sucesso" class="checkin-sucesso hidden">
+        <div class="sucesso-icon">✓</div>
+        <h3 id="sucesso-titulo">A recepção já sabe que você vem!</h3>
+        <p id="sucesso-msg">Quando você chegar, é só falar seu nome no balcão. A equipe já vai saber o que você quer.</p>
+        <div id="titanio-alerta" class="titanio-alerta hidden">
+          <strong>⚑ Titânio recomendado para você</strong>
+          <p>Com base nas suas respostas, o titânio é o material mais indicado para a sua cicatrização. Peça para a equipe te mostrar as opções ao chegar.</p>
+        </div>
+        <a id="btn-whatsapp" href="#" class="btn-primary sucesso-wa" target="_blank">Confirmar pelo WhatsApp também →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================
+     CTA FINAL
+============================= -->
+<section class="section cta-final">
+  <div class="container">
+    <div class="eyebrow-pill" style="margin:0 auto 20px;">Pronta?</div>
+    <h2>Você já pensou nisso mais de uma vez.<br/><em>Isso já é sinal o suficiente.</em></h2>
+    <p>Mais de 1000 pessoas por mês aparecem aqui e saem com o piercing que queriam — sem drama, sem enrolação, sem arrependimento. A próxima pode ser você.</p>
+    <div class="cta-btns">
+      <a href="#checkin" class="btn-primary">Preencher o pré-check-in →</a>
+      <a href="https://wa.me/5519988404390?text=Ol%C3%A1%2C%20vim%20pelo%20site%20da%20Debby%20Piercing.%20J%C3%A1%20vi%20as%20informa%C3%A7%C3%B5es%20e%20quero%20ir%20at%C3%A9%20o%20est%C3%BAdio." target="_blank" class="btn-secondary">Chamar no WhatsApp</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================
+     LOCALIZAÇÃO
+============================= -->
+<section class="section location">
+  <div class="container">
+    <div class="section-heading">
+      <div class="eyebrow-pill">Como chegar</div>
+      <h2>Estamos no Centro de Campinas</h2>
+      <p>Av. Andrade Neves, 365 — fácil de achar, bem localizado.</p>
+    </div>
+
+    <div class="location-grid">
+      <div class="location-card">
+        <h3>⏰ Horários de funcionamento</h3>
+        <div class="horario-item"><span><strong>Terça a sexta</strong></span><span>10h às 19h (pausa 14h–15h)</span></div>
+        <div class="horario-item"><span><strong>Sábado</strong></span><span>10h às 17h (sem pausa)</span></div>
+        <div class="horario-item"><span><strong>Domingo</strong></span><span>Fechado</span></div>
+        <div class="horario-item"><span><strong>Segunda e feriados</strong></span><span>Consultar no Instagram</span></div>
+      </div>
+      <div class="location-card">
+        <h3>📍 Endereço e contato</h3>
+        <p style="color:var(--muted);font-size:15px;line-height:1.7;margin-bottom:20px;">
+          Av. Andrade Neves, 365<br/>Centro, Campinas/SP
+        </p>
+        <div style="display:flex;flex-direction:column;gap:10px;">
+          <a class="btn-primary" href="https://share.google/fjHTtkCALxLFPtDTR" target="_blank" style="text-align:center;">Abrir no Google Maps</a>
+          <a class="btn-secondary" href="https://wa.me/5519988404390" target="_blank" style="text-align:center;">Chamar no WhatsApp</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<a class="floating-whatsapp" href="https://wa.me/5519988404390?text=Ol%C3%A1%2C%20vim%20pelo%20site%20da%20Debby%20Piercing.%20J%C3%A1%20vi%20as%20informa%C3%A7%C3%B5es%20e%20quero%20ir%20at%C3%A9%20o%20est%C3%BAdio." target="_blank">
+  💬 WhatsApp
+</a>
+
+<footer class="footer">
+  <div class="container">
+    <p>Debby Piercing · Av. Andrade Neves, 365 · Centro, Campinas/SP · @debbypiercing</p>
+  </div>
+</footer>
+
+<script src="./script.js"></script>
+</body>
+</html>
