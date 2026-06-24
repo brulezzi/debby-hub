@@ -27,32 +27,23 @@
     h1 em { font-style: normal; color: var(--gold); }
     h2 em { font-style: normal; color: var(--gold); }
 
-    /* ========== HERO ========== */
-    .hero-micro {
-      display: flex;
-      gap: 18px;
-      flex-wrap: wrap;
-      margin-top: 18px;
-      font-size: 13px;
-      color: var(--muted);
-    }
-    .hero-micro span { display: flex; align-items: center; gap: 5px; }
-    .hero-micro span::before { content: "·"; color: var(--gold); font-size: 16px; margin-right: 4px; }
-    .hero-micro span:first-child::before { display: none; }
-
-    /* ========== TRUST BAR ========== */
+    /* ========== TRUST BAR — MARQUEE ========== */
     .trust-bar {
       background: rgba(223,183,108,0.05);
       border-top: 1px solid rgba(223,183,108,0.1);
       border-bottom: 1px solid rgba(223,183,108,0.1);
-      padding: 16px 0;
+      padding: 14px 0;
+      overflow: hidden;
     }
-    .trust-bar-inner {
+    .trust-track {
       display: flex;
-      justify-content: center;
-      gap: 0;
-      flex-wrap: nowrap;
-      overflow-x: auto;
+      width: max-content;
+      animation: trustMarquee 22s linear infinite;
+    }
+    .trust-bar:hover .trust-track { animation-play-state: paused; }
+    @keyframes trustMarquee {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
     }
     .trust-item {
       display: flex;
@@ -61,12 +52,29 @@
       font-size: 13px;
       font-weight: 700;
       color: var(--text);
-      padding: 0 22px;
+      padding: 6px 26px;
       border-right: 1px solid var(--border);
       white-space: nowrap;
+      flex-shrink: 0;
     }
-    .trust-item:last-child { border-right: none; }
     .trust-icon { color: var(--gold); font-size: 15px; }
+
+    /* ========== CATEGORIAS DE JOIA ========== */
+    .cat-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      font-weight: 900;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      padding: 7px 18px;
+      border-radius: 999px;
+      margin: 32px 0 16px;
+    }
+    .cat-aco { background: rgba(255,255,255,0.07); color: var(--muted); border: 1px solid var(--border); }
+    .cat-pvd { background: rgba(223,183,108,0.12); color: var(--gold); border: 1px solid rgba(223,183,108,0.3); }
+    .cat-ti  { background: rgba(180,210,255,0.08); color: #a8c8ff; border: 1px solid rgba(180,210,255,0.2); }
 
     /* ========== EARLY CHECK-IN CALLOUT ========== */
     .checkin-callout {
@@ -553,8 +561,6 @@
       .perf-grid { grid-template-columns: repeat(3, 1fr); }
     }
     @media (max-width: 640px) {
-      .trust-bar-inner { justify-content: flex-start; }
-      .trust-item { padding: 0 14px; font-size: 12px; }
       .checkin-callout { flex-direction: column; text-align: center; }
       .galeria-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
       .passos-grid { grid-template-columns: 1fr; }
@@ -620,13 +626,6 @@
         <a href="#estilos" class="btn-secondary">Ver joias e preços</a>
       </div>
 
-      <div class="hero-micro">
-        <span>Sem agendamento</span>
-        <span>Paga na hora</span>
-        <span>Pix · Cartão · Dinheiro</span>
-        <span>Av. Andrade Neves, 365</span>
-      </div>
-
       <div class="checkin-callout">
         <div class="checkin-callout-texto">
           <strong>Já sabe o que quer fazer?</strong>
@@ -640,10 +639,15 @@
 </header>
 
 <!-- ============================
-     TRUST BAR
+     TRUST BAR — MARQUEE
 ============================= -->
 <div class="trust-bar">
-  <div class="container trust-bar-inner">
+  <div class="trust-track">
+    <div class="trust-item"><span class="trust-icon">⚡</span> Atendimento rápido</div>
+    <div class="trust-item"><span class="trust-icon">🔒</span> Material esterilizado</div>
+    <div class="trust-item"><span class="trust-icon">📱</span> Cuidados pelo WhatsApp</div>
+    <div class="trust-item"><span class="trust-icon">💳</span> Pix · Cartão · Dinheiro</div>
+    <div class="trust-item"><span class="trust-icon">📍</span> Centro de Campinas</div>
     <div class="trust-item"><span class="trust-icon">⚡</span> Atendimento rápido</div>
     <div class="trust-item"><span class="trust-icon">🔒</span> Material esterilizado</div>
     <div class="trust-item"><span class="trust-icon">📱</span> Cuidados pelo WhatsApp</div>
@@ -731,17 +735,15 @@
       <p>Não é só sobre fazer o furo. É sobre a joia que vai ficar bonita em você todos os dias. Veja os estilos e chegue sabendo o que quer.</p>
     </div>
 
-    <!-- CARDS DE JOIA COM FOTO -->
+    <!-- AÇO CIRÚRGICO -->
+    <div class="cat-label cat-aco">💎 Aço Cirúrgico</div>
     <div class="style-grid">
-
-      <!-- AÇO -->
       <article class="style-card">
         <div class="card-foto"><img src="./assets/aco-25.webp" alt="Banana Bell G - Prata" /></div>
         <span>R$25 · Aço</span>
         <h3>Banana Bell G - Prata</h3>
         <p>Clássico para umbigo. Simples, resistente e funcional para cicatrização.</p>
       </article>
-
       <article class="style-card destaque">
         <div class="card-foto" style="position:relative;">
           <div class="card-badge">⭐ Mais escolhida</div>
@@ -751,57 +753,53 @@
         <h3>Ponto de Luz Labret 3mm</h3>
         <p>Um brilhinho que já faz diferença. Delicada e marcante ao mesmo tempo.</p>
       </article>
-
       <article class="style-card">
         <div class="card-foto"><img src="./assets/aco-55.webp" alt="Libélula Labret" /></div>
         <span>R$55 · Aço</span>
         <h3>Libélula</h3>
         <p>Visual fino e feminino. Design exclusivo que chama atenção no detalhe.</p>
       </article>
-
       <article class="style-card">
         <div class="card-foto"><img src="./assets/aco-65.jpeg" alt="Barbel Coração" /></div>
         <span>R$65 · Aço</span>
         <h3>Barbel Coração</h3>
         <p>Coração com ponto de luz. Para quem quer personalidade e presença.</p>
       </article>
-
       <article class="style-card">
         <div class="card-foto"><img src="./assets/aco-75.webp" alt="Coração Cravejado Direito" /></div>
         <span>R$75 · Aço</span>
         <h3>Coração Cravejado Direito</h3>
         <p>Mais presença, brilho e personalidade. Difícil não olhar duas vezes.</p>
       </article>
-
       <article class="style-card">
         <div class="card-foto"><img src="./assets/aco-110.webp" alt="Barbell 2 Corações com Ponto de Luz" /></div>
         <span>R$110 · Aço</span>
         <h3>Barbell 2 Corações</h3>
         <p>A joia que se destaca. Dois corações com ponto de luz, visual premium.</p>
       </article>
+    </div>
 
-      <!-- PVD GOLD -->
+    <!-- PVD GOLD -->
+    <div class="cat-label cat-pvd">✦ PVD Gold</div>
+    <div class="style-grid">
       <article class="style-card pvd">
         <div class="card-foto"><img src="./assets/pvd-45.webp" alt="Argola Dering PVD Gold" /></div>
         <span>R$45 · PVD Gold</span>
         <h3>Argola Dering</h3>
         <p>O visual dourado que combina com tudo. Elegante e acessível.</p>
       </article>
-
       <article class="style-card pvd">
         <div class="card-foto"><img src="./assets/pvd-55.webp" alt="Ponto de Luz Labret 3mm PVD Gold" /></div>
         <span>R$55 · PVD Gold</span>
         <h3>Ponto de Luz Labret 3mm</h3>
         <p>Ponto de luz em dourado. Discreto e sofisticado ao mesmo tempo.</p>
       </article>
-
       <article class="style-card pvd">
         <div class="card-foto"><img src="./assets/pvd-65.jpeg" alt="Flor 6 Pontas PVD Gold" /></div>
         <span>R$65 · PVD Gold</span>
         <h3>Flor 6 Pontas</h3>
         <p>Design floral dourado que chama atenção. Para quem quer personalidade.</p>
       </article>
-
       <article class="style-card pvd destaque">
         <div class="card-foto" style="position:relative;">
           <div class="card-badge">✦ PVD Favorita</div>
@@ -811,36 +809,35 @@
         <h3>Argola Cravejado Lateral</h3>
         <p>Argola dourada cravejada. O nível máximo de presença e estilo.</p>
       </article>
-
       <article class="style-card pvd">
         <div class="card-foto"><img src="./assets/pvd-110.webp" alt="Barbell 2 Corações PVD Gold" /></div>
         <span>R$110 · PVD Gold</span>
         <h3>Barbell 2 Corações</h3>
         <p>O topo da linha PVD. Para quem quer o melhor acabamento dourado.</p>
       </article>
+    </div>
 
-      <!-- TITÂNIO -->
+    <!-- TITÂNIO -->
+    <div class="cat-label cat-ti">🔵 Titânio</div>
+    <div class="style-grid">
       <article class="style-card titanio">
         <div class="card-foto"><img src="./assets/ti-70-a.webp" alt="Ponto de Luz Anzol Titânio" /></div>
         <span>R$70 · Titânio</span>
         <h3>Ponto de Luz Anzol</h3>
         <p>Clássico em titânio. 100% hipoalergênico, cicatrização mais tranquila.</p>
       </article>
-
       <article class="style-card titanio">
         <div class="card-foto"><img src="./assets/ti-70-b.webp" alt="Barbell Reto 16mm Titânio" /></div>
         <span>R$70 · Titânio</span>
         <h3>Barbell Reto 16mm</h3>
         <p>Para mamilo ou língua. Material seguro, visual limpo e resistente.</p>
       </article>
-
       <article class="style-card titanio">
         <div class="card-foto"><img src="./assets/ti-110-a.webp" alt="Íntimo Titânio Gold" /></div>
         <span>R$110 · Titânio</span>
         <h3>Íntimo</h3>
         <p>Joia íntima em titânio gold. Sofisticada, segura e de cicatrização superior.</p>
       </article>
-
       <article class="style-card titanio destaque">
         <div class="card-foto" style="position:relative;">
           <div class="card-badge">✦ Titânio Premium</div>
@@ -850,14 +847,12 @@
         <h3>Barbell Reto 2 Ponto de Luz</h3>
         <p>Dois pontos de luz em titânio gold. O melhor dos dois mundos.</p>
       </article>
-
       <article class="style-card titanio">
         <div class="card-foto"><img src="./assets/ti-110-c.webp" alt="Borboleta Titânio" /></div>
         <span>R$110 · Titânio</span>
         <h3>Borboleta</h3>
         <p>Design borboleta único. Delicado, marcante e em titânio de qualidade.</p>
       </article>
-
     </div>
   </div>
 </section>

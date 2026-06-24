@@ -797,7 +797,9 @@ blockquote {
   }
 
   .style-grid,
-  .quotes-grid,
+  .quotes-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
   .piercing-grid,
   .proof-list {
     grid-template-columns: 1fr;
