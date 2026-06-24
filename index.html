@@ -124,8 +124,19 @@
       z-index: 1;
     }
     @media (max-width: 860px) {
-      .hero-portrait { display: none; }
-      .hero-content { padding: 60px 20px 72px; max-width: 100%; }
+      .hero { flex-direction: column; }
+      .hero-portrait {
+        display: block;
+        position: relative;
+        width: 100%;
+        height: 62vw;
+        min-height: 220px;
+        order: -1;
+      }
+      .hero-portrait::before {
+        background: linear-gradient(180deg, transparent 50%, var(--bg) 100%);
+      }
+      .hero-content { padding: 12px 20px 60px; max-width: 100%; }
     }
     .eyebrow {
       display: inline-flex;
@@ -518,6 +529,35 @@
     }
     .wa-float:hover { transform: translateY(-2px); }
 
+    /* ── ANIMAÇÕES ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(28px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes heroIn {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .hero-content .eyebrow { animation: heroIn .6s ease both; }
+    .hero-content h1       { animation: heroIn .7s .1s ease both; }
+    .hero-content .hero-sub { animation: heroIn .7s .2s ease both; }
+    .hero-content .hero-badges { animation: heroIn .6s .3s ease both; }
+    .hero-content .hero-actions { animation: heroIn .6s .4s ease both; }
+    .hero-content .hero-micro { animation: heroIn .6s .5s ease both; }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity .6s ease, transform .6s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .reveal-delay-1 { transition-delay: .1s; }
+    .reveal-delay-2 { transition-delay: .2s; }
+    .reveal-delay-3 { transition-delay: .3s; }
+
     /* ── RESPONSIVE ── */
     @media (max-width: 860px) {
       .verticais-grid { grid-template-columns: repeat(2, 1fr); }
@@ -594,13 +634,174 @@
   </div>
 </div>
 
+<!-- VERTICAIS -->
+<section class="section" id="verticais">
+  <div class="container">
+    <div class="section-heading reveal">
+      <div class="label">O que fazemos</div>
+      <h2>Tudo que você<br/>precisa, <em>aqui.</em></h2>
+      <p>Escolha o que você veio buscar — cada especialidade tem sua profissional dedicada.</p>
+    </div>
+    <div class="verticais-grid">
+      <a href="./piercing/" class="vertical-card destaque reveal reveal-delay-1" data-track="vertical-piercing">
+        <span class="vertical-icon">💎</span>
+        <h3>Piercing</h3>
+        <p>Joias em aço cirúrgico, PVD Gold e titânio. Do simples ao exclusivo — você escolhe a joia, a Debby faz.</p>
+        <span class="vertical-tag tag-walk">✓ Só chegar</span>
+        <span class="vertical-link">Ver joias e preços →</span>
+      </a>
+      <a href="./unhas/" class="vertical-card reveal reveal-delay-2" data-track="vertical-unhas">
+        <span class="vertical-icon">💅</span>
+        <h3>Unhas</h3>
+        <p>Manicure, pedicure, gel, alongamento e blindagem com a Duda — nail designer especializada.</p>
+        <span class="vertical-tag tag-agenda">📅 Com agendamento</span>
+        <span class="vertical-link">Agendar com a Duda →</span>
+      </a>
+      <a href="./cilios/" class="vertical-card reveal reveal-delay-3" data-track="vertical-cilios">
+        <span class="vertical-icon">✨</span>
+        <h3>Cílios</h3>
+        <p>Volume Brasileiro, Mega Volume, Fox Eyes e mais. Extensão que dura e realça seu olhar com a Rauany.</p>
+        <span class="vertical-tag tag-agenda">📅 Com agendamento</span>
+        <span class="vertical-link">Agendar com a Rauany →</span>
+      </a>
+      <a href="./cilios/#sobrancelha" class="vertical-card reveal reveal-delay-1" data-track="vertical-sobrancelha">
+        <span class="vertical-icon">🌿</span>
+        <h3>Sobrancelha</h3>
+        <p>Design personalizado e henna premium com a Rauany. Moldura o rosto, define o olhar.</p>
+        <span class="vertical-tag tag-agenda">📅 Com agendamento</span>
+        <span class="vertical-link">Ver serviços →</span>
+      </a>
+      <a href="./modas/" class="vertical-card reveal reveal-delay-2" data-track="vertical-modas">
+        <span class="vertical-icon">👗</span>
+        <h3>Moda Feminina</h3>
+        <p>Peças selecionadas para completar o look. Estilo acessível, sem precisar ir ao shopping.</p>
+        <span class="vertical-tag tag-walk">✓ Só chegar</span>
+        <span class="vertical-link">Ver mais →</span>
+      </a>
+      <a href="./sexshop/" class="vertical-card reveal reveal-delay-3" data-track="vertical-sexshop">
+        <span class="vertical-icon">🌹</span>
+        <h3>Sex Shop</h3>
+        <p>Produtos selecionados em ambiente discreto, sem julgamento. Porque prazer também faz parte.</p>
+        <span class="vertical-tag tag-walk">✓ Só chegar</span>
+        <span class="vertical-link">Ver mais →</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- TIME -->
+<section class="section time-section" id="time">
+  <div class="container">
+    <div class="section-heading reveal">
+      <div class="label">Quem vai te atender</div>
+      <h2>Profissionais que<br/><em>entendem você.</em></h2>
+      <p>Cada uma com sua especialidade. Todas dedicadas a fazer você sair melhor do que entrou.</p>
+    </div>
+    <div class="time-grid">
+      <div class="team-card reveal reveal-delay-1">
+        <div class="team-foto">
+          <img src="./assets/fotos/piercing/debby com touquinha.png" alt="Debby — Piercing" loading="lazy" />
+        </div>
+        <div class="team-info">
+          <strong>Debby</strong>
+          <span>Fundadora · Piercer</span>
+          <div class="team-vertical">💎 Piercing</div>
+          <a href="https://wa.me/5519988404390?text=Oi%20Debby%2C%20vim%20pelo%20site!" class="team-wa" data-track="team-wa-debby">📱 WhatsApp</a>
+        </div>
+      </div>
+      <div class="team-card reveal reveal-delay-2">
+        <div class="team-foto">
+          <img src="./assets/fotos/estudio/eduarda.jpeg" alt="Duda — Nail Designer" loading="lazy" />
+        </div>
+        <div class="team-info">
+          <strong>Eduarda (Duda)</strong>
+          <span>Nail Designer</span>
+          <div class="team-vertical">💅 Unhas</div>
+          <a href="https://wa.me/5519995838910?text=Oi%20Duda%2C%20quero%20agendar%20um%20hor%C3%A1rio!" class="team-wa" data-track="team-wa-duda">📱 Agendar</a>
+        </div>
+      </div>
+      <div class="team-card reveal reveal-delay-3">
+        <div class="team-foto">
+          <img src="./assets/fotos/estudio/rauany.jpeg" alt="Rauany — Cílios e Sobrancelha" loading="lazy" />
+        </div>
+        <div class="team-info">
+          <strong>Rauany</strong>
+          <span>Lash Designer</span>
+          <div class="team-vertical">✨ Cílios · Sobrancelha</div>
+          <a href="https://wa.me/5519994338102?text=Oi%20Rauany%2C%20quero%20agendar!" class="team-wa" data-track="team-wa-rauany">📱 Agendar</a>
+        </div>
+      </div>
+      <div class="team-card reveal reveal-delay-1">
+        <div class="team-foto">
+          <img src="./assets/fotos/estudio/hernandez.jpeg" alt="Hernandez — Moda e Sex Shop" loading="lazy" />
+        </div>
+        <div class="team-info">
+          <strong>Hernandez</strong>
+          <span>Moda & Sex Shop</span>
+          <div class="team-vertical">👗 Modas · Sex Shop</div>
+          <a href="https://wa.me/5519988404390?text=Oi%2C%20vim%20pelo%20site!" class="team-wa" data-track="team-wa-hernandez">📱 WhatsApp</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DEPOIMENTOS -->
+<section class="depoimentos">
+  <div class="container">
+    <div class="section-heading reveal">
+      <div class="label">O que as clientes dizem</div>
+      <h2>Mais de <em>1.000 clientes</em><br/>por mês têm algo a dizer.</h2>
+      <p>Avaliações reais — sem filtro, sem edição.</p>
+    </div>
+    <div class="depo-grid">
+      <div class="depo-card reveal reveal-delay-1">
+        <div class="depo-stars">★★★★★</div>
+        <p class="depo-text">"Fui furar e ainda levei minha filha, amei o lugar, muito aconchegante e lindo. Fui super bem atendida na recepção e a Debby é um amor de pessoa, maravilhosa — furou super rápido que nem senti dor. Ótima profissional, recomendo!!"</p>
+        <div class="depo-author">Paloma Stephany</div>
+        <div class="depo-via">Google · um mês atrás</div>
+      </div>
+      <div class="depo-card reveal reveal-delay-2">
+        <div class="depo-stars">★★★★★</div>
+        <p class="depo-text">"Muito atenciosa, cuidadosa e profissional em cada detalhe. Passa segurança, higiene impecável e ainda deixa a gente super à vontade. O resultado ficou perfeito, amei."</p>
+        <div class="depo-author">Katia Santos</div>
+        <div class="depo-via">Google · um mês atrás</div>
+      </div>
+      <div class="depo-card reveal reveal-delay-3">
+        <div class="depo-stars">★★★★★</div>
+        <p class="depo-text">"Ambiente super agradável, atendimento maravilhoso e muito profissional! Me senti segura e bem atendida do começo ao fim. O trabalho ficou perfeito, com muito cuidado e higiene. Recomendo demais!"</p>
+        <div class="depo-author">Mariza Rocha</div>
+        <div class="depo-via">Google · um mês atrás</div>
+      </div>
+      <div class="depo-card reveal reveal-delay-1">
+        <div class="depo-stars">★★★★★</div>
+        <p class="depo-text">"Levei minha filha para fazer perfuração no nariz — era o sonho dela. Pesquisei muito até encontrar o Estúdio da Debby. Fomos muito bem atendidas, minha filha estava com medo e a Debby super simpática tranquilizou ela. Recomendo muito!!!"</p>
+        <div class="depo-author">Aline Souza</div>
+        <div class="depo-via">Google · um mês atrás</div>
+      </div>
+      <div class="depo-card reveal reveal-delay-2">
+        <div class="depo-stars">★★★★★</div>
+        <p class="depo-text">"Ela atende super bem, quase todas minhas perfurações foi com ela e os resultados ficaram ótimos!! Já estou até com saudade de ir por outro piercing kk!! Amo muito."</p>
+        <div class="depo-author">Bruna Eduarda</div>
+        <div class="depo-via">Google · um mês atrás</div>
+      </div>
+      <div class="depo-card reveal reveal-delay-3">
+        <div class="depo-stars">★★★★★</div>
+        <p class="depo-text">"Ótima profissional. Fiz minha primeira perfuração no umbigo — em menos de 5 meses já cicatrizou, não tive nenhum problema!"</p>
+        <div class="depo-author">Ana Luiza De Souza Soares Silva</div>
+        <div class="depo-via">Google · um mês atrás</div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- PROVA SOCIAL -->
 <section class="prova">
   <div class="container prova-grid">
-    <div class="prova-foto">
+    <div class="prova-foto reveal">
       <img src="./assets/fotos/estudio/loja-cheia.jpeg" alt="Estúdio da Debby cheio de clientes" loading="lazy" />
     </div>
-    <div class="prova-copy">
+    <div class="prova-copy reveal reveal-delay-2">
       <div class="label">Por que a Debby?</div>
       <h2>Um estúdio que<br/>as pessoas<br/><em>recomendam.</em></h2>
       <p>Não é só o serviço. É a experiência. Você chega, é bem recebida, sai do jeito que queria — e volta. É assim há mais de <strong>9 anos no centro de Campinas</strong>.</p>
@@ -610,202 +811,6 @@
         <div class="stat"><strong>25 mil</strong><span>seguidores no Instagram</span></div>
         <div class="stat"><strong>9 anos</strong><span>especialista desde 2016</span></div>
       </div>
-    </div>
-  </div>
-</section>
-
-<!-- DEPOIMENTOS -->
-<section class="depoimentos">
-  <div class="container">
-    <div class="section-heading">
-      <div class="label">O que as clientes dizem</div>
-      <h2>Mais de <em>1.000 clientes</em><br/>por mês têm algo a dizer.</h2>
-      <p>Avaliações reais — sem filtro, sem edição.</p>
-    </div>
-    <div class="depo-grid">
-
-      <div class="depo-card">
-        <div class="depo-stars">★★★★★</div>
-        <p class="depo-text">"Fui furar e ainda levei minha filha, amei o lugar, muito aconchegante e lindo. Fui super bem atendida na recepção e a Debby é um amor de pessoa, maravilhosa — furou super rápido que nem senti dor. Ótima profissional, recomendo!!"</p>
-        <div class="depo-author">Paloma Stephany</div>
-        <div class="depo-via">Google · um mês atrás</div>
-      </div>
-
-      <div class="depo-card">
-        <div class="depo-stars">★★★★★</div>
-        <p class="depo-text">"Muito atenciosa, cuidadosa e profissional em cada detalhe. Passa segurança, higiene impecável e ainda deixa a gente super à vontade. O resultado ficou perfeito, amei."</p>
-        <div class="depo-author">Katia Santos</div>
-        <div class="depo-via">Google · um mês atrás</div>
-      </div>
-
-      <div class="depo-card">
-        <div class="depo-stars">★★★★★</div>
-        <p class="depo-text">"Ambiente super agradável, atendimento maravilhoso e muito profissional! Me senti segura e bem atendida do começo ao fim. O trabalho ficou perfeito, com muito cuidado e higiene. Recomendo demais!"</p>
-        <div class="depo-author">Mariza Rocha</div>
-        <div class="depo-via">Google · um mês atrás</div>
-      </div>
-
-      <div class="depo-card">
-        <div class="depo-stars">★★★★★</div>
-        <p class="depo-text">"Levei minha filha para fazer perfuração no nariz — era o sonho dela. Pesquisei muito até encontrar o Estúdio da Debby. Fomos muito bem atendidas, minha filha estava com medo e a Debby super simpática tranquilizou ela. Recomendo muito!!!"</p>
-        <div class="depo-author">Aline Souza</div>
-        <div class="depo-via">Google · um mês atrás</div>
-      </div>
-
-      <div class="depo-card">
-        <div class="depo-stars">★★★★★</div>
-        <p class="depo-text">"Ela atende super bem, quase todas minhas perfurações foi com ela e os resultados ficaram ótimos!! Já estou até com saudade de ir por outro piercing kk!! Amo muito."</p>
-        <div class="depo-author">Bruna Eduarda</div>
-        <div class="depo-via">Google · um mês atrás</div>
-      </div>
-
-      <div class="depo-card">
-        <div class="depo-stars">★★★★★</div>
-        <p class="depo-text">"Ótima profissional. Fiz minha primeira perfuração no umbigo — em menos de 5 meses já cicatrizou, não tive nenhum problema!"</p>
-        <div class="depo-author">Ana Luiza De Souza Soares Silva</div>
-        <div class="depo-via">Google · um mês atrás</div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- VERTICAIS -->
-<section class="section" id="verticais">
-  <div class="container">
-    <div class="section-heading">
-      <div class="label">O que fazemos</div>
-      <h2>Tudo que você<br/>precisa, <em>aqui.</em></h2>
-      <p>Escolha o que você veio buscar — cada especialidade tem sua profissional dedicada.</p>
-    </div>
-
-    <div class="verticais-grid">
-
-      <!-- PIERCING -->
-      <a href="./piercing/" class="vertical-card destaque" data-track="vertical-piercing">
-        <span class="vertical-icon">💎</span>
-        <h3>Piercing</h3>
-        <p>Joias em aço cirúrgico, PVD Gold e titânio. Do simples ao exclusivo — você escolhe a joia, a Debby faz.</p>
-        <span class="vertical-tag tag-walk">✓ Só chegar</span>
-        <span class="vertical-link">Ver joias e preços →</span>
-      </a>
-
-      <!-- UNHAS -->
-      <a href="./unhas/" class="vertical-card" data-track="vertical-unhas">
-        <span class="vertical-icon">💅</span>
-        <h3>Unhas</h3>
-        <p>Manicure, pedicure, gel, alongamento e blindagem com a Duda — nail designer especializada.</p>
-        <span class="vertical-tag tag-agenda">📅 Com agendamento</span>
-        <span class="vertical-link">Agendar com a Duda →</span>
-      </a>
-
-      <!-- CÍLIOS -->
-      <a href="./cilios/" class="vertical-card" data-track="vertical-cilios">
-        <span class="vertical-icon">✨</span>
-        <h3>Cílios</h3>
-        <p>Volume Brasileiro, Mega Volume, Fox Eyes e mais. Extensão que dura e realça seu olhar com a Rauany.</p>
-        <span class="vertical-tag tag-agenda">📅 Com agendamento</span>
-        <span class="vertical-link">Agendar com a Rauany →</span>
-      </a>
-
-      <!-- SOBRANCELHA -->
-      <a href="./cilios/#sobrancelha" class="vertical-card" data-track="vertical-sobrancelha">
-        <span class="vertical-icon">🌿</span>
-        <h3>Sobrancelha</h3>
-        <p>Design personalizado e henna premium com a Rauany. Moldura o rosto, define o olhar.</p>
-        <span class="vertical-tag tag-agenda">📅 Com agendamento</span>
-        <span class="vertical-link">Ver serviços →</span>
-      </a>
-
-      <!-- MODAS -->
-      <a href="./modas/" class="vertical-card" data-track="vertical-modas">
-        <span class="vertical-icon">👗</span>
-        <h3>Moda Feminina</h3>
-        <p>Peças selecionadas para completar o look. Estilo acessível, sem precisar ir ao shopping.</p>
-        <span class="vertical-tag tag-walk">✓ Só chegar</span>
-        <span class="vertical-link">Ver mais →</span>
-      </a>
-
-      <!-- SEX SHOP -->
-      <a href="./sexshop/" class="vertical-card" data-track="vertical-sexshop">
-        <span class="vertical-icon">🌹</span>
-        <h3>Sex Shop</h3>
-        <p>Produtos selecionados em ambiente discreto, sem julgamento. Porque prazer também faz parte.</p>
-        <span class="vertical-tag tag-walk">✓ Só chegar</span>
-        <span class="vertical-link">Ver mais →</span>
-      </a>
-
-    </div>
-  </div>
-</section>
-
-<!-- TIME -->
-<section class="section time-section" id="time">
-  <div class="container">
-    <div class="section-heading">
-      <div class="label">Quem vai te atender</div>
-      <h2>Profissionais que<br/><em>entendem você.</em></h2>
-      <p>Cada uma com sua especialidade. Todas dedicadas a fazer você sair melhor do que entrou.</p>
-    </div>
-
-    <div class="time-grid">
-
-      <div class="team-card">
-        <div class="team-foto">
-          <img src="./assets/fotos/estudio/debby.jpeg" alt="Debby — Piercing" loading="lazy" />
-        </div>
-        <div class="team-info">
-          <strong>Debby</strong>
-          <span>Fundadora · Piercer</span>
-          <div class="team-vertical">💎 Piercing</div>
-          <a href="https://wa.me/5519988404390?text=Oi%20Debby%2C%20vim%20pelo%20site!" class="team-wa" data-track="team-wa-debby">
-            📱 WhatsApp
-          </a>
-        </div>
-      </div>
-
-      <div class="team-card">
-        <div class="team-foto">
-          <img src="./assets/fotos/estudio/eduarda.jpeg" alt="Duda — Nail Designer" loading="lazy" />
-        </div>
-        <div class="team-info">
-          <strong>Eduarda (Duda)</strong>
-          <span>Nail Designer</span>
-          <div class="team-vertical">💅 Unhas</div>
-          <a href="https://wa.me/5519995838910?text=Oi%20Duda%2C%20quero%20agendar%20um%20hor%C3%A1rio!" class="team-wa" data-track="team-wa-duda">
-            📱 Agendar
-          </a>
-        </div>
-      </div>
-
-      <div class="team-card">
-        <div class="team-foto">
-          <img src="./assets/fotos/estudio/rauany.jpeg" alt="Rauany — Cílios e Sobrancelha" loading="lazy" />
-        </div>
-        <div class="team-info">
-          <strong>Rauany</strong>
-          <span>Lash Designer</span>
-          <div class="team-vertical">✨ Cílios · Sobrancelha</div>
-          <a href="https://wa.me/5519994338102?text=Oi%20Rauany%2C%20quero%20agendar!" class="team-wa" data-track="team-wa-rauany">
-            📱 Agendar
-          </a>
-        </div>
-      </div>
-
-      <div class="team-card">
-        <div class="team-foto">
-          <img src="./assets/fotos/estudio/hernandez.jpeg" alt="Hernandez — Moda e Sex Shop" loading="lazy" />
-        </div>
-        <div class="team-info">
-          <strong>Hernandez</strong>
-          <span>Moda & Sex Shop</span>
-          <div class="team-vertical">👗 Modas · Sex Shop</div>
-          <a href="https://wa.me/5519988404390?text=Oi%2C%20vim%20pelo%20site!" class="team-wa" data-track="team-wa-hernandez">
-            📱 WhatsApp
-          </a>
-        </div>
-      </div>
-
     </div>
   </div>
 </section>
@@ -900,6 +905,20 @@
 <a href="https://wa.me/5519988404390?text=Oi%20Debby%2C%20vim%20pelo%20site!" class="wa-float" data-track="wa-flutuante">
   💬 WhatsApp
 </a>
+
+<!-- ANIMAÇÕES: scroll reveal -->
+<script>
+  (function(){
+    var els = document.querySelectorAll('.reveal');
+    if(!els.length) return;
+    var obs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){ e.target.classList.add('visible'); obs.unobserve(e.target); }
+      });
+    }, { threshold: 0.12 });
+    els.forEach(function(el){ obs.observe(el); });
+  })();
+</script>
 
 <!-- TRACKING: rastreio de cliques por data-track -->
 <script>
