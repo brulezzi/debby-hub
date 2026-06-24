@@ -283,19 +283,24 @@
     @media (max-width: 720px) { .depo-grid { grid-template-columns: 1fr 1fr; } }
     @media (max-width: 360px) { .depo-grid { grid-template-columns: 1fr; } }
 
-    /* ── TRUST BAR ── */
+    /* ── TRUST BAR — MARQUEE ── */
     .trust-bar {
       background: rgba(223,183,108,0.05);
       border-top: 1px solid rgba(223,183,108,0.1);
       border-bottom: 1px solid rgba(223,183,108,0.1);
       padding: 14px 0;
       overflow: hidden;
+      cursor: default;
     }
-    .trust-inner {
+    .trust-track {
       display: flex;
-      justify-content: center;
-      gap: 0;
-      flex-wrap: wrap;
+      width: max-content;
+      animation: trustMarquee 24s linear infinite;
+    }
+    .trust-bar:hover .trust-track { animation-play-state: paused; }
+    @keyframes trustMarquee {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
     }
     .trust-item {
       display: flex;
@@ -304,11 +309,11 @@
       font-size: 12px;
       font-weight: 700;
       color: var(--text);
-      padding: 6px 20px;
+      padding: 6px 28px;
       border-right: 1px solid var(--border);
       white-space: nowrap;
+      flex-shrink: 0;
     }
-    .trust-item:last-child { border-right: none; }
     .trust-icon { color: var(--gold); font-size: 15px; }
 
     /* ── PROOF SOCIAL ── */
@@ -536,25 +541,6 @@
     .footer-links a { color: var(--muted); transition: color .2s; }
     .footer-links a:hover { color: var(--gold); }
 
-    /* ── WHATSAPP FLUTUANTE ── */
-    .wa-float {
-      position: fixed;
-      bottom: 24px;
-      right: 20px;
-      z-index: 999;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      background: #25d366;
-      color: white;
-      font-weight: 900;
-      font-size: 14px;
-      padding: 13px 20px;
-      border-radius: 999px;
-      box-shadow: 0 8px 30px rgba(37,211,102,0.35);
-      transition: .2s;
-    }
-    .wa-float:hover { transform: translateY(-2px); }
 
     /* ── ANIMAÇÕES ── */
     @keyframes fadeUp {
@@ -600,9 +586,6 @@
       .time-grid { grid-template-columns: repeat(2, 1fr); }
       .stats-row { grid-template-columns: repeat(3, 1fr); }
       .nav-logo span { display: none; }
-      .trust-inner { justify-content: flex-start; overflow-x: auto; flex-wrap: nowrap; padding: 0 16px; }
-      /* Trust bar: mostrar apenas 3 itens mais relevantes no mobile */
-      .trust-item:nth-child(2), .trust-item:nth-child(4) { display: none; }
     }
 
     /* ── MOBILE FIRST ── */
@@ -670,9 +653,6 @@
       .cta-final .actions { flex-direction: column; gap: 10px; align-items: stretch; }
       .cta-final .actions a { width: 100%; text-align: center; font-size: 15px; padding: 14px 20px; }
 
-      /* WA float — full-width como sticky CTA */
-      .wa-float { left: 12px; right: 12px; bottom: 16px; padding: 13px 20px; font-size: 14px; gap: 8px; justify-content: center; border-radius: 16px; }
-
       /* Hero sub — mais ar entre as linhas */
       .hero-sub { line-height: 1.75; }
 
@@ -734,9 +714,14 @@
   </div>
 </header>
 
-<!-- TRUST BAR -->
+<!-- TRUST BAR — MARQUEE -->
 <div class="trust-bar">
-  <div class="container trust-inner">
+  <div class="trust-track">
+    <div class="trust-item"><span class="trust-icon">💎</span> +1.000 perfurações/mês</div>
+    <div class="trust-item"><span class="trust-icon">📸</span> 25 mil seguidores no Instagram</div>
+    <div class="trust-item"><span class="trust-icon">⭐</span> 9 anos de estúdio — desde 2016</div>
+    <div class="trust-item"><span class="trust-icon">📍</span> Centro de Campinas · Av. Andrade Neves, 365</div>
+    <div class="trust-item"><span class="trust-icon">🛡️</span> Ambiente limpo e seguro</div>
     <div class="trust-item"><span class="trust-icon">💎</span> +1.000 perfurações/mês</div>
     <div class="trust-item"><span class="trust-icon">📸</span> 25 mil seguidores no Instagram</div>
     <div class="trust-item"><span class="trust-icon">⭐</span> 9 anos de estúdio — desde 2016</div>
@@ -750,8 +735,8 @@
   <div class="container">
     <div class="section-heading reveal">
       <div class="label">O que fazemos</div>
-      <h2>Tudo que você<br/>precisa, <em>aqui.</em></h2>
-      <p>Escolha o que você veio buscar — cada especialidade tem sua profissional dedicada.</p>
+      <h2 style="font-size:clamp(32px,6vw,52px)">Tudo que você<br/>precisa, <em>aqui.</em></h2>
+      <p>Escolha o serviço — cada card leva direto para a página completa com preços, profissional e agendamento.</p>
     </div>
     <div class="verticais-grid">
       <a href="./piercing/" class="vertical-card destaque reveal reveal-delay-1" data-track="vertical-piercing">
@@ -1011,11 +996,6 @@
     </div>
   </div>
 </footer>
-
-<!-- WHATSAPP FLUTUANTE -->
-<a href="https://wa.me/5519988404390?text=Oi%20Debby%2C%20vim%20pelo%20site!" class="wa-float" data-track="wa-flutuante">
-  💬 WhatsApp
-</a>
 
 <!-- ANIMAÇÕES: scroll reveal -->
 <script>
