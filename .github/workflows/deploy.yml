@@ -15,6 +15,6 @@ jobs:
         run: |
           curl -f -X POST \
             http://${{ secrets.VPS_HOST }}:9000/hooks/deploy-debby-hub \
-            -H "X-Deploy-Token: debby-hub-secret-2026" \
+            -H "X-Deploy-Token: ${{ secrets.DEPLOY_TOKEN }}" \
             --max-time 30
           echo "Webhook disparado com sucesso"
