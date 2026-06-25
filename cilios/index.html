@@ -398,6 +398,7 @@ function enviarWA(e){
   const dia=document.getElementById('dia').value||'a combinar';
   const horario=document.getElementById('horario').value||'a combinar';
   const msg=`Oi Rauany! Vim pelo site e quero agendar 😊\n\n👤 Nome: ${nome}\n📱 WhatsApp: ${tel}\n✨ Serviço: ${servico}\n📅 Dia: ${dia}\n🕐 Horário: ${horario}`;
+  gtag('event','whatsapp_open',{event_category:'conversao',event_label:'form_agendamento_cilios'});
   window.open(`https://wa.me/5519993031655?text=${encodeURIComponent(msg)}`,'_blank');
 }
 // Ancla de sobrancelha direto pela URL
@@ -413,6 +414,10 @@ document.querySelectorAll('[data-track]').forEach(el=>{
     if(typeof gtag!=='undefined')gtag('event','click',{event_category:'cta',event_label:ev});
     if(typeof fbq!=='undefined')fbq('track','Lead',{content_name:ev});
   });
+});
+document.addEventListener('click',function(e){
+  var el=e.target.closest('a[href*="wa.me"]');
+  if(el)gtag('event','whatsapp_open',{event_category:'conversao',event_label:el.dataset.track||'wa_link_cilios'});
 });
 </script>
 </body>

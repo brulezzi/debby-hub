@@ -74,6 +74,11 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
+document.addEventListener('click',function(e){
+  var el=e.target.closest('a[href*="wa.me"]');
+  if(el&&typeof gtag!=='undefined')gtag('event','whatsapp_open',{event_category:'conversao',event_label:'wa_link_piercing'});
+});
+
 function montarTextoWhatsApp(nome, perfuracao, estilo, primeiraVez, peleSensivel, titanioIndicado) {
   let texto = `Olá, vim pelo site da Debby Piercing.\n\nMeu nome é ${nome}.\n\nInteresse em: ${perfuracao}\nEstilo escolhido: ${estilo}`;
 
