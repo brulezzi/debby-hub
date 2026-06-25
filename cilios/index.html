@@ -352,6 +352,7 @@
                 <option>18h – 19h (Ter–Sex)</option>
               </select>
             </div>
+            <input type="hidden" id="utm_source" /><input type="hidden" id="utm_medium" /><input type="hidden" id="utm_campaign" /><input type="hidden" id="utm_content" />
             <button type="submit" class="btn-submit" data-track="form-submit-cilios">💬 Enviar pedido de agendamento →</button>
             <p class="form-note">Você será redirecionada ao WhatsApp da Rauany para confirmar.</p>
           </form>
@@ -390,15 +391,50 @@ function showTab(id,btn){
   document.getElementById(id).classList.add('active');
   btn.classList.add('active');
 }
-function enviarWA(e){
+const SUPABASE_URL_CILIOS = 'https://phzqwafwxmnboegjujqf.supabase.co';
+const SUPABASE_KEY_CILIOS = 'sb_publishable_wUX9E6f0iBA_1C9YWibvUA_l0to00jW';
+
+(function(){
+  const p = new URLSearchParams(location.search);
+  ['utm_source','utm_medium','utm_campaign','utm_content'].forEach(function(k){
+    const el = document.getElementById(k);
+    if(el && p.has(k)) el.value = p.get(k);
+  });
+})();
+
+async function enviarWA(e){
   e.preventDefault();
-  const nome=document.getElementById('nome').value;
-  const tel=document.getElementById('telefone').value;
-  const servico=document.getElementById('servico').value;
-  const dia=document.getElementById('dia').value||'a combinar';
-  const horario=document.getElementById('horario').value||'a combinar';
+  const nome    = document.getElementById('nome').value.trim();
+  const tel     = document.getElementById('telefone').value.trim();
+  const servico = document.getElementById('servico').value;
+  const dia     = document.getElementById('dia').value||'a combinar';
+  const horario = document.getElementById('horario').value||'a combinar';
+  const segmento = (servico.includes('Design')||servico.includes('Henna')) ? 'sobrancelha' : 'cilios';
+
+  try {
+    await fetch(`${SUPABASE_URL_CILIOS}/rest/v1/leads_hub`, {
+      method: 'POST',
+      headers: {
+        apikey: SUPABASE_KEY_CILIOS,
+        Authorization: `Bearer ${SUPABASE_KEY_CILIOS}`,
+        'Content-Type': 'application/json',
+        Prefer: 'return=minimal'
+      },
+      body: JSON.stringify({
+        nome,
+        whatsapp: tel,
+        segmento,
+        detalhes: `${servico} | Dia: ${dia} | Horário: ${horario}`,
+        utm_source:   document.getElementById('utm_source').value   || 'direto',
+        utm_medium:   document.getElementById('utm_medium').value   || 'organico',
+        utm_campaign: document.getElementById('utm_campaign').value || 'nenhuma',
+        utm_content:  document.getElementById('utm_content').value  || 'nenhum'
+      })
+    });
+  } catch(err){ console.error('Supabase:',err); }
+
+  gtag('event','whatsapp_open',{event_category:'conversao',event_label:'form_agendamento_'+segmento});
   const msg=`Oi Rauany! Vim pelo site e quero agendar 😊\n\n👤 Nome: ${nome}\n📱 WhatsApp: ${tel}\n✨ Serviço: ${servico}\n📅 Dia: ${dia}\n🕐 Horário: ${horario}`;
-  gtag('event','whatsapp_open',{event_category:'conversao',event_label:'form_agendamento_cilios'});
   window.open(`https://wa.me/5519993031655?text=${encodeURIComponent(msg)}`,'_blank');
 }
 // Ancla de sobrancelha direto pela URL
