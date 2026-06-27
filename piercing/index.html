@@ -1252,7 +1252,7 @@
             <option value="Outro">Outro / ainda estou decidindo</option>
           </select>
         </div>
-        <!-- JOIA — só aparece para perfurações padrão -->
+        <!-- GRUPO A: joia livre — perfurações padrão e mamilo/lóbulo -->
         <div class="form-group" id="grupo-joia" style="display:none">
           <label for="estilo">Qual joia você prefere?</label>
           <select id="estilo" name="estilo">
@@ -1282,12 +1282,26 @@
           </select>
         </div>
 
-        <!-- PREÇO FIXO — aparece para procedimentos especiais -->
-        <div class="form-group" id="grupo-preco-fixo" style="display:none">
-          <div id="info-preco-fixo" style="background:rgba(223,183,108,0.08);border:1px solid rgba(223,183,108,0.3);border-radius:12px;padding:12px 16px;font-size:13px;color:var(--gold);font-weight:700;"></div>
+        <!-- GRUPO B: microdermal / surface — tipo de serviço com valores travados -->
+        <div class="form-group" id="grupo-micro" style="display:none">
+          <label id="label-micro" for="estilo-micro">Qual serviço você precisa?</label>
+          <select id="estilo-micro" name="estilo-micro">
+            <option value="" disabled selected>Selecione o tipo...</option>
+            <option value="Instalação completa (joia inclusa) R$170">Instalação completa (joia inclusa) — R$ 170</option>
+            <option value="Troca de topo R$70">Troca de topo — R$ 70</option>
+            <option value="Remoção total R$50">Remoção total — R$ 50</option>
+            <option value="Remoção do topo R$20">Remoção do topo — R$ 20</option>
+          </select>
         </div>
 
-        <!-- AVISO para "outro" -->
+        <!-- GRUPO C: lobuloplastia — preço fixo informativo -->
+        <div class="form-group" id="grupo-lobu" style="display:none">
+          <div style="background:rgba(223,183,108,0.08);border:1px solid rgba(223,183,108,0.3);border-radius:12px;padding:12px 16px;font-size:13px;color:var(--gold);font-weight:700;">
+            ✂️ Lobuloplastia — R$ 50 por furo por sessão
+          </div>
+        </div>
+
+        <!-- GRUPO D: "outro" -->
         <div class="form-group" id="grupo-outro" style="display:none">
           <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);border-radius:12px;padding:12px 16px;font-size:13px;color:var(--muted);">
             A equipe vai te orientar na escolha da joia e do local ao chegar no estúdio.

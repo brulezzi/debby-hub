@@ -2,40 +2,50 @@ const SUPABASE_URL = "https://phzqwafwxmnboegjujqf.supabase.co";
 const SUPABASE_ANON_KEY = "sb_publishable_wUX9E6f0iBA_1C9YWibvUA_l0to00jW";
 const NUMERO_WHATSAPP_ESTUDIO = "5519988404390";
 
-// Procedimentos com preço fixo (não seguem tabela de joias)
-const PRECOS_FIXOS = {
-  'Microdermal':  'Microdermal — R$ 170 (preço fixo · a equipe cuida de tudo)',
-  'Mamilo':       'Mamilo — valor informado pela equipe no estúdio',
-};
+// GRUPO A: perfurações que seguem tabela de joias (inclui mamilo e lóbulo)
+const GRUPO_JOIA = ['Nostril','Umbigo','Helix','Tragus','Conch','Lóbulo','Daith','Flat','Labret','Sobrancelha','Mamilo'];
 
-// Perfurações padrão que seguem a tabela de joias
-const PERFURACOES_PADRAO = ['Nostril','Umbigo','Helix','Tragus','Conch','Lóbulo','Daith','Flat','Labret','Sobrancelha'];
+// GRUPO B: microdermal e surface — seleção de tipo de serviço com valores travados
+const GRUPO_MICRO = ['Microdermal','Surface'];
+
+// GRUPO C: lobuloplastia — preço fixo R$50/furo
+const GRUPO_LOBU = ['Lobuloplastia'];
+
+// GRUPO D: outro → equipe orienta
 
 function atualizarCampoJoia(perfuracao) {
   const grupoJoia  = document.getElementById('grupo-joia');
-  const grupoFixo  = document.getElementById('grupo-preco-fixo');
+  const grupoMicro = document.getElementById('grupo-micro');
+  const grupoLobu  = document.getElementById('grupo-lobu');
   const grupoOutro = document.getElementById('grupo-outro');
   const estiloSel  = document.getElementById('estilo');
-  const infoFixo   = document.getElementById('info-preco-fixo');
+  const microSel   = document.getElementById('estilo-micro');
+  const labelMicro = document.getElementById('label-micro');
 
-  // Reset
+  // Reset todos os grupos
   grupoJoia.style.display  = 'none';
-  grupoFixo.style.display  = 'none';
+  grupoMicro.style.display = 'none';
+  grupoLobu.style.display  = 'none';
   grupoOutro.style.display = 'none';
   estiloSel.required = false;
+  microSel.required  = false;
   estiloSel.value    = '';
+  microSel.value     = '';
 
   if (!perfuracao) return;
 
-  if (perfuracao === 'Outro') {
-    grupoOutro.style.display = '';
-  } else if (PRECOS_FIXOS[perfuracao]) {
-    infoFixo.textContent    = '💉 ' + PRECOS_FIXOS[perfuracao];
-    grupoFixo.style.display = '';
-  } else {
-    // Perfuração padrão → mostra tabela de joias com valores travados
+  if (GRUPO_JOIA.includes(perfuracao)) {
     grupoJoia.style.display = '';
-    estiloSel.required      = true;
+    estiloSel.required = true;
+  } else if (GRUPO_MICRO.includes(perfuracao)) {
+    labelMicro.textContent = perfuracao + ' — qual serviço você precisa?';
+    grupoMicro.style.display = '';
+    microSel.required = true;
+  } else if (GRUPO_LOBU.includes(perfuracao)) {
+    grupoLobu.style.display = '';
+  } else {
+    // Outro
+    grupoOutro.style.display = '';
   }
 }
 
@@ -68,19 +78,19 @@ document.addEventListener("DOMContentLoaded", function () {
     const nome         = document.getElementById("nome").value.trim();
     const whatsapp     = document.getElementById("whatsapp").value.trim();
     const perfuracao   = document.getElementById("perfuracao").value;
-    const estiloSel    = document.getElementById("estilo");
-    const infoFixo     = document.getElementById("info-preco-fixo");
     const primeiraVez  = document.querySelector('input[name="primeira_vez"]:checked')?.value || "nao";
     const peleSensivel = document.querySelector('input[name="pele_sensivel"]:checked')?.value || "nao";
 
-    // Resolve o estilo/valor correto conforme o tipo de procedimento
+    // Resolve o valor correto conforme o grupo do procedimento
     let estiloFinal;
-    if (PRECOS_FIXOS[perfuracao]) {
-      estiloFinal = PRECOS_FIXOS[perfuracao];
-    } else if (perfuracao === 'Outro') {
-      estiloFinal = 'A definir com a equipe no estúdio';
+    if (GRUPO_JOIA.includes(perfuracao)) {
+      estiloFinal = document.getElementById("estilo").value;
+    } else if (GRUPO_MICRO.includes(perfuracao)) {
+      estiloFinal = document.getElementById("estilo-micro").value;
+    } else if (GRUPO_LOBU.includes(perfuracao)) {
+      estiloFinal = 'Lobuloplastia — R$ 50 por furo por sessão';
     } else {
-      estiloFinal = estiloSel.value;
+      estiloFinal = 'A definir com a equipe no estúdio';
     }
 
     const titanioIndicado = primeiraVez === "sim" || peleSensivel === "sim";
