@@ -572,6 +572,66 @@
       .titanio-destaque { padding: 28px; gap: 28px; }
       .hero-micro { gap: 10px; font-size: 12px; }
     }
+
+    /* ===== VITRINE DE JOIAS ===== */
+    .vitrine-tabs { display:flex; gap:10px; flex-wrap:wrap; justify-content:center; margin-bottom:24px; }
+    .vtab {
+      padding:10px 22px; border-radius:999px; border:1px solid var(--border);
+      background:transparent; color:var(--muted); font-size:14px; font-weight:700;
+      cursor:pointer; transition:all .2s; white-space:nowrap; font-family:inherit;
+    }
+    .vtab:hover { color:var(--text); border-color:rgba(255,255,255,0.3); }
+    .vtab.active.vaco { background:rgba(255,255,255,0.1); border-color:rgba(255,255,255,0.4); color:#fff; }
+    .vtab.active.vpvd { background:rgba(223,183,108,0.15); border-color:var(--gold); color:var(--gold); }
+    .vtab.active.vti  { background:rgba(168,200,255,0.1); border-color:#a8c8ff; color:#a8c8ff; }
+
+    .vitrine-prices { display:flex; gap:8px; flex-wrap:wrap; justify-content:center; margin-bottom:32px; }
+    .vprice {
+      padding:5px 14px; border-radius:999px; border:1px solid var(--border);
+      background:transparent; color:var(--muted); font-size:13px; font-weight:700;
+      cursor:pointer; transition:all .2s; font-family:inherit;
+    }
+    .vprice.active { background:var(--gold); border-color:var(--gold); color:#0f1013; }
+
+    .vitrine-grid {
+      display:grid;
+      grid-template-columns:repeat(auto-fill, minmax(150px,1fr));
+      gap:12px; margin-bottom:36px;
+    }
+    @media(min-width:600px){ .vitrine-grid{ grid-template-columns:repeat(auto-fill,minmax(190px,1fr)); gap:16px; } }
+
+    .joia-card {
+      background:#16181f; border:1px solid var(--border); border-radius:14px;
+      overflow:hidden; display:flex; flex-direction:column; transition:transform .2s,border-color .2s;
+    }
+    .joia-card:hover { transform:translateY(-3px); border-color:rgba(223,183,108,0.4); }
+
+    .joia-img-wrap {
+      background:#1f222a; aspect-ratio:1/1; display:flex;
+      align-items:center; justify-content:center; padding:10px; overflow:hidden;
+    }
+    .joia-img-wrap img { width:100%; height:100%; object-fit:contain; display:block; }
+
+    .joia-info { padding:10px 12px 12px; display:flex; flex-direction:column; gap:5px; flex:1; }
+    .joia-badge {
+      display:inline-block; font-size:10px; font-weight:900; padding:2px 9px;
+      border-radius:999px; letter-spacing:.5px; width:fit-content; margin-bottom:2px;
+    }
+    .badge-aco { background:rgba(255,255,255,0.07); color:var(--muted); border:1px solid var(--border); }
+    .badge-pvd { background:rgba(223,183,108,0.12); color:var(--gold); border:1px solid rgba(223,183,108,0.3); }
+    .badge-ti  { background:rgba(168,200,255,0.08); color:#a8c8ff; border:1px solid rgba(168,200,255,0.2); }
+
+    .joia-name {
+      font-size:12px; font-weight:700; color:var(--text); line-height:1.35;
+      display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden;
+    }
+    .joia-wa {
+      display:block; text-align:center; font-size:11px; font-weight:800;
+      color:var(--gold); text-decoration:none; border-top:1px solid var(--border);
+      padding:7px 10px; margin-top:auto; transition:background .2s;
+    }
+    .joia-wa:hover { background:rgba(223,183,108,0.08); }
+    .vitrine-vazia { grid-column:1/-1; text-align:center; color:var(--muted); padding:40px 20px; }
   </style>
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-WYRS5RBYGM"></script>
   <script>
@@ -722,137 +782,22 @@
 </section>
 
 <!-- ============================
-     GALERIA VISUAL / ESTILOS
-     IMPORTANTE: Esta seção espera fotos reais.
-     Cada .galeria-item deve ter um <img> com foto do piercing correspondente.
-     Os placeholders abaixo mostram o que colocar em cada posição.
+     VITRINE DE JOIAS
 ============================= -->
 <section class="section dark-section" id="estilos">
   <div class="container">
     <div class="section-heading">
-      <div class="eyebrow-pill">Inspiração</div>
-      <h2>A joia certa muda tudo. Escolha pelo resultado que você quer sentir.</h2>
-      <p>Não é só sobre fazer o furo. É sobre a joia que vai ficar bonita em você todos os dias. Veja os estilos e chegue sabendo o que quer.</p>
+      <div class="eyebrow-pill">Vitrine de Joias</div>
+      <h2>Mais de <em>100 modelos</em> em estoque.</h2>
+      <p>Filtre pelo material e faixa de preço. Escolha antes de chegar — agiliza seu atendimento.</p>
     </div>
 
-    <!-- AÇO CIRÚRGICO -->
-    <div class="cat-label cat-aco">💎 Aço Cirúrgico</div>
-    <div class="style-grid">
-      <article class="style-card">
-        <div class="card-foto"><img src="./assets/aco-25.webp" alt="Banana Bell G - Prata" /></div>
-        <span>R$25 · Aço</span>
-        <h3>Banana Bell G - Prata</h3>
-        <p>Clássico para umbigo. Simples, resistente e funcional para cicatrização.</p>
-      </article>
-      <article class="style-card destaque">
-        <div class="card-foto" style="position:relative;">
-          <div class="card-badge">⭐ Mais escolhida</div>
-          <img src="./assets/aco-45.webp" alt="Ponto de Luz Labret 3mm" />
-        </div>
-        <span>R$45 · Aço</span>
-        <h3>Ponto de Luz Labret 3mm</h3>
-        <p>Um brilhinho que já faz diferença. Delicada e marcante ao mesmo tempo.</p>
-      </article>
-      <article class="style-card">
-        <div class="card-foto"><img src="./assets/aco-55.webp" alt="Libélula Labret" /></div>
-        <span>R$55 · Aço</span>
-        <h3>Libélula</h3>
-        <p>Visual fino e feminino. Design exclusivo que chama atenção no detalhe.</p>
-      </article>
-      <article class="style-card">
-        <div class="card-foto"><img src="./assets/aco-65.jpeg" alt="Barbel Coração" /></div>
-        <span>R$65 · Aço</span>
-        <h3>Barbel Coração</h3>
-        <p>Coração com ponto de luz. Para quem quer personalidade e presença.</p>
-      </article>
-      <article class="style-card">
-        <div class="card-foto"><img src="./assets/aco-75.webp" alt="Coração Cravejado Direito" /></div>
-        <span>R$75 · Aço</span>
-        <h3>Coração Cravejado Direito</h3>
-        <p>Mais presença, brilho e personalidade. Difícil não olhar duas vezes.</p>
-      </article>
-      <article class="style-card">
-        <div class="card-foto"><img src="./assets/aco-110.webp" alt="Barbell 2 Corações com Ponto de Luz" /></div>
-        <span>R$110 · Aço</span>
-        <h3>Barbell 2 Corações</h3>
-        <p>A joia que se destaca. Dois corações com ponto de luz, visual premium.</p>
-      </article>
-    </div>
+    <div class="vitrine-tabs" id="vitrine-tabs"></div>
+    <div class="vitrine-prices" id="vitrine-prices"></div>
+    <div class="vitrine-grid" id="vitrine-grid"></div>
 
-    <!-- PVD GOLD -->
-    <div class="cat-label cat-pvd">✦ PVD Gold</div>
-    <div class="style-grid">
-      <article class="style-card pvd">
-        <div class="card-foto"><img src="./assets/pvd-45.webp" alt="Argola Dering PVD Gold" /></div>
-        <span>R$45 · PVD Gold</span>
-        <h3>Argola Dering</h3>
-        <p>O visual dourado que combina com tudo. Elegante e acessível.</p>
-      </article>
-      <article class="style-card pvd">
-        <div class="card-foto"><img src="./assets/pvd-55.webp" alt="Ponto de Luz Labret 3mm PVD Gold" /></div>
-        <span>R$55 · PVD Gold</span>
-        <h3>Ponto de Luz Labret 3mm</h3>
-        <p>Ponto de luz em dourado. Discreto e sofisticado ao mesmo tempo.</p>
-      </article>
-      <article class="style-card pvd">
-        <div class="card-foto"><img src="./assets/pvd-65.jpeg" alt="Flor 6 Pontas PVD Gold" /></div>
-        <span>R$65 · PVD Gold</span>
-        <h3>Flor 6 Pontas</h3>
-        <p>Design floral dourado que chama atenção. Para quem quer personalidade.</p>
-      </article>
-      <article class="style-card pvd destaque">
-        <div class="card-foto" style="position:relative;">
-          <div class="card-badge">✦ PVD Favorita</div>
-          <img src="./assets/pvd-85.webp" alt="Argola Cravejado Lateral PVD Gold" />
-        </div>
-        <span>R$85 · PVD Gold</span>
-        <h3>Argola Cravejado Lateral</h3>
-        <p>Argola dourada cravejada. O nível máximo de presença e estilo.</p>
-      </article>
-      <article class="style-card pvd">
-        <div class="card-foto"><img src="./assets/pvd-110.webp" alt="Barbell 2 Corações PVD Gold" /></div>
-        <span>R$110 · PVD Gold</span>
-        <h3>Barbell 2 Corações</h3>
-        <p>O topo da linha PVD. Para quem quer o melhor acabamento dourado.</p>
-      </article>
-    </div>
-
-    <!-- TITÂNIO -->
-    <div class="cat-label cat-ti">🔵 Titânio</div>
-    <div class="style-grid">
-      <article class="style-card titanio">
-        <div class="card-foto"><img src="./assets/ti-70-a.webp" alt="Ponto de Luz Anzol Titânio" /></div>
-        <span>R$70 · Titânio</span>
-        <h3>Ponto de Luz Anzol</h3>
-        <p>Clássico em titânio. 100% hipoalergênico, cicatrização mais tranquila.</p>
-      </article>
-      <article class="style-card titanio">
-        <div class="card-foto"><img src="./assets/ti-70-b.webp" alt="Barbell Reto 16mm Titânio" /></div>
-        <span>R$70 · Titânio</span>
-        <h3>Barbell Reto 16mm</h3>
-        <p>Para mamilo ou língua. Material seguro, visual limpo e resistente.</p>
-      </article>
-      <article class="style-card titanio">
-        <div class="card-foto"><img src="./assets/ti-110-a.webp" alt="Íntimo Titânio Gold" /></div>
-        <span>R$110 · Titânio</span>
-        <h3>Íntimo</h3>
-        <p>Joia íntima em titânio gold. Sofisticada, segura e de cicatrização superior.</p>
-      </article>
-      <article class="style-card titanio destaque">
-        <div class="card-foto" style="position:relative;">
-          <div class="card-badge">✦ Titânio Premium</div>
-          <img src="./assets/ti-110-b.webp" alt="Barbell Reto 2 Ponto de Luz Titânio Gold" />
-        </div>
-        <span>R$110 · Titânio</span>
-        <h3>Barbell Reto 2 Ponto de Luz</h3>
-        <p>Dois pontos de luz em titânio gold. O melhor dos dois mundos.</p>
-      </article>
-      <article class="style-card titanio">
-        <div class="card-foto"><img src="./assets/ti-110-c.webp" alt="Borboleta Titânio" /></div>
-        <span>R$110 · Titânio</span>
-        <h3>Borboleta</h3>
-        <p>Design borboleta único. Delicado, marcante e em titânio de qualidade.</p>
-      </article>
+    <div style="text-align:center;padding-top:4px;">
+      <a href="https://wa.me/5519988404390?text=Oi%21+Quero+ver+mais+modelos+de+joias" target="_blank" class="btn-secondary">Não achei o que quero → chamar no WhatsApp</a>
     </div>
   </div>
 </section>
