@@ -2,6 +2,43 @@ const SUPABASE_URL = "https://phzqwafwxmnboegjujqf.supabase.co";
 const SUPABASE_ANON_KEY = "sb_publishable_wUX9E6f0iBA_1C9YWibvUA_l0to00jW";
 const NUMERO_WHATSAPP_ESTUDIO = "5519988404390";
 
+// Procedimentos com preço fixo (não seguem tabela de joias)
+const PRECOS_FIXOS = {
+  'Microdermal':  'Microdermal — R$ 170 (preço fixo · a equipe cuida de tudo)',
+  'Mamilo':       'Mamilo — valor informado pela equipe no estúdio',
+};
+
+// Perfurações padrão que seguem a tabela de joias
+const PERFURACOES_PADRAO = ['Nostril','Umbigo','Helix','Tragus','Conch','Lóbulo','Daith','Flat','Labret','Sobrancelha'];
+
+function atualizarCampoJoia(perfuracao) {
+  const grupoJoia  = document.getElementById('grupo-joia');
+  const grupoFixo  = document.getElementById('grupo-preco-fixo');
+  const grupoOutro = document.getElementById('grupo-outro');
+  const estiloSel  = document.getElementById('estilo');
+  const infoFixo   = document.getElementById('info-preco-fixo');
+
+  // Reset
+  grupoJoia.style.display  = 'none';
+  grupoFixo.style.display  = 'none';
+  grupoOutro.style.display = 'none';
+  estiloSel.required = false;
+  estiloSel.value    = '';
+
+  if (!perfuracao) return;
+
+  if (perfuracao === 'Outro') {
+    grupoOutro.style.display = '';
+  } else if (PRECOS_FIXOS[perfuracao]) {
+    infoFixo.textContent    = '💉 ' + PRECOS_FIXOS[perfuracao];
+    grupoFixo.style.display = '';
+  } else {
+    // Perfuração padrão → mostra tabela de joias com valores travados
+    grupoJoia.style.display = '';
+    estiloSel.required      = true;
+  }
+}
+
 document.addEventListener("DOMContentLoaded", function () {
   // Captura UTMs da URL
   const urlParams = new URLSearchParams(window.location.search);
@@ -9,6 +46,14 @@ document.addEventListener("DOMContentLoaded", function () {
     const el = document.getElementById(utm);
     if (el && urlParams.has(utm)) el.value = urlParams.get(utm);
   });
+
+  // Lógica dinâmica do campo de joia
+  const perfuracaoSel = document.getElementById('perfuracao');
+  if (perfuracaoSel) {
+    perfuracaoSel.addEventListener('change', function () {
+      atualizarCampoJoia(this.value);
+    });
+  }
 
   const formLead = document.getElementById("form-lead");
   if (!formLead) return;
@@ -20,19 +65,30 @@ document.addEventListener("DOMContentLoaded", function () {
     btn.innerText = "Salvando...";
     btn.disabled = true;
 
-    const nome        = document.getElementById("nome").value.trim();
-    const whatsapp    = document.getElementById("whatsapp").value.trim();
-    const perfuracao  = document.getElementById("perfuracao").value;
-    const estilo      = document.getElementById("estilo").value;
-    const primeiraVez = document.querySelector('input[name="primeira_vez"]:checked')?.value || "nao";
+    const nome         = document.getElementById("nome").value.trim();
+    const whatsapp     = document.getElementById("whatsapp").value.trim();
+    const perfuracao   = document.getElementById("perfuracao").value;
+    const estiloSel    = document.getElementById("estilo");
+    const infoFixo     = document.getElementById("info-preco-fixo");
+    const primeiraVez  = document.querySelector('input[name="primeira_vez"]:checked')?.value || "nao";
     const peleSensivel = document.querySelector('input[name="pele_sensivel"]:checked')?.value || "nao";
+
+    // Resolve o estilo/valor correto conforme o tipo de procedimento
+    let estiloFinal;
+    if (PRECOS_FIXOS[perfuracao]) {
+      estiloFinal = PRECOS_FIXOS[perfuracao];
+    } else if (perfuracao === 'Outro') {
+      estiloFinal = 'A definir com a equipe no estúdio';
+    } else {
+      estiloFinal = estiloSel.value;
+    }
 
     const titanioIndicado = primeiraVez === "sim" || peleSensivel === "sim";
 
     const formData = {
       nome,
       whatsapp,
-      detalhes: `${perfuracao} | Estilo: ${estilo} | Primeira vez: ${primeiraVez} | Pele sensível: ${peleSensivel}`,
+      detalhes: `${perfuracao} | Joia/Valor: ${estiloFinal} | Primeira vez: ${primeiraVez} | Pele sensível: ${peleSensivel}`,
       segmento: "piercing",
       utm_source:   document.getElementById("utm_source").value   || "direto",
       utm_medium:   document.getElementById("utm_medium").value   || "organico",
@@ -68,7 +124,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     // Monta link WhatsApp
-    const texto = montarTextoWhatsApp(nome, perfuracao, estilo, primeiraVez, peleSensivel, titanioIndicado);
+    const texto = montarTextoWhatsApp(nome, perfuracao, estiloFinal, primeiraVez, peleSensivel, titanioIndicado);
     document.getElementById("btn-whatsapp").href =
       `https://wa.me/${NUMERO_WHATSAPP_ESTUDIO}?text=${encodeURIComponent(texto)}`;
   });

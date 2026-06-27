@@ -1252,22 +1252,46 @@
             <option value="Outro">Outro / ainda estou decidindo</option>
           </select>
         </div>
-        <div class="form-group">
-          <label for="estilo">Qual joia mais combina com você?</label>
-          <select id="estilo" name="estilo" required>
+        <!-- JOIA — só aparece para perfurações padrão -->
+        <div class="form-group" id="grupo-joia" style="display:none">
+          <label for="estilo">Qual joia você prefere?</label>
+          <select id="estilo" name="estilo">
             <option value="" disabled selected>Escolha uma opção...</option>
-            <option value="Tradicional R$25">Tradicional — R$25</option>
-            <option value="Brilhante R$45">Brilhante — R$45 ⭐ mais escolhida</option>
-            <option value="Delicada R$55">Delicada — R$55</option>
-            <option value="Decorada R$65">Decorada — R$65</option>
-            <option value="Marcante R$75">Marcante — R$75</option>
-            <option value="Premium R$85">Premium — R$85</option>
-            <option value="Premium ACO R$110">Premium Aço — R$110</option>
-            <option value="PVD Gold">PVD Gold (dourado) — R$45 / R$55 / R$65 / R$85</option>
-            <option value="PVD Gold Premium R$110">PVD Gold Premium — R$110</option>
-            <option value="Titânio tradicional R$70">Titânio tradicional — R$70</option>
-            <option value="Titânio decorado R$110">Titânio decorado — R$110</option>
+            <optgroup label="── Aço Cirúrgico ──">
+              <option value="Aço Tradicional R$25">Tradicional — R$ 25</option>
+              <option value="Aço Brilhante R$45">Brilhante — R$ 45 ⭐ mais escolhida</option>
+              <option value="Aço Delicada R$55">Delicada — R$ 55</option>
+              <option value="Aço Decorada R$65">Decorada — R$ 65</option>
+              <option value="Aço Marcante R$75">Marcante — R$ 75</option>
+              <option value="Aço Premium R$110">Premium Aço — R$ 110</option>
+            </optgroup>
+            <optgroup label="── PVD Gold (dourado) ──">
+              <option value="PVD Gold R$45">PVD Gold — R$ 45</option>
+              <option value="PVD Gold R$55">PVD Gold — R$ 55</option>
+              <option value="PVD Gold R$65">PVD Gold — R$ 65</option>
+              <option value="PVD Gold R$85">PVD Gold — R$ 85</option>
+              <option value="PVD Gold Premium R$110">PVD Gold Premium — R$ 110</option>
+            </optgroup>
+            <optgroup label="── Titânio ──">
+              <option value="Titânio Tradicional R$70">Titânio Tradicional — R$ 70</option>
+              <option value="Titânio Decorado R$110">Titânio Decorado — R$ 110</option>
+            </optgroup>
+            <optgroup label="──────────────────">
+              <option value="Ainda não sei">Ainda não sei — a equipe me ajuda no estúdio</option>
+            </optgroup>
           </select>
+        </div>
+
+        <!-- PREÇO FIXO — aparece para procedimentos especiais -->
+        <div class="form-group" id="grupo-preco-fixo" style="display:none">
+          <div id="info-preco-fixo" style="background:rgba(223,183,108,0.08);border:1px solid rgba(223,183,108,0.3);border-radius:12px;padding:12px 16px;font-size:13px;color:var(--gold);font-weight:700;"></div>
+        </div>
+
+        <!-- AVISO para "outro" -->
+        <div class="form-group" id="grupo-outro" style="display:none">
+          <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);border-radius:12px;padding:12px 16px;font-size:13px;color:var(--muted);">
+            A equipe vai te orientar na escolha da joia e do local ao chegar no estúdio.
+          </div>
         </div>
         <div class="form-group">
           <label>É a sua primeira vez fazendo piercing?</label>
