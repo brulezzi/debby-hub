@@ -14,8 +14,11 @@ const GRUPO_MICRO = ['Microdermal','Surface'];
 // GRUPO C: lobuloplastia
 const GRUPO_LOBU = ['Lobuloplastia'];
 
+// GRUPO E: remoção simples de joia
+const GRUPO_REMOCAO = ['Remoção de joia'];
+
 function resetGrupos() {
-  ['grupo-tipo-perf','grupo-restrito','grupo-joia','grupo-micro','grupo-lobu','grupo-outro'].forEach(function(id) {
+  ['grupo-tipo-perf','grupo-restrito','grupo-joia','grupo-micro','grupo-lobu','grupo-remocao','grupo-outro'].forEach(function(id) {
     document.getElementById(id).style.display = 'none';
   });
   document.getElementById('estilo').required     = false;
@@ -37,6 +40,10 @@ function atualizarCampoJoia(perfuracao, tipoPerf) {
   }
   if (GRUPO_LOBU.includes(perfuracao)) {
     document.getElementById('grupo-lobu').style.display = '';
+    return;
+  }
+  if (GRUPO_REMOCAO.includes(perfuracao)) {
+    document.getElementById('grupo-remocao').style.display = '';
     return;
   }
   if (!GRUPO_JOIA.includes(perfuracao)) {
@@ -108,6 +115,8 @@ document.addEventListener("DOMContentLoaded", function () {
       estiloFinal = document.getElementById("estilo-micro").value;
     } else if (GRUPO_LOBU.includes(perfuracao)) {
       estiloFinal = 'Lobuloplastia — R$ 50 por furo por sessão';
+    } else if (GRUPO_REMOCAO.includes(perfuracao)) {
+      estiloFinal = 'Remoção de joia — R$ 20 por peça';
     } else if (REGIOES_RESTRITAS.includes(perfuracao) && tipoPerf === 'nova') {
       estiloFinal = 'Aço Tradicional R$25 (perfuração nova — troca permitida após 30 dias)';
     } else if (GRUPO_JOIA.includes(perfuracao)) {
