@@ -80,6 +80,21 @@
     .step h3{font-size:16px;margin-bottom:6px}
     .step p{font-size:13px;color:var(--muted);line-height:1.5}
 
+    /* GALERIA DE FORMAS */
+    .galeria-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:14px;margin-top:8px}
+    @media(min-width:600px){.galeria-grid{grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:18px}}
+    .galeria-card{background:var(--card);border:1px solid var(--border);border-radius:16px;overflow:hidden;transition:transform .2s,border-color .2s}
+    .galeria-card:hover{transform:translateY(-3px);border-color:rgba(223,183,108,0.35)}
+    .galeria-foto{aspect-ratio:3/4;overflow:hidden;background:#1a1d24}
+    .galeria-foto img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .3s}
+    .galeria-card:hover .galeria-foto img{transform:scale(1.04)}
+    .galeria-body{padding:12px 14px 14px}
+    .galeria-nome{font-size:15px;font-weight:900;margin-bottom:5px}
+    .galeria-preco{font-size:12px;color:var(--muted);margin-bottom:11px;line-height:1.6}
+    .galeria-preco strong{color:var(--gold)}
+    .galeria-cta{display:block;text-align:center;background:var(--gold);color:#151515;font-size:12px;font-weight:900;padding:8px 14px;border-radius:999px;transition:opacity .2s}
+    .galeria-cta:hover{opacity:.85}
+
     /* COMBOS DESTAQUE */
     .combos-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
     .combo-card{background:linear-gradient(135deg,rgba(223,183,108,0.1),rgba(223,183,108,0.03));border:1px solid rgba(223,183,108,0.25);border-radius:20px;padding:28px;text-align:center}
@@ -254,6 +269,72 @@
         <h3>Sai do jeito que queria</h3>
         <p>Unhas feitas com cuidado, material de qualidade, do seu estilo. Volta quando quiser.</p>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALERIA DE FORMAS -->
+<section class="section" style="background:#111217;border-top:1px solid var(--border)">
+  <div class="container">
+    <div class="section-label">Formas de unhas</div>
+    <h2 style="margin-bottom:8px">Escolha a forma que <em>combina com você.</em></h2>
+    <p style="color:var(--muted);font-size:15px;margin-bottom:28px">Alongamento Molde F1 — aplicação R$145 / manutenção R$115. Chega já sabendo o estilo e a Duda cuida do resto.</p>
+    <div class="galeria-grid">
+
+      <div class="galeria-card">
+        <div class="galeria-foto"><img src="../assets/fotos/unhas/Molde%20F1%20Arredondada.jpeg" alt="Forma Arredondada" loading="lazy" /></div>
+        <div class="galeria-body">
+          <div class="galeria-nome">Arredondada</div>
+          <div class="galeria-preco">Molde F1 · Aplicação <strong>R$ 145</strong><br/>Manutenção <strong>R$ 115</strong></div>
+          <a href="https://wa.me/5519995838910?text=Oi%20Duda!%20Vi%20o%20site%20e%20quero%20agendar%20alongamento%20forma%20Arredondada%20%F0%9F%92%85" target="_blank" class="galeria-cta">Quero esta forma →</a>
+        </div>
+      </div>
+
+      <div class="galeria-card">
+        <div class="galeria-foto"><img src="../assets/fotos/unhas/Molde%20F1%20Amendoada.jpeg" alt="Forma Amendoada" loading="lazy" /></div>
+        <div class="galeria-body">
+          <div class="galeria-nome">Amendoada</div>
+          <div class="galeria-preco">Molde F1 · Aplicação <strong>R$ 145</strong><br/>Manutenção <strong>R$ 115</strong></div>
+          <a href="https://wa.me/5519995838910?text=Oi%20Duda!%20Vi%20o%20site%20e%20quero%20agendar%20alongamento%20forma%20Amendoada%20%F0%9F%92%85" target="_blank" class="galeria-cta">Quero esta forma →</a>
+        </div>
+      </div>
+
+      <div class="galeria-card">
+        <div class="galeria-foto"><img src="../assets/fotos/unhas/Molde%20F1%20Quadrada.jpeg" alt="Forma Quadrada" loading="lazy" /></div>
+        <div class="galeria-body">
+          <div class="galeria-nome">Quadrada</div>
+          <div class="galeria-preco">Molde F1 · Aplicação <strong>R$ 145</strong><br/>Manutenção <strong>R$ 115</strong></div>
+          <a href="https://wa.me/5519995838910?text=Oi%20Duda!%20Vi%20o%20site%20e%20quero%20agendar%20alongamento%20forma%20Quadrada%20%F0%9F%92%85" target="_blank" class="galeria-cta">Quero esta forma →</a>
+        </div>
+      </div>
+
+      <div class="galeria-card">
+        <div class="galeria-foto"><img src="../assets/fotos/unhas/Molde%20F1%20Bailarina.jpeg" alt="Forma Bailarina" loading="lazy" /></div>
+        <div class="galeria-body">
+          <div class="galeria-nome">Bailarina</div>
+          <div class="galeria-preco">Molde F1 · Aplicação <strong>R$ 145</strong><br/>Manutenção <strong>R$ 115</strong></div>
+          <a href="https://wa.me/5519995838910?text=Oi%20Duda!%20Vi%20o%20site%20e%20quero%20agendar%20alongamento%20forma%20Bailarina%20%F0%9F%92%85" target="_blank" class="galeria-cta">Quero esta forma →</a>
+        </div>
+      </div>
+
+      <div class="galeria-card">
+        <div class="galeria-foto"><img src="../assets/fotos/unhas/Molde%20F1%20Estileto.jpeg" alt="Forma Estileto" loading="lazy" /></div>
+        <div class="galeria-body">
+          <div class="galeria-nome">Estileto</div>
+          <div class="galeria-preco">Molde F1 · Aplicação <strong>R$ 145</strong><br/>Manutenção <strong>R$ 115</strong></div>
+          <a href="https://wa.me/5519995838910?text=Oi%20Duda!%20Vi%20o%20site%20e%20quero%20agendar%20alongamento%20forma%20Estileto%20%F0%9F%92%85" target="_blank" class="galeria-cta">Quero esta forma →</a>
+        </div>
+      </div>
+
+      <div class="galeria-card">
+        <div class="galeria-foto"><img src="../assets/fotos/unhas/Esmalta%C3%A7%C3%A3o%20em%20Gel.jpeg" alt="Esmaltação em Gel" loading="lazy" /></div>
+        <div class="galeria-body">
+          <div class="galeria-nome">Esmaltação em Gel</div>
+          <div class="galeria-preco">Mão <strong>R$ 55</strong> · Pé <strong>R$ 50</strong><br/>Banho de Gel <strong>R$ 90</strong></div>
+          <a href="https://wa.me/5519995838910?text=Oi%20Duda!%20Vi%20o%20site%20e%20quero%20agendar%20esmalta%C3%A7%C3%A3o%20em%20gel%20%F0%9F%92%85" target="_blank" class="galeria-cta">Agendar gel →</a>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>

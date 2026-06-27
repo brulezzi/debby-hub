@@ -95,6 +95,22 @@
     .footer-links{display:flex;gap:20px;justify-content:center;margin-top:10px;flex-wrap:wrap}
     .footer-links a{color:var(--muted)} .footer-links a:hover{color:var(--gold)}
 
+    /* GALERIA DE ESTILOS */
+    .galeria-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:14px;margin-top:8px}
+    @media(min-width:600px){.galeria-grid{grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:18px}}
+    .galeria-card{background:var(--card);border:1px solid var(--border);border-radius:16px;overflow:hidden;transition:transform .2s,border-color .2s}
+    .galeria-card:hover{transform:translateY(-3px);border-color:rgba(223,183,108,0.35)}
+    .galeria-foto{aspect-ratio:3/4;overflow:hidden;background:#1a1d24}
+    .galeria-foto img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .3s}
+    .galeria-card:hover .galeria-foto img{transform:scale(1.04)}
+    .galeria-body{padding:12px 14px 14px}
+    .galeria-nome{font-size:15px;font-weight:900;margin-bottom:5px}
+    .galeria-preco{font-size:12px;color:var(--muted);margin-bottom:11px;line-height:1.6}
+    .galeria-preco strong{color:var(--gold)}
+    .galeria-cta{display:block;text-align:center;background:var(--gold);color:#151515;font-size:12px;font-weight:900;padding:8px 14px;border-radius:999px;transition:opacity .2s}
+    .galeria-cta:hover{opacity:.85}
+    .galeria-sob{border-color:rgba(223,183,108,0.2);background:rgba(223,183,108,0.04)}
+
     /* Prof hint — mini-card da prof acima do form, visível só no mobile */
     .prof-hint{display:flex;align-items:center;gap:12px;background:rgba(223,183,108,0.06);border:1px solid rgba(223,183,108,0.15);border-radius:12px;padding:12px 14px;margin-bottom:20px}
     .prof-hint img{width:44px;height:44px;border-radius:50%;object-fit:cover;object-position:center top;flex-shrink:0}
@@ -217,6 +233,81 @@
       <div class="step"><div class="step-num">02</div><h3>Agenda com a Rauany</h3><p>Manda mensagem e ela confirma o dia e horário. Rápido e sem burocracia.</p></div>
       <div class="step"><div class="step-num">03</div><h3>Chega no horário</h3><p>Av. Andrade Neves, 365 — Centro de Campinas. A Rauany te espera com tudo preparado.</p></div>
       <div class="step"><div class="step-num">04</div><h3>Sai transformada</h3><p>Olhar novo, autoestima lá em cima. E quando precisar de manutenção, a Rauany já sabe o seu estilo.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- GALERIA DE ESTILOS -->
+<section class="section" style="background:#111217;border-top:1px solid var(--border)">
+  <div class="container">
+    <div class="section-label">Galeria de estilos</div>
+    <h2 style="margin-bottom:8px">Escolha o olhar <em>que é a sua cara.</em></h2>
+    <p style="color:var(--muted);font-size:15px;margin-bottom:28px">Veja cada estilo, compare os preços e já chega sabendo o que quer — a Rauany entrega exatamente o que você escolher.</p>
+    <div class="galeria-grid">
+
+      <div class="galeria-card">
+        <div class="galeria-foto"><img src="../assets/fotos/cilios/Volume%20Brasileiro.jpeg" alt="Volume Brasileiro" loading="lazy" /></div>
+        <div class="galeria-body">
+          <div class="galeria-nome">Volume Brasileiro</div>
+          <div class="galeria-preco">Aplicação <strong>R$ 135</strong><br/>Manutenção <strong>R$ 90</strong> · 1h30</div>
+          <a href="https://wa.me/5519993031655?text=Oi%20Rauany!%20Vi%20o%20site%20e%20quero%20agendar%20Volume%20Brasileiro%20%F0%9F%98%8A" target="_blank" class="galeria-cta">Agendar este estilo →</a>
+        </div>
+      </div>
+
+      <div class="galeria-card">
+        <div class="galeria-foto"><img src="../assets/fotos/cilios/Volume%20Egipcio.jpeg" alt="Volume Egípcio" loading="lazy" /></div>
+        <div class="galeria-body">
+          <div class="galeria-nome">Volume Egípcio</div>
+          <div class="galeria-preco">Aplicação <strong>R$ 145</strong><br/>Manutenção <strong>R$ 100</strong> · 1h40</div>
+          <a href="https://wa.me/5519993031655?text=Oi%20Rauany!%20Vi%20o%20site%20e%20quero%20agendar%20Volume%20Eg%C3%ADpcio%20%F0%9F%98%8A" target="_blank" class="galeria-cta">Agendar este estilo →</a>
+        </div>
+      </div>
+
+      <div class="galeria-card">
+        <div class="galeria-foto"><img src="../assets/fotos/cilios/Volume%20Glam.jpeg" alt="Volume Glam" loading="lazy" /></div>
+        <div class="galeria-body">
+          <div class="galeria-nome">Volume Glam</div>
+          <div class="galeria-preco">Aplicação <strong>R$ 150</strong><br/>Manutenção <strong>R$ 105</strong> · 1h40</div>
+          <a href="https://wa.me/5519993031655?text=Oi%20Rauany!%20Vi%20o%20site%20e%20quero%20agendar%20Volume%20Glam%20%F0%9F%98%8A" target="_blank" class="galeria-cta">Agendar este estilo →</a>
+        </div>
+      </div>
+
+      <div class="galeria-card">
+        <div class="galeria-foto"><img src="../assets/fotos/cilios/Volume%20Ingles.jpeg" alt="Volume Inglês" loading="lazy" /></div>
+        <div class="galeria-body">
+          <div class="galeria-nome">Volume Inglês</div>
+          <div class="galeria-preco">Aplicação <strong>R$ 155</strong><br/>Manutenção <strong>R$ 110</strong> · 1h40</div>
+          <a href="https://wa.me/5519993031655?text=Oi%20Rauany!%20Vi%20o%20site%20e%20quero%20agendar%20Volume%20Ingl%C3%AAs%20%F0%9F%98%8A" target="_blank" class="galeria-cta">Agendar este estilo →</a>
+        </div>
+      </div>
+
+      <div class="galeria-card">
+        <div class="galeria-foto"><img src="../assets/fotos/cilios/Fox%20Eyes.jpeg" alt="Fox Eyes" loading="lazy" /></div>
+        <div class="galeria-body">
+          <div class="galeria-nome">Fox Eyes</div>
+          <div class="galeria-preco">Aplicação <strong>R$ 175</strong><br/>Manutenção <strong>R$ 120</strong> · 1h40</div>
+          <a href="https://wa.me/5519993031655?text=Oi%20Rauany!%20Vi%20o%20site%20e%20quero%20agendar%20Fox%20Eyes%20%F0%9F%98%8A" target="_blank" class="galeria-cta">Agendar este estilo →</a>
+        </div>
+      </div>
+
+      <div class="galeria-card">
+        <div class="galeria-foto"><img src="../assets/fotos/cilios/Mega%20Volume.jpeg" alt="Mega Volume" loading="lazy" /></div>
+        <div class="galeria-body">
+          <div class="galeria-nome">Mega Volume</div>
+          <div class="galeria-preco">Aplicação <strong>R$ 180</strong><br/>Manutenção <strong>R$ 120</strong> · 2h</div>
+          <a href="https://wa.me/5519993031655?text=Oi%20Rauany!%20Vi%20o%20site%20e%20quero%20agendar%20Mega%20Volume%20%F0%9F%98%8A" target="_blank" class="galeria-cta">Agendar este estilo →</a>
+        </div>
+      </div>
+
+      <div class="galeria-card galeria-sob">
+        <div class="galeria-foto"><img src="../assets/fotos/cilios/Design%20com%20Henna.jpeg" alt="Design + Henna Sobrancelha" loading="lazy" /></div>
+        <div class="galeria-body">
+          <div class="galeria-nome">🌿 Design + Henna</div>
+          <div class="galeria-preco">Sobrancelha · <strong>R$ 65</strong><br/>Design simples <strong>R$ 45</strong> · 30–40min</div>
+          <a href="https://wa.me/5519993031655?text=Oi%20Rauany!%20Vi%20o%20site%20e%20quero%20agendar%20Design%20de%20Sobrancelha%20%F0%9F%98%8A" target="_blank" class="galeria-cta">Agendar sobrancelha →</a>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
