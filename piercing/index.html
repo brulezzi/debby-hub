@@ -1246,12 +1246,30 @@
             <option value="Daith">Daith</option>
             <option value="Flat">Flat</option>
             <option value="Labret">Labret</option>
+            <option value="Língua">Língua</option>
             <option value="Sobrancelha">Sobrancelha</option>
             <option value="Microdermal">Microdermal</option>
             <option value="Mamilo">Mamilo</option>
             <option value="Outro">Outro / ainda estou decidindo</option>
           </select>
         </div>
+        <!-- TIPO: nova perfuração ou troca — só aparece quando relevante -->
+        <div class="form-group" id="grupo-tipo-perf" style="display:none">
+          <label>É uma perfuração nova ou troca de joia?</label>
+          <div class="radio-group">
+            <label class="radio-option"><input type="radio" name="tipo_perf" value="nova" /> Nova perfuração</label>
+            <label class="radio-option"><input type="radio" name="tipo_perf" value="troca" /> Troca de joia (piercing já cicatrizado)</label>
+          </div>
+        </div>
+
+        <!-- AVISO regiões restritas: nova perfuração + joia decorada bloqueada -->
+        <div class="form-group" id="grupo-restrito" style="display:none">
+          <div style="background:rgba(251,191,36,0.08);border:1px solid rgba(251,191,36,0.35);border-radius:12px;padding:12px 16px;font-size:13px;color:#fbbf24;">
+            ⚠️ Para essa região, a perfuração nova é feita com a <strong>joia Tradicional R$ 25</strong>. Após 30 dias de cicatrização você pode trocar para qualquer modelo. A equipe te explica tudo ao chegar.
+          </div>
+          <input type="hidden" id="estilo-restrito" name="estilo-restrito" value="Aço Tradicional R$25 (perfuração nova — troca permitida após 30 dias)" />
+        </div>
+
         <!-- GRUPO A: joia livre — perfurações padrão e mamilo/lóbulo -->
         <div class="form-group" id="grupo-joia" style="display:none">
           <label for="estilo">Qual joia você prefere?</label>

@@ -2,50 +2,61 @@ const SUPABASE_URL = "https://phzqwafwxmnboegjujqf.supabase.co";
 const SUPABASE_ANON_KEY = "sb_publishable_wUX9E6f0iBA_1C9YWibvUA_l0to00jW";
 const NUMERO_WHATSAPP_ESTUDIO = "5519988404390";
 
-// GRUPO A: perfurações que seguem tabela de joias (inclui mamilo e lóbulo)
-const GRUPO_JOIA = ['Nostril','Umbigo','Helix','Tragus','Conch','Lóbulo','Daith','Flat','Labret','Sobrancelha','Mamilo'];
+// GRUPO A: perfurações que seguem tabela de joias
+const GRUPO_JOIA = ['Nostril','Umbigo','Helix','Tragus','Conch','Lóbulo','Daith','Flat','Labret','Língua','Sobrancelha','Mamilo'];
 
-// GRUPO B: microdermal e surface — seleção de tipo de serviço com valores travados
+// Regiões restritas: só Tradicional R$25 em perfuração nova
+const REGIOES_RESTRITAS = ['Labret','Língua','Sobrancelha'];
+
+// GRUPO B: microdermal e surface
 const GRUPO_MICRO = ['Microdermal','Surface'];
 
-// GRUPO C: lobuloplastia — preço fixo R$50/furo
+// GRUPO C: lobuloplastia
 const GRUPO_LOBU = ['Lobuloplastia'];
 
-// GRUPO D: outro → equipe orienta
+function resetGrupos() {
+  ['grupo-tipo-perf','grupo-restrito','grupo-joia','grupo-micro','grupo-lobu','grupo-outro'].forEach(function(id) {
+    document.getElementById(id).style.display = 'none';
+  });
+  document.getElementById('estilo').required     = false;
+  document.getElementById('estilo-micro').required = false;
+  document.getElementById('estilo').value        = '';
+  document.getElementById('estilo-micro').value  = '';
+  document.querySelectorAll('input[name="tipo_perf"]').forEach(function(r){ r.checked = false; });
+}
 
-function atualizarCampoJoia(perfuracao) {
-  const grupoJoia  = document.getElementById('grupo-joia');
-  const grupoMicro = document.getElementById('grupo-micro');
-  const grupoLobu  = document.getElementById('grupo-lobu');
-  const grupoOutro = document.getElementById('grupo-outro');
-  const estiloSel  = document.getElementById('estilo');
-  const microSel   = document.getElementById('estilo-micro');
-  const labelMicro = document.getElementById('label-micro');
-
-  // Reset todos os grupos
-  grupoJoia.style.display  = 'none';
-  grupoMicro.style.display = 'none';
-  grupoLobu.style.display  = 'none';
-  grupoOutro.style.display = 'none';
-  estiloSel.required = false;
-  microSel.required  = false;
-  estiloSel.value    = '';
-  microSel.value     = '';
-
+function atualizarCampoJoia(perfuracao, tipoPerf) {
+  resetGrupos();
   if (!perfuracao) return;
 
-  if (GRUPO_JOIA.includes(perfuracao)) {
-    grupoJoia.style.display = '';
-    estiloSel.required = true;
-  } else if (GRUPO_MICRO.includes(perfuracao)) {
-    labelMicro.textContent = perfuracao + ' — qual serviço você precisa?';
-    grupoMicro.style.display = '';
-    microSel.required = true;
-  } else if (GRUPO_LOBU.includes(perfuracao)) {
-    grupoLobu.style.display = '';
+  if (GRUPO_MICRO.includes(perfuracao)) {
+    document.getElementById('label-micro').textContent = perfuracao + ' — qual serviço você precisa?';
+    document.getElementById('grupo-micro').style.display = '';
+    document.getElementById('estilo-micro').required = true;
+    return;
+  }
+  if (GRUPO_LOBU.includes(perfuracao)) {
+    document.getElementById('grupo-lobu').style.display = '';
+    return;
+  }
+  if (!GRUPO_JOIA.includes(perfuracao)) {
+    document.getElementById('grupo-outro').style.display = '';
+    return;
+  }
+
+  // Perfuração padrão: precisa saber se é nova ou troca
+  if (REGIOES_RESTRITAS.includes(perfuracao)) {
+    document.getElementById('grupo-tipo-perf').style.display = '';
+    if (tipoPerf === 'nova') {
+      document.getElementById('grupo-restrito').style.display = '';
+    } else if (tipoPerf === 'troca') {
+      document.getElementById('grupo-joia').style.display = '';
+      document.getElementById('estilo').required = true;
+    }
   } else {
-    // Outro
-    grupoOutro.style.display = '';
+    // Região livre — não precisa da pergunta nova/troca
+    document.getElementById('grupo-joia').style.display = '';
+    document.getElementById('estilo').required = true;
   }
 }
 
@@ -61,9 +72,17 @@ document.addEventListener("DOMContentLoaded", function () {
   const perfuracaoSel = document.getElementById('perfuracao');
   if (perfuracaoSel) {
     perfuracaoSel.addEventListener('change', function () {
-      atualizarCampoJoia(this.value);
+      atualizarCampoJoia(this.value, null);
     });
   }
+
+  // Radio nova/troca — só aparece para regiões restritas
+  document.querySelectorAll('input[name="tipo_perf"]').forEach(function(radio) {
+    radio.addEventListener('change', function() {
+      const perf = document.getElementById('perfuracao').value;
+      atualizarCampoJoia(perf, this.value);
+    });
+  });
 
   const formLead = document.getElementById("form-lead");
   if (!formLead) return;
@@ -81,14 +100,18 @@ document.addEventListener("DOMContentLoaded", function () {
     const primeiraVez  = document.querySelector('input[name="primeira_vez"]:checked')?.value || "nao";
     const peleSensivel = document.querySelector('input[name="pele_sensivel"]:checked')?.value || "nao";
 
-    // Resolve o valor correto conforme o grupo do procedimento
+    const tipoPerf = document.querySelector('input[name="tipo_perf"]:checked')?.value || null;
+
+    // Resolve o valor correto conforme o grupo e tipo do procedimento
     let estiloFinal;
-    if (GRUPO_JOIA.includes(perfuracao)) {
-      estiloFinal = document.getElementById("estilo").value;
-    } else if (GRUPO_MICRO.includes(perfuracao)) {
+    if (GRUPO_MICRO.includes(perfuracao)) {
       estiloFinal = document.getElementById("estilo-micro").value;
     } else if (GRUPO_LOBU.includes(perfuracao)) {
       estiloFinal = 'Lobuloplastia — R$ 50 por furo por sessão';
+    } else if (REGIOES_RESTRITAS.includes(perfuracao) && tipoPerf === 'nova') {
+      estiloFinal = 'Aço Tradicional R$25 (perfuração nova — troca permitida após 30 dias)';
+    } else if (GRUPO_JOIA.includes(perfuracao)) {
+      estiloFinal = document.getElementById("estilo").value;
     } else {
       estiloFinal = 'A definir com a equipe no estúdio';
     }
