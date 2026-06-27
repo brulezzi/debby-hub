@@ -2,11 +2,31 @@ const SUPABASE_URL = "https://phzqwafwxmnboegjujqf.supabase.co";
 const SUPABASE_ANON_KEY = "sb_publishable_wUX9E6f0iBA_1C9YWibvUA_l0to00jW";
 const NUMERO_WHATSAPP_ESTUDIO = "5519988404390";
 
-// GRUPO A: perfurações que seguem tabela de joias
-const GRUPO_JOIA = ['Nostril','Umbigo','Helix','Tragus','Conch','Lóbulo','Daith','Flat','Labret','Língua','Sobrancelha','Mamilo'];
+// GRUPO A: perfurações que seguem tabela de joias (todos exceto Micro/Surface/Lobu/Remocao/Outro)
+const GRUPO_JOIA = [
+  // Rosto
+  'Nostril','Duplo Nostril ×2','Septo','Bridge','Sobrancelha','Dimple',
+  'Monroe','Medusa','Medusa Vertical',
+  'Labret Central','Labret Lateral','Labret Vertical',
+  'Snake Bites ×2','Spider Bites ×2','Smiley',
+  'Ponta da Língua','Meio da Língua',
+  // Orelha
+  'Lóbulo','Lóbulo ×2','Lóbulo 2','Lóbulo 3',
+  'Helix','Duplo Helix','Anti Helix','Mid Helix',
+  'Tragus','Anti Tragus','Conch','Daith','Flat',
+  'Rook','Snug','Transversal','Californiano','Australianos','Minions',
+  // Corpo
+  'Umbigo','Umbigo Vertical','Mamilo','Mamilo ×2','Íntimo Christina','Íntimo Clitóris',
+];
 
-// Regiões restritas: só Tradicional R$25 em perfuração nova
-const REGIOES_RESTRITAS = ['Labret','Língua','Sobrancelha'];
+// Regiões restritas: só Tradicional R$25 em perfuração nova (boca/lábio/língua/sobrancelha)
+const REGIOES_RESTRITAS = [
+  'Sobrancelha','Dimple',
+  'Monroe','Medusa','Medusa Vertical',
+  'Labret Central','Labret Lateral','Labret Vertical',
+  'Snake Bites ×2','Spider Bites ×2','Smiley',
+  'Ponta da Língua','Meio da Língua',
+];
 
 // GRUPO B: microdermal e surface
 const GRUPO_MICRO = ['Microdermal','Surface'];
