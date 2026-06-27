@@ -2,7 +2,125 @@ const SUPABASE_URL = "https://phzqwafwxmnboegjujqf.supabase.co";
 const SUPABASE_ANON_KEY = "sb_publishable_wUX9E6f0iBA_1C9YWibvUA_l0to00jW";
 const NUMERO_WHATSAPP_ESTUDIO = "5519988404390";
 
-// GRUPO A: perfurações que seguem tabela de joias (todos exceto Micro/Surface/Lobu/Remocao/Outro)
+// ── PERFIS DE JOIAS POR TIPO ANATÔMICO ────────────────────────────────────────
+
+const PERFIS_JOIA = {
+  ORELHA: { grupos: [
+    { g: 'Aço Cirúrgico', opts: [
+      { v: 'Aço Tradicional R$25', l: 'Labret / Brinco Tradicional — R$ 25' },
+      { v: 'Aço Brilhante R$45',   l: 'Labret / Brinco Brilhante — R$ 45 ⭐' },
+      { v: 'Aço Delicada R$55',    l: 'Labret / Brinco Delicada — R$ 55' },
+      { v: 'Aço Decorada R$65',    l: 'Labret / Brinco Decorada — R$ 65' },
+      { v: 'Aço Marcante R$75',    l: 'Labret / Brinco Marcante — R$ 75' },
+      { v: 'Aço Premium R$110',    l: 'Labret / Brinco Premium Aço — R$ 110' },
+    ]},
+    { g: 'PVD Gold (dourado)', opts: [
+      { v: 'PVD Gold R$45',          l: 'PVD Gold — R$ 45' },
+      { v: 'PVD Gold R$55',          l: 'PVD Gold — R$ 55' },
+      { v: 'PVD Gold R$65',          l: 'PVD Gold — R$ 65' },
+      { v: 'PVD Gold R$85',          l: 'PVD Gold — R$ 85' },
+      { v: 'PVD Gold Premium R$110', l: 'PVD Gold Premium — R$ 110' },
+    ]},
+    { g: 'Titânio', opts: [
+      { v: 'Titânio R$70',  l: 'Titânio Tradicional — R$ 70' },
+      { v: 'Titânio R$110', l: 'Titânio Decorado — R$ 110' },
+    ]},
+  ]},
+  BANANA_BARBELL: { grupos: [
+    { g: 'Banana Bell', opts: [
+      { v: 'Banana Bell Aço R$25',      l: 'Banana Bell Aço — R$ 25' },
+      { v: 'Banana Bell Aço R$45',      l: 'Banana Bell Aço Colorida — R$ 45' },
+      { v: 'Banana Bell Aço R$55',      l: 'Banana Bell Aço com Pedra — R$ 55' },
+      { v: 'Banana Bell Aço R$65',      l: 'Banana Bell Aço Decorada — R$ 65' },
+      { v: 'Banana Bell PVD Gold R$55', l: 'Banana Bell PVD Gold — R$ 55' },
+      { v: 'Banana Bell PVD Gold R$65', l: 'Banana Bell PVD Gold Decorada — R$ 65' },
+    ]},
+    { g: 'Barbell Curvo', opts: [
+      { v: 'Barbell Curvo Aço R$25',     l: 'Barbell Curvo Aço — R$ 25' },
+      { v: 'Barbell Curvo Titânio R$70', l: 'Barbell Curvo Titânio — R$ 70' },
+    ]},
+  ]},
+  BARBELL_RETO: { grupos: [
+    { g: 'Barbell Reto', opts: [
+      { v: 'Barbell Reto Aço R$25',      l: 'Barbell Reto Aço — R$ 25' },
+      { v: 'Barbell Reto Aço R$110',     l: 'Barbell Reto Aço Premium — R$ 110' },
+      { v: 'Barbell Reto Titânio R$70',  l: 'Barbell Reto Titânio — R$ 70' },
+      { v: 'Barbell Reto Titânio R$110', l: 'Barbell Reto Titânio Decorado — R$ 110' },
+    ]},
+  ]},
+  MICROCURVA: { grupos: [
+    { g: 'Microcurva', opts: [
+      { v: 'Microcurva Aço R$25',     l: 'Microcurva Aço — R$ 25' },
+      { v: 'Microcurva Aço R$55',     l: 'Microcurva Aço com Pedra — R$ 55' },
+      { v: 'Microcurva Titânio R$70', l: 'Microcurva Titânio — R$ 70' },
+    ]},
+  ]},
+  DAITH: { grupos: [
+    { g: 'Argola', opts: [
+      { v: 'Argola Aço R$25',           l: 'Argola Aço — R$ 25' },
+      { v: 'Argola Aço R$45',           l: 'Argola Aço Decorada — R$ 45' },
+      { v: 'Argola Aço Cravejada R$75', l: 'Argola Aço Cravejada — R$ 75' },
+      { v: 'Argola PVD Gold R$55',      l: 'Argola PVD Gold — R$ 55' },
+      { v: 'Argola PVD Cravejada R$85', l: 'Argola PVD Gold Cravejada — R$ 85' },
+      { v: 'Argola Titânio R$70',       l: 'Argola Titânio — R$ 70' },
+    ]},
+    { g: 'Coração (especial Daith)', opts: [
+      { v: 'Coração Aço R$45',       l: 'Coração Aço — R$ 45' },
+      { v: 'Coração Aço Pedra R$55', l: 'Coração com Pedra Aço — R$ 55' },
+      { v: 'Coração PVD R$55',       l: 'Coração PVD Gold — R$ 55' },
+      { v: 'Coração PVD R$65',       l: 'Coração PVD Gold Decorado — R$ 65' },
+    ]},
+  ]},
+  INTIMO: { grupos: [
+    { g: 'Opções disponíveis', opts: [
+      { v: 'Microcurvo Aço R$25',      l: 'Microcurvo Aço — R$ 25' },
+      { v: 'Barbell Curvo P Aço R$25', l: 'Barbell Curvo P Aço — R$ 25' },
+      { v: 'Banana Bell P Aço R$25',   l: 'Banana Bell P Aço — R$ 25' },
+      { v: 'Titânio Tradicional R$70', l: 'Titânio Tradicional — R$ 70' },
+      { v: 'Titânio Íntimo R$110',     l: 'Titânio Íntimo — R$ 110' },
+    ]},
+  ]},
+}
+
+const LOCAL_PERFIL = {
+  'Nostril':'ORELHA','Duplo Nostril ×2':'ORELHA','Septo':'ORELHA',
+  'Bridge':'BARBELL_RETO','Sobrancelha':'MICROCURVA','Dimple':'ORELHA',
+  'Monroe':'ORELHA','Medusa':'ORELHA','Medusa Vertical':'ORELHA',
+  'Labret Central':'ORELHA','Labret Lateral':'ORELHA','Labret Vertical':'MICROCURVA',
+  'Snake Bites ×2':'ORELHA','Spider Bites ×2':'ORELHA','Smiley':'ORELHA',
+  'Ponta da Língua':'MICROCURVA','Meio da Língua':'BARBELL_RETO',
+  'Lóbulo':'ORELHA','Lóbulo ×2':'ORELHA','Lóbulo 2':'ORELHA','Lóbulo 3':'ORELHA',
+  'Helix':'ORELHA','Duplo Helix':'ORELHA','Anti Helix':'ORELHA','Mid Helix':'ORELHA',
+  'Tragus':'ORELHA','Anti Tragus':'ORELHA','Conch':'ORELHA','Flat':'ORELHA',
+  'Rook':'MICROCURVA','Snug':'ORELHA','Transversal':'BARBELL_RETO',
+  'Californiano':'ORELHA','Australianos':'ORELHA','Minions':'ORELHA','Daith':'DAITH',
+  'Umbigo':'BANANA_BARBELL','Umbigo Vertical':'BANANA_BARBELL',
+  'Mamilo':'BARBELL_RETO','Mamilo ×2':'BARBELL_RETO',
+  'Íntimo Christina':'INTIMO','Íntimo Clitóris':'INTIMO',
+}
+
+function populateEstiloSelect(perfil) {
+  var sel = document.getElementById('estilo')
+  sel.innerHTML = '<option value="" disabled selected>Escolha uma opção...</option>'
+  if (!perfil || !PERFIS_JOIA[perfil]) return
+  PERFIS_JOIA[perfil].grupos.forEach(function(grupo) {
+    var og = document.createElement('optgroup')
+    og.label = '── ' + grupo.g + ' ──'
+    grupo.opts.forEach(function(opt) {
+      var o = document.createElement('option')
+      o.value = opt.v; o.textContent = opt.l; og.appendChild(o)
+    })
+    sel.appendChild(og)
+  })
+  var ogFinal = document.createElement('optgroup')
+  ogFinal.label = '──────────────────'
+  var oFinal = document.createElement('option')
+  oFinal.value = 'Ainda não sei'
+  oFinal.textContent = 'Ainda não sei — a equipe me ajuda no estúdio'
+  ogFinal.appendChild(oFinal); sel.appendChild(ogFinal)
+}
+
+// ── GRUPO A: perfurações que seguem tabela de joias (todos exceto Micro/Surface/Lobu/Remocao/Outro)
 const GRUPO_JOIA = [
   // Rosto
   'Nostril','Duplo Nostril ×2','Septo','Bridge','Sobrancelha','Dimple',
@@ -77,11 +195,15 @@ function atualizarCampoJoia(perfuracao, tipoPerf) {
     if (tipoPerf === 'nova') {
       document.getElementById('grupo-restrito').style.display = '';
     } else if (tipoPerf === 'troca') {
+      var perfil = LOCAL_PERFIL[perfuracao] || 'ORELHA';
+      populateEstiloSelect(perfil);
       document.getElementById('grupo-joia').style.display = '';
       document.getElementById('estilo').required = true;
     }
   } else {
-    // Região livre — não precisa da pergunta nova/troca
+    // Região livre — mostra joias do perfil correto diretamente
+    var perfil = LOCAL_PERFIL[perfuracao] || 'ORELHA';
+    populateEstiloSelect(perfil);
     document.getElementById('grupo-joia').style.display = '';
     document.getElementById('estilo').required = true;
   }
