@@ -48,6 +48,18 @@ const PERFIS_JOIA = {
       { v: 'Barbell Reto Titânio R$110', l: 'Barbell Reto Titânio Decorado — R$ 110' },
     ]},
   ]},
+  BARBELL_MAMILO_TRANSVERSAL: { grupos: [
+    { g: 'Barbell Reto', opts: [
+      { v: 'Barbell Reto Aço R$45',     l: 'Barbell Reto Aço Tradicional — R$ 45' },
+      { v: 'Barbell Reto Titânio R$70', l: 'Barbell Reto Titânio Tradicional — R$ 70' },
+    ]},
+  ]},
+  LINGUA: { grupos: [
+    { g: 'Barbell', opts: [
+      { v: 'Barbell Língua Aço R$45',     l: 'Barbell Aço Tradicional — R$ 45' },
+      { v: 'Barbell Língua Titânio R$70', l: 'Barbell Titânio — R$ 70' },
+    ]},
+  ]},
   MICROCURVA: { grupos: [
     { g: 'Microcurva', opts: [
       { v: 'Microcurva Aço R$25',     l: 'Microcurva Aço — R$ 25' },
@@ -73,11 +85,8 @@ const PERFIS_JOIA = {
   ]},
   INTIMO: { grupos: [
     { g: 'Opções disponíveis', opts: [
-      { v: 'Microcurvo Aço R$25',      l: 'Microcurvo Aço — R$ 25' },
-      { v: 'Barbell Curvo P Aço R$25', l: 'Barbell Curvo P Aço — R$ 25' },
-      { v: 'Banana Bell P Aço R$25',   l: 'Banana Bell P Aço — R$ 25' },
-      { v: 'Titânio Tradicional R$70', l: 'Titânio Tradicional — R$ 70' },
-      { v: 'Titânio Íntimo R$110',     l: 'Titânio Íntimo — R$ 110' },
+      { v: 'Íntimo Aço Tradicional R$45',    l: 'Aço Tradicional — R$ 45' },
+      { v: 'Íntimo Titânio Decorada R$110',  l: 'Titânio Decorada — R$ 110' },
     ]},
   ]},
 }
@@ -88,14 +97,14 @@ const LOCAL_PERFIL = {
   'Monroe':'ORELHA','Medusa':'ORELHA','Medusa Vertical':'ORELHA',
   'Labret Central':'ORELHA','Labret Lateral':'ORELHA','Labret Vertical':'MICROCURVA',
   'Snake Bites ×2':'ORELHA','Spider Bites ×2':'ORELHA','Smiley':'ORELHA',
-  'Ponta da Língua':'MICROCURVA','Meio da Língua':'BARBELL_RETO',
+  'Ponta da Língua':'LINGUA','Meio da Língua':'LINGUA',
   'Lóbulo':'ORELHA','Lóbulo ×2':'ORELHA','Lóbulo 2':'ORELHA','Lóbulo 3':'ORELHA',
   'Helix':'ORELHA','Duplo Helix':'ORELHA','Anti Helix':'ORELHA','Mid Helix':'ORELHA',
   'Tragus':'ORELHA','Anti Tragus':'ORELHA','Conch':'ORELHA','Flat':'ORELHA',
-  'Rook':'MICROCURVA','Snug':'ORELHA','Transversal':'BARBELL_RETO',
+  'Rook':'MICROCURVA','Snug':'ORELHA','Transversal':'BARBELL_MAMILO_TRANSVERSAL',
   'Californiano':'ORELHA','Australianos':'ORELHA','Minions':'ORELHA','Daith':'DAITH',
   'Umbigo':'BANANA_BARBELL','Umbigo Vertical':'BANANA_BARBELL',
-  'Mamilo':'BARBELL_RETO','Mamilo ×2':'BARBELL_RETO',
+  'Mamilo':'BARBELL_MAMILO_TRANSVERSAL','Mamilo ×2':'BARBELL_MAMILO_TRANSVERSAL',
   'Íntimo Christina':'INTIMO','Íntimo Clitóris':'INTIMO',
 }
 
