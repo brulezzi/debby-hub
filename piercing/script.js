@@ -152,7 +152,6 @@ const REGIOES_RESTRITAS = [
   'Monroe','Medusa','Medusa Vertical',
   'Labret Central','Labret Lateral','Labret Vertical',
   'Snake Bites ×2','Spider Bites ×2','Smiley',
-  'Ponta da Língua','Meio da Língua',
 ];
 
 // GRUPO B: microdermal e surface
