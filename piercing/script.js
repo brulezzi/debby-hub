@@ -61,7 +61,7 @@ const PERFIS_JOIA = {
   ]},
   MICROCURVA: { grupos: [
     { g: 'Microcurva', opts: [
-      { v: 'Microcurva Aço R$45',     l: 'Microcurva Aço — R$ 45' },
+      { v: 'Microcurva Aço R$25',     l: 'Microcurva Aço 8mm — R$ 25' },
       { v: 'Microcurva Aço R$55',     l: 'Microcurva Aço com Pedra — R$ 55' },
       { v: 'Microcurva Titânio R$70', l: 'Microcurva Titânio — R$ 70' },
     ]},
