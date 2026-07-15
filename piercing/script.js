@@ -28,16 +28,15 @@ const PERFIS_JOIA = {
   ]},
   BANANA_BARBELL: { grupos: [
     { g: 'Banana Bell', opts: [
-      { v: 'Banana Bell Aço R$25',      l: 'Banana Bell Aço — R$ 25' },
-      { v: 'Banana Bell Aço R$45',      l: 'Banana Bell Aço Colorida — R$ 45' },
+      { v: 'Banana Bell Aço R$45',      l: 'Banana Bell Aço — R$ 45' },
       { v: 'Banana Bell Aço R$55',      l: 'Banana Bell Aço com Pedra — R$ 55' },
       { v: 'Banana Bell Aço R$65',      l: 'Banana Bell Aço Decorada — R$ 65' },
       { v: 'Banana Bell PVD Gold R$55', l: 'Banana Bell PVD Gold — R$ 55' },
       { v: 'Banana Bell PVD Gold R$65', l: 'Banana Bell PVD Gold Decorada — R$ 65' },
     ]},
     { g: 'Barbell Curvo', opts: [
-      { v: 'Barbell Curvo Aço R$25',     l: 'Barbell Curvo Aço — R$ 25' },
-      { v: 'Barbell Curvo Titânio R$70', l: 'Barbell Curvo Titânio — R$ 70' },
+      { v: 'Barbell Curvo Rosa Aço R$25', l: 'Barbell Curvo Rosa — R$ 25' },
+      { v: 'Barbell Curvo Titânio R$70',  l: 'Barbell Curvo Titânio — R$ 70' },
     ]},
   ]},
   BARBELL_RETO: { grupos: [
@@ -62,7 +61,7 @@ const PERFIS_JOIA = {
   ]},
   MICROCURVA: { grupos: [
     { g: 'Microcurva', opts: [
-      { v: 'Microcurva Aço R$25',     l: 'Microcurva Aço — R$ 25' },
+      { v: 'Microcurva Aço R$45',     l: 'Microcurva Aço — R$ 45' },
       { v: 'Microcurva Aço R$55',     l: 'Microcurva Aço com Pedra — R$ 55' },
       { v: 'Microcurva Titânio R$70', l: 'Microcurva Titânio — R$ 70' },
     ]},
@@ -333,8 +332,8 @@ document.addEventListener('click',function(e){
     aco: {
       label: 'Aço Cirúrgico', emoji: '💎', folder: 'ACO', cls: 'vaco',
       faixas: {
-        'R$ 25': ['Banana.bell.G.1.6.10mm.webp','Banana.bell.P.1.6.10mm.webp','BarbellReto16mm.webp','BarbellReto22mm.webp','BarbellReto38mm.webp','BarbellReto8mm.webp','Brinco2mm.webp','Brinco3mm.webp','Brinco4mm.webp','Brinco5mm.webp','FerraduraTradicionalAço.1.2.10mm.webp','FerraduraTradicionalAço.1.2.12mm.webp','FerraduraTradicionalAço.1.2.8mm.webp','LabretTradicionalAço.1.2.10mm.webp','LabretTradicionalAço.1.2.12mm.webp','LabretTradicionalAço.1.2.6mm.webp','LabretTradicionalAço.1.2.8mm.webp','MicrocurvoTradicional.10mm.webp','MicrocurvoTradicional.12mm.webp','MicrocurvoTradicional.8mm.webp','TradicionalPontoDeLuzAnzol.webp'],
-        'R$ 45': ['ArgolaSegmentada.10mm.webp','ArgolaSegmentada.12mm.webp','ArgolaSegmentada.8mm.webp','BananaBell.frutacor.jpeg','BananaBell.rosa.jpeg','BananaBell.Vermelho.jpeg','CoraçãoLisoLabret.webp','CoraçãoSimples.daith.jpeg','CruzLisaLabret.webp','D.ring.aço.webp','EstrelaLisaLabret.webp','LuaLisaLabret.webp','PontoDeLuz.Labret2mm.webp'],
+        'R$ 25': ['BananaBell.rosa.jpeg','Brinco2mm.webp','Brinco3mm.webp','Brinco4mm.webp','Brinco5mm.webp','FerraduraTradicionalAço.1.2.10mm.webp','FerraduraTradicionalAço.1.2.12mm.webp','FerraduraTradicionalAço.1.2.8mm.webp','LabretTradicionalAço.1.2.10mm.webp','LabretTradicionalAço.1.2.12mm.webp','LabretTradicionalAço.1.2.6mm.webp','LabretTradicionalAço.1.2.8mm.webp','MicrocurvoTradicional.8mm.webp','TradicionalPontoDeLuzAnzol.webp'],
+        'R$ 45': ['ArgolaSegmentada.10mm.webp','ArgolaSegmentada.12mm.webp','ArgolaSegmentada.8mm.webp','Banana.bell.G.1.6.10mm.webp','Banana.bell.P.1.6.10mm.webp','BananaBell.frutacor.jpeg','BananaBell.Vermelho.jpeg','BarbellReto16mm.webp','BarbellReto22mm.webp','BarbellReto38mm.webp','BarbellReto8mm.webp','CoraçãoLisoLabret.webp','CoraçãoSimples.daith.jpeg','CruzLisaLabret.webp','D.ring.aço.webp','EstrelaLisaLabret.webp','LuaLisaLabret.webp','MicrocurvoTradicional.10mm.webp','MicrocurvoTradicional.12mm.webp','PontoDeLuz.Labret2mm.webp'],
         'R$ 55': ['BananaBell.PequenoAzul.jpeg','BananaBell.pequenoVermelho.jpeg','CobrinhaMenorLabret.webp','CobrinhaPequenaLabret.jpeg','CoraçãoAbertoLabret.webp','CoraçãoComPontoDeLuz.daith.jpeg','LibelulaLabret.webp','MicrocurvoComPontoDeLuz.webp','PontoDeLuz.labret3mm.webp'],
         'R$ 65': ['BananaBell.CoraçãoComPontoDeLuz.jpeg','Borboleta4pedrasLabret.webp','CobraCravejadaLabret.webp','CoraçãoCravejadoEspetadoLabret.webp','CoraçãoCravejadoLabret.webp','MorcegoLabret.jpeg','PalmeiraLabret.webp','RaioCravejadoLabret.jpeg'],
         'R$ 75': ['3florzinhasLabret.jpeg','4coraçõesLabret.webp','5PedrasLabret.jpeg','9PedrinhasLabret.webp','ArgolaCravejada1.2.12mm.webp','ArgolaCravejada1.2.8mm.webp','ArgolaFrontalCravejada1.2.10mm.webp','ArgolaFrontalCravejada1.2.8mm.webp','CerejinhaCravejadaLabret.webp','CoraçãoLadoDireito.webp','Flor6Pontas.jpeg','FlorGrandeLabret.jpeg','Ramo5FolhasLabret.webp','Ramo7FolhasLabret.jpeg'],
