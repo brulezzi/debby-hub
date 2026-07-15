@@ -27,16 +27,17 @@ const PERFIS_JOIA = {
     ]},
   ]},
   BANANA_BARBELL: { grupos: [
-    { g: 'Banana Bell', opts: [
-      { v: 'Banana Bell Aço R$45',      l: 'Banana Bell Aço — R$ 45' },
-      { v: 'Banana Bell Aço R$55',      l: 'Banana Bell Aço com Pedra — R$ 55' },
-      { v: 'Banana Bell Aço R$65',      l: 'Banana Bell Aço Decorada — R$ 65' },
-      { v: 'Banana Bell PVD Gold R$55', l: 'Banana Bell PVD Gold — R$ 55' },
-      { v: 'Banana Bell PVD Gold R$65', l: 'Banana Bell PVD Gold Decorada — R$ 65' },
-    ]},
     { g: 'Barbell Curvo', opts: [
       { v: 'Barbell Curvo Rosa Aço R$25', l: 'Barbell Curvo Rosa — R$ 25' },
       { v: 'Barbell Curvo Titânio R$70',  l: 'Barbell Curvo Titânio — R$ 70' },
+    ]},
+    { g: 'Banana Bell / Barbell Curvo Colorido', opts: [
+      { v: 'Banana Bell G Aço R$45',      l: 'Banana Bell G — R$ 45' },
+      { v: 'Barbell Curvo Aço R$45',      l: 'Barbell Curvo Aço Colorido — R$ 45' },
+      { v: 'Banana Bell Aço R$55',        l: 'Banana Bell Aço com Pedra — R$ 55' },
+      { v: 'Banana Bell Aço R$65',        l: 'Banana Bell Aço Decorada — R$ 65' },
+      { v: 'Banana Bell PVD Gold R$55',   l: 'Banana Bell PVD Gold — R$ 55' },
+      { v: 'Banana Bell PVD Gold R$65',   l: 'Banana Bell PVD Gold Decorada — R$ 65' },
     ]},
   ]},
   BARBELL_RETO: { grupos: [
@@ -82,10 +83,16 @@ const PERFIS_JOIA = {
       { v: 'Coração PVD R$65',       l: 'Coração PVD Gold Decorado — R$ 65' },
     ]},
   ]},
-  INTIMO: { grupos: [
-    { g: 'Opções disponíveis', opts: [
-      { v: 'Íntimo Aço Tradicional R$45',    l: 'Aço Tradicional — R$ 45' },
-      { v: 'Íntimo Titânio Decorada R$110',  l: 'Titânio Decorada — R$ 110' },
+  INTIMO_CLITORIS: { grupos: [
+    { g: 'Banana Bell P', opts: [
+      { v: 'Banana Bell P Aço R$45',        l: 'Banana Bell P — R$ 45' },
+      { v: 'Íntimo Titânio Decorada R$110', l: 'Titânio Decorada — R$ 110' },
+    ]},
+  ]},
+  INTIMO_CHRISTINA: { grupos: [
+    { g: 'Microcurva', opts: [
+      { v: 'Microcurva 12mm Aço R$45',      l: 'Microcurva 12mm — R$ 45' },
+      { v: 'Íntimo Titânio Decorada R$110', l: 'Titânio Decorada — R$ 110' },
     ]},
   ]},
 }
@@ -104,7 +111,7 @@ const LOCAL_PERFIL = {
   'Californiano':'ORELHA','Australianos':'ORELHA','Minions':'ORELHA','Daith':'DAITH',
   'Umbigo':'BANANA_BARBELL','Umbigo Vertical':'BANANA_BARBELL',
   'Mamilo':'BARBELL_MAMILO_TRANSVERSAL','Mamilo ×2':'BARBELL_MAMILO_TRANSVERSAL',
-  'Íntimo Christina':'INTIMO','Íntimo Clitóris':'INTIMO',
+  'Íntimo Christina':'INTIMO_CHRISTINA','Íntimo Clitóris':'INTIMO_CLITORIS',
 }
 
 function populateEstiloSelect(perfil) {
