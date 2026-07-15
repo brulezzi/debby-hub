@@ -84,14 +84,14 @@ const PERFIS_JOIA = {
     ]},
   ]},
   INTIMO_CLITORIS: { grupos: [
-    { g: 'Banana Bell P', opts: [
-      { v: 'Banana Bell P Aço R$45',        l: 'Banana Bell P — R$ 45' },
+    { g: 'Microcurva', opts: [
+      { v: 'Microcurva 12mm Aço R$45',      l: 'Microcurva 12mm — R$ 45' },
       { v: 'Íntimo Titânio Decorada R$110', l: 'Titânio Decorada — R$ 110' },
     ]},
   ]},
   INTIMO_CHRISTINA: { grupos: [
-    { g: 'Microcurva', opts: [
-      { v: 'Microcurva 12mm Aço R$45',      l: 'Microcurva 12mm — R$ 45' },
+    { g: 'Banana Bell P', opts: [
+      { v: 'Banana Bell P Aço R$45',        l: 'Banana Bell P — R$ 45' },
       { v: 'Íntimo Titânio Decorada R$110', l: 'Titânio Decorada — R$ 110' },
     ]},
   ]},
