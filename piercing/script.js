@@ -62,11 +62,10 @@ const PERFIS_JOIA = {
   ]},
   MICROCURVA: { grupos: [
     { g: 'Microcurva', opts: [
-      { v: 'Microcurva Aço R$25',        l: 'Microcurva Aço 8mm — R$ 25' },
-      { v: 'Microcurva Aço R$45',        l: 'Microcurva Aço 10/12mm — R$ 45' },
+      { v: 'Microcurva Aço R$45',        l: 'Microcurva Aço 8/10/12mm — R$ 45' },
       { v: 'Microcurva Aço R$55',        l: 'Microcurva Aço com Pedra — R$ 55' },
       { v: 'Microcurva PVD Gold R$55',   l: 'Microcurva PVD Gold — R$ 55' },
-      { v: 'Microcurva Titânio R$70',    l: 'Microcurva Titânio — R$ 70' },
+      { v: 'Microcurva Titânio R$90',    l: 'Microcurva Titânio — R$ 90' },
     ]},
   ]},
   DAITH: { grupos: [
@@ -85,12 +84,6 @@ const PERFIS_JOIA = {
       { v: 'Coração PVD R$65',       l: 'Coração PVD Gold Decorado — R$ 65' },
     ]},
   ]},
-  INTIMO_CLITORIS: { grupos: [
-    { g: 'Microcurva', opts: [
-      { v: 'Microcurva 12mm Aço R$45',      l: 'Microcurva 12mm — R$ 45' },
-      { v: 'Íntimo Titânio Decorada R$110', l: 'Titânio Decorada — R$ 110' },
-    ]},
-  ]},
   INTIMO_CHRISTINA: { grupos: [
     { g: 'Banana Bell P', opts: [
       { v: 'Banana Bell P Aço R$55',        l: 'Banana Bell P — R$ 55' },
@@ -104,8 +97,9 @@ const LOCAL_PERFIL = {
   'Bridge':'BARBELL_RETO','Sobrancelha':'MICROCURVA','Dimple':'ORELHA',
   'Monroe':'ORELHA','Medusa':'ORELHA','Medusa Vertical':'ORELHA',
   'Labret Central':'ORELHA','Labret Lateral':'ORELHA','Labret Vertical':'MICROCURVA',
+  'Angel Fangs':'MICROCURVA',
   'Snake Bites ×2':'ORELHA','Spider Bites ×2':'ORELHA','Smiley':'ORELHA',
-  'Ponta da Língua':'LINGUA','Meio da Língua':'LINGUA',
+  'Ponta da Língua':'MICROCURVA','Meio da Língua':'LINGUA',
   'Lóbulo':'ORELHA','Lóbulo ×2':'ORELHA','Lóbulo 2':'ORELHA','Lóbulo 3':'ORELHA',
   'Helix':'ORELHA','Duplo Helix':'ORELHA','Anti Helix':'ORELHA','Mid Helix':'ORELHA',
   'Tragus':'ORELHA','Anti Tragus':'ORELHA','Conch':'ORELHA','Flat':'ORELHA',
@@ -113,7 +107,7 @@ const LOCAL_PERFIL = {
   'Californiano':'ORELHA','Australianos':'ORELHA','Minions':'ORELHA','Daith':'DAITH',
   'Umbigo':'BANANA_BARBELL','Umbigo Vertical':'BANANA_BARBELL',
   'Mamilo':'BARBELL_MAMILO_TRANSVERSAL','Mamilo ×2':'BARBELL_MAMILO_TRANSVERSAL',
-  'Íntimo Christina':'INTIMO_CHRISTINA','Íntimo Clitóris':'INTIMO_CLITORIS',
+  'Íntimo Christina':'INTIMO_CHRISTINA','Íntimo Clitóris':'MICROCURVA',
 }
 
 function populateEstiloSelect(perfil) {
@@ -142,7 +136,7 @@ const GRUPO_JOIA = [
   // Rosto
   'Nostril','Duplo Nostril ×2','Septo','Bridge','Sobrancelha','Dimple',
   'Monroe','Medusa','Medusa Vertical',
-  'Labret Central','Labret Lateral','Labret Vertical',
+  'Labret Central','Labret Lateral','Labret Vertical','Angel Fangs',
   'Snake Bites ×2','Spider Bites ×2','Smiley',
   'Ponta da Língua','Meio da Língua',
   // Orelha
@@ -160,12 +154,13 @@ const GRUPO_JOIA = [
 const REGIOES_RESTRITAS = [
   'Sobrancelha','Dimple',
   'Monroe','Medusa','Medusa Vertical',
-  'Labret Central','Labret Lateral','Labret Vertical',
+  'Labret Central','Labret Lateral','Labret Vertical','Angel Fangs',
   'Snake Bites ×2','Spider Bites ×2','Smiley',
 ];
 const PRECO_PRIMEIRA_PERFURACAO_RESTRITA = {
   'Sobrancelha': 45,
   'Labret Vertical': 45,
+  'Angel Fangs': 45,
   'Smiley': 45,
 };
 function precoPrimeiraPerfuracaoRestrita(perfuracao) {
@@ -356,8 +351,8 @@ document.addEventListener('click',function(e){
     aco: {
       label: 'Aço Cirúrgico', emoji: '💎', folder: 'ACO', cls: 'vaco',
       faixas: {
-        'R$ 25': ['FerraduraTradicionalAço.1.2.8mm.webp','LabretTradicionalAço.1.2.10mm.webp','LabretTradicionalAço.1.2.12mm.webp','LabretTradicionalAço.1.2.6mm.webp','LabretTradicionalAço.1.2.8mm.webp','MicrocurvoTradicional.8mm.webp','TradicionalPontoDeLuzAnzol.webp'],
-        'R$ 45': ['ArgolaSegmentada.8mm.webp','Banana.bell.G.1.6.10mm.webp','BananaBell.frutacor.jpeg','BananaBell.rosa.jpeg','BananaBell.Vermelho.jpeg','BarbellReto16mm.webp','BarbellReto22mm.webp','BarbellReto38mm.webp','BarbellReto8mm.webp','Brinco2mm.webp','Brinco3mm.webp','Brinco4mm.webp','Brinco5mm.webp','CoraçãoLisoLabret.webp','CoraçãoSimples.daith.jpeg','CruzLisaLabret.webp','D.ring.aço.webp','EstrelaLisaLabret.webp','FerraduraTradicionalAço.1.2.10mm.webp','FerraduraTradicionalAço.1.2.12mm.webp','LuaLisaLabret.webp','MicrocurvoTradicional.10mm.webp','MicrocurvoTradicional.12mm.webp','PontoDeLuz.Labret2mm.webp'],
+        'R$ 25': ['FerraduraTradicionalAço.1.2.8mm.webp','LabretTradicionalAço.1.2.10mm.webp','LabretTradicionalAço.1.2.12mm.webp','LabretTradicionalAço.1.2.6mm.webp','LabretTradicionalAço.1.2.8mm.webp','TradicionalPontoDeLuzAnzol.webp'],
+        'R$ 45': ['ArgolaSegmentada.8mm.webp','Banana.bell.G.1.6.10mm.webp','BananaBell.frutacor.jpeg','BananaBell.rosa.jpeg','BananaBell.Vermelho.jpeg','BarbellReto16mm.webp','BarbellReto22mm.webp','BarbellReto38mm.webp','BarbellReto8mm.webp','Brinco2mm.webp','Brinco3mm.webp','Brinco4mm.webp','Brinco5mm.webp','CoraçãoLisoLabret.webp','CoraçãoSimples.daith.jpeg','CruzLisaLabret.webp','D.ring.aço.webp','EstrelaLisaLabret.webp','FerraduraTradicionalAço.1.2.10mm.webp','FerraduraTradicionalAço.1.2.12mm.webp','LuaLisaLabret.webp','MicrocurvoTradicional.8mm.webp','MicrocurvoTradicional.10mm.webp','MicrocurvoTradicional.12mm.webp','PontoDeLuz.Labret2mm.webp'],
         'R$ 55': ['ArgolaSegmentada.10mm.webp','ArgolaSegmentada.12mm.webp','Banana.bell.P.1.6.10mm.webp','CobrinhaPequenaLabret.jpeg','CoraçãoAbertoLabret.webp','CoraçãoComPontoDeLuz.daith.jpeg','LibelulaLabret.webp','MicrocurvoComPontoDeLuz.webp','PontoDeLuz.labret3mm.webp','intimo christina.jpeg'],
         'R$ 65': ['BananaBell.PequenoAzul.jpeg','BananaBell.pequenoVermelho.jpeg','Borboleta4pedrasLabret.webp','CoraçãoCravejadoEspetadoLabret.webp','CoraçãoCravejadoLabret.webp','FlorGrandeLabret.jpeg','MorcegoLabret.jpeg','RaioCravejadoLabret.jpeg'],
         'R$ 75': ['3florzinhasLabret.jpeg','4coraçõesLabret.webp','5PedrasLabret.jpeg','9PedrinhasLabret.webp','ArgolaCravejada1.2.12mm.webp','ArgolaCravejada1.2.8mm.webp','ArgolaFrontalCravejada1.2.10mm.webp','ArgolaFrontalCravejada1.2.8mm.webp','BananaBell.CoraçãoComPontoDeLuz.jpeg','CerejinhaCravejadaLabret.webp','CobraCravejadaLabret.webp','CoraçãoLadoDireito.webp','Flor6Pontas.jpeg','PalmeiraLabret.webp','Ramo5FolhasLabret.webp','Ramo7FolhasLabret.jpeg'],
@@ -378,7 +373,8 @@ document.addEventListener('click',function(e){
     ti: {
       label: 'Titânio', emoji: '🔵', folder: 'TITANIO', cls: 'vti',
       faixas: {
-        'R$ 70':  ['BarbellReto16mm.webp','BarbellReto22mm.webp','Ferradura10mm.webp','Ferradura12mm.webp','Ferradura8mm.webp','Labret12mm.webp','Labret8mm.webp','Microcurva12mm.webp','Microcurva8mm.webp','PontoDeLuzAnzol.webp'],
+        'R$ 70':  ['BarbellReto16mm.webp','BarbellReto22mm.webp','Ferradura10mm.webp','Ferradura12mm.webp','Ferradura8mm.webp','Labret12mm.webp','Labret8mm.webp','PontoDeLuzAnzol.webp'],
+        'R$ 90':  ['Microcurva12mm.webp','Microcurva8mm.webp'],
         'R$ 110': ['2AsasLabret.webp','AbelhaPequenaLabret.webp','ArgolaTitanioDuplaAberta10mm.webp','ArgolaTitanioDuplaFechada10mm.webp','BarbelReto.2pontosdeluz.webp','BarbellReto.2pontosdeluz.pvdgold.webp','BorboletaLabret.webp','Esmeralda.webp','FlorzinhaComCaboLabret.webp','Intimo.webp','Intimo.pvdgold.webp','PontoDeLuz.3mm.webp']
       }
     }
