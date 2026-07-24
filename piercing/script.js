@@ -36,8 +36,8 @@ const PERFIS_JOIA = {
       { v: 'Barbell Curvo Aço R$45',      l: 'Barbell Curvo Aço Colorido — R$ 45' },
       { v: 'Banana Bell Aço R$55',        l: 'Banana Bell Aço com Pedra — R$ 55' },
       { v: 'Banana Bell Aço R$65',        l: 'Banana Bell Aço Decorada — R$ 65' },
-      { v: 'Banana Bell PVD Gold R$55',   l: 'Banana Bell PVD Gold — R$ 55' },
-      { v: 'Banana Bell PVD Gold R$65',   l: 'Banana Bell PVD Gold Decorada — R$ 65' },
+      { v: 'Banana Bell PVD Gold Simples R$65', l: 'Banana Bell PVD Gold — R$ 65' },
+      { v: 'Banana Bell PVD Gold R$65',          l: 'Banana Bell PVD Gold Decorada — R$ 65' },
     ]},
   ]},
   BARBELL_RETO: { grupos: [
@@ -62,9 +62,11 @@ const PERFIS_JOIA = {
   ]},
   MICROCURVA: { grupos: [
     { g: 'Microcurva', opts: [
-      { v: 'Microcurva Aço R$25',     l: 'Microcurva Aço 8mm — R$ 25' },
-      { v: 'Microcurva Aço R$55',     l: 'Microcurva Aço com Pedra — R$ 55' },
-      { v: 'Microcurva Titânio R$70', l: 'Microcurva Titânio — R$ 70' },
+      { v: 'Microcurva Aço R$25',        l: 'Microcurva Aço 8mm — R$ 25' },
+      { v: 'Microcurva Aço R$45',        l: 'Microcurva Aço 10/12mm — R$ 45' },
+      { v: 'Microcurva Aço R$55',        l: 'Microcurva Aço com Pedra — R$ 55' },
+      { v: 'Microcurva PVD Gold R$55',   l: 'Microcurva PVD Gold — R$ 55' },
+      { v: 'Microcurva Titânio R$70',    l: 'Microcurva Titânio — R$ 70' },
     ]},
   ]},
   DAITH: { grupos: [
@@ -91,7 +93,7 @@ const PERFIS_JOIA = {
   ]},
   INTIMO_CHRISTINA: { grupos: [
     { g: 'Banana Bell P', opts: [
-      { v: 'Banana Bell P Aço R$45',        l: 'Banana Bell P — R$ 45' },
+      { v: 'Banana Bell P Aço R$55',        l: 'Banana Bell P — R$ 55' },
       { v: 'Íntimo Titânio Decorada R$110', l: 'Titânio Decorada — R$ 110' },
     ]},
   ]},
@@ -152,13 +154,23 @@ const GRUPO_JOIA = [
   'Umbigo','Umbigo Vertical','Mamilo','Mamilo ×2','Íntimo Christina','Íntimo Clitóris',
 ];
 
-// Regiões restritas: só Tradicional R$25 em perfuração nova (boca/lábio/língua/sobrancelha)
+// Regiões restritas: só joia Tradicional em perfuração nova (boca/lábio/língua/sobrancelha).
+// A maioria usa Labret reto 10/12mm (R$25). Sobrancelha, Labret Vertical e Smiley usam
+// Microcurva (R$45) — por isso têm preço próprio aqui.
 const REGIOES_RESTRITAS = [
   'Sobrancelha','Dimple',
   'Monroe','Medusa','Medusa Vertical',
   'Labret Central','Labret Lateral','Labret Vertical',
   'Snake Bites ×2','Spider Bites ×2','Smiley',
 ];
+const PRECO_PRIMEIRA_PERFURACAO_RESTRITA = {
+  'Sobrancelha': 45,
+  'Labret Vertical': 45,
+  'Smiley': 45,
+};
+function precoPrimeiraPerfuracaoRestrita(perfuracao) {
+  return PRECO_PRIMEIRA_PERFURACAO_RESTRITA[perfuracao] || 25;
+}
 
 // GRUPO B: microdermal e surface
 const GRUPO_MICRO = ['Microdermal','Surface'];
@@ -207,7 +219,12 @@ function atualizarCampoJoia(perfuracao, tipoPerf) {
   if (REGIOES_RESTRITAS.includes(perfuracao)) {
     document.getElementById('grupo-tipo-perf').style.display = '';
     if (tipoPerf === 'nova') {
+      var precoRestrito = precoPrimeiraPerfuracaoRestrita(perfuracao);
       document.getElementById('grupo-restrito').style.display = '';
+      document.getElementById('texto-restrito').innerHTML =
+        '⚠️ Para essa região, a perfuração nova é feita com a <strong>joia Tradicional R$ ' + precoRestrito + '</strong>. Após 30 dias de cicatrização você pode trocar para qualquer modelo. A equipe te explica tudo ao chegar.';
+      document.getElementById('estilo-restrito').value =
+        'Aço Tradicional R$' + precoRestrito + ' (perfuração nova — troca permitida após 30 dias)';
     } else if (tipoPerf === 'troca') {
       var perfil = LOCAL_PERFIL[perfuracao] || 'ORELHA';
       populateEstiloSelect(perfil);
@@ -274,7 +291,7 @@ document.addEventListener("DOMContentLoaded", function () {
     } else if (GRUPO_REMOCAO.includes(perfuracao)) {
       estiloFinal = 'Remoção de joia — R$ 20 por peça';
     } else if (REGIOES_RESTRITAS.includes(perfuracao) && tipoPerf === 'nova') {
-      estiloFinal = 'Aço Tradicional R$25 (perfuração nova — troca permitida após 30 dias)';
+      estiloFinal = 'Aço Tradicional R$' + precoPrimeiraPerfuracaoRestrita(perfuracao) + ' (perfuração nova — troca permitida após 30 dias)';
     } else if (GRUPO_JOIA.includes(perfuracao)) {
       estiloFinal = document.getElementById("estilo").value;
     } else {
@@ -339,20 +356,21 @@ document.addEventListener('click',function(e){
     aco: {
       label: 'Aço Cirúrgico', emoji: '💎', folder: 'ACO', cls: 'vaco',
       faixas: {
-        'R$ 25': ['BananaBell.rosa.jpeg','Brinco2mm.webp','Brinco3mm.webp','Brinco4mm.webp','Brinco5mm.webp','FerraduraTradicionalAço.1.2.10mm.webp','FerraduraTradicionalAço.1.2.12mm.webp','FerraduraTradicionalAço.1.2.8mm.webp','LabretTradicionalAço.1.2.10mm.webp','LabretTradicionalAço.1.2.12mm.webp','LabretTradicionalAço.1.2.6mm.webp','LabretTradicionalAço.1.2.8mm.webp','MicrocurvoTradicional.8mm.webp','TradicionalPontoDeLuzAnzol.webp'],
-        'R$ 45': ['ArgolaSegmentada.10mm.webp','ArgolaSegmentada.12mm.webp','ArgolaSegmentada.8mm.webp','Banana.bell.G.1.6.10mm.webp','Banana.bell.P.1.6.10mm.webp','BananaBell.frutacor.jpeg','BananaBell.Vermelho.jpeg','BarbellReto16mm.webp','BarbellReto22mm.webp','BarbellReto38mm.webp','BarbellReto8mm.webp','CoraçãoLisoLabret.webp','CoraçãoSimples.daith.jpeg','CruzLisaLabret.webp','D.ring.aço.webp','EstrelaLisaLabret.webp','LuaLisaLabret.webp','MicrocurvoTradicional.10mm.webp','MicrocurvoTradicional.12mm.webp','PontoDeLuz.Labret2mm.webp'],
-        'R$ 55': ['BananaBell.PequenoAzul.jpeg','BananaBell.pequenoVermelho.jpeg','CobrinhaMenorLabret.webp','CobrinhaPequenaLabret.jpeg','CoraçãoAbertoLabret.webp','CoraçãoComPontoDeLuz.daith.jpeg','LibelulaLabret.webp','MicrocurvoComPontoDeLuz.webp','PontoDeLuz.labret3mm.webp'],
-        'R$ 65': ['BananaBell.CoraçãoComPontoDeLuz.jpeg','Borboleta4pedrasLabret.webp','CobraCravejadaLabret.webp','CoraçãoCravejadoEspetadoLabret.webp','CoraçãoCravejadoLabret.webp','MorcegoLabret.jpeg','PalmeiraLabret.webp','RaioCravejadoLabret.jpeg'],
-        'R$ 75': ['3florzinhasLabret.jpeg','4coraçõesLabret.webp','5PedrasLabret.jpeg','9PedrinhasLabret.webp','ArgolaCravejada1.2.12mm.webp','ArgolaCravejada1.2.8mm.webp','ArgolaFrontalCravejada1.2.10mm.webp','ArgolaFrontalCravejada1.2.8mm.webp','CerejinhaCravejadaLabret.webp','CoraçãoLadoDireito.webp','Flor6Pontas.jpeg','FlorGrandeLabret.jpeg','Ramo5FolhasLabret.webp','Ramo7FolhasLabret.jpeg'],
+        'R$ 25': ['FerraduraTradicionalAço.1.2.8mm.webp','LabretTradicionalAço.1.2.10mm.webp','LabretTradicionalAço.1.2.12mm.webp','LabretTradicionalAço.1.2.6mm.webp','LabretTradicionalAço.1.2.8mm.webp','MicrocurvoTradicional.8mm.webp','TradicionalPontoDeLuzAnzol.webp'],
+        'R$ 45': ['ArgolaSegmentada.8mm.webp','Banana.bell.G.1.6.10mm.webp','BananaBell.frutacor.jpeg','BananaBell.rosa.jpeg','BananaBell.Vermelho.jpeg','BarbellReto16mm.webp','BarbellReto22mm.webp','BarbellReto38mm.webp','BarbellReto8mm.webp','Brinco2mm.webp','Brinco3mm.webp','Brinco4mm.webp','Brinco5mm.webp','CoraçãoLisoLabret.webp','CoraçãoSimples.daith.jpeg','CruzLisaLabret.webp','D.ring.aço.webp','EstrelaLisaLabret.webp','FerraduraTradicionalAço.1.2.10mm.webp','FerraduraTradicionalAço.1.2.12mm.webp','LuaLisaLabret.webp','MicrocurvoTradicional.10mm.webp','MicrocurvoTradicional.12mm.webp','PontoDeLuz.Labret2mm.webp'],
+        'R$ 55': ['ArgolaSegmentada.10mm.webp','ArgolaSegmentada.12mm.webp','Banana.bell.P.1.6.10mm.webp','CobrinhaPequenaLabret.jpeg','CoraçãoAbertoLabret.webp','CoraçãoComPontoDeLuz.daith.jpeg','LibelulaLabret.webp','MicrocurvoComPontoDeLuz.webp','PontoDeLuz.labret3mm.webp','intimo christina.jpeg'],
+        'R$ 65': ['BananaBell.PequenoAzul.jpeg','BananaBell.pequenoVermelho.jpeg','Borboleta4pedrasLabret.webp','CoraçãoCravejadoEspetadoLabret.webp','CoraçãoCravejadoLabret.webp','MorcegoLabret.jpeg','RaioCravejadoLabret.jpeg'],
+        'R$ 75': ['3florzinhasLabret.jpeg','4coraçõesLabret.webp','5PedrasLabret.jpeg','9PedrinhasLabret.webp','ArgolaCravejada1.2.12mm.webp','ArgolaCravejada1.2.8mm.webp','ArgolaFrontalCravejada1.2.10mm.webp','ArgolaFrontalCravejada1.2.8mm.webp','BananaBell.CoraçãoComPontoDeLuz.jpeg','CerejinhaCravejadaLabret.webp','CobraCravejadaLabret.webp','CoraçãoLadoDireito.webp','Flor6Pontas.jpeg','FlorGrandeLabret.jpeg','PalmeiraLabret.webp','Ramo5FolhasLabret.webp','Ramo7FolhasLabret.jpeg'],
         'R$110':  ['BarbellReto2CoraçãoPontoDeLuz.webp']
       }
     },
     pvd: {
       label: 'PVD Gold', emoji: '✦', folder: 'PVD GOLD', cls: 'vpvd',
       faixas: {
-        'R$ 45': ['Brinco2mm.webp','Brinco3mm.webp','Dring.PVDgold.webp'],
-        'R$ 55': ['ArgolaSegmentada.pvdgold.10mm.webp','ArgolaSegmentada.pvdgold.12mm.webp','ArgolaSegmentada.pvdgold.8mm.webp','Banana.bell.PVDgold.1.6.10mm.webp','Borboleta1Pedra.pvdgold.labret.jpeg','CoraçãoAbertoLabret.pvdgold.webp','PontoDeLuz.pvdgold.3mm.webp'],
-        'R$ 65': ['BananaBell.pvdgold.PontoDeLuz.jpeg','BananaBellCoração.pvdgold..jpeg','Borboleta4Pedras.pvdgold.labret.jpeg','Borboleta4Pedras.pvdgold.webp','CoraçãoCravejado.pvdgold.webp','Flor6Pontas.pvdgold.labret.jpeg','FlorGrande.pvdgold.labret.jpeg','FlorGrandeLabret.pvdgold.webp','RaioCravejado.pvdgold.labret.jpeg'],
+        'R$ 45': ['Dring.PVDgold.webp'],
+        'R$ 55': ['ArgolaSegmentada.pvdgold.8mm.webp','Borboleta1Pedra.pvdgold.labret.jpeg','Brinco2mm.webp','Brinco3mm.webp','Brinco4mm.webp','CoraçãoAbertoLabret.pvdgold.webp','PontoDeLuz.pvdgold.3mm.webp'],
+        'R$ 65': ['ArgolaSegmentada.pvdgold.10mm.webp','ArgolaSegmentada.pvdgold.12mm.webp','Banana.bell.PVDgold.1.6.10mm.webp','Borboleta4Pedras.pvdgold.labret.jpeg','Borboleta4Pedras.pvdgold.webp','CoraçãoCravejado.pvdgold.webp','Flor6Pontas.pvdgold.labret.jpeg','FlorGrande.pvdgold.labret.jpeg','FlorGrandeLabret.pvdgold.webp','RaioCravejado.pvdgold.labret.jpeg'],
+        'R$ 75': ['BananaBell.pvdgold.PontoDeLuz.jpeg','BananaBellCoração.pvdgold..jpeg'],
         'R$ 85': ['4Corações.pvdgold.labret.jpeg','4coraçõesLabret.pvdgold.webp','5Pedras.pvdgold.labret.jpeg','9Pedrinhas.pvdgold.webp','Argola.pvdgold.Cravejada1.2.12mm.webp','Argola.pvdgoldCravejada1.2.8mm.webp','ArgolaFrontalCravejada1.2.10mm.pvdgold.webp','ArgolaFrontalCravejada1.2.8mm.pvdgold.webp','CoraçãoCravejadoEspetado.pvdgold.webp','CoraçãoLadoDireito,pvdgold.webp','CoraçãoLadoEsquerdo.pvdgold.webp','PalmeiraLabret.pvdgold.webp','Ramo5Folhas.pvdgold.labret.jpeg','Ramo5folhasLabret.pvdgold.webp','Ramo7Folhas.pvdgold.labret.jpeg'],
         'R$ 110': ['BarbellReto.2Coraçõescompontodeluz.webp']
       }
