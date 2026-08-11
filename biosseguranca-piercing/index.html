@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>[RASCUNHO INTERNO] Biossegurança no Estúdio da Debby | Não Publicar</title>
+  <meta name="description" content="Rascunho interno — não indexar. Documento de trabalho para estruturar a entrevista com a Debby sobre protocolos de esterilização e biossegurança antes de qualquer publicação." />
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="canonical" href="https://estudiodadebbypiercing.com.br/biosseguranca-piercing/" />
+
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+
+<nav class="sitenav" id="sitenav">
+  <div class="container sitenav-inner">
+    <a href="../" class="sitenav-brand">← Estúdio da Debby</a>
+    <button class="sitenav-burger" onclick="document.getElementById('sitenav').classList.toggle('open')" aria-label="Menu">☰</button>
+    <div class="sitenav-links">
+      <a href="../">🏠 Início</a>
+      <a href="../piercing/">💎 Piercing</a>
+      <a href="../unhas/">💅 Unhas</a>
+      <a href="../cilios/">✨ Cílios &amp; Sobrancelha</a>
+      <a href="../modas/">👗 Moda Feminina</a>
+      <a href="../sexshop/">🌹 Sex Shop</a>
+    </div>
+  </div>
+</nav>
+
+<header class="guide-hero">
+  <div class="container">
+    <div class="eyebrow-pill">⚠ Rascunho Interno · Não Publicado</div>
+    <h1>Biossegurança no<br/>Estúdio da Debby</h1>
+    <p class="subheadline">
+      Documento de trabalho — não é conteúdo pronto para publicação. Serve de ponto de partida para a
+      entrevista estruturada com a Debby (Mapa Mestre, item 17) antes de virar artigo público do Centro
+      de Conhecimento.
+    </p>
+  </div>
+</header>
+
+<main class="container guide-body">
+
+  <nav class="toc" aria-label="Índice do rascunho">
+    <div class="toc-title">Neste rascunho</div>
+    <ol>
+      <li><a href="#status">Status deste documento</a></li>
+      <li><a href="#confirmado">O que já está confirmado</a></li>
+      <li><a href="#lacunas">Lacunas para a entrevista</a></li>
+      <li><a href="#estrutura">Estrutura sugerida do artigo final</a></li>
+    </ol>
+  </nav>
+
+  <section class="g-section" id="status">
+    <div class="draft-banner">
+      <strong>⚠ Este arquivo não deve ser indexado nem linkado publicamente</strong>
+      Meta tag <code>robots: noindex, nofollow</code> aplicada de propósito. Não foi adicionado ao
+      <code>sitemap.xml</code>. Fica em <code>debby-hub/</code> porque essa é a pasta reservada para o site
+      público do estúdio — mas o conteúdo aqui é insumo interno, não uma página pronta para ir ao ar.
+      Antes de publicar qualquer versão pública, esse rascunho precisa virar uma entrevista estruturada
+      com a Debby (K + D conduzem, C documenta — ver Backlog Mestre, seção "Média", no MAPA-MESTRE.md).
+    </div>
+    <p style="color:var(--muted); font-size:14.5px; max-width:68ch;">
+      Não existe hoje, em nenhum documento do projeto (DEBBY-OS.md, SKILL-001, BRAND-SYSTEM.md), uma
+      descrição operacional de biossegurança — tipo de esterilização, equipamento usado, frequência de
+      validação, protocolo de descarte de material perfurocortante, etc. O que existe é o compromisso
+      legal já assinado por todo cliente no termo de responsabilidade (<code>crm-debby-original/public/termo.html</code>,
+      seções 2, 3 e 5) — que é uma fonte válida, mas de alto nível, não um protocolo operacional
+      detalhado.
+    </p>
+  </section>
+
+  <section class="g-section" id="confirmado">
+    <h2><span class="g-num">✓</span> O que já está confirmado</h2>
+    <p class="g-tag">Reaproveitado 1:1 do termo de responsabilidade oficial já assinado por cada cliente</p>
+
+    <div class="subregion">
+      <div class="subregion-title">📜 Responsabilidades do Estúdio (Termo, Seção 5)</div>
+      <ul class="g-list">
+        <li class="ok">Uso exclusivo de materiais esterilizados e/ou descartáveis.</li>
+        <li class="ok">Joias de aço cirúrgico 316L, titânio ASTM F136 ou materiais biocompatíveis certificados.</li>
+        <li class="ok">Profissional com formação específica em piercing.</li>
+        <li class="ok">Ambiente com protocolos de biossegurança conforme legislação sanitária vigente (RDC ANVISA).</li>
+      </ul>
+    </div>
+
+    <div class="subregion">
+      <div class="subregion-title">🩺 Triagem de saúde obrigatória antes de perfurar (Termo, Seções 1 e 2)</div>
+      <p style="font-size:14.5px; color:var(--text); margin-bottom:12px;">Todo cliente responde a uma anamnese de saúde antes da perfuração (<code>termo.html</code>), com bloqueio automático em itens críticos até liberação da equipe. Contraindicações absolutas declaradas no termo:</p>
+      <ul class="g-list">
+        <li class="no">Gestação ou amamentação</li>
+        <li class="no">Uso de anticoagulantes (Aspirina, Warfarina, Heparina e similares)</li>
+        <li class="no">Diabetes descontrolada</li>
+        <li class="no">Doenças autoimunes em fase ativa</li>
+        <li class="no">Distúrbios de coagulação diagnosticados</li>
+        <li class="no">Menores de 14 anos sem responsável legal presente</li>
+        <li class="no">Estado de embriaguez ou uso de drogas</li>
+      </ul>
+      <p class="g-note">A anamnese completa no sistema cobre uma lista mais ampla (cerca de 25 perguntas, em três níveis — crítico / operacional / atenção), incluindo itens como cirurgia recente, vacina recente, histórico de queloide, hepatite, HIV e uso de marca-passo. Essa lista já existe e está em produção — decisão de quanto dela vira conteúdo público (e como comunicar isso sem soar clínico/alarmante) é uma escolha editorial a decidir na entrevista, não uma lacuna de fato.</p>
+    </div>
+  </section>
+
+  <section class="g-section" id="lacunas">
+    <h2><span class="g-num">?</span> Lacunas para a entrevista estruturada</h2>
+    <p class="g-tag">Nada abaixo deve ser publicado como fato até a Debby confirmar</p>
+
+    <div class="gap-box">
+      <strong>[CONFIRMAR COM A DEBBY]</strong> Método de esterilização usado (autoclave? qual modelo/classe?) e frequência de validação/teste biológico do equipamento.
+    </div>
+    <div class="gap-box">
+      <strong>[CONFIRMAR COM A DEBBY]</strong> Confirmação explícita de agulha descartável de uso único por cliente, embalagem lacrada aberta na frente do cliente (prática comum no setor, mas não documentada internamente até hoje).
+    </div>
+    <div class="gap-box">
+      <strong>[CONFIRMAR COM A DEBBY]</strong> Protocolo de luvas e EPI da equipe — troca entre clientes, tipo de luva usada.
+    </div>
+    <div class="gap-box">
+      <strong>[CONFIRMAR COM A DEBBY]</strong> Higienização da estação de trabalho entre atendimentos — produto usado, frequência, superfícies cobertas.
+    </div>
+    <div class="gap-box">
+      <strong>[CONFIRMAR COM A DEBBY]</strong> Procedência e certificação das joias — o fornecedor já é conhecido internamente (ver pasta de assets <code>JOIAS FORNECEDOR</code>), mas não há documentação textual de certificado/laudo de material biocompatível por lote.
+    </div>
+    <div class="gap-box">
+      <strong>[CONFIRMAR COM A DEBBY]</strong> Descarte de material perfurocortante (coletor tipo Descarpack ou equivalente, destino final).
+    </div>
+    <div class="gap-box">
+      <strong>[CONFIRMAR COM A DEBBY]</strong> Número da RDC ANVISA específica aplicável ao estúdio (o termo cita "legislação sanitária vigente (RDC ANVISA)" de forma genérica, sem número).
+    </div>
+    <div class="gap-box">
+      <strong>[CONFIRMAR COM A DEBBY]</strong> Formação/certificação específica da equipe que perfura — nome do curso, carga horária, validade.
+    </div>
+    <div class="gap-box">
+      <strong>[CONFIRMAR COM A DEBBY]</strong> Protocolo em caso de acidente com sangue ou perfurocortante durante o atendimento (equipe ou cliente).
+    </div>
+  </section>
+
+  <section class="g-section" id="estrutura">
+    <h2><span class="g-num">→</span> Estrutura sugerida do artigo público final</h2>
+    <p class="g-tag">Depois da entrevista, o artigo publicável seguiria o mesmo padrão dos demais</p>
+    <ol style="padding-left:20px; color:var(--text); font-size:14.5px; display:flex; flex-direction:column; gap:8px;">
+      <li>Por que biossegurança importa (contexto, sem jargão médico excessivo)</li>
+      <li>Triagem de saúde antes de perfurar (a partir do que já está confirmado acima)</li>
+      <li>Esterilização e descartáveis (depende 100% das respostas da entrevista)</li>
+      <li>Joias e procedência (parcialmente pronto — falta certificação por lote)</li>
+      <li>Ambiente e higienização da estação de trabalho (depende da entrevista)</li>
+      <li>FAQ (pode reaproveitar perguntas reais que já chegam no WhatsApp sobre segurança)</li>
+    </ol>
+  </section>
+
+  <section class="g-cta">
+    <h3>Próximo passo</h3>
+    <p>Agendar a entrevista estruturada com a Debby (K conduz + D responde, C documenta) cobrindo exatamente as lacunas listadas acima. Depois disso, este arquivo deve ser reescrito como artigo público de verdade — título, meta description, JSON-LD, remoção do <code>noindex</code> — e só então adicionado ao <code>sitemap.xml</code>.</p>
+  </section>
+
+</main>
+
+<footer class="g-footer">
+  <div class="container">
+    <p>Documento interno — Estúdio da Debby Piercing · Não publicado, não indexado.</p>
+  </div>
+</footer>
+
+</body>
+</html>
