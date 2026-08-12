@@ -12,6 +12,7 @@ const PERFIS_JOIA = {
       { v: 'Aço Delicada R$55',    l: 'Labret / Brinco Delicada — R$ 55' },
       { v: 'Aço Decorada R$65',    l: 'Labret / Brinco Decorada — R$ 65' },
       { v: 'Aço Marcante R$75',    l: 'Labret / Brinco Marcante — R$ 75' },
+      { v: 'Aço Premium R$85',     l: 'Labret / Brinco Premium — R$ 85' },
     ]},
     { g: 'PVD Gold (dourado)', opts: [
       { v: 'PVD Gold R$45',          l: 'PVD Gold — R$ 45' },
@@ -19,16 +20,17 @@ const PERFIS_JOIA = {
       { v: 'PVD Gold R$65',          l: 'PVD Gold — R$ 65' },
       { v: 'PVD Gold R$75',          l: 'PVD Gold — R$ 75' },
       { v: 'PVD Gold R$85',          l: 'PVD Gold — R$ 85' },
+      { v: 'PVD Gold R$95',          l: 'PVD Gold Luxo — R$ 95' },
     ]},
     { g: 'Titânio', opts: [
-      { v: 'Titânio R$70',  l: 'Titânio Tradicional — R$ 70' },
-      { v: 'Titânio R$110', l: 'Titânio Decorado — R$ 110' },
+      { v: 'Titânio R$90',  l: 'Titânio Tradicional — R$ 90' },
+      { v: 'Titânio R$120', l: 'Titânio Decorado — R$ 120' },
     ]},
   ]},
   BANANA_BARBELL: { grupos: [
     { g: 'Barbell Curvo', opts: [
       { v: 'Barbell Curvo Rosa Aço R$25', l: 'Barbell Curvo Rosa — R$ 25' },
-      { v: 'Barbell Curvo Titânio R$70',  l: 'Barbell Curvo Titânio — R$ 70' },
+      { v: 'Barbell Curvo Titânio R$90',  l: 'Barbell Curvo Titânio — R$ 90' },
     ]},
     { g: 'Banana Bell / Barbell Curvo Colorido', opts: [
       { v: 'Banana Bell G Aço R$45',      l: 'Banana Bell G — R$ 45' },
@@ -43,20 +45,20 @@ const PERFIS_JOIA = {
     { g: 'Barbell Reto', opts: [
       { v: 'Barbell Reto Aço R$25',      l: 'Barbell Reto Aço — R$ 25' },
       { v: 'Barbell Reto Aço R$75',      l: 'Barbell Reto Aço Com Ponto de Luz — R$ 75' },
-      { v: 'Barbell Reto Titânio R$70',  l: 'Barbell Reto Titânio — R$ 70' },
-      { v: 'Barbell Reto Titânio R$110', l: 'Barbell Reto Titânio Decorado — R$ 110' },
+      { v: 'Barbell Reto Titânio R$90',  l: 'Barbell Reto Titânio — R$ 90' },
+      { v: 'Barbell Reto Titânio R$120', l: 'Barbell Reto Titânio Decorado — R$ 120' },
     ]},
   ]},
   BARBELL_MAMILO_TRANSVERSAL: { grupos: [
     { g: 'Barbell Reto', opts: [
       { v: 'Barbell Reto Aço R$45',     l: 'Barbell Reto Aço Tradicional — R$ 45' },
-      { v: 'Barbell Reto Titânio R$70', l: 'Barbell Reto Titânio Tradicional — R$ 70' },
+      { v: 'Barbell Reto Titânio R$90', l: 'Barbell Reto Titânio Tradicional — R$ 90' },
     ]},
   ]},
   LINGUA: { grupos: [
     { g: 'Barbell', opts: [
       { v: 'Barbell Língua Aço R$45',     l: 'Barbell Aço Tradicional — R$ 45' },
-      { v: 'Barbell Língua Titânio R$70', l: 'Barbell Titânio — R$ 70' },
+      { v: 'Barbell Língua Titânio R$90', l: 'Barbell Titânio — R$ 90' },
     ]},
   ]},
   MICROCURVA: { grupos: [
@@ -64,7 +66,7 @@ const PERFIS_JOIA = {
       { v: 'Microcurva Aço R$45',        l: 'Microcurva Aço 8/10/12mm — R$ 45' },
       { v: 'Microcurva Aço R$55',        l: 'Microcurva Aço com Pedra — R$ 55' },
       { v: 'Microcurva PVD Gold R$55',   l: 'Microcurva PVD Gold — R$ 55' },
-      { v: 'Microcurva Titânio R$90',    l: 'Microcurva Titânio — R$ 90' },
+      { v: 'Microcurva Titânio R$110',    l: 'Microcurva Titânio — R$ 110' },
     ]},
   ]},
   DAITH: { grupos: [
@@ -74,7 +76,7 @@ const PERFIS_JOIA = {
       { v: 'Argola Aço Cravejada R$75', l: 'Argola Aço Cravejada — R$ 75' },
       { v: 'Argola PVD Gold R$55',      l: 'Argola PVD Gold — R$ 55' },
       { v: 'Argola PVD Cravejada R$85', l: 'Argola PVD Gold Cravejada — R$ 85' },
-      { v: 'Argola Titânio R$70',       l: 'Argola Titânio — R$ 70' },
+      { v: 'Argola Titânio R$90',       l: 'Argola Titânio — R$ 90' },
     ]},
     { g: 'Coração (especial Daith)', opts: [
       { v: 'Coração Aço R$45',       l: 'Coração Aço — R$ 45' },
@@ -86,7 +88,7 @@ const PERFIS_JOIA = {
   INTIMO_CHRISTINA: { grupos: [
     { g: 'Banana Bell P', opts: [
       { v: 'Banana Bell P Aço R$55',        l: 'Banana Bell P — R$ 55' },
-      { v: 'Íntimo Titânio Decorada R$110', l: 'Titânio Decorada — R$ 110' },
+      { v: 'Íntimo Titânio Decorada R$120', l: 'Titânio Decorada — R$ 120' },
     ]},
   ]},
 }
@@ -192,6 +194,13 @@ function atualizarCampoJoia(perfuracao, tipoPerf) {
 
   if (GRUPO_MICRO.includes(perfuracao)) {
     document.getElementById('label-micro').textContent = perfuracao + ' — qual serviço você precisa?';
+    // Microdermal e Surface 90° têm preços diferentes pra "Instalação completa" desde
+    // 2026-08-12 (Microdermal R$170, Surface R$180) — antes eram iguais e essa opção do
+    // dropdown era fixa. Atualiza o texto/valor da opção conforme o serviço escolhido.
+    const precoCompleto = perfuracao === 'Surface' ? 180 : 170;
+    const opcaoCompleto = document.getElementById('opcao-micro-completo');
+    opcaoCompleto.value = 'Instalação completa (joia inclusa) R$' + precoCompleto;
+    opcaoCompleto.textContent = 'Instalação completa (joia inclusa) — R$ ' + precoCompleto;
     document.getElementById('grupo-micro').style.display = '';
     document.getElementById('estilo-micro').required = true;
     return;
@@ -370,9 +379,9 @@ document.addEventListener('click',function(e){
     ti: {
       label: 'Titânio', emoji: '🔵', folder: 'TITANIO', cls: 'vti',
       faixas: {
-        'R$ 70':  ['BarbellReto16mm.webp','BarbellReto22mm.webp','Ferradura10mm.webp','Ferradura12mm.webp','Ferradura8mm.webp','Labret12mm.webp','Labret8mm.webp','PontoDeLuzAnzol.webp'],
-        'R$ 90':  ['Microcurva12mm.webp','Microcurva8mm.webp'],
-        'R$ 110': ['2AsasLabret.webp','AbelhaPequenaLabret.webp','ArgolaTitanioDuplaAberta10mm.webp','ArgolaTitanioDuplaFechada10mm.webp','BarbelReto.2pontosdeluz.webp','BarbellReto.2pontosdeluz.pvdgold.webp','BorboletaLabret.webp','Esmeralda.webp','FlorzinhaComCaboLabret.webp','Intimo.webp','Intimo.pvdgold.webp','PontoDeLuz.3mm.webp']
+        'R$ 90':  ['BarbellReto16mm.webp','BarbellReto22mm.webp','Ferradura10mm.webp','Ferradura12mm.webp','Ferradura8mm.webp','Labret12mm.webp','Labret8mm.webp','PontoDeLuzAnzol.webp'],
+        'R$ 110': ['Microcurva12mm.webp','Microcurva8mm.webp'],
+        'R$ 120': ['2AsasLabret.webp','AbelhaPequenaLabret.webp','ArgolaTitanioDuplaAberta10mm.webp','ArgolaTitanioDuplaFechada10mm.webp','BarbelReto.2pontosdeluz.webp','BarbellReto.2pontosdeluz.pvdgold.webp','BorboletaLabret.webp','Esmeralda.webp','FlorzinhaComCaboLabret.webp','Intimo.webp','Intimo.pvdgold.webp','PontoDeLuz.3mm.webp']
       }
     }
   };
