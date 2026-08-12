@@ -412,7 +412,10 @@ document.addEventListener('click',function(e){
   }
 
   function waUrl(name, preco, matLabel) {
-    var txt = 'Oi! Vi a vitrine do site e tenho interesse na joia: ' + name + ' (' + preco + ' · ' + matLabel + '). Tem disponível?';
+    // Preço tirado da mensagem em 2026-08-12: valores mudaram no estúdio e o CATALOG estático
+    // não está atualizado. A equipe confirma o valor certo na hora. Ver CLAUDE.md / plano do
+    // Catálogo (Fase B trará preço ao vivo de novo, direto do CRM).
+    var txt = 'Oi! Vi a vitrine do site e tenho interesse na joia: ' + name + ' (' + matLabel + '). Tem disponível?';
     return 'https://wa.me/5519988404390?text=' + encodeURIComponent(txt);
   }
 
@@ -485,9 +488,12 @@ document.addEventListener('click',function(e){
         var info = document.createElement('div');
         info.className = 'joia-info';
 
+        // Preço tirado do card em 2026-08-12 (valores mudaram no estúdio, CATALOG estático
+        // desatualizado) — abas de material/faixa continuam mostrando preço porque são
+        // navegação, não um valor cravado na foto. Ver plano do Catálogo.
         var badge = document.createElement('span');
         badge.className = 'joia-badge badge-' + activeMat.replace('pvd', 'pvd').replace('ti', 'ti');
-        badge.textContent = preco + ' · ' + m.label;
+        badge.textContent = m.label;
         info.appendChild(badge);
 
         var h = document.createElement('p');
