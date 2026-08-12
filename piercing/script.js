@@ -12,14 +12,13 @@ const PERFIS_JOIA = {
       { v: 'Aço Delicada R$55',    l: 'Labret / Brinco Delicada — R$ 55' },
       { v: 'Aço Decorada R$65',    l: 'Labret / Brinco Decorada — R$ 65' },
       { v: 'Aço Marcante R$75',    l: 'Labret / Brinco Marcante — R$ 75' },
-      { v: 'Aço Premium R$110',    l: 'Labret / Brinco Premium Aço — R$ 110' },
     ]},
     { g: 'PVD Gold (dourado)', opts: [
       { v: 'PVD Gold R$45',          l: 'PVD Gold — R$ 45' },
       { v: 'PVD Gold R$55',          l: 'PVD Gold — R$ 55' },
       { v: 'PVD Gold R$65',          l: 'PVD Gold — R$ 65' },
+      { v: 'PVD Gold R$75',          l: 'PVD Gold — R$ 75' },
       { v: 'PVD Gold R$85',          l: 'PVD Gold — R$ 85' },
-      { v: 'PVD Gold Premium R$110', l: 'PVD Gold Premium — R$ 110' },
     ]},
     { g: 'Titânio', opts: [
       { v: 'Titânio R$70',  l: 'Titânio Tradicional — R$ 70' },
@@ -43,7 +42,7 @@ const PERFIS_JOIA = {
   BARBELL_RETO: { grupos: [
     { g: 'Barbell Reto', opts: [
       { v: 'Barbell Reto Aço R$25',      l: 'Barbell Reto Aço — R$ 25' },
-      { v: 'Barbell Reto Aço R$110',     l: 'Barbell Reto Aço Premium — R$ 110' },
+      { v: 'Barbell Reto Aço R$75',      l: 'Barbell Reto Aço Com Ponto de Luz — R$ 75' },
       { v: 'Barbell Reto Titânio R$70',  l: 'Barbell Reto Titânio — R$ 70' },
       { v: 'Barbell Reto Titânio R$110', l: 'Barbell Reto Titânio Decorado — R$ 110' },
     ]},
@@ -355,8 +354,7 @@ document.addEventListener('click',function(e){
         'R$ 45': ['ArgolaSegmentada.8mm.webp','Banana.bell.G.1.6.10mm.webp','BananaBell.frutacor.jpeg','BananaBell.rosa.jpeg','BananaBell.Vermelho.jpeg','BarbellReto16mm.webp','BarbellReto22mm.webp','BarbellReto38mm.webp','BarbellReto8mm.webp','Brinco2mm.webp','Brinco3mm.webp','Brinco4mm.webp','Brinco5mm.webp','CoraçãoLisoLabret.webp','CoraçãoSimples.daith.jpeg','CruzLisaLabret.webp','D.ring.aço.webp','EstrelaLisaLabret.webp','FerraduraTradicionalAço.1.2.10mm.webp','FerraduraTradicionalAço.1.2.12mm.webp','LuaLisaLabret.webp','MicrocurvoTradicional.8mm.webp','MicrocurvoTradicional.10mm.webp','MicrocurvoTradicional.12mm.webp','PontoDeLuz.Labret2mm.webp'],
         'R$ 55': ['ArgolaSegmentada.10mm.webp','ArgolaSegmentada.12mm.webp','Banana.bell.P.1.6.10mm.webp','CobrinhaPequenaLabret.jpeg','CoraçãoAbertoLabret.webp','CoraçãoComPontoDeLuz.daith.jpeg','LibelulaLabret.webp','MicrocurvoComPontoDeLuz.webp','PontoDeLuz.labret3mm.webp','intimo christina.jpeg'],
         'R$ 65': ['BananaBell.PequenoAzul.jpeg','BananaBell.pequenoVermelho.jpeg','Borboleta4pedrasLabret.webp','CoraçãoCravejadoEspetadoLabret.webp','CoraçãoCravejadoLabret.webp','FlorGrandeLabret.jpeg','MorcegoLabret.jpeg','RaioCravejadoLabret.jpeg'],
-        'R$ 75': ['3florzinhasLabret.jpeg','4coraçõesLabret.webp','5PedrasLabret.jpeg','9PedrinhasLabret.webp','ArgolaCravejada1.2.12mm.webp','ArgolaCravejada1.2.8mm.webp','ArgolaFrontalCravejada1.2.10mm.webp','ArgolaFrontalCravejada1.2.8mm.webp','BananaBell.CoraçãoComPontoDeLuz.jpeg','CerejinhaCravejadaLabret.webp','CobraCravejadaLabret.webp','CoraçãoLadoDireito.webp','Flor6Pontas.jpeg','PalmeiraLabret.webp','Ramo5FolhasLabret.webp','Ramo7FolhasLabret.jpeg'],
-        'R$110':  ['BarbellReto2CoraçãoPontoDeLuz.webp']
+        'R$ 75': ['3florzinhasLabret.jpeg','4coraçõesLabret.webp','5PedrasLabret.jpeg','9PedrinhasLabret.webp','ArgolaCravejada1.2.12mm.webp','ArgolaCravejada1.2.8mm.webp','ArgolaFrontalCravejada1.2.10mm.webp','ArgolaFrontalCravejada1.2.8mm.webp','BananaBell.CoraçãoComPontoDeLuz.jpeg','CerejinhaCravejadaLabret.webp','CobraCravejadaLabret.webp','CoraçãoLadoDireito.webp','Flor6Pontas.jpeg','PalmeiraLabret.webp','Ramo5FolhasLabret.webp','Ramo7FolhasLabret.jpeg','BarbellReto2CoraçãoPontoDeLuz.webp']
       }
     },
     pvd: {
@@ -366,8 +364,7 @@ document.addEventListener('click',function(e){
         'R$ 55': ['ArgolaSegmentada.pvdgold.8mm.webp','Borboleta1Pedra.pvdgold.labret.jpeg','Brinco2mm.webp','Brinco3mm.webp','Brinco4mm.webp','CoraçãoAbertoLabret.pvdgold.webp'],
         'R$ 65': ['ArgolaSegmentada.pvdgold.10mm.webp','ArgolaSegmentada.pvdgold.12mm.webp','Banana.bell.PVDgold.1.6.10mm.webp','Borboleta4Pedras.pvdgold.labret.jpeg','Borboleta4Pedras.pvdgold.webp','CoraçãoCravejado.pvdgold.webp','Flor6Pontas.pvdgold.labret.jpeg','FlorGrande.pvdgold.labret.jpeg','FlorGrandeLabret.pvdgold.webp','PontoDeLuz.pvdgold.3mm.webp','RaioCravejado.pvdgold.labret.jpeg'],
         'R$ 75': ['BananaBell.pvdgold.PontoDeLuz.jpeg','BananaBellCoração.pvdgold..jpeg'],
-        'R$ 85': ['4Corações.pvdgold.labret.jpeg','4coraçõesLabret.pvdgold.webp','5Pedras.pvdgold.labret.jpeg','9Pedrinhas.pvdgold.webp','Argola.pvdgold.Cravejada1.2.12mm.webp','Argola.pvdgoldCravejada1.2.8mm.webp','ArgolaFrontalCravejada1.2.10mm.pvdgold.webp','ArgolaFrontalCravejada1.2.8mm.pvdgold.webp','CoraçãoCravejadoEspetado.pvdgold.webp','CoraçãoLadoDireito,pvdgold.webp','CoraçãoLadoEsquerdo.pvdgold.webp','PalmeiraLabret.pvdgold.webp','Ramo5Folhas.pvdgold.labret.jpeg','Ramo5folhasLabret.pvdgold.webp','Ramo7Folhas.pvdgold.labret.jpeg'],
-        'R$ 110': ['BarbellReto.2Coraçõescompontodeluz.webp']
+        'R$ 85': ['4Corações.pvdgold.labret.jpeg','4coraçõesLabret.pvdgold.webp','5Pedras.pvdgold.labret.jpeg','9Pedrinhas.pvdgold.webp','Argola.pvdgold.Cravejada1.2.12mm.webp','Argola.pvdgoldCravejada1.2.8mm.webp','ArgolaFrontalCravejada1.2.10mm.pvdgold.webp','ArgolaFrontalCravejada1.2.8mm.pvdgold.webp','CoraçãoCravejadoEspetado.pvdgold.webp','CoraçãoLadoDireito,pvdgold.webp','CoraçãoLadoEsquerdo.pvdgold.webp','PalmeiraLabret.pvdgold.webp','Ramo5Folhas.pvdgold.labret.jpeg','Ramo5folhasLabret.pvdgold.webp','Ramo7Folhas.pvdgold.labret.jpeg','BarbellReto.2Coraçõescompontodeluz.webp']
       }
     },
     ti: {
