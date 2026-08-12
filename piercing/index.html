@@ -857,7 +857,7 @@
         <div>
           <span class="material-tag tag-aco">Aço 316L</span>
           <h3>Aço cirúrgico</h3>
-          <p class="material-preco">R$25 · R$45 · R$55 · R$65 · R$75 · R$85</p>
+          <p class="material-preco">Valores por modelo — confirmados no estúdio</p>
         </div>
         <p class="material-desc">
           Boa opção para a maioria das pessoas. Resistente, acessível e funcional para cicatrização padrão.
@@ -878,7 +878,7 @@
         <div>
           <span class="material-tag tag-pvd">PVD Gold</span>
           <h3>Dourado PVD</h3>
-          <p class="material-preco">R$45 · R$55 · R$65 · R$75 · R$85 · R$95</p>
+          <p class="material-preco">Valores por modelo — confirmados no estúdio</p>
         </div>
         <p class="material-desc">
           Acabamento dourado que não desbota. Para quem quer o visual do ouro com a segurança do aço cirúrgico de qualidade.
@@ -899,7 +899,7 @@
         <div>
           <span class="material-tag tag-titanio">Titânio Implant Grade</span>
           <h3>Titânio</h3>
-          <p class="material-preco">A partir de R$90</p>
+          <p class="material-preco">Valores por modelo — confirmados no estúdio</p>
         </div>
         <p class="material-desc">
           O material mais seguro para cicatrização. 100% hipoalergênico, sem níquel, mais confortável durante a cura.
@@ -1167,7 +1167,7 @@
       </details>
       <details>
         <summary>Quanto custa?</summary>
-        <p>Aço cirúrgico: Tradicional R$25, Brilhante R$45, Delicada R$55, Decorada R$65, Marcante R$75, Premium R$85. PVD Gold (dourado): Tradicional R$45, Brilhante R$55, Delicada R$65, Decorada Premium R$75, Decorada R$85, Luxo R$95. Titânio: Tradicional R$90, Microcurva R$110, Decorado R$120.</p>
+        <p>Varia por material e modelo de joia — do aço cirúrgico ao titânio, com faixas para cada estilo. A equipe confirma o valor certo assim que você chega no estúdio.</p>
       </details>
       <details>
         <summary>Qual joia eu devo escolher?</summary>
@@ -1328,7 +1328,7 @@
               <option value="Microdermal">Microdermal</option>
               <option value="Surface">Surface</option>
               <option value="Lobuloplastia">Lobuloplastia</option>
-              <option value="Remoção de joia">Remoção de joia — R$ 20</option>
+              <option value="Remoção de joia">Remoção de joia</option>
               <option value="Outro">Outro / ainda estou decidindo</option>
             </optgroup>
           </select>
@@ -1345,9 +1345,9 @@
         <!-- AVISO regiões restritas: nova perfuração + joia decorada bloqueada -->
         <div class="form-group" id="grupo-restrito" style="display:none">
           <div id="texto-restrito" style="background:rgba(251,191,36,0.08);border:1px solid rgba(251,191,36,0.35);border-radius:12px;padding:12px 16px;font-size:13px;color:#fbbf24;">
-            ⚠️ Para essa região, a perfuração nova é feita com a <strong>joia Tradicional R$ 25</strong>. Após 30 dias de cicatrização você pode trocar para qualquer modelo. A equipe te explica tudo ao chegar.
+            ⚠️ Para essa região, a perfuração nova é feita com a <strong>joia Tradicional</strong>. Após 30 dias de cicatrização você pode trocar para qualquer modelo. A equipe te explica tudo ao chegar (valor confirmado no estúdio).
           </div>
-          <input type="hidden" id="estilo-restrito" name="estilo-restrito" value="Aço Tradicional R$25 (perfuração nova — troca permitida após 30 dias)" />
+          <input type="hidden" id="estilo-restrito" name="estilo-restrito" value="Aço Tradicional (perfuração nova — troca permitida após 30 dias)" />
         </div>
 
         <!-- GRUPO A: joia livre — perfurações padrão e mamilo/lóbulo -->
@@ -1363,24 +1363,24 @@
           <label id="label-micro" for="estilo-micro">Qual serviço você precisa?</label>
           <select id="estilo-micro" name="estilo-micro">
             <option value="" disabled selected>Selecione o tipo...</option>
-            <option id="opcao-micro-completo" value="Instalação completa (joia inclusa) R$170">Instalação completa (joia inclusa) — R$ 170</option>
-            <option value="Troca de topo R$70">Troca de topo — R$ 70</option>
-            <option value="Remoção total R$50">Remoção total — R$ 50</option>
-            <option value="Remoção do topo R$20">Remoção do topo — R$ 20</option>
+            <option id="opcao-micro-completo" value="Instalação completa (joia inclusa)">Instalação completa (joia inclusa)</option>
+            <option value="Troca de topo">Troca de topo</option>
+            <option value="Remoção total">Remoção total</option>
+            <option value="Remoção do topo">Remoção do topo</option>
           </select>
         </div>
 
         <!-- GRUPO C: lobuloplastia — preço fixo informativo -->
         <div class="form-group" id="grupo-lobu" style="display:none">
           <div style="background:rgba(223,183,108,0.08);border:1px solid rgba(223,183,108,0.3);border-radius:12px;padding:12px 16px;font-size:13px;color:var(--gold);font-weight:700;">
-            ✂️ Lobuloplastia — R$ 50 por furo por sessão
+            ✂️ Lobuloplastia — valor confirmado no estúdio
           </div>
         </div>
 
         <!-- GRUPO E: remoção de joia -->
         <div class="form-group" id="grupo-remocao" style="display:none">
           <div style="background:rgba(223,183,108,0.08);border:1px solid rgba(223,183,108,0.3);border-radius:12px;padding:12px 16px;font-size:13px;color:var(--gold);font-weight:700;">
-            ✂️ Remoção de joia — R$ 20 por peça
+            ✂️ Remoção de joia — valor confirmado no estúdio
           </div>
         </div>
 

@@ -4,91 +4,92 @@ const NUMERO_WHATSAPP_ESTUDIO = "5519988404390";
 
 // ── PERFIS DE JOIAS POR TIPO ANATÔMICO ────────────────────────────────────────
 
+// Preços tirados das opções em 2026-08-12: Debby mudou vários valores no estúdio hoje e o
+// dropdown estava desatualizado (é texto fixo, não vem do CRM). Fica só o nome/estilo até a
+// precificação ser revisada e fechada (ver plano do Catálogo) — a equipe confirma o valor real
+// no estúdio. Onde o preço era a única diferença entre opções (ex: PVD Gold da orelha em 5
+// faixas iguais), as opções foram agrupadas numa só, porque sem valor elas ficam idênticas.
 const PERFIS_JOIA = {
   ORELHA: { grupos: [
     { g: 'Aço Cirúrgico', opts: [
-      { v: 'Aço Tradicional R$25', l: 'Labret / Brinco Tradicional — R$ 25' },
-      { v: 'Aço Brilhante R$45',   l: 'Labret / Brinco Brilhante — R$ 45 ⭐' },
-      { v: 'Aço Delicada R$55',    l: 'Labret / Brinco Delicada — R$ 55' },
-      { v: 'Aço Decorada R$65',    l: 'Labret / Brinco Decorada — R$ 65' },
-      { v: 'Aço Marcante R$75',    l: 'Labret / Brinco Marcante — R$ 75' },
-      { v: 'Aço Premium R$85',     l: 'Labret / Brinco Premium — R$ 85' },
+      { v: 'Aço Tradicional', l: 'Labret / Brinco Tradicional' },
+      { v: 'Aço Brilhante',   l: 'Labret / Brinco Brilhante ⭐' },
+      { v: 'Aço Delicada',    l: 'Labret / Brinco Delicada' },
+      { v: 'Aço Decorada',    l: 'Labret / Brinco Decorada' },
+      { v: 'Aço Marcante',    l: 'Labret / Brinco Marcante' },
+      { v: 'Aço Premium',     l: 'Labret / Brinco Premium' },
     ]},
     { g: 'PVD Gold (dourado)', opts: [
-      { v: 'PVD Gold R$45',          l: 'PVD Gold — R$ 45' },
-      { v: 'PVD Gold R$55',          l: 'PVD Gold — R$ 55' },
-      { v: 'PVD Gold R$65',          l: 'PVD Gold — R$ 65' },
-      { v: 'PVD Gold R$75',          l: 'PVD Gold — R$ 75' },
-      { v: 'PVD Gold R$85',          l: 'PVD Gold — R$ 85' },
-      { v: 'PVD Gold R$95',          l: 'PVD Gold Luxo — R$ 95' },
+      { v: 'PVD Gold',      l: 'PVD Gold' },
+      { v: 'PVD Gold Luxo', l: 'PVD Gold Luxo' },
     ]},
     { g: 'Titânio', opts: [
-      { v: 'Titânio R$90',  l: 'Titânio Tradicional — R$ 90' },
-      { v: 'Titânio R$120', l: 'Titânio Decorado — R$ 120' },
+      { v: 'Titânio Tradicional', l: 'Titânio Tradicional' },
+      { v: 'Titânio Decorado',    l: 'Titânio Decorado' },
     ]},
   ]},
   BANANA_BARBELL: { grupos: [
     { g: 'Barbell Curvo', opts: [
-      { v: 'Barbell Curvo Rosa Aço R$25', l: 'Barbell Curvo Rosa — R$ 25' },
-      { v: 'Barbell Curvo Titânio R$90',  l: 'Barbell Curvo Titânio — R$ 90' },
+      { v: 'Barbell Curvo Rosa Aço',  l: 'Barbell Curvo Rosa' },
+      { v: 'Barbell Curvo Titânio',   l: 'Barbell Curvo Titânio' },
     ]},
     { g: 'Banana Bell / Barbell Curvo Colorido', opts: [
-      { v: 'Banana Bell G Aço R$45',      l: 'Banana Bell G — R$ 45' },
-      { v: 'Barbell Curvo Aço R$45',      l: 'Barbell Curvo Aço Colorido — R$ 45' },
-      { v: 'Banana Bell Aço R$55',        l: 'Banana Bell Aço com Pedra — R$ 55' },
-      { v: 'Banana Bell Aço R$65',        l: 'Banana Bell Aço Decorada — R$ 65' },
-      { v: 'Banana Bell PVD Gold Simples R$65', l: 'Banana Bell PVD Gold — R$ 65' },
-      { v: 'Banana Bell PVD Gold R$65',          l: 'Banana Bell PVD Gold Decorada — R$ 65' },
+      { v: 'Banana Bell G Aço',              l: 'Banana Bell G' },
+      { v: 'Barbell Curvo Aço Colorido',     l: 'Barbell Curvo Aço Colorido' },
+      { v: 'Banana Bell Aço com Pedra',      l: 'Banana Bell Aço com Pedra' },
+      { v: 'Banana Bell Aço Decorada',       l: 'Banana Bell Aço Decorada' },
+      { v: 'Banana Bell PVD Gold Simples',   l: 'Banana Bell PVD Gold' },
+      { v: 'Banana Bell PVD Gold Decorada',  l: 'Banana Bell PVD Gold Decorada' },
     ]},
   ]},
   BARBELL_RETO: { grupos: [
     { g: 'Barbell Reto', opts: [
-      { v: 'Barbell Reto Aço R$25',      l: 'Barbell Reto Aço — R$ 25' },
-      { v: 'Barbell Reto Aço R$75',      l: 'Barbell Reto Aço Com Ponto de Luz — R$ 75' },
-      { v: 'Barbell Reto Titânio R$90',  l: 'Barbell Reto Titânio — R$ 90' },
-      { v: 'Barbell Reto Titânio R$120', l: 'Barbell Reto Titânio Decorado — R$ 120' },
+      { v: 'Barbell Reto Aço',              l: 'Barbell Reto Aço' },
+      { v: 'Barbell Reto Aço Ponto de Luz', l: 'Barbell Reto Aço Com Ponto de Luz' },
+      { v: 'Barbell Reto Titânio',          l: 'Barbell Reto Titânio' },
+      { v: 'Barbell Reto Titânio Decorado', l: 'Barbell Reto Titânio Decorado' },
     ]},
   ]},
   BARBELL_MAMILO_TRANSVERSAL: { grupos: [
     { g: 'Barbell Reto', opts: [
-      { v: 'Barbell Reto Aço R$45',     l: 'Barbell Reto Aço Tradicional — R$ 45' },
-      { v: 'Barbell Reto Titânio R$90', l: 'Barbell Reto Titânio Tradicional — R$ 90' },
+      { v: 'Barbell Reto Aço Tradicional',     l: 'Barbell Reto Aço Tradicional' },
+      { v: 'Barbell Reto Titânio Tradicional', l: 'Barbell Reto Titânio Tradicional' },
     ]},
   ]},
   LINGUA: { grupos: [
     { g: 'Barbell', opts: [
-      { v: 'Barbell Língua Aço R$45',     l: 'Barbell Aço Tradicional — R$ 45' },
-      { v: 'Barbell Língua Titânio R$90', l: 'Barbell Titânio — R$ 90' },
+      { v: 'Barbell Língua Aço Tradicional', l: 'Barbell Aço Tradicional' },
+      { v: 'Barbell Língua Titânio',         l: 'Barbell Titânio' },
     ]},
   ]},
   MICROCURVA: { grupos: [
     { g: 'Microcurva', opts: [
-      { v: 'Microcurva Aço R$45',        l: 'Microcurva Aço 8/10/12mm — R$ 45' },
-      { v: 'Microcurva Aço R$55',        l: 'Microcurva Aço com Pedra — R$ 55' },
-      { v: 'Microcurva PVD Gold R$55',   l: 'Microcurva PVD Gold — R$ 55' },
-      { v: 'Microcurva Titânio R$110',    l: 'Microcurva Titânio — R$ 110' },
+      { v: 'Microcurva Aço 8/10/12mm', l: 'Microcurva Aço 8/10/12mm' },
+      { v: 'Microcurva Aço com Pedra', l: 'Microcurva Aço com Pedra' },
+      { v: 'Microcurva PVD Gold',      l: 'Microcurva PVD Gold' },
+      { v: 'Microcurva Titânio',       l: 'Microcurva Titânio' },
     ]},
   ]},
   DAITH: { grupos: [
     { g: 'Argola', opts: [
-      { v: 'Argola Aço R$25',           l: 'Argola Aço — R$ 25' },
-      { v: 'Argola Aço R$45',           l: 'Argola Aço Decorada — R$ 45' },
-      { v: 'Argola Aço Cravejada R$75', l: 'Argola Aço Cravejada — R$ 75' },
-      { v: 'Argola PVD Gold R$55',      l: 'Argola PVD Gold — R$ 55' },
-      { v: 'Argola PVD Cravejada R$85', l: 'Argola PVD Gold Cravejada — R$ 85' },
-      { v: 'Argola Titânio R$90',       l: 'Argola Titânio — R$ 90' },
+      { v: 'Argola Aço',              l: 'Argola Aço' },
+      { v: 'Argola Aço Decorada',     l: 'Argola Aço Decorada' },
+      { v: 'Argola Aço Cravejada',    l: 'Argola Aço Cravejada' },
+      { v: 'Argola PVD Gold',         l: 'Argola PVD Gold' },
+      { v: 'Argola PVD Gold Cravejada', l: 'Argola PVD Gold Cravejada' },
+      { v: 'Argola Titânio',          l: 'Argola Titânio' },
     ]},
     { g: 'Coração (especial Daith)', opts: [
-      { v: 'Coração Aço R$45',       l: 'Coração Aço — R$ 45' },
-      { v: 'Coração Aço Pedra R$55', l: 'Coração com Pedra Aço — R$ 55' },
-      { v: 'Coração PVD R$55',       l: 'Coração PVD Gold — R$ 55' },
-      { v: 'Coração PVD R$65',       l: 'Coração PVD Gold Decorado — R$ 65' },
+      { v: 'Coração Aço',            l: 'Coração Aço' },
+      { v: 'Coração com Pedra Aço',  l: 'Coração com Pedra Aço' },
+      { v: 'Coração PVD Gold',       l: 'Coração PVD Gold' },
+      { v: 'Coração PVD Gold Decorado', l: 'Coração PVD Gold Decorado' },
     ]},
   ]},
   INTIMO_CHRISTINA: { grupos: [
     { g: 'Banana Bell P', opts: [
-      { v: 'Banana Bell P Aço R$55',        l: 'Banana Bell P — R$ 55' },
-      { v: 'Íntimo Titânio Decorada R$120', l: 'Titânio Decorada — R$ 120' },
+      { v: 'Banana Bell P Aço',          l: 'Banana Bell P' },
+      { v: 'Íntimo Titânio Decorada',    l: 'Íntimo Titânio Decorada' },
     ]},
   ]},
 }
@@ -194,13 +195,6 @@ function atualizarCampoJoia(perfuracao, tipoPerf) {
 
   if (GRUPO_MICRO.includes(perfuracao)) {
     document.getElementById('label-micro').textContent = perfuracao + ' — qual serviço você precisa?';
-    // Microdermal e Surface 90° têm preços diferentes pra "Instalação completa" desde
-    // 2026-08-12 (Microdermal R$170, Surface R$180) — antes eram iguais e essa opção do
-    // dropdown era fixa. Atualiza o texto/valor da opção conforme o serviço escolhido.
-    const precoCompleto = perfuracao === 'Surface' ? 180 : 170;
-    const opcaoCompleto = document.getElementById('opcao-micro-completo');
-    opcaoCompleto.value = 'Instalação completa (joia inclusa) R$' + precoCompleto;
-    opcaoCompleto.textContent = 'Instalação completa (joia inclusa) — R$ ' + precoCompleto;
     document.getElementById('grupo-micro').style.display = '';
     document.getElementById('estilo-micro').required = true;
     return;
@@ -222,12 +216,11 @@ function atualizarCampoJoia(perfuracao, tipoPerf) {
   if (REGIOES_RESTRITAS.includes(perfuracao)) {
     document.getElementById('grupo-tipo-perf').style.display = '';
     if (tipoPerf === 'nova') {
-      var precoRestrito = precoPrimeiraPerfuracaoRestrita(perfuracao);
       document.getElementById('grupo-restrito').style.display = '';
       document.getElementById('texto-restrito').innerHTML =
-        '⚠️ Para essa região, a perfuração nova é feita com a <strong>joia Tradicional R$ ' + precoRestrito + '</strong>. Após 30 dias de cicatrização você pode trocar para qualquer modelo. A equipe te explica tudo ao chegar.';
+        '⚠️ Para essa região, a perfuração nova é feita com a <strong>joia Tradicional</strong>. Após 30 dias de cicatrização você pode trocar para qualquer modelo. A equipe te explica tudo ao chegar (valor confirmado no estúdio).';
       document.getElementById('estilo-restrito').value =
-        'Aço Tradicional R$' + precoRestrito + ' (perfuração nova — troca permitida após 30 dias)';
+        'Aço Tradicional (perfuração nova — troca permitida após 30 dias)';
     } else if (tipoPerf === 'troca') {
       var perfil = LOCAL_PERFIL[perfuracao] || 'ORELHA';
       populateEstiloSelect(perfil);
@@ -290,11 +283,11 @@ document.addEventListener("DOMContentLoaded", function () {
     if (GRUPO_MICRO.includes(perfuracao)) {
       estiloFinal = document.getElementById("estilo-micro").value;
     } else if (GRUPO_LOBU.includes(perfuracao)) {
-      estiloFinal = 'Lobuloplastia — R$ 50 por furo por sessão';
+      estiloFinal = 'Lobuloplastia (valor confirmado no estúdio)';
     } else if (GRUPO_REMOCAO.includes(perfuracao)) {
-      estiloFinal = 'Remoção de joia — R$ 20 por peça';
+      estiloFinal = 'Remoção de joia (valor confirmado no estúdio)';
     } else if (REGIOES_RESTRITAS.includes(perfuracao) && tipoPerf === 'nova') {
-      estiloFinal = 'Aço Tradicional R$' + precoPrimeiraPerfuracaoRestrita(perfuracao) + ' (perfuração nova — troca permitida após 30 dias)';
+      estiloFinal = 'Aço Tradicional (perfuração nova — troca permitida após 30 dias)';
     } else if (GRUPO_JOIA.includes(perfuracao)) {
       estiloFinal = document.getElementById("estilo").value;
     } else {
