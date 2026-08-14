@@ -346,80 +346,56 @@ document.addEventListener('click',function(e){
   if(el&&typeof gtag!=='undefined')gtag('event','whatsapp_open',{event_category:'conversao',event_label:'wa_link_piercing'});
 });
 
-/* ===== VITRINE DE JOIAS ===== */
+/* ===== VITRINE DE JOIAS + GRADE DE LOCAIS ===================================
+   Fase B do plano do Catálogo (2026-08-14): em vez do array fixo de 149 fotos
+   (que exigia editar código toda vez que uma joia mudava de nome/preço/lugar),
+   busca ao vivo na Edge Function `catalogo-publico`, que lê direto do CRM
+   (modelos_joia/locais_perfuracao, só linhas ativo=true com foto). Nunca lê a
+   tabela direto com a anon key — só essa function pública, com service_role
+   por trás (mesmo padrão do sistema de Cuidados). Ver CLAUDE.md/plano.
+================================================================================ */
 (function () {
-  var CATALOG = {
-    aco: {
-      label: 'Aço Cirúrgico', emoji: '💎', folder: 'ACO', cls: 'vaco',
-      faixas: {
-        'R$ 25': ['FerraduraTradicionalAço.1.2.8mm.webp','LabretTradicionalAço.1.2.10mm.webp','LabretTradicionalAço.1.2.12mm.webp','LabretTradicionalAço.1.2.6mm.webp','LabretTradicionalAço.1.2.8mm.webp','TradicionalPontoDeLuzAnzol.webp'],
-        'R$ 45': ['ArgolaSegmentada.8mm.webp','Banana.bell.G.1.6.10mm.webp','BananaBell.frutacor.jpeg','BananaBell.rosa.jpeg','BananaBell.Vermelho.jpeg','BarbellReto16mm.webp','BarbellReto22mm.webp','BarbellReto38mm.webp','BarbellReto8mm.webp','Brinco2mm.webp','Brinco3mm.webp','Brinco4mm.webp','Brinco5mm.webp','CoraçãoLisoLabret.webp','CoraçãoSimples.daith.jpeg','CruzLisaLabret.webp','D.ring.aço.webp','EstrelaLisaLabret.webp','FerraduraTradicionalAço.1.2.10mm.webp','FerraduraTradicionalAço.1.2.12mm.webp','LuaLisaLabret.webp','MicrocurvoTradicional.8mm.webp','MicrocurvoTradicional.10mm.webp','MicrocurvoTradicional.12mm.webp','PontoDeLuz.Labret2mm.webp'],
-        'R$ 55': ['ArgolaSegmentada.10mm.webp','ArgolaSegmentada.12mm.webp','Banana.bell.P.1.6.10mm.webp','CobrinhaPequenaLabret.jpeg','CoraçãoAbertoLabret.webp','CoraçãoComPontoDeLuz.daith.jpeg','LibelulaLabret.webp','MicrocurvoComPontoDeLuz.webp','PontoDeLuz.labret3mm.webp','intimo christina.jpeg'],
-        'R$ 65': ['BananaBell.PequenoAzul.jpeg','BananaBell.pequenoVermelho.jpeg','Borboleta4pedrasLabret.webp','CoraçãoCravejadoEspetadoLabret.webp','CoraçãoCravejadoLabret.webp','FlorGrandeLabret.jpeg','MorcegoLabret.jpeg','RaioCravejadoLabret.jpeg'],
-        'R$ 75': ['3florzinhasLabret.jpeg','4coraçõesLabret.webp','5PedrasLabret.jpeg','9PedrinhasLabret.webp','ArgolaCravejada1.2.12mm.webp','ArgolaCravejada1.2.8mm.webp','ArgolaFrontalCravejada1.2.10mm.webp','ArgolaFrontalCravejada1.2.8mm.webp','BananaBell.CoraçãoComPontoDeLuz.jpeg','CerejinhaCravejadaLabret.webp','CobraCravejadaLabret.webp','CoraçãoLadoDireito.webp','Flor6Pontas.jpeg','PalmeiraLabret.webp','Ramo5FolhasLabret.webp','Ramo7FolhasLabret.jpeg','BarbellReto2CoraçãoPontoDeLuz.webp']
-      }
-    },
-    pvd: {
-      label: 'PVD Gold', emoji: '✦', folder: 'PVD GOLD', cls: 'vpvd',
-      faixas: {
-        'R$ 45': ['Dring.PVDgold.webp'],
-        'R$ 55': ['ArgolaSegmentada.pvdgold.8mm.webp','Borboleta1Pedra.pvdgold.labret.jpeg','Brinco2mm.webp','Brinco3mm.webp','Brinco4mm.webp','CoraçãoAbertoLabret.pvdgold.webp'],
-        'R$ 65': ['ArgolaSegmentada.pvdgold.10mm.webp','ArgolaSegmentada.pvdgold.12mm.webp','Banana.bell.PVDgold.1.6.10mm.webp','Borboleta4Pedras.pvdgold.labret.jpeg','Borboleta4Pedras.pvdgold.webp','CoraçãoCravejado.pvdgold.webp','Flor6Pontas.pvdgold.labret.jpeg','FlorGrande.pvdgold.labret.jpeg','FlorGrandeLabret.pvdgold.webp','PontoDeLuz.pvdgold.3mm.webp','RaioCravejado.pvdgold.labret.jpeg'],
-        'R$ 75': ['BananaBell.pvdgold.PontoDeLuz.jpeg','BananaBellCoração.pvdgold..jpeg'],
-        'R$ 85': ['4Corações.pvdgold.labret.jpeg','4coraçõesLabret.pvdgold.webp','5Pedras.pvdgold.labret.jpeg','9Pedrinhas.pvdgold.webp','Argola.pvdgold.Cravejada1.2.12mm.webp','Argola.pvdgoldCravejada1.2.8mm.webp','ArgolaFrontalCravejada1.2.10mm.pvdgold.webp','ArgolaFrontalCravejada1.2.8mm.pvdgold.webp','CoraçãoCravejadoEspetado.pvdgold.webp','CoraçãoLadoDireito,pvdgold.webp','CoraçãoLadoEsquerdo.pvdgold.webp','PalmeiraLabret.pvdgold.webp','Ramo5Folhas.pvdgold.labret.jpeg','Ramo5folhasLabret.pvdgold.webp','Ramo7Folhas.pvdgold.labret.jpeg','BarbellReto.2Coraçõescompontodeluz.webp']
-      }
-    },
-    ti: {
-      label: 'Titânio', emoji: '🔵', folder: 'TITANIO', cls: 'vti',
-      faixas: {
-        'R$ 90':  ['BarbellReto16mm.webp','BarbellReto22mm.webp','Ferradura10mm.webp','Ferradura12mm.webp','Ferradura8mm.webp','Labret12mm.webp','Labret8mm.webp','PontoDeLuzAnzol.webp'],
-        'R$ 110': ['Microcurva12mm.webp','Microcurva8mm.webp'],
-        'R$ 120': ['2AsasLabret.webp','AbelhaPequenaLabret.webp','ArgolaTitanioDuplaAberta10mm.webp','ArgolaTitanioDuplaFechada10mm.webp','BarbelReto.2pontosdeluz.webp','BarbellReto.2pontosdeluz.pvdgold.webp','BorboletaLabret.webp','Esmeralda.webp','FlorzinhaComCaboLabret.webp','Intimo.webp','Intimo.pvdgold.webp','PontoDeLuz.3mm.webp']
-      }
-    }
+  var CATALOGO_API = 'https://phzqwafwxmnboegjujqf.supabase.co/functions/v1/catalogo-publico';
+
+  var MATERIAL_META = {
+    ACO:      { key: 'aco', label: 'Aço Cirúrgico', emoji: '💎', cls: 'vaco' },
+    PVD_GOLD: { key: 'pvd', label: 'PVD Gold',       emoji: '✦', cls: 'vpvd' },
+    TITANIO:  { key: 'ti',  label: 'Titânio',        emoji: '🔵', cls: 'vti' },
   };
 
-  var activeMat = 'aco';
+  var catalogo = { aco: null, pvd: null, ti: null }; // preenchido depois do fetch
+  var activeMat = null;
   var activePreco = null;
 
-  function fmtName(f) {
-    return f
-      .replace(/\.(webp|jpeg|jpg|png)(\.\w+)?$/i, '')
-      .replace(/[,]/g, ' ')
-      .replace(/\.pvdgold\b/gi, ' Gold')
-      .replace(/([a-záàâãéèêíïóôõúç])([A-ZÁÀÂÃÉÈÊÍÏÓÔÕÚÇ])/g, '$1 $2')
-      .replace(/([A-Za-záàâãéèêíïóôõúç])([0-9])/g, '$1 $2')
-      .replace(/([0-9])([A-Za-záàâãéèêíïóôõúçÁÀÂÃÉÈÊÍÏÓÔÕÚÇ])/g, '$1 $2')
-      .replace(/\./g, ' ')
-      .replace(/\s+/g, ' ')
-      .trim();
-  }
-
-  function imgUrl(matKey, preco, file) {
-    var m = CATALOG[matKey];
-    return '../assets/fotos/' +
-      encodeURIComponent('JOIAS FORNECEDOR') + '/' +
-      encodeURIComponent(m.folder) + '/' +
-      encodeURIComponent(preco) + '/' +
-      encodeURIComponent(file);
-  }
-
   function waUrl(name, preco, matLabel) {
-    // Preço tirado da mensagem em 2026-08-12: valores mudaram no estúdio e o CATALOG estático
-    // não está atualizado. A equipe confirma o valor certo na hora. Ver CLAUDE.md / plano do
-    // Catálogo (Fase B trará preço ao vivo de novo, direto do CRM).
-    var txt = 'Oi! Vi a vitrine do site e tenho interesse na joia: ' + name + ' (' + matLabel + '). Tem disponível?';
+    var txt = 'Oi! Vi a vitrine do site e tenho interesse na joia: ' + name + ' (R$' + preco + ' · ' + matLabel + '). Tem disponível?';
     return 'https://wa.me/5519988404390?text=' + encodeURIComponent(txt);
+  }
+
+  // Agrupa a lista plana da API em { faixas: { 45: [joia, joia...] } } por material,
+  // igual à estrutura antiga do CATALOG — mantém o resto do render sem mudar muito.
+  function agruparPorMaterial(joias) {
+    var out = {};
+    joias.forEach(function (j) {
+      var meta = MATERIAL_META[j.material];
+      if (!meta) return; // material desconhecido — ignora, não derruba a vitrine
+      if (!out[meta.key]) out[meta.key] = { label: meta.label, emoji: meta.emoji, cls: meta.cls, faixas: {} };
+      var faixas = out[meta.key].faixas;
+      if (!faixas[j.preco_faixa]) faixas[j.preco_faixa] = [];
+      faixas[j.preco_faixa].push(j);
+    });
+    return out;
   }
 
   function renderTabs() {
     var el = document.getElementById('vitrine-tabs');
     if (!el) return;
     el.innerHTML = '';
-    Object.keys(CATALOG).forEach(function (key) {
-      var m = CATALOG[key];
-      var precos = Object.keys(m.faixas);
-      var range = precos[0].replace('R$ ', 'R$') + '–' + precos[precos.length - 1].replace('R$ ', 'R$');
+    Object.keys(catalogo).forEach(function (key) {
+      var m = catalogo[key];
+      if (!m) return;
+      var precos = Object.keys(m.faixas).map(Number).sort(function (a, b) { return a - b; });
+      var range = 'R$' + precos[0] + '–R$' + precos[precos.length - 1];
       var btn = document.createElement('button');
       btn.className = 'vtab' + (key === activeMat ? ' active ' + m.cls : '');
       btn.textContent = m.emoji + ' ' + m.label + ' · ' + range;
@@ -438,8 +414,9 @@ document.addEventListener('click',function(e){
     var el = document.getElementById('vitrine-prices');
     if (!el) return;
     el.innerHTML = '';
-    var m = CATALOG[activeMat];
-    var precos = Object.keys(m.faixas);
+    var m = catalogo[activeMat];
+    if (!m) return;
+    var precos = Object.keys(m.faixas).map(Number).sort(function (a, b) { return a - b; });
 
     var allBtn = document.createElement('button');
     allBtn.className = 'vprice' + (!activePreco ? ' active' : '');
@@ -450,7 +427,7 @@ document.addEventListener('click',function(e){
     precos.forEach(function (p) {
       var btn = document.createElement('button');
       btn.className = 'vprice' + (activePreco === p ? ' active' : '');
-      btn.textContent = p;
+      btn.textContent = 'R$ ' + p;
       btn.addEventListener('click', function () { activePreco = p; renderPrices(); renderGrid(); });
       el.appendChild(btn);
     });
@@ -460,13 +437,13 @@ document.addEventListener('click',function(e){
     var grid = document.getElementById('vitrine-grid');
     if (!grid) return;
     grid.innerHTML = '';
-    var m = CATALOG[activeMat];
-    var faixas = activePreco ? [activePreco] : Object.keys(m.faixas);
+    var m = catalogo[activeMat];
+    if (!m) return;
+    var faixas = activePreco ? [activePreco] : Object.keys(m.faixas).map(Number);
 
     faixas.forEach(function (preco) {
-      var files = m.faixas[preco] || [];
-      files.forEach(function (file) {
-        var name = fmtName(file);
+      var itens = m.faixas[preco] || [];
+      itens.forEach(function (j) {
         var card = document.createElement('article');
         card.className = 'joia-card';
 
@@ -474,29 +451,26 @@ document.addEventListener('click',function(e){
         wrap.className = 'joia-img-wrap';
         var img = document.createElement('img');
         img.loading = 'lazy';
-        img.alt = name;
-        img.src = imgUrl(activeMat, preco, file);
+        img.alt = j.nome;
+        img.src = j.foto_url;
         wrap.appendChild(img);
 
         var info = document.createElement('div');
         info.className = 'joia-info';
 
-        // Preço tirado do card em 2026-08-12 (valores mudaram no estúdio, CATALOG estático
-        // desatualizado) — abas de material/faixa continuam mostrando preço porque são
-        // navegação, não um valor cravado na foto. Ver plano do Catálogo.
         var badge = document.createElement('span');
-        badge.className = 'joia-badge badge-' + activeMat.replace('pvd', 'pvd').replace('ti', 'ti');
-        badge.textContent = m.label;
+        badge.className = 'joia-badge badge-' + activeMat;
+        badge.textContent = 'R$' + preco + ' · ' + m.label;
         info.appendChild(badge);
 
         var h = document.createElement('p');
         h.className = 'joia-name';
-        h.textContent = name;
+        h.textContent = j.nome;
         info.appendChild(h);
 
         var wa = document.createElement('a');
         wa.className = 'joia-wa';
-        wa.href = waUrl(name, preco, m.label);
+        wa.href = waUrl(j.nome, preco, m.label);
         wa.target = '_blank';
         wa.rel = 'noopener';
         wa.textContent = 'Quero essa →';
@@ -516,11 +490,55 @@ document.addEventListener('click',function(e){
     }
   }
 
+  function renderPerfGrid(locais) {
+    var el = document.getElementById('perf-grid');
+    if (!el || !locais) return;
+    el.innerHTML = '';
+    locais.forEach(function (l) {
+      var item = document.createElement('div');
+      item.className = 'perf-item';
+      var img = document.createElement('img');
+      img.loading = 'lazy';
+      img.src = l.foto_url;
+      img.alt = l.nome;
+      var span = document.createElement('span');
+      span.textContent = l.nome;
+      item.appendChild(img);
+      item.appendChild(span);
+      el.appendChild(item);
+    });
+  }
+
+  function mostrarErroVitrine() {
+    var grid = document.getElementById('vitrine-grid');
+    if (grid) grid.innerHTML = '<p class="vitrine-vazia">Não deu pra carregar a vitrine agora. <a href="https://wa.me/5519988404390?text=Oi%21+Quero+ver+os+modelos+de+joia" target="_blank" rel="noopener">Chama no WhatsApp</a> que a equipe te mostra.</p>';
+  }
+
   document.addEventListener('DOMContentLoaded', function () {
-    if (!document.getElementById('vitrine-tabs')) return;
-    renderTabs();
-    renderPrices();
-    renderGrid();
+    var temVitrine = !!document.getElementById('vitrine-tabs');
+    var temPerfGrid = !!document.getElementById('perf-grid');
+    if (!temVitrine && !temPerfGrid) return;
+
+    fetch(CATALOGO_API)
+      .then(function (r) { if (!r.ok) throw new Error('status ' + r.status); return r.json(); })
+      .then(function (data) {
+        if (temVitrine) {
+          catalogo = agruparPorMaterial(data.joias || []);
+          activeMat = Object.keys(catalogo)[0] || null;
+          if (activeMat) {
+            renderTabs();
+            renderPrices();
+            renderGrid();
+          } else {
+            mostrarErroVitrine();
+          }
+        }
+        if (temPerfGrid) renderPerfGrid(data.locais || []);
+      })
+      .catch(function (e) {
+        console.error('catalogo-publico:', e);
+        if (temVitrine) mostrarErroVitrine();
+      });
   });
 })();
 
