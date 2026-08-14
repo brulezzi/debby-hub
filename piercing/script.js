@@ -374,6 +374,13 @@ document.addEventListener('click',function(e){
 
   // Agrupa a lista plana da API em { faixas: { 45: [joia, joia...] } } por material,
   // igual à estrutura antiga do CATALOG — mantém o resto do render sem mudar muito.
+  // Ordena "8mm" antes de "10mm"/"12mm" — comparação de texto pura acha "8" > "1" e jogava
+  // 8mm depois de 10mm/12mm. `numeric: true` compara os números embutidos pelo valor.
+  // Mesma lógica usada no Catálogo do CRM (compareNomes em Catalogo.jsx).
+  function compareNomes(a, b) {
+    return String(a).localeCompare(String(b), 'pt-BR', { numeric: true, sensitivity: 'base' });
+  }
+
   function agruparPorMaterial(joias) {
     var out = {};
     joias.forEach(function (j) {
@@ -383,6 +390,11 @@ document.addEventListener('click',function(e){
       var faixas = out[meta.key].faixas;
       if (!faixas[j.preco_faixa]) faixas[j.preco_faixa] = [];
       faixas[j.preco_faixa].push(j);
+    });
+    Object.keys(out).forEach(function (matKey) {
+      Object.keys(out[matKey].faixas).forEach(function (preco) {
+        out[matKey].faixas[preco].sort(function (a, b) { return compareNomes(a.nome, b.nome); });
+      });
     });
     return out;
   }
