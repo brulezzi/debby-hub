@@ -1,6 +1,21 @@
 const SUPABASE_URL = "https://phzqwafwxmnboegjujqf.supabase.co";
 const SUPABASE_ANON_KEY = "sb_publishable_wUX9E6f0iBA_1C9YWibvUA_l0to00jW";
 const NUMERO_WHATSAPP_ESTUDIO = "5519988404390";
+const CATALOGO_API = "https://phzqwafwxmnboegjujqf.supabase.co/functions/v1/catalogo-publico";
+
+// Busca única e cacheada do catálogo ao vivo (joias + locais + joias_compativeis por local),
+// reaproveitada tanto pela vitrine/perf-grid quanto pelo check-in — evita duas requisições
+// pra mesma coisa e dá um único lugar pra tratar falha de rede.
+let _catalogoPromise = null;
+function carregarCatalogo() {
+  if (!_catalogoPromise) {
+    _catalogoPromise = fetch(CATALOGO_API).then(function (r) {
+      if (!r.ok) throw new Error('status ' + r.status);
+      return r.json();
+    });
+  }
+  return _catalogoPromise;
+}
 
 // ── PERFIS DE JOIAS POR TIPO ANATÔMICO ────────────────────────────────────────
 
@@ -133,6 +148,70 @@ function populateEstiloSelect(perfil) {
   ogFinal.appendChild(oFinal); sel.appendChild(ogFinal)
 }
 
+// Valor do <option> do check-in ("Duplo Nostril ×2", "Snake Bites ×2"...) → nome exato do local
+// em locais_perfuracao (Catálogo do CRM). "Duplo Helix" foi desativado no CRM 2026-08-25 (mesma
+// joia do Helix normal) — mapeia pro Helix pra não perder a opção aqui no site.
+const LOCAL_JOIA_DB = {
+  'Nostril': 'Nostril', 'Duplo Nostril ×2': 'Duplo Nostril', 'Septo': 'Septo', 'Bridge': 'Bridge',
+  'Sobrancelha': 'Sobrancelha', 'Dimple': 'Dimple', 'Monroe': 'Monroe', 'Medusa': 'Medusa',
+  'Medusa Vertical': 'Medusa Vertical', 'Labret Central': 'Labret Central', 'Labret Lateral': 'Labret Lateral',
+  'Labret Vertical': 'Labret Vertical', 'Angel Fangs': 'Angel Fangs', 'Snake Bites ×2': 'Snake Bites',
+  'Spider Bites ×2': 'Spider Bites', 'Smiley': 'Smiley', 'Ponta da Língua': 'Ponta da Língua',
+  'Meio da Língua': 'Meio da Língua', 'Lóbulo': 'Lóbulo 1', 'Lóbulo ×2': 'Lóbulo 1', 'Lóbulo 2': 'Lóbulo 2',
+  'Lóbulo 3': 'Lóbulo 3', 'Helix': 'Helix', 'Duplo Helix': 'Helix', 'Anti Helix': 'Anti Helix',
+  'Mid Helix': 'Mid Helix', 'Tragus': 'Tragus', 'Anti Tragus': 'Anti Tragus', 'Conch': 'Conch',
+  'Daith': 'Daith', 'Flat': 'Flat', 'Rook': 'Rook', 'Snug': 'Snug', 'Transversal': 'Transversal',
+  'Californiano': 'Californiano', 'Australianos': 'Australianos', 'Minions': 'Minions', 'Umbigo': 'Umbigo',
+  'Umbigo Vertical': 'Umbigo Vertical', 'Mamilo': 'Mamilo', 'Mamilo ×2': 'Mamilo',
+  'Íntimo Christina': 'Íntimo Christina', 'Íntimo Clitóris': 'Íntimo Clitóris',
+}
+const MATERIAL_LABEL = { ACO: 'Aço Cirúrgico', PVD_GOLD: 'PVD Gold', TITANIO: 'Titânio' }
+
+// Preenche o <select id="estilo"> com as joias REAIS e compatíveis com o local escolhido (vindas
+// do checklist "Quando pode usar" do Catálogo, via catalogo-publico). Sem vínculo cadastrado
+// ainda pra aquele local (ou falha de rede) cai de volta no bucket genérico antigo — nunca deixa
+// o campo vazio/travado pro cliente.
+function populateEstiloSelectReal(perfuracaoSite, perfilFallback) {
+  var sel = document.getElementById('estilo')
+  sel.innerHTML = '<option value="" disabled selected>Carregando opções...</option>'
+  var nomeDb = LOCAL_JOIA_DB[perfuracaoSite]
+
+  carregarCatalogo().then(function (data) {
+    // Se a pessoa já mudou de local de novo antes da resposta chegar, essa resposta é velha —
+    // ignora (evita popular o select errado numa corrida de eventos).
+    if (document.getElementById('perfuracao').value !== perfuracaoSite) return
+    var local = nomeDb ? (data.todos_locais || []).find(function (l) { return l.nome === nomeDb }) : null
+    var joias = local ? local.joias_compativeis || [] : []
+    if (!joias.length) { populateEstiloSelect(perfilFallback); return }
+
+    sel.innerHTML = '<option value="" disabled selected>Escolha uma opção...</option>'
+    var porMaterial = {}
+    joias.forEach(function (j) { (porMaterial[j.material] = porMaterial[j.material] || []).push(j) })
+    Object.keys(MATERIAL_LABEL).forEach(function (mat) {
+      var itens = porMaterial[mat]
+      if (!itens || !itens.length) return
+      var og = document.createElement('optgroup')
+      og.label = '── ' + MATERIAL_LABEL[mat] + ' ──'
+      itens.forEach(function (j) {
+        var o = document.createElement('option')
+        var texto = j.nome + ' — R$' + j.preco_faixa
+        o.value = texto; o.textContent = texto
+        og.appendChild(o)
+      })
+      sel.appendChild(og)
+    })
+    var ogFinal = document.createElement('optgroup')
+    ogFinal.label = '──────────────────'
+    var oFinal = document.createElement('option')
+    oFinal.value = 'Ainda não sei'
+    oFinal.textContent = 'Ainda não sei — a equipe me ajuda no estúdio'
+    ogFinal.appendChild(oFinal); sel.appendChild(ogFinal)
+  }).catch(function (e) {
+    console.error('catalogo (check-in):', e)
+    if (document.getElementById('perfuracao').value === perfuracaoSite) populateEstiloSelect(perfilFallback)
+  })
+}
+
 // ── GRUPO A: perfurações que seguem tabela de joias (todos exceto Micro/Surface/Lobu/Remocao/Outro)
 const GRUPO_JOIA = [
   // Rosto
@@ -223,14 +302,14 @@ function atualizarCampoJoia(perfuracao, tipoPerf) {
         'Aço Tradicional (perfuração nova — troca permitida após 30 dias)';
     } else if (tipoPerf === 'troca') {
       var perfil = LOCAL_PERFIL[perfuracao] || 'ORELHA';
-      populateEstiloSelect(perfil);
+      populateEstiloSelectReal(perfuracao, perfil);
       document.getElementById('grupo-joia').style.display = '';
       document.getElementById('estilo').required = true;
     }
   } else {
-    // Região livre — mostra joias do perfil correto diretamente
+    // Região livre — mostra as joias reais e compatíveis com esse local (Catálogo do CRM)
     var perfil = LOCAL_PERFIL[perfuracao] || 'ORELHA';
-    populateEstiloSelect(perfil);
+    populateEstiloSelectReal(perfuracao, perfil);
     document.getElementById('grupo-joia').style.display = '';
     document.getElementById('estilo').required = true;
   }
@@ -355,8 +434,6 @@ document.addEventListener('click',function(e){
    por trás (mesmo padrão do sistema de Cuidados). Ver CLAUDE.md/plano.
 ================================================================================ */
 (function () {
-  var CATALOGO_API = 'https://phzqwafwxmnboegjujqf.supabase.co/functions/v1/catalogo-publico';
-
   var MATERIAL_META = {
     ACO:      { key: 'aco', label: 'Aço Cirúrgico', emoji: '💎', cls: 'vaco' },
     PVD_GOLD: { key: 'pvd', label: 'PVD Gold',       emoji: '✦', cls: 'vpvd' },
@@ -620,8 +697,7 @@ document.addEventListener('click',function(e){
     var temPerfGrid = !!document.getElementById('perf-grid');
     if (!temVitrine && !temPerfGrid) return;
 
-    fetch(CATALOGO_API)
-      .then(function (r) { if (!r.ok) throw new Error('status ' + r.status); return r.json(); })
+    carregarCatalogo()
       .then(function (data) {
         if (temVitrine) {
           catalogo = agruparPorMaterial(data.joias || []);
