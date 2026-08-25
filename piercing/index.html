@@ -210,11 +210,16 @@
       text-align: center;
       font-size: 13px;
       font-weight: 700;
-      cursor: default;
+      cursor: pointer;
       transition: border-color 0.15s;
       overflow: hidden;
       display: flex;
       flex-direction: column;
+      padding: 0;
+      color: inherit;
+      font-family: inherit;
+      appearance: none;
+      -webkit-appearance: none;
     }
     .perf-item img {
       width: 100%;
@@ -229,6 +234,50 @@
       padding: 10px 6px;
     }
     .perf-item:hover { border-color: rgba(223,183,108,0.4); }
+
+    /* ========== MODAL "JOIAS COMPATÍVEIS COM O LOCAL" ========== */
+    .local-modal-overlay {
+      position: fixed; inset: 0; z-index: 200;
+      background: rgba(10,10,12,0.82);
+      backdrop-filter: blur(3px);
+      display: none;
+      align-items: flex-start;
+      justify-content: center;
+      padding: 24px 16px;
+      overflow-y: auto;
+    }
+    .local-modal-overlay.aberto { display: flex; }
+    .local-modal {
+      background: var(--bg-soft);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      width: 100%;
+      max-width: 720px;
+      margin: auto;
+      box-shadow: var(--shadow);
+    }
+    .local-modal-head {
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 12px; padding: 18px 20px; border-bottom: 1px solid var(--border);
+      position: sticky; top: 0; background: var(--bg-soft); border-radius: 20px 20px 0 0;
+    }
+    .local-modal-head h3 { margin: 0; font-size: 17px; color: var(--text); }
+    .local-modal-head span { display: block; font-size: 12px; color: var(--muted); font-weight: 600; margin-top: 2px; }
+    .local-modal-close {
+      background: rgba(255,255,255,0.06); border: 1px solid var(--border); color: var(--text);
+      width: 32px; height: 32px; border-radius: 50%; font-size: 18px; line-height: 1;
+      cursor: pointer; flex-shrink: 0;
+    }
+    .local-modal-close:hover { background: rgba(255,255,255,0.12); }
+    .local-modal-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(150px,1fr));
+      gap: 12px; padding: 18px 20px 20px;
+    }
+    .local-modal-vazio { padding: 30px 20px; text-align: center; color: var(--muted); font-size: 14px; }
+    .local-modal-vazio a { color: var(--gold); font-weight: 700; }
+    @media (max-width: 480px) {
+      .local-modal-grid { grid-template-columns: repeat(2, 1fr); }
+    }
 
     /* ========== ESTILOS VISUAIS ========== */
     /* Placeholders elegantes para fotos reais */
@@ -804,6 +853,20 @@
     </div>
     <!-- Preenchido ao vivo por script.js via catalogo-publico (Fase B do plano do Catálogo) -->
     <div class="perf-grid" id="perf-grid"></div>
+
+    <!-- Modal: joias compatíveis com o local clicado (populado ao vivo pela Edge Function catalogo-publico) -->
+    <div class="local-modal-overlay" id="local-modal-overlay">
+      <div class="local-modal" role="dialog" aria-modal="true">
+        <div class="local-modal-head">
+          <div>
+            <h3 id="local-modal-titulo">Joias compatíveis</h3>
+            <span id="local-modal-subtitulo"></span>
+          </div>
+          <button type="button" class="local-modal-close" id="local-modal-fechar" aria-label="Fechar">×</button>
+        </div>
+        <div class="local-modal-grid" id="local-modal-grid"></div>
+      </div>
+    </div>
   </div>
 </section>
 

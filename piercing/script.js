@@ -372,6 +372,11 @@ document.addEventListener('click',function(e){
     return 'https://wa.me/5519988404390?text=' + encodeURIComponent(txt);
   }
 
+  function waUrlLocal(nomeLocal, nomeJoia, preco, matLabel) {
+    var txt = 'Oi! Vi as opções de joia pra ' + nomeLocal + ' no site e tenho interesse na: ' + nomeJoia + ' (R$' + preco + ' · ' + matLabel + '). Tem disponível?';
+    return 'https://wa.me/5519988404390?text=' + encodeURIComponent(txt);
+  }
+
   // Agrupa a lista plana da API em { faixas: { 45: [joia, joia...] } } por material,
   // igual à estrutura antiga do CATALOG — mantém o resto do render sem mudar muito.
   // Ordena "8mm" antes de "10mm"/"12mm" — comparação de texto pura acha "8" > "1" e jogava
@@ -507,7 +512,8 @@ document.addEventListener('click',function(e){
     if (!el || !locais) return;
     el.innerHTML = '';
     locais.forEach(function (l) {
-      var item = document.createElement('div');
+      var item = document.createElement('button');
+      item.type = 'button';
       item.className = 'perf-item';
       var img = document.createElement('img');
       img.loading = 'lazy';
@@ -517,8 +523,85 @@ document.addEventListener('click',function(e){
       span.textContent = l.nome;
       item.appendChild(img);
       item.appendChild(span);
+      item.addEventListener('click', function () { abrirModalLocal(l); });
       el.appendChild(item);
     });
+  }
+
+  // Modal "joias compatíveis" — abre ao clicar num local na grade de perfurações. Usa
+  // `joias_compativeis` que a Edge Function catalogo-publico já monta a partir do checklist
+  // "Quando pode usar" do Catálogo (CRM) — nunca lista joia que não foi marcada compatível
+  // de verdade com aquele local.
+  function abrirModalLocal(local) {
+    var overlay = document.getElementById('local-modal-overlay');
+    var grid = document.getElementById('local-modal-grid');
+    var titulo = document.getElementById('local-modal-titulo');
+    var subtitulo = document.getElementById('local-modal-subtitulo');
+    if (!overlay || !grid) return;
+
+    titulo.textContent = local.nome;
+    var joias = local.joias_compativeis || [];
+    subtitulo.textContent = joias.length
+      ? joias.length + (joias.length === 1 ? ' joia disponível' : ' joias disponíveis')
+      : '';
+
+    grid.innerHTML = '';
+    if (!joias.length) {
+      var vazio = document.createElement('div');
+      vazio.className = 'local-modal-vazio';
+      vazio.innerHTML = 'A equipe te mostra as opções certinhas pra essa região no estúdio.<br>' +
+        '<a href="https://wa.me/5519988404390?text=' + encodeURIComponent('Oi! Vi o site e quero saber as opções de joia pra ' + local.nome) + '" target="_blank" rel="noopener">Chamar no WhatsApp →</a>';
+      grid.appendChild(vazio);
+    } else {
+      joias.forEach(function (j) {
+        var matMeta = MATERIAL_META[j.material] || { label: j.material, key: '' };
+        var card = document.createElement('article');
+        card.className = 'joia-card';
+
+        var wrap = document.createElement('div');
+        wrap.className = 'joia-img-wrap';
+        var img = document.createElement('img');
+        img.loading = 'lazy';
+        img.alt = j.nome;
+        img.src = j.foto_url;
+        wrap.appendChild(img);
+
+        var info = document.createElement('div');
+        info.className = 'joia-info';
+
+        var badge = document.createElement('span');
+        badge.className = 'joia-badge badge-' + matMeta.key;
+        badge.textContent = 'R$' + j.preco_faixa + ' · ' + matMeta.label;
+        info.appendChild(badge);
+
+        var h = document.createElement('p');
+        h.className = 'joia-name';
+        h.textContent = j.nome;
+        info.appendChild(h);
+
+        var wa = document.createElement('a');
+        wa.className = 'joia-wa';
+        wa.href = waUrlLocal(local.nome, j.nome, j.preco_faixa, matMeta.label);
+        wa.target = '_blank';
+        wa.rel = 'noopener';
+        wa.textContent = 'Quero essa →';
+        info.appendChild(wa);
+
+        card.appendChild(wrap);
+        card.appendChild(info);
+        grid.appendChild(card);
+      });
+    }
+
+    overlay.classList.add('aberto');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function fecharModalLocal() {
+    var overlay = document.getElementById('local-modal-overlay');
+    if (!overlay) return;
+    overlay.classList.remove('aberto');
+    document.body.style.overflow = '';
   }
 
   function mostrarErroVitrine() {
@@ -527,6 +610,12 @@ document.addEventListener('click',function(e){
   }
 
   document.addEventListener('DOMContentLoaded', function () {
+    var overlay = document.getElementById('local-modal-overlay');
+    var fecharBtn = document.getElementById('local-modal-fechar');
+    if (fecharBtn) fecharBtn.addEventListener('click', fecharModalLocal);
+    if (overlay) overlay.addEventListener('click', function (e) { if (e.target === overlay) fecharModalLocal(); });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') fecharModalLocal(); });
+
     var temVitrine = !!document.getElementById('vitrine-tabs');
     var temPerfGrid = !!document.getElementById('perf-grid');
     if (!temVitrine && !temPerfGrid) return;
