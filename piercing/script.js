@@ -149,10 +149,11 @@ function populateEstiloSelect(perfil) {
 }
 
 // Valor do <option> do check-in ("Duplo Nostril ×2", "Snake Bites ×2"...) → nome exato do local
-// em locais_perfuracao (Catálogo do CRM). "Duplo Helix" foi desativado no CRM 2026-08-25 (mesma
-// joia do Helix normal) — mapeia pro Helix pra não perder a opção aqui no site.
+// em locais_perfuracao (Catálogo do CRM). "Duplo Helix" (2026-08-25) e "Duplo Nostril"
+// (2026-08-26) foram desativados no CRM (mesma joia do local simples, não precisava de local
+// separado) — mapeiam pro local normal pra não perder a opção aqui no site.
 const LOCAL_JOIA_DB = {
-  'Nostril': 'Nostril', 'Duplo Nostril ×2': 'Duplo Nostril', 'Septo': 'Septo', 'Bridge': 'Bridge',
+  'Nostril': 'Nostril', 'Duplo Nostril ×2': 'Nostril', 'Septo': 'Septo', 'Bridge': 'Bridge',
   'Sobrancelha': 'Sobrancelha', 'Dimple': 'Dimple', 'Monroe': 'Monroe', 'Medusa': 'Medusa',
   'Medusa Vertical': 'Medusa Vertical', 'Labret Central': 'Labret Central', 'Labret Lateral': 'Labret Lateral',
   'Labret Vertical': 'Labret Vertical', 'Angel Fangs': 'Angel Fangs', 'Snake Bites ×2': 'Snake Bites',
