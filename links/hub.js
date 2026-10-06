@@ -10,11 +10,11 @@
   var NUMERO_WA = '5519988404390';
   var PERFIS = {
     debby:   { nome: 'Debby', sub: 'Piercer · Estúdio da Debby', foto: '/assets/fotos/estudio/debby.jpeg', inicial: 'D',
-               ordem: ['wa', 'piercing', 'tatuagem', 'curso-piercing', 'curso-tatuagem', 'modas', 'mapa', 'ig-rafa'] },
+               ordem: ['wa', 'piercing', 'tatuagem', 'curso-piercing', 'curso-tatuagem', 'modas', 'sexshop', 'mapa', 'ig-rafa'] },
     rafa:    { nome: 'Rafa', sub: 'Tatuador · Estúdio da Debby', foto: '/assets/fotos/tatuagem/retrato-rafa/perfil.jpg', inicial: 'R',
-               ordem: ['wa', 'tatuagem', 'curso-tatuagem', 'piercing', 'curso-piercing', 'modas', 'mapa', 'ig-debby'] },
+               ordem: ['wa', 'tatuagem', 'curso-tatuagem', 'piercing', 'curso-piercing', 'modas', 'sexshop', 'mapa', 'ig-debby'] },
     estudio: { nome: 'Estúdio da Debby', sub: 'Piercing · Tatuagem · Moda · Sex Shop', foto: '/assets/fotos/estudio/logo.jpeg', inicial: 'E',
-               ordem: ['wa', 'piercing', 'tatuagem', 'curso-piercing', 'curso-tatuagem', 'modas', 'mapa', 'ig-debby', 'ig-rafa'] }
+               ordem: ['wa', 'piercing', 'tatuagem', 'curso-piercing', 'curso-tatuagem', 'modas', 'sexshop', 'mapa', 'ig-debby', 'ig-rafa'] }
   };
   var FORMATOS = ['bio', 'story', 'reel', 'ads', 'qr', 'whatsapp'];
 
@@ -25,6 +25,7 @@
     'curso-piercing': { ico: '🎓', t: 'Curso de Piercing', d: 'Com a Debby — peça informações', tipo: 'wa', msg: 'Oi! Vim pelo link da bio e quero saber do curso de piercing com a Debby.' },
     'curso-tatuagem': { ico: '🎓', t: 'Curso de Tatuagem', d: 'Com o Rafa — peça informações', tipo: 'wa', msg: 'Oi! Vim pelo link da bio e quero saber do curso de tatuagem com o Rafa.' },
     'modas':          { ico: '👗', t: 'Moda', d: 'Moda feminina', tipo: 'int', href: '/modas/' },
+    'sexshop':        { ico: '🔥', t: 'Sex Shop', d: 'Produtos e atendimento discreto', tipo: 'int', href: '/sexshop/' },
     'mapa':           { ico: '📍', t: 'Como chegar', d: 'Av. Andrade Neves, 365 · Centro', tipo: 'ext', href: 'https://share.google/MZhn2SoMy7AFTXnsM' },
     'ig-debby':       { ico: '📸', t: 'Instagram da Debby', d: '@debbypiercing', tipo: 'ext', href: 'https://instagram.com/debbypiercing' },
     'ig-rafa':        { ico: '📸', t: 'Instagram do Rafa', d: '@rafa_tattos', tipo: 'ext', href: 'https://instagram.com/rafa_tattos' }
