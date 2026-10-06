@@ -10,11 +10,11 @@
   var NUMERO_WA = '5519988404390';
   var PERFIS = {
     debby:   { nome: 'Debby', sub: 'Piercer · Estúdio da Debby', foto: '/assets/fotos/estudio/debby.jpeg', inicial: 'D',
-               ordem: ['piercing', 'tatuagem', 'curso-piercing', 'curso-tatuagem', 'modas', 'sexshop', 'mapa', 'ig-rafa'] },
+               ordem: ['piercing', 'tatuagem', 'mapa', 'curso-piercing', 'curso-tatuagem', 'modas', 'sexshop', 'ig-rafa'] },
     rafa:    { nome: 'Rafa', sub: 'Tatuador · Estúdio da Debby', foto: '/assets/fotos/tatuagem/retrato-rafa/perfil.jpg', inicial: 'R',
-               ordem: ['tatuagem', 'curso-tatuagem', 'piercing', 'curso-piercing', 'modas', 'sexshop', 'mapa', 'ig-debby'] },
+               ordem: ['tatuagem', 'piercing', 'mapa', 'curso-tatuagem', 'curso-piercing', 'modas', 'sexshop', 'ig-debby'] },
     estudio: { nome: 'Estúdio da Debby', sub: 'Piercing · Tatuagem · Moda · Sex Shop', foto: '/assets/fotos/estudio/logo.jpeg', inicial: 'E',
-               ordem: ['piercing', 'tatuagem', 'curso-piercing', 'curso-tatuagem', 'modas', 'sexshop', 'mapa', 'ig-debby', 'ig-rafa'] }
+               ordem: ['piercing', 'tatuagem', 'mapa', 'curso-piercing', 'curso-tatuagem', 'modas', 'sexshop', 'ig-debby', 'ig-rafa'] }
   };
   var FORMATOS = ['bio', 'story', 'reel', 'ads', 'qr', 'whatsapp'];
 
