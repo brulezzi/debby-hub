@@ -107,13 +107,13 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   // ---------- Portfólio: filtro por estilo, "ver mais" e ampliação ----------
-  // Padrão: colorido, o estilo que o Rafa mais quer vender.
+  // Padrão: colorido, o estilo que mais quero fazer.
   const DESCRICOES = {
-    colorido: "Realismo colorido, surrealismo e aquarela. Cor com profundidade e acabamento que continua bonito com o tempo. É o que o Rafa mais gosta de fazer.",
+    colorido: "Realismo colorido, surrealismo e aquarela. Cor com profundidade e acabamento que continua bonito com o tempo. É o que mais gosto de fazer.",
     fine: "Traço fino, delicado e preciso, para quem quer discrição sem abrir mão do detalhe.",
     pb: "Retratos, animais e figuras com volume e textura de verdade, em preto e cinza.",
     anime: "Personagens e universos que você ama, e também HQ. Uma das duas especialidades premiadas em convenção.",
-    todos: "Tudo em um só lugar, na ordem do que o Rafa mais quer fazer."
+    todos: "Tudo em um só lugar, na ordem do que mais gosto de fazer."
   };
   const POR_PAGINA = Infinity; // mostra todas as fotos do estilo escolhido
   const itens = Array.prototype.slice.call(document.querySelectorAll(".g-item"));
@@ -282,6 +282,28 @@ document.addEventListener("DOMContentLoaded", function () {
   } else {
     revelaveis.forEach(function (el) { el.classList.add("in"); });
   }
+
+  // ---------- Imagens à prova de falha no celular ----------
+  // Carregamento preguiçoso nativo falha em vários celulares (colunas, blocos animados): as fotos nunca vinham.
+  // Aqui cada foto tenta de novo (até 3x, com um parâmetro novo na URL) se der erro ou não terminar de carregar.
+  const todasImgs = Array.prototype.slice.call(document.querySelectorAll("img[src]"));
+  function recarregar(img, tentativa) {
+    if (tentativa > 3) return;
+    const base = img.getAttribute("src").replace(/[?&]r=\d+$/, "");
+    img.setAttribute("src", base + (base.indexOf("?") === -1 ? "?" : "&") + "r=" + tentativa);
+  }
+  todasImgs.forEach(function (img) {
+    let n = 0;
+    img.addEventListener("error", function () { n++; setTimeout(function () { recarregar(img, n); }, 600 * n); });
+  });
+  window.addEventListener("load", function () {
+    // confere de novo depois de tudo carregar: o que ficou vazio tenta outra vez
+    setTimeout(function () {
+      todasImgs.forEach(function (img) {
+        if (!(img.complete && img.naturalWidth > 0)) recarregar(img, 1);
+      });
+    }, 2500);
+  });
 
   const form = document.getElementById("form-lead");
   if (!form) return;
