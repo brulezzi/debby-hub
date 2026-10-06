@@ -34,7 +34,7 @@
   var slug = function (v, max) { return String(v || '').toLowerCase().replace(/[^a-z0-9-]/g, '').slice(0, max || 40); };
   var qs = new URLSearchParams(location.search);
 
-  var perfilId = slug(qs.get('utm_source') || qs.get('p'));
+  var perfilId = slug(document.documentElement.getAttribute('data-perfil') || qs.get('utm_source') || qs.get('p'));
   if (!PERFIS[perfilId]) perfilId = 'estudio';
   var fmt = slug(qs.get('utm_medium') || qs.get('fmt'));
   if (FORMATOS.indexOf(fmt) === -1) fmt = 'bio';
