@@ -186,6 +186,18 @@
     .box li+li{margin-top:8px}
     .box li::before{content:"✓";color:var(--gold);margin-right:8px;font-weight:800}
 
+    /* CUIDADOS */
+    .care{display:grid;grid-template-columns:repeat(2,1fr);gap:clamp(14px,2vw,32px);margin-bottom:clamp(14px,2vw,32px)}
+    .care .box{text-align:left}
+    .care .box ul,.two .box ul{display:block}
+    .care .box li+li,.two .box li+li{margin-top:12px}
+    .care .box li::before,.two .box li::before{content:none}
+    .care .box li,.two .box li{padding-left:18px;position:relative}
+    .care .box li::after,.two .box li::after{content:"";position:absolute;left:0;top:.7em;width:6px;height:6px;border-radius:50%;background:var(--gold)}
+    .care .box li b,.two .box li b{color:var(--text)}
+    .two .box{text-align:left}
+    .step-tag{display:inline-block;font-size:12px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:#17120a;background:var(--gold);border-radius:6px;padding:4px 10px;margin-bottom:12px}
+    @media (max-width:760px){.care{grid-template-columns:1fr}}
     /* FAQ */
     .faq{max-width:min(960px,100%);margin:0 auto;text-align:left}
     details{border-bottom:1px solid var(--border);padding-block:clamp(16px,1.6vw,24px)}
@@ -253,6 +265,7 @@
       <a href="#portfolio">Trabalhos</a>
       <a href="#cobertura">Cobertura</a>
       <a href="#valores">Valores</a>
+      <a href="#cuidados">Cuidados</a>
       <a href="#faq">Dúvidas</a>
       <a href="#orcamento" class="keep">Orçamento</a>
     </div>
@@ -483,36 +496,81 @@
   </div>
 </section>
 
-<!-- 7. SEGURANÇA E CUIDADOS -->
-<section class="alt" id="seguranca">
+<!-- 7. CUIDADOS E SEGURANÇA -->
+<section class="alt" id="cuidados">
   <div class="wrap">
     <div class="sec-head rv">
-      <div class="eyebrow">Segurança e cuidados</div>
-      <h2>Higiene que você vê. Cuidado que continua depois.</h2>
+      <div class="eyebrow">Cuidados</div>
+      <h2>Do dia da sessão até a tatuagem cicatrizar</h2>
+      <p class="lead">Uma tatuagem bonita depende de 50% do tatuador e de 50% de como você cuida dela. Este é o passo a passo geral. No fim da sessão, o Rafa te passa as orientações específicas para a sua pele e para o seu desenho, e elas valem mais do que este resumo.</p>
     </div>
+
+    <div class="care">
+      <div class="box rv">
+        <span class="step-tag">1 · Antes da sessão</span>
+        <h3>Chegue preparado</h3>
+        <ul>
+          <li><b>Hidrate a pele</b> nos dias anteriores. Pele hidratada recebe melhor o pigmento e responde melhor à pomada anestésica, se você optar por ela.</li>
+          <li><b>Durma bem e se alimente</b> antes de vir. Sessão longa com o estômago vazio aumenta a chance de tontura.</li>
+          <li><b>Não beba álcool</b> no dia: ele deixa a pele mais sensível e o sangramento maior, e por isso a sessão não é feita.</li>
+          <li><b>Evite sol e bronzeamento</b> na região. Pele queimada ou descascando precisa esperar.</li>
+          <li><b>Use roupa confortável</b> que deixe a área à mostra.</li>
+        </ul>
+      </div>
+      <div class="box rv d1">
+        <span class="step-tag">2 · No dia</span>
+        <h3>Logo depois da sessão</h3>
+        <ul>
+          <li>O Rafa cobre a tatuagem com <b>plástico filme</b> para proteger no trajeto. Retire quando ele orientar.</li>
+          <li>Em casa, <b>lave a região com sabão neutro</b> e as mãos bem limpas, com água morna ou fria, sem esfregar. Isso tira o excesso de plasma e de tinta.</li>
+          <li><b>Seque dando batidinhas</b> com papel toalha limpo. Toalha de banho acumula bactéria.</li>
+          <li>É normal ficar <b>vermelho, quente e sensível</b> nas primeiras horas.</li>
+        </ul>
+      </div>
+      <div class="box rv d2">
+        <span class="step-tag">3 · Primeiros dias</span>
+        <h3>Hidratar e não mexer</h3>
+        <ul>
+          <li>No dia seguinte, <b>passe um creme hidratante</b> para a pele, em camada fina, só o que a pele absorver. Excesso abafa e atrapalha.</li>
+          <li>Repita a limpeza e a hidratação algumas vezes por dia, <b>conforme o Rafa orientar</b> para a sua tatuagem.</li>
+          <li><b>Evite carne de porco, chocolate e ovo por cerca de uma semana.</b> É a recomendação do Rafa para a cicatrização.</li>
+          <li><b>Não coce e não arranque casquinhas.</b> Descamar é normal. Arrancar tira tinta e deixa falha.</li>
+          <li>Prefira <b>roupa folgada</b> sobre a região.</li>
+        </ul>
+      </div>
+      <div class="box rv d3">
+        <span class="step-tag">4 · Até cicatrizar</span>
+        <h3>Proteja a tatuagem</h3>
+        <ul>
+          <li>Por algumas semanas, evite <b>sol direto, piscina, mar, sauna e banheira</b>. Água parada e calor atrapalham a cicatrização.</li>
+          <li>Depois de curada, use <b>protetor solar</b> sempre. O sol é o que mais desbota tatuagem com o tempo.</li>
+          <li>Se precisar de ajuste, o <b>retoque é gratuito até 45 dias</b>. Fale com o estúdio para agendar.</li>
+        </ul>
+      </div>
+    </div>
+
     <div class="two">
       <div class="box rv">
+        <h3>Procure ajuda se</h3>
+        <ul>
+          <li>A vermelhidão, o inchaço ou o calor <b>aumentam</b> depois dos primeiros dias</li>
+          <li>Sair <b>pus</b> ou a região ficar com cheiro forte</li>
+          <li>Você tiver <b>febre</b> ou a dor piorar em vez de melhorar</li>
+        </ul>
+        <p class="note" style="text-align:left;margin-top:12px">Nesses casos, chame o estúdio e procure atendimento médico. Não tente tratar em casa.</p>
+      </div>
+      <div class="box rv d1">
         <h3>Biossegurança</h3>
         <ul>
           <li>Material 100% descartável, com filme e luvas</li>
           <li>Tintas de marcas regularizadas</li>
           <li>Higienização completa entre um cliente e outro</li>
         </ul>
-      </div>
-      <div class="box rv d1">
-        <h3>Depois da sessão</h3>
-        <ul>
-          <li>Lave o local com sabão neutro no mesmo dia</li>
-          <li>No dia seguinte, hidrate com creme para a pele</li>
-          <li>Evite carne de porco, chocolate e ovo por cerca de uma semana</li>
-          <li>As orientações completas você recebe no fim da sessão</li>
-        </ul>
+        <p class="note" style="text-align:left;margin-top:12px">Menores: a partir de 16 anos, com autorização dos pais ou responsável. Pode levar até 3 acompanhantes e filmar a sessão.</p>
       </div>
     </div>
-    <p class="note rv">Menores de idade: a partir de 16 anos, com autorização dos pais ou responsável. Pode levar até 3 acompanhantes e filmar a sessão.</p>
   </div>
 </section>
-
 <!-- 8. FAQ -->
 <section id="faq">
   <div class="wrap">
@@ -640,7 +698,8 @@
       <div class="eyebrow">Onde fica</div>
       <h2>Centro de Campinas</h2>
       <p class="lead">Estúdio da Debby<br />Av. Andrade Neves, 365 · Campinas, SP<br />Atendimento com hora marcada, em qualquer dia conforme a agenda.</p>
-      <p style="margin-top:22px"><a class="btn btn-line" href="https://maps.app.goo.gl/2E81mJEjPFfpqrZh8" target="_blank" rel="noopener" data-track="local_mapa">Abrir no mapa</a></p>
+      <p style="margin-top:22px"><a class="btn btn-line" href="https://maps.app.goo.gl/2E81mJEjPFfpqrZh8" target="_blank" rel="noopener" data-track="local_mapa">Abrir o local exato no Google Maps</a></p>
+      <p class="note">Dica: se você digitar o endereço direto no GPS, ele pode te levar ao lugar errado. Use o botão acima, que abre o ponto exato do estúdio.</p>
     </div>
   </div>
 </section>
