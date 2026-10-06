@@ -1,0 +1,66 @@
+<svg viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Novo emblema Estúdio da Debby Piercing</title>
+  <desc id="desc">Selo circular preto e dourado com silhueta estilizada de perfil marcando pontos de piercing, nome "Debby" em script e texto "Estúdio da Debby Piercing · Desde 2016" no arco — desenhado como forma vetorial plana, sem sombreado, pra escalar limpo em qualquer tamanho.</desc>
+
+  <defs>
+    <path id="arcoSuperior2" d="M 96,300 A 204,204 0 0 1 504,300" />
+    <path id="arcoInferior2" d="M 114,384 A 204,204 0 0 0 486,384" />
+  </defs>
+
+  <!-- Anel dourado externo -->
+  <circle cx="300" cy="300" r="282" fill="none" stroke="#C8A24A" stroke-width="6" />
+  <!-- Fundo preto -->
+  <circle cx="300" cy="300" r="268" fill="#000000" />
+  <!-- Anel dourado interno fino -->
+  <circle cx="300" cy="300" r="232" fill="none" stroke="#C8A24A" stroke-width="2" />
+
+  <!-- Texto arco superior -->
+  <text font-family="Georgia, 'Times New Roman', serif" font-size="27" font-weight="700"
+        letter-spacing="4" fill="#F4F1EA">
+    <textPath href="#arcoSuperior2" startOffset="50%" text-anchor="middle">
+      ESTÚDIO DA DEBBY PIERCING
+    </textPath>
+  </text>
+
+  <!-- Silhueta de perfil, estilo plano/sólido — fácil de vetorizar de verdade -->
+  <g transform="translate(206,150) scale(0.95)">
+    <path fill="#C8A24A" d="
+      M70,10
+      C95,10 110,26 109,46
+      C109,53 101,56 101,61
+      C101,73 121,80 128,96
+      C130,101 113,103 111,109
+      C113,113 121,114 121,119
+      C121,123 108,123 106,129
+      C109,135 119,137 117,145
+      C115,151 101,153 93,159
+      C86,164 79,161 75,169
+      C71,179 69,189 67,201
+      C87,211 116,215 141,215
+      L141,222 L10,222 L10,121
+      C10,91 15,61 31,36
+      C6,31 1,11 31,6
+      C56,1 66,6 70,10 Z" />
+    <!-- orelha -->
+    <path fill="#C8A24A" d="M100,63 C112,63 116,74 110,83 C105,90 96,86 96,78 C96,72 96,65 100,63 Z" />
+    <!-- pontos de piercing (negativo, cor de fundo) -->
+    <circle cx="106" cy="76" r="3.2" fill="#000000" />
+    <circle cx="127" cy="98" r="3" fill="#000000" />
+  </g>
+
+  <!-- Nome em destaque -->
+  <text x="300" y="410" font-family="'Brush Script MT', 'Segoe Script', cursive" font-size="86"
+        fill="#C8A24A" text-anchor="middle" dominant-baseline="middle">
+    Debby
+  </text>
+
+  <line x1="240" y1="440" x2="360" y2="440" stroke="#C8A24A" stroke-width="1.5" />
+
+  <!-- Texto arco inferior -->
+  <text font-family="Georgia, 'Times New Roman', serif" font-size="22" font-weight="700"
+        letter-spacing="6" fill="#F4F1EA">
+    <textPath href="#arcoInferior2" startOffset="50%" text-anchor="middle">
+      DESDE 2016
+    </textPath>
+  </text>
+</svg>

@@ -1,0 +1,43 @@
+<svg viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Emblema Estúdio da Debby Piercing</title>
+  <desc id="desc">Selo circular preto e dourado com o texto "Estúdio da Debby Piercing" no arco superior e "Desde 2016" no arco inferior — versão vetorial, escalável para qualquer tamanho.</desc>
+
+  <defs>
+    <path id="arcoSuperior" d="M 96,300 A 204,204 0 0 1 504,300" />
+    <path id="arcoInferior" d="M 114,384 A 204,204 0 0 0 486,384" />
+  </defs>
+
+  <!-- Anel dourado externo -->
+  <circle cx="300" cy="300" r="282" fill="none" stroke="#C8A24A" stroke-width="6" />
+
+  <!-- Fundo preto -->
+  <circle cx="300" cy="300" r="268" fill="#000000" />
+
+  <!-- Anel dourado interno (fino) -->
+  <circle cx="300" cy="300" r="232" fill="none" stroke="#C8A24A" stroke-width="2" />
+
+  <!-- Texto arco superior -->
+  <text font-family="Georgia, 'Times New Roman', serif" font-size="27" font-weight="700"
+        letter-spacing="4" fill="#F4F1EA">
+    <textPath href="#arcoSuperior" startOffset="50%" text-anchor="middle">
+      ESTÚDIO DA DEBBY PIERCING
+    </textPath>
+  </text>
+
+  <!-- Nome em destaque -->
+  <text x="300" y="300" font-family="'Brush Script MT', 'Segoe Script', cursive" font-size="108"
+        fill="#C8A24A" text-anchor="middle" dominant-baseline="middle">
+    Debby
+  </text>
+
+  <!-- Pequeno filete decorativo entre o nome e "desde 2016" -->
+  <line x1="220" y1="358" x2="380" y2="358" stroke="#C8A24A" stroke-width="1.5" />
+
+  <!-- Texto arco inferior -->
+  <text font-family="Georgia, 'Times New Roman', serif" font-size="22" font-weight="700"
+        letter-spacing="6" fill="#F4F1EA">
+    <textPath href="#arcoInferior" startOffset="50%" text-anchor="middle">
+      DESDE 2016
+    </textPath>
+  </text>
+</svg>
