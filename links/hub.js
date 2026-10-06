@@ -9,9 +9,12 @@
 (function () {
   var NUMERO_WA = '5519988404390';
   var PERFIS = {
+    /* desc: textos na voz de quem é dono do perfil (1a pessoa); o resto fica neutro/igual para todos */
     debby:   { nome: 'Debby', sub: 'Piercer · Estúdio da Debby', foto: '/assets/fotos/estudio/debby.jpeg', inicial: 'D',
+               desc: { 'piercing': 'Meu trabalho: joias, valores e cuidados', 'curso-piercing': 'Comigo — peça informações' },
                ordem: ['piercing', 'tatuagem', 'mapa', 'curso-piercing', 'curso-tatuagem', 'modas', 'sexshop', 'ig-rafa'] },
     rafa:    { nome: 'Rafa', sub: 'Tatuador · Estúdio da Debby', foto: '/assets/fotos/tatuagem/retrato-rafa/perfil.jpg', inicial: 'R',
+               desc: { 'tatuagem': 'Meus trabalhos e orçamento', 'curso-tatuagem': 'Comigo — peça informações' },
                ordem: ['tatuagem', 'piercing', 'mapa', 'curso-tatuagem', 'curso-piercing', 'modas', 'sexshop', 'ig-debby'] },
     estudio: { nome: 'Estúdio da Debby', sub: 'Piercing · Tatuagem · Moda · Sex Shop', foto: '/assets/fotos/estudio/logo.jpeg', inicial: 'E',
                ordem: ['piercing', 'tatuagem', 'mapa', 'curso-piercing', 'curso-tatuagem', 'modas', 'sexshop', 'ig-debby', 'ig-rafa'] }
@@ -84,7 +87,7 @@
     a.innerHTML = '<span class="ico"></span><span class="txt"><span class="t"></span><span class="d"></span></span>';
     a.querySelector('.ico').textContent = it.ico;
     a.querySelector('.t').textContent = it.t;
-    a.querySelector('.d').textContent = it.d;
+    a.querySelector('.d').textContent = (perfil.desc && perfil.desc[id]) || it.d;
     a.addEventListener('click', function () {
       gtag('event', 'hub_click', { perfil: perfilId, formato: fmt, campanha: camp, destino: id, transport_type: 'beacon' });
     });
