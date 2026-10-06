@@ -19,7 +19,7 @@
   var FORMATOS = ['bio', 'story', 'reel', 'ads', 'qr', 'whatsapp'];
 
   var ITENS = {
-    'piercing':       { ico: '💎', t: 'Piercing', d: 'Joias, valores e cuidados', tipo: 'int', href: '/piercing/' },
+    'piercing':       { ico: '💎', t: 'Piercing', d: 'Joias, valores e cuidados', tipo: 'int', href: '/' },
     'tatuagem':       { ico: '🖋️', t: 'Tatuagem', d: 'Trabalhos e orçamento', tipo: 'int', href: '/tatuagem/' },
     'curso-piercing': { ico: '🎓', t: 'Curso de Piercing', d: 'Com a Debby — peça informações', tipo: 'wa', msg: 'Oi! Vim pelo link da bio e quero saber do curso de piercing com a Debby.' },
     'curso-tatuagem': { ico: '🎓', t: 'Curso de Tatuagem', d: 'Com o Rafa — peça informações', tipo: 'wa', msg: 'Oi! Vim pelo link da bio e quero saber do curso de tatuagem com o Rafa.' },
