@@ -77,7 +77,7 @@
       var s = document.createElement('p'); s.className = 'sep'; s.textContent = 'Mais do estúdio'; lista.appendChild(s); sepFeito = true;
     }
     var a = document.createElement('a');
-    a.className = 'btn' + (it.principal ? ' principal' : '');
+    a.className = 'btn' + (i === 0 ? ' destaque' : '');
     a.href = montarHref(id, it);
     if (it.tipo === 'ext') { a.target = '_blank'; a.rel = 'noopener'; }
     a.setAttribute('data-track', 'hub-' + id);

@@ -1,114 +1,131 @@
-/* Hub de links — visual (preto + dourado da marca, acabamento "tech") */
+/* Hub de links — visual tech (navy + ciano/violeta, vidro, brilho) */
 * { margin: 0; padding: 0; box-sizing: border-box; }
 :root {
-  --bg: #07080b; --text: #f4f1ea; --muted: #9a9ca3;
-  --gold: #dfb76c; --gold-soft: rgba(223,183,108,.16);
-  --glass: rgba(255,255,255,.045); --border: rgba(255,255,255,.10);
+  color-scheme: dark;
+  --bg: #0b1220; --bg2: #0f1a2e; --ink: #eef2f6; --muted: #98a2b3;
+  --a1: #53e0f2; --a2: #aa90ff; --grad: linear-gradient(135deg, var(--a1), var(--a2));
+  --surface: rgba(255,255,255,.035); --line: rgba(255,255,255,.09); --line2: rgba(255,255,255,.18);
+  --font: "Plus Jakarta Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
 }
 html { overflow-x: hidden; }
 body {
-  font-family: Arial, Helvetica, sans-serif; background: var(--bg); color: var(--text);
+  font-family: var(--font); background: var(--bg); color: var(--ink);
   line-height: 1.5; min-height: 100vh; overflow-x: hidden; isolation: isolate;
+  -webkit-font-smoothing: antialiased;
 }
 a { color: inherit; text-decoration: none; }
 
-/* ── Fundo: grade fina + brilhos dourados à deriva ── */
+/* ── Fundo: grade + auroras ciano/violeta ── */
 body::before {
   content: ""; position: fixed; inset: 0; z-index: -2;
   background-image:
-    linear-gradient(rgba(223,183,108,.07) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(223,183,108,.07) 1px, transparent 1px);
-  background-size: 44px 44px;
-  -webkit-mask-image: radial-gradient(ellipse 85% 70% at 50% 25%, #000 25%, transparent 78%);
-          mask-image: radial-gradient(ellipse 85% 70% at 50% 25%, #000 25%, transparent 78%);
+    linear-gradient(rgba(83,224,242,.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(83,224,242,.06) 1px, transparent 1px);
+  background-size: 40px 40px;
+  -webkit-mask-image: radial-gradient(ellipse 90% 65% at 50% 20%, #000 20%, transparent 75%);
+          mask-image: radial-gradient(ellipse 90% 65% at 50% 20%, #000 20%, transparent 75%);
 }
 body::after {
-  content: ""; position: fixed; inset: -20%; z-index: -1; pointer-events: none;
+  content: ""; position: fixed; inset: -25%; z-index: -1; pointer-events: none;
   background:
-    radial-gradient(38% 32% at 22% 18%, rgba(223,183,108,.22), transparent 70%),
-    radial-gradient(34% 30% at 82% 38%, rgba(196,120,60,.16), transparent 70%),
-    radial-gradient(40% 34% at 50% 92%, rgba(223,183,108,.12), transparent 70%);
-  animation: deriva 22s ease-in-out infinite alternate;
+    radial-gradient(36% 30% at 18% 14%, rgba(83,224,242,.26), transparent 70%),
+    radial-gradient(38% 32% at 86% 30%, rgba(170,144,255,.26), transparent 70%),
+    radial-gradient(42% 34% at 50% 96%, rgba(83,224,242,.14), transparent 70%);
+  animation: deriva 20s ease-in-out infinite alternate;
 }
 @keyframes deriva {
-  from { transform: translate3d(-2%, -1%, 0) scale(1); }
-  to   { transform: translate3d(2%, 2%, 0) scale(1.08); }
+  from { transform: translate3d(-3%, -2%, 0) scale(1); }
+  to   { transform: translate3d(3%, 3%, 0) scale(1.1); }
 }
 
 main { width: min(480px, 100%); margin: 0 auto; padding: 40px 16px 52px; position: relative; }
 
 /* ── Perfil ── */
-.perfil { text-align: center; margin-bottom: 30px; }
+.perfil { text-align: center; margin-bottom: 28px; }
 .avatar {
-  position: relative; isolation: isolate; width: 104px; height: 104px; margin: 0 auto 16px;
-  border-radius: 50%; background: #14161c;
+  position: relative; isolation: isolate; width: 108px; height: 108px; margin: 0 auto 18px;
+  border-radius: 50%; background: var(--bg2);
   display: flex; align-items: center; justify-content: center;
-  font-size: 40px; font-weight: 700; color: var(--gold);
+  font-size: 42px; font-weight: 800; color: var(--a1);
 }
-.avatar::before {
+.avatar::before { /* anel em degradê girando */
   content: ""; position: absolute; inset: -4px; border-radius: 50%; z-index: -1;
-  background: conic-gradient(from 0deg, var(--gold), rgba(223,183,108,.08) 35%, var(--gold) 55%, rgba(223,183,108,.08) 80%, var(--gold));
-  animation: gira 7s linear infinite;
+  background: conic-gradient(from 0deg, var(--a1), var(--a2), rgba(83,224,242,.1) 45%, var(--a1) 70%, var(--a2));
+  animation: gira 6s linear infinite;
 }
-.avatar::after {
-  content: ""; position: absolute; inset: -14px; border-radius: 50%; z-index: -2;
-  background: radial-gradient(circle, rgba(223,183,108,.30), transparent 68%);
-  filter: blur(8px);
+.avatar::after { /* halo */
+  content: ""; position: absolute; inset: -18px; border-radius: 50%; z-index: -2;
+  background: radial-gradient(circle, rgba(83,224,242,.32), rgba(170,144,255,.18) 45%, transparent 70%);
+  filter: blur(10px);
 }
 @keyframes gira { to { transform: rotate(360deg); } }
-.avatar img { width: 100%; height: 100%; object-fit: cover; display: block; border-radius: 50%; border: 3px solid #07080b; }
-h1 { font-size: 24px; letter-spacing: .3px; }
-.sub { color: var(--muted); font-size: 14px; margin-top: 2px; }
-.local {
-  display: inline-block; margin-top: 12px; padding: 5px 12px; border-radius: 999px;
-  border: 1px solid rgba(223,183,108,.35); background: var(--gold-soft);
-  color: var(--gold); font-size: 11px; font-weight: 700; letter-spacing: 1.6px; text-transform: uppercase;
+.avatar img { width: 100%; height: 100%; object-fit: cover; display: block; border-radius: 50%; border: 3px solid var(--bg); }
+h1 {
+  font-size: 30px; font-weight: 800; letter-spacing: -.8px; line-height: 1.1;
+  background: var(--grad); -webkit-background-clip: text; background-clip: text; color: transparent;
 }
+.sub { color: var(--muted); font-size: 15px; margin-top: 6px; }
+.local {
+  display: inline-flex; align-items: center; gap: 8px; margin-top: 14px; padding: 6px 14px; border-radius: 999px;
+  border: 1px solid rgba(83,224,242,.28); background: rgba(83,224,242,.07);
+  color: var(--a1); font-size: 12px; font-weight: 600; letter-spacing: .2px;
+}
+.local::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--a1); box-shadow: 0 0 10px var(--a1); animation: pulsa 2s ease-in-out infinite; }
+@keyframes pulsa { 50% { opacity: .35; } }
 
-/* ── Botões (vidro) ── */
+/* ── Botões ── */
 .lista { display: flex; flex-direction: column; gap: 12px; }
 .btn {
   position: relative; overflow: hidden; display: flex; align-items: center; gap: 14px;
-  min-height: 62px; padding: 12px 16px; border-radius: 16px;
-  background: var(--glass); border: 1px solid var(--border);
+  min-height: 64px; padding: 12px 16px; border-radius: 18px;
+  background: var(--surface); border: 1px solid var(--line);
   -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px);
-  box-shadow: 0 1px 0 rgba(255,255,255,.06) inset, 0 8px 24px rgba(0,0,0,.35);
+  box-shadow: 0 1px 0 rgba(255,255,255,.05) inset, 0 10px 28px rgba(0,0,0,.28);
   transition: transform .18s ease, border-color .18s ease, box-shadow .18s ease, background .18s ease;
 }
-.btn::before { /* brilho que varre o botão */
+.btn::before { /* varredura de luz */
   content: ""; position: absolute; top: 0; bottom: 0; left: -60%; width: 40%;
-  background: linear-gradient(100deg, transparent, rgba(223,183,108,.18), transparent);
+  background: linear-gradient(100deg, transparent, rgba(255,255,255,.12), transparent);
   transform: skewX(-18deg); transition: left .55s ease; pointer-events: none;
 }
 .btn::after { /* seta */
-  content: "›"; margin-left: auto; padding-left: 8px; font-size: 26px; line-height: 1; color: var(--gold);
-  opacity: .55; transition: transform .18s ease, opacity .18s ease;
+  content: "→"; margin-left: auto; padding-left: 8px; font-size: 20px; line-height: 1; color: var(--a1);
+  opacity: .6; transition: transform .18s ease, opacity .18s ease;
 }
 .btn:hover, .btn:focus-visible {
-  transform: translateY(-2px); outline: none; background: rgba(223,183,108,.07);
-  border-color: rgba(223,183,108,.7);
-  box-shadow: 0 0 0 1px rgba(223,183,108,.35), 0 10px 34px rgba(223,183,108,.18), 0 1px 0 rgba(255,255,255,.08) inset;
+  transform: translateY(-2px); outline: none; background: rgba(255,255,255,.06);
+  border-color: rgba(83,224,242,.55);
+  box-shadow: 0 0 0 1px rgba(83,224,242,.25), 0 12px 36px rgba(83,224,242,.16), 0 1px 0 rgba(255,255,255,.08) inset;
 }
 .btn:hover::before, .btn:focus-visible::before { left: 120%; }
 .btn:hover::after, .btn:focus-visible::after { transform: translateX(4px); opacity: 1; }
 .btn:active { transform: translateY(0) scale(.99); }
 .btn .ico {
-  width: 40px; height: 40px; flex-shrink: 0; border-radius: 12px; font-size: 21px;
+  width: 42px; height: 42px; flex-shrink: 0; border-radius: 13px; font-size: 21px;
   display: flex; align-items: center; justify-content: center;
-  background: var(--gold-soft); border: 1px solid rgba(223,183,108,.25);
+  background: rgba(83,224,242,.08); border: 1px solid rgba(83,224,242,.22);
 }
 .btn .txt { display: flex; flex-direction: column; min-width: 0; }
-.btn .t { font-weight: 700; font-size: 16px; }
+.btn .t { font-weight: 700; font-size: 16px; letter-spacing: -.1px; }
 .btn .d { color: var(--muted); font-size: 13px; }
+
+/* primeiro botão em degradê (destaque) */
+.btn.destaque { background: var(--grad); border-color: transparent; color: #06121f;
+  box-shadow: 0 10px 34px rgba(83,224,242,.28), 0 0 0 1px rgba(255,255,255,.2) inset; }
+.btn.destaque .d { color: rgba(6,18,31,.72); }
+.btn.destaque .ico { background: rgba(6,18,31,.14); border-color: rgba(6,18,31,.18); }
+.btn.destaque::after { color: #06121f; opacity: .85; }
+.btn.destaque:hover, .btn.destaque:focus-visible { background: var(--grad); border-color: transparent;
+  box-shadow: 0 14px 44px rgba(83,224,242,.4), 0 0 0 1px rgba(255,255,255,.3) inset; }
 
 .sep {
   display: flex; align-items: center; gap: 12px; margin: 14px 2px 2px;
-  color: var(--muted); font-size: 11px; letter-spacing: 1.8px; text-transform: uppercase;
+  color: var(--muted); font-size: 11px; font-weight: 600; letter-spacing: 1.8px; text-transform: uppercase;
 }
-.sep::after { content: ""; flex: 1; height: 1px; background: linear-gradient(90deg, var(--border), transparent); }
+.sep::after { content: ""; flex: 1; height: 1px; background: linear-gradient(90deg, var(--line2), transparent); }
 
 .rodape { text-align: center; color: var(--muted); font-size: 12px; margin-top: 34px; }
-.rodape a { color: var(--gold); }
+.rodape a { color: var(--a1); }
 
 /* ── Entrada escalonada ── */
 .lista > * { opacity: 0; transform: translateY(14px); animation: entra .55s cubic-bezier(.2,.7,.2,1) forwards; }
@@ -120,7 +137,7 @@ h1 { font-size: 24px; letter-spacing: .3px; }
 @keyframes entra { to { opacity: 1; transform: none; } }
 
 @media (prefers-reduced-motion: reduce) {
-  body::after, .avatar::before { animation: none; }
+  body::after, .avatar::before, .local::before { animation: none; }
   .lista > * { opacity: 1; transform: none; animation: none; }
   .btn, .btn::before, .btn::after { transition: none; }
 }
