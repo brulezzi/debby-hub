@@ -115,7 +115,7 @@ document.addEventListener("DOMContentLoaded", function () {
     anime: "Personagens e universos que você ama, e também HQ. Uma das duas especialidades premiadas em convenção.",
     todos: "Tudo em um só lugar, na ordem do que o Rafa mais quer fazer."
   };
-  const POR_PAGINA = 12;
+  const POR_PAGINA = Infinity; // mostra todas as fotos do estilo escolhido
   const itens = Array.prototype.slice.call(document.querySelectorAll(".g-item"));
   const abas = document.querySelectorAll(".tab");
   const contador = document.getElementById("gal-count");
@@ -132,7 +132,7 @@ document.addEventListener("DOMContentLoaded", function () {
     itens.forEach(function (el) { el.hidden = true; });
     lista.forEach(function (el, i) { el.hidden = i >= limite; });
     const vis = Math.min(limite, lista.length);
-    if (contador) contador.textContent = "Mostrando " + vis + " de " + lista.length + (lista.length === 1 ? " trabalho" : " trabalhos");
+    if (contador) contador.textContent = vis + (vis === 1 ? " trabalho" : " trabalhos");
     if (btnMais) {
       btnMais.hidden = vis >= lista.length;
       btnMais.textContent = "Ver mais trabalhos (" + (lista.length - vis) + ")";
@@ -204,8 +204,63 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   // ---------- Aparecer ao rolar + contadores ----------
-  const reduz = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  const revelaveis = document.querySelectorAll(".rv");
+  // Respeita "reduzir movimento" do aparelho. ?motion=1 força as animações (usado só para testar).
+  const reduz = !/[?&]motion=1/.test(location.search) &&
+    window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  // Títulos: separa em palavras para cada uma subir de dentro de uma máscara
+  if (!reduz) {
+    document.querySelectorAll("h2").forEach(function (h) {
+      let i = 0;
+      (function dividir(no) {
+        Array.prototype.slice.call(no.childNodes).forEach(function (n) {
+          if (n.nodeType === 3) {
+            const frag = document.createDocumentFragment();
+            n.textContent.split(/(\s+)/).forEach(function (parte) {
+              if (!parte) return;
+              if (/^\s+$/.test(parte)) { frag.appendChild(document.createTextNode(" ")); return; }
+              const w = document.createElement("span"); w.className = "w";
+              const s = document.createElement("span"); s.textContent = parte; s.style.setProperty("--i", i++);
+              w.appendChild(s); frag.appendChild(w);
+            });
+            no.replaceChild(frag, n);
+          } else if (n.nodeType === 1) { dividir(n); }
+        });
+      })(h);
+      h.classList.add("split");
+    });
+  }
+
+  // Topo: "Oi, tudo bão?" digitando e a palavra do título que troca
+  if (!reduz) {
+    const mao = document.querySelector(".hand");
+    if (mao) {
+      const txt = mao.textContent; mao.style.minHeight = mao.offsetHeight + "px"; mao.textContent = ""; mao.classList.add("typing");
+      let k = 0;
+      setTimeout(function digita() {
+        mao.textContent = txt.slice(0, ++k);
+        if (k < txt.length) setTimeout(digita, 75); else setTimeout(function () { mao.classList.remove("typing"); }, 1200);
+      }, 700);
+    }
+    const pal = document.getElementById("palavra");
+    if (pal) {
+      const palavras = ["fica", "impressiona", "conta uma história", "vira arte"];
+      let p = 0;
+      setInterval(function () {
+        if (document.hidden) return;
+        pal.classList.add("out");
+        setTimeout(function () {
+          p = (p + 1) % palavras.length;
+          pal.textContent = palavras[p];
+          pal.classList.remove("out"); pal.classList.add("pre");
+          void pal.offsetWidth;
+          pal.classList.remove("pre");
+        }, 360);
+      }, 3200);
+    }
+  }
+
+  const revelaveis = document.querySelectorAll(".rv, h2.split");
   if ("IntersectionObserver" in window && !reduz) {
     const io = new IntersectionObserver(function (entradas) {
       entradas.forEach(function (en) { if (en.isIntersecting) { en.target.classList.add("in"); io.unobserve(en.target); } });

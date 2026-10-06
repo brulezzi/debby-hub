@@ -92,6 +92,23 @@
     /* HERO */
     .hero{position:relative;padding-block:56px 70px;overflow:hidden;background:radial-gradient(60% 55% at 50% 0%,rgba(223,183,108,.16),transparent 70%)}
     .hero .portrait-wrap{position:relative;width:clamp(190px,17vw,320px);margin:0 auto 26px}
+    /* Movimento do topo: entrada em sequência, brilho dourado e frase que troca */
+    .js .hero .wrap>*{opacity:0;transform:translateY(26px);animation:rise .9s cubic-bezier(.2,.7,.2,1) forwards}
+    .js .hero .wrap>:nth-child(1){animation-delay:.05s}.js .hero .wrap>:nth-child(2){animation-delay:.2s}
+    .js .hero .wrap>:nth-child(3){animation-delay:.35s}.js .hero .wrap>:nth-child(4){animation-delay:.5s}
+    .js .hero .wrap>:nth-child(5){animation-delay:.7s}.js .hero .wrap>:nth-child(6){animation-delay:.85s}
+    .js .hero .wrap>:nth-child(7){animation-delay:1s}
+    @keyframes rise{to{opacity:1;transform:none}}
+    .hero h1 em{display:inline-block;background:linear-gradient(90deg,var(--gold-deep),#f6dca0,var(--gold),#f6dca0,var(--gold-deep));background-size:250% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:shine 5s linear infinite;transition:transform .35s ease,opacity .35s ease}
+    .hero h1 em.out{transform:translateY(-40%);opacity:0}
+    .hero h1 em.pre{transition:none;transform:translateY(40%);opacity:0}
+    @keyframes shine{to{background-position:-250% 0}}
+    .hand.typing::after{content:"|";margin-left:2px;animation:blink .7s steps(1) infinite}
+    @keyframes blink{50%{opacity:0}}
+    /* Títulos: cada palavra sobe de dentro de uma máscara quando a seção aparece */
+    .w{display:inline-block;overflow:hidden;vertical-align:bottom;padding-bottom:.1em;margin-bottom:-.1em}
+    .w>span{display:inline-block;transform:translateY(110%);transition:transform .8s cubic-bezier(.2,.7,.2,1);transition-delay:calc(var(--i) * 70ms)}
+    h2.split.in .w>span{transform:none}
     .hero .portrait-wrap::before{content:"";position:absolute;inset:-9px;border-radius:50%;border:1.5px solid rgba(223,183,108,.55);animation:spin 18s linear infinite;border-top-color:transparent;border-left-color:transparent}
     .portrait{width:100%;height:auto;aspect-ratio:1/1;object-fit:cover;border-radius:50%;border:3px solid var(--gold);background:var(--card)}
     .hand{font-family:var(--f-hand);font-size:clamp(1.9rem,2.4vw,2.8rem);color:var(--gold);line-height:1;margin-bottom:10px}
@@ -116,9 +133,10 @@
     .tab[aria-selected="true"]{background:var(--gold);border-color:var(--gold);color:#17120a}
     .tab span{opacity:.7;font-weight:600}
     .tab-desc{color:var(--muted);min-height:3.2em;max-width:min(80ch,100%);margin:0 auto clamp(20px,2.5vw,34px);font-size:clamp(.95rem,.3vw + .9rem,1.15rem)}
-    .gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(clamp(180px,15vw,280px),1fr));gap:clamp(10px,1.1vw,18px)}
-    .g-item{position:relative;margin:0;overflow:hidden;border-radius:12px;background:var(--card);cursor:zoom-in;animation:pop .45s ease both}
-    .g-item img{width:100%;aspect-ratio:4/5;object-fit:cover;transition:transform .45s}
+    /* Mural: cada foto aparece inteira, no formato real (sem cortar), em colunas */
+    .gallery{column-count:5;column-gap:clamp(10px,1.1vw,18px)}
+    .g-item{position:relative;margin:0 0 clamp(10px,1.1vw,18px);overflow:hidden;border-radius:12px;background:var(--card);cursor:zoom-in;animation:pop .5s ease both;break-inside:avoid;-webkit-column-break-inside:avoid}
+    .g-item img{display:block;width:100%;height:auto;transition:transform .45s}
     .g-item::after{content:"Ampliar";position:absolute;inset:auto 0 0 0;padding:26px 10px 10px;font-size:12px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);background:linear-gradient(transparent,rgba(0,0,0,.8));opacity:0;transition:opacity .25s}
     .g-item:hover img{transform:scale(1.06)}
     .g-item:hover::after,.g-item:focus-visible::after{opacity:1}
@@ -236,15 +254,19 @@
       .two{grid-template-columns:1fr}
       .form-grid{grid-template-columns:1fr}
       .nav .links a:not(.keep){display:none}
-      .gallery{grid-template-columns:repeat(3,1fr)}
+      .gallery{column-count:3}
     }
-    @media (max-width:520px){.gallery{grid-template-columns:repeat(2,1fr)}}
+    @media (max-width:1180px) and (min-width:861px){.gallery{column-count:4}}
+    @media (max-width:520px){.gallery{column-count:2}}
     @media (max-width:480px){.steps{grid-template-columns:1fr}.form-card{padding:20px}.proof{gap:6px}.sticky-wa{padding:11px 16px;font-size:13px;right:12px}}
     @media (prefers-reduced-motion:reduce){
       html{scroll-behavior:auto}
       .btn,.g-item,.g-item img,.steps li{transition:none;animation:none}
       .marquee-track,.hero .portrait-wrap::before{animation:none}
       .js .rv{opacity:1;transform:none;transition:none}
+      .js .hero .wrap>*{opacity:1;transform:none;animation:none}
+      .hero h1 em{animation:none;color:var(--gold);background:none;-webkit-background-clip:border-box;background-clip:border-box}
+      .w>span{transform:none;transition:none}
     }
   </style>
 
@@ -280,7 +302,7 @@
     </div>
     <div class="hand">Oi, tudo bão?</div>
     <div class="eyebrow">Tatuagem · Campinas · Estúdio da Debby</div>
-    <h1>Tatuagem que <em>fica</em></h1>
+    <h1>Tatuagem que <em id="palavra">fica</em></h1>
     <p class="lead">Eu sou o Rafa. Tatuo há 15 anos, com mais de 3 mil trabalhos e duas convenções ganhas. Realismo colorido, fine line, cobertura e anime, num ambiente exclusivo no Centro de Campinas.</p>
     <div class="actions">
       <a class="btn btn-gold" href="#orcamento" data-track="hero_orcamento">Pedir meu orçamento →</a>
@@ -322,71 +344,70 @@
     <p class="tab-desc" id="tab-desc" aria-live="polite"></p>
 
     <div class="gallery" id="galeria">
-      <figure class="g-item" data-g="colorido"><img src="./assets/galeria/colorido-02.jpg" alt="Anubis com pir&#226;mides em realismo colorido, tatuagem na panturrilha" loading="lazy" width="480" height="600" /></figure>
-      <figure class="g-item" data-g="colorido"><img src="./assets/galeria/colorido-01.jpg" alt="Deusa azul com lua vermelha em surrealismo colorido, tatuagem na coxa" loading="lazy" width="480" height="600" /></figure>
-      <figure class="g-item" data-g="colorido"><img src="./assets/galeria/colorido-03.jpg" alt="Retrato de boxeador em realismo colorido, tatuagem na coxa" loading="lazy" width="480" height="600" /></figure>
-      <figure class="g-item" data-g="colorido"><img src="./assets/galeria/colorido-52.jpg" alt="Mulher com castelo e lua em surrealismo colorido na perna" loading="lazy" width="480" height="600" /></figure>
-      <figure class="g-item" data-g="colorido"><img src="./assets/galeria/colorido-19.jpg" alt="Mulher de &#243;culos em n&#233;on, surrealismo colorido na coxa" loading="lazy" width="480" height="600" /></figure>
-      <figure class="g-item" data-g="colorido"><img src="./assets/galeria/colorido-21.jpg" alt="Rosto feminino e universo espacial em surrealismo colorido na perna" loading="lazy" width="480" height="600" /></figure>
-      <figure class="g-item" data-g="colorido"><img src="./assets/galeria/colorido-56.jpg" alt="Coruja, lua e &#225;rvore em surrealismo colorido no bra&#231;o" loading="lazy" width="480" height="600" /></figure>
-      <figure class="g-item" data-g="colorido"><img src="./assets/galeria/colorido-46.jpg" alt="Lobo com flores e rosa em realismo colorido na perna" loading="lazy" width="480" height="600" /></figure>
-      <figure class="g-item" data-g="colorido"><img src="./assets/galeria/colorido-14.jpg" alt="Rottweiler em realismo colorido nas costas" loading="lazy" width="480" height="600" /></figure>
-      <figure class="g-item" data-g="colorido"><img src="./assets/galeria/colorido-17.jpg" alt="Retrato de senhora de &#243;culos em realismo colorido" loading="lazy" width="480" height="600" /></figure>
-      <figure class="g-item" data-g="colorido"><img src="./assets/galeria/colorido-18.jpg" alt="Alice e Chapeleiro Maluco em realismo colorido na perna" loading="lazy" width="480" height="600" /></figure>
-      <figure class="g-item" data-g="colorido"><img src="./assets/galeria/colorido-20.jpg" alt="Retrato de m&#227;e e filha em realismo colorido no antebra&#231;o" loading="lazy" width="480" height="600" /></figure>
-      <figure class="g-item" data-g="colorido"><img src="./assets/galeria/colorido-15.jpg" alt="Retrato de crian&#231;a ind&#237;gena em realismo colorido na panturrilha" loading="lazy" width="480" height="600" /></figure>
-      <figure class="g-item" data-g="colorido"><img src="./assets/galeria/colorido-36.jpg" alt="Cachorro pequin&#234;s em realismo colorido na perna" loading="lazy" width="480" height="600" /></figure>
-      <figure class="g-item" data-g="colorido"><img src="./assets/galeria/colorido-23.jpg" alt="Espada com raios em realismo, tatuagem na perna" loading="lazy" width="480" height="600" /></figure>
-      <figure class="g-item" data-g="colorido"><img src="./assets/galeria/colorido-22.jpg" alt="Girassol em aquarela na coxa" loading="lazy" width="480" height="600" /></figure>
-      <figure class="g-item" data-g="colorido"><img src="./assets/galeria/colorido-50.jpg" alt="F&#234;nix em aquarela no bra&#231;o" loading="lazy" width="480" height="600" /></figure>
-      <figure class="g-item" data-g="colorido"><img src="./assets/galeria/colorido-24.jpg" alt="Dois pugs em aquarela no antebra&#231;o" loading="lazy" width="480" height="600" /></figure>
-      <figure class="g-item" data-g="fine"><img src="./assets/galeria/fine-53.jpg" alt="Le&#227;o com flores nas costas em fine line" loading="lazy" width="480" height="600" /></figure>
-      <figure class="g-item" data-g="fine"><img src="./assets/galeria/fine-26.jpg" alt="On&#231;a com l&#237;rios e borboletas em fine line na panturrilha" loading="lazy" width="480" height="600" /></figure>
-      <figure class="g-item" data-g="fine"><img src="./assets/galeria/fine-28.jpg" alt="Orix&#225; em fine line com detalhes dourados no bra&#231;o" loading="lazy" width="480" height="600" /></figure>
-      <figure class="g-item" data-g="fine"><img src="./assets/galeria/fine-51.jpg" alt="&#193;rvore com cora&#231;&#227;o em fine line no antebra&#231;o" loading="lazy" width="480" height="600" /></figure>
-      <figure class="g-item" data-g="fine"><img src="./assets/galeria/fine-54.jpg" alt="Borboleta e mandala colorida em fine line no tornozelo" loading="lazy" width="480" height="600" /></figure>
-      <figure class="g-item" data-g="fine"><img src="./assets/galeria/fine-62.jpg" alt="Cachorro golden com flores em fine line na panturrilha" loading="lazy" width="480" height="600" /></figure>
-      <figure class="g-item" data-g="fine"><img src="./assets/galeria/fine-55.jpg" alt="Borboleta pequena em fine line no bra&#231;o" loading="lazy" width="480" height="600" /></figure>
-      <figure class="g-item" data-g="fine"><img src="./assets/galeria/fine-27.jpg" alt="Psyduck em fine line colorido na perna" loading="lazy" width="480" height="600" /></figure>
-      <figure class="g-item" data-g="pb"><img src="./assets/galeria/pb-39.jpg" alt="Costas fechadas com le&#227;o, &#225;guia e deserto em realismo preto e cinza" loading="lazy" width="480" height="600" /></figure>
-      <figure class="g-item" data-g="pb"><img src="./assets/galeria/pb-40.jpg" alt="Le&#227;o com coroa de espinhos e medalha de S&#227;o Bento no bra&#231;o, em preto e cinza" loading="lazy" width="480" height="600" /></figure>
-      <figure class="g-item" data-g="pb"><img src="./assets/galeria/pb-41.jpg" alt="&#193;guia em realismo preto e cinza no bra&#231;o" loading="lazy" width="480" height="600" /></figure>
-      <figure class="g-item" data-g="pb"><img src="./assets/galeria/pb-38.jpg" alt="Homem de terno com cartas e dados em preto e cinza no bra&#231;o" loading="lazy" width="480" height="600" /></figure>
-      <figure class="g-item" data-g="pb"><img src="./assets/galeria/pb-43.jpg" alt="Busto de est&#225;tua com chifres em preto e cinza na coxa" loading="lazy" width="480" height="600" /></figure>
-      <figure class="g-item" data-g="pb"><img src="./assets/galeria/pb-48.jpg" alt="Medusa e busto em preto e cinza na perna" loading="lazy" width="480" height="600" /></figure>
-      <figure class="g-item" data-g="pb"><img src="./assets/galeria/pb-49.jpg" alt="&#218;ltima Ceia e &#225;guia no peito em preto e cinza" loading="lazy" width="480" height="600" /></figure>
-      <figure class="g-item" data-g="pb"><img src="./assets/galeria/pb-42.jpg" alt="Mulher com s&#237;mbolo celta na testa em preto e cinza no antebra&#231;o" loading="lazy" width="480" height="600" /></figure>
-      <figure class="g-item" data-g="pb"><img src="./assets/galeria/pb-57.jpg" alt="Mulher e cobra em preto e cinza no bra&#231;o" loading="lazy" width="480" height="600" /></figure>
-      <figure class="g-item" data-g="pb"><img src="./assets/galeria/pb-61.jpg" alt="Caveira mexicana e cr&#226;nio em preto e cinza na perna" loading="lazy" width="480" height="600" /></figure>
-      <figure class="g-item" data-g="pb"><img src="./assets/galeria/pb-59.jpg" alt="Samurai caveira em preto e cinza no antebra&#231;o" loading="lazy" width="480" height="600" /></figure>
-      <figure class="g-item" data-g="pb"><img src="./assets/galeria/pb-63.jpg" alt="On&#231;a em realismo preto e cinza no antebra&#231;o" loading="lazy" width="480" height="600" /></figure>
-      <figure class="g-item" data-g="pb"><img src="./assets/galeria/pb-58.jpg" alt="Farol, b&#250;ssola e &#226;ncora em preto e cinza no antebra&#231;o" loading="lazy" width="480" height="600" /></figure>
-      <figure class="g-item" data-g="pb"><img src="./assets/galeria/pb-60.jpg" alt="Mulher com borboleta e flores em preto e cinza no antebra&#231;o" loading="lazy" width="480" height="600" /></figure>
-      <figure class="g-item" data-g="pb"><img src="./assets/galeria/pb-45.jpg" alt="M&#225;scaras e rostos em tons de s&#233;pia no antebra&#231;o" loading="lazy" width="480" height="600" /></figure>
-      <figure class="g-item" data-g="pb"><img src="./assets/galeria/pb-64.jpg" alt="Mulher ind&#237;gena com detalhe vermelho em preto e cinza no antebra&#231;o" loading="lazy" width="480" height="600" /></figure>
-      <figure class="g-item" data-g="pb"><img src="./assets/galeria/pb-33.jpg" alt="Retrato de mulher ind&#237;gena em preto e cinza no antebra&#231;o" loading="lazy" width="480" height="600" /></figure>
-      <figure class="g-item" data-g="pb"><img src="./assets/galeria/pb-35.jpg" alt="Mulher ind&#237;gena no peitoral em preto e cinza" loading="lazy" width="480" height="600" /></figure>
-      <figure class="g-item" data-g="pb"><img src="./assets/galeria/pb-37.jpg" alt="Jesus abra&#231;ando crian&#231;as em preto e cinza no antebra&#231;o" loading="lazy" width="480" height="600" /></figure>
-      <figure class="g-item" data-g="pb"><img src="./assets/galeria/pb-25.jpg" alt="Retrato de menino com cachorro em preto e cinza no bra&#231;o" loading="lazy" width="480" height="600" /></figure>
-      <figure class="g-item" data-g="pb"><img src="./assets/galeria/pb-29.jpg" alt="Tigre nas costas em realismo preto e cinza" loading="lazy" width="480" height="600" /></figure>
-      <figure class="g-item" data-g="pb"><img src="./assets/galeria/pb-30.jpg" alt="Coruja em bra&#231;o fechado de realismo preto e cinza" loading="lazy" width="480" height="600" /></figure>
-      <figure class="g-item" data-g="pb"><img src="./assets/galeria/pb-31.jpg" alt="Drag&#227;o oriental em bra&#231;o fechado preto e cinza" loading="lazy" width="480" height="600" /></figure>
-      <figure class="g-item" data-g="pb"><img src="./assets/galeria/pb-32.jpg" alt="Le&#227;o e b&#250;ssola em bra&#231;o fechado preto e cinza" loading="lazy" width="480" height="600" /></figure>
-      <figure class="g-item" data-g="anime"><img src="./assets/galeria/anime-06.jpg" alt="Ichigo, de Bleach, em anime colorido na coxa" loading="lazy" width="480" height="600" /></figure>
-      <figure class="g-item" data-g="anime"><img src="./assets/galeria/anime-04.jpg" alt="Tanjiro, de Demon Slayer, em anime colorido no antebra&#231;o" loading="lazy" width="480" height="600" /></figure>
-      <figure class="g-item" data-g="anime"><img src="./assets/galeria/anime-10.jpg" alt="Sung Jin-woo, de Solo Leveling, em anime colorido na perna" loading="lazy" width="480" height="600" /></figure>
-      <figure class="g-item" data-g="anime"><img src="./assets/galeria/anime-09.jpg" alt="Ichigo com m&#225;scara, de Bleach, em anime colorido na panturrilha" loading="lazy" width="480" height="600" /></figure>
-      <figure class="g-item" data-g="anime"><img src="./assets/galeria/anime-05.jpg" alt="Zenitsu, de Demon Slayer, em anime colorido na perna" loading="lazy" width="480" height="600" /></figure>
-      <figure class="g-item" data-g="anime"><img src="./assets/galeria/anime-08.jpg" alt="Light Yagami, de Death Note, em anime colorido no bra&#231;o" loading="lazy" width="480" height="600" /></figure>
-      <figure class="g-item" data-g="anime"><img src="./assets/galeria/anime-11.jpg" alt="Luffy, de One Piece, em anime colorido na panturrilha" loading="lazy" width="480" height="600" /></figure>
-      <figure class="g-item" data-g="anime"><img src="./assets/galeria/anime-12.jpg" alt="Naruto e Jiraiya em anime colorido na perna" loading="lazy" width="480" height="600" /></figure>
-      <figure class="g-item" data-g="anime"><img src="./assets/galeria/anime-07.jpg" alt="Alucard e Vegeta em anime colorido na coxa" loading="lazy" width="480" height="600" /></figure>
-      <figure class="g-item" data-g="anime"><img src="./assets/galeria/anime-13.jpg" alt="Spider-Man e Venom em estilo HQ colorido na perna" loading="lazy" width="480" height="600" /></figure>
-      <figure class="g-item" data-g="anime"><img src="./assets/galeria/anime-34.jpg" alt="Venom em estilo HQ no antebra&#231;o" loading="lazy" width="480" height="600" /></figure>
+      <figure class="g-item" data-g="colorido"><img src="./assets/galeria/colorido-02.jpg" alt="Anubis com pir&#226;mides em realismo colorido, tatuagem na panturrilha" loading="lazy" width="435" height="582" /></figure>
+      <figure class="g-item" data-g="colorido"><img src="./assets/galeria/colorido-01.jpg" alt="Deusa azul com lua vermelha em surrealismo colorido, tatuagem na coxa" loading="lazy" width="548" height="571" /></figure>
+      <figure class="g-item" data-g="colorido"><img src="./assets/galeria/colorido-03.jpg" alt="Retrato de boxeador em realismo colorido, tatuagem na coxa" loading="lazy" width="580" height="579" /></figure>
+      <figure class="g-item" data-g="colorido"><img src="./assets/galeria/colorido-52.jpg" alt="Mulher com castelo e lua em surrealismo colorido na perna" loading="lazy" width="575" height="581" /></figure>
+      <figure class="g-item" data-g="colorido"><img src="./assets/galeria/colorido-19.jpg" alt="Mulher de &#243;culos em n&#233;on, surrealismo colorido na coxa" loading="lazy" width="537" height="556" /></figure>
+      <figure class="g-item" data-g="colorido"><img src="./assets/galeria/colorido-21.jpg" alt="Rosto feminino e universo espacial em surrealismo colorido na perna" loading="lazy" width="541" height="577" /></figure>
+      <figure class="g-item" data-g="colorido"><img src="./assets/galeria/colorido-56.jpg" alt="Coruja, lua e &#225;rvore em surrealismo colorido no bra&#231;o" loading="lazy" width="578" height="565" /></figure>
+      <figure class="g-item" data-g="colorido"><img src="./assets/galeria/colorido-46.jpg" alt="Lobo com flores e rosa em realismo colorido na perna" loading="lazy" width="545" height="583" /></figure>
+      <figure class="g-item" data-g="colorido"><img src="./assets/galeria/colorido-14.jpg" alt="Rottweiler em realismo colorido nas costas" loading="lazy" width="583" height="582" /></figure>
+      <figure class="g-item" data-g="colorido"><img src="./assets/galeria/colorido-17.jpg" alt="Retrato de senhora de &#243;culos em realismo colorido" loading="lazy" width="465" height="576" /></figure>
+      <figure class="g-item" data-g="colorido"><img src="./assets/galeria/colorido-18.jpg" alt="Alice e Chapeleiro Maluco em realismo colorido na perna" loading="lazy" width="584" height="579" /></figure>
+      <figure class="g-item" data-g="colorido"><img src="./assets/galeria/colorido-20.jpg" alt="Retrato de m&#227;e e filha em realismo colorido no antebra&#231;o" loading="lazy" width="493" height="585" /></figure>
+      <figure class="g-item" data-g="colorido"><img src="./assets/galeria/colorido-15.jpg" alt="Retrato de crian&#231;a ind&#237;gena em realismo colorido na panturrilha" loading="lazy" width="426" height="557" /></figure>
+      <figure class="g-item" data-g="colorido"><img src="./assets/galeria/colorido-36.jpg" alt="Cachorro pequin&#234;s em realismo colorido na perna" loading="lazy" width="561" height="560" /></figure>
+      <figure class="g-item" data-g="colorido"><img src="./assets/galeria/colorido-23.jpg" alt="Espada com raios em realismo, tatuagem na perna" loading="lazy" width="558" height="576" /></figure>
+      <figure class="g-item" data-g="colorido"><img src="./assets/galeria/colorido-22.jpg" alt="Girassol em aquarela na coxa" loading="lazy" width="576" height="576" /></figure>
+      <figure class="g-item" data-g="colorido"><img src="./assets/galeria/colorido-50.jpg" alt="F&#234;nix em aquarela no bra&#231;o" loading="lazy" width="466" height="585" /></figure>
+      <figure class="g-item" data-g="colorido"><img src="./assets/galeria/colorido-24.jpg" alt="Dois pugs em aquarela no antebra&#231;o" loading="lazy" width="577" height="572" /></figure>
+      <figure class="g-item" data-g="fine"><img src="./assets/galeria/fine-53.jpg" alt="Le&#227;o com flores nas costas em fine line" loading="lazy" width="544" height="556" /></figure>
+      <figure class="g-item" data-g="fine"><img src="./assets/galeria/fine-26.jpg" alt="On&#231;a com l&#237;rios e borboletas em fine line na panturrilha" loading="lazy" width="435" height="581" /></figure>
+      <figure class="g-item" data-g="fine"><img src="./assets/galeria/fine-28.jpg" alt="Orix&#225; em fine line com detalhes dourados no bra&#231;o" loading="lazy" width="428" height="580" /></figure>
+      <figure class="g-item" data-g="fine"><img src="./assets/galeria/fine-51.jpg" alt="&#193;rvore com cora&#231;&#227;o em fine line no antebra&#231;o" loading="lazy" width="542" height="579" /></figure>
+      <figure class="g-item" data-g="fine"><img src="./assets/galeria/fine-54.jpg" alt="Borboleta e mandala colorida em fine line no tornozelo" loading="lazy" width="454" height="578" /></figure>
+      <figure class="g-item" data-g="fine"><img src="./assets/galeria/fine-62.jpg" alt="Cachorro golden com flores em fine line na panturrilha" loading="lazy" width="452" height="563" /></figure>
+      <figure class="g-item" data-g="fine"><img src="./assets/galeria/fine-55.jpg" alt="Borboleta pequena em fine line no bra&#231;o" loading="lazy" width="465" height="574" /></figure>
+      <figure class="g-item" data-g="fine"><img src="./assets/galeria/fine-27.jpg" alt="Psyduck em fine line colorido na perna" loading="lazy" width="544" height="563" /></figure>
+      <figure class="g-item" data-g="pb"><img src="./assets/galeria/pb-39.jpg" alt="Costas fechadas com le&#227;o, &#225;guia e deserto em realismo preto e cinza" loading="lazy" width="576" height="584" /></figure>
+      <figure class="g-item" data-g="pb"><img src="./assets/galeria/pb-40.jpg" alt="Le&#227;o com coroa de espinhos e medalha de S&#227;o Bento no bra&#231;o, em preto e cinza" loading="lazy" width="580" height="578" /></figure>
+      <figure class="g-item" data-g="pb"><img src="./assets/galeria/pb-41.jpg" alt="&#193;guia em realismo preto e cinza no bra&#231;o" loading="lazy" width="551" height="549" /></figure>
+      <figure class="g-item" data-g="pb"><img src="./assets/galeria/pb-38.jpg" alt="Homem de terno com cartas e dados em preto e cinza no bra&#231;o" loading="lazy" width="580" height="574" /></figure>
+      <figure class="g-item" data-g="pb"><img src="./assets/galeria/pb-43.jpg" alt="Busto de est&#225;tua com chifres em preto e cinza na coxa" loading="lazy" width="544" height="556" /></figure>
+      <figure class="g-item" data-g="pb"><img src="./assets/galeria/pb-48.jpg" alt="Medusa e busto em preto e cinza na perna" loading="lazy" width="366" height="585" /></figure>
+      <figure class="g-item" data-g="pb"><img src="./assets/galeria/pb-49.jpg" alt="&#218;ltima Ceia e &#225;guia no peito em preto e cinza" loading="lazy" width="582" height="583" /></figure>
+      <figure class="g-item" data-g="pb"><img src="./assets/galeria/pb-42.jpg" alt="Mulher com s&#237;mbolo celta na testa em preto e cinza no antebra&#231;o" loading="lazy" width="558" height="576" /></figure>
+      <figure class="g-item" data-g="pb"><img src="./assets/galeria/pb-57.jpg" alt="Mulher e cobra em preto e cinza no bra&#231;o" loading="lazy" width="461" height="577" /></figure>
+      <figure class="g-item" data-g="pb"><img src="./assets/galeria/pb-61.jpg" alt="Caveira mexicana e cr&#226;nio em preto e cinza na perna" loading="lazy" width="538" height="565" /></figure>
+      <figure class="g-item" data-g="pb"><img src="./assets/galeria/pb-59.jpg" alt="Samurai caveira em preto e cinza no antebra&#231;o" loading="lazy" width="580" height="579" /></figure>
+      <figure class="g-item" data-g="pb"><img src="./assets/galeria/pb-63.jpg" alt="On&#231;a em realismo preto e cinza no antebra&#231;o" loading="lazy" width="438" height="562" /></figure>
+      <figure class="g-item" data-g="pb"><img src="./assets/galeria/pb-58.jpg" alt="Farol, b&#250;ssola e &#226;ncora em preto e cinza no antebra&#231;o" loading="lazy" width="494" height="582" /></figure>
+      <figure class="g-item" data-g="pb"><img src="./assets/galeria/pb-60.jpg" alt="Mulher com borboleta e flores em preto e cinza no antebra&#231;o" loading="lazy" width="575" height="578" /></figure>
+      <figure class="g-item" data-g="pb"><img src="./assets/galeria/pb-45.jpg" alt="M&#225;scaras e rostos em tons de s&#233;pia no antebra&#231;o" loading="lazy" width="549" height="580" /></figure>
+      <figure class="g-item" data-g="pb"><img src="./assets/galeria/pb-64.jpg" alt="Mulher ind&#237;gena com detalhe vermelho em preto e cinza no antebra&#231;o" loading="lazy" width="484" height="581" /></figure>
+      <figure class="g-item" data-g="pb"><img src="./assets/galeria/pb-33.jpg" alt="Retrato de mulher ind&#237;gena em preto e cinza no antebra&#231;o" loading="lazy" width="429" height="575" /></figure>
+      <figure class="g-item" data-g="pb"><img src="./assets/galeria/pb-35.jpg" alt="Mulher ind&#237;gena no peitoral em preto e cinza" loading="lazy" width="407" height="557" /></figure>
+      <figure class="g-item" data-g="pb"><img src="./assets/galeria/pb-37.jpg" alt="Jesus abra&#231;ando crian&#231;as em preto e cinza no antebra&#231;o" loading="lazy" width="412" height="579" /></figure>
+      <figure class="g-item" data-g="pb"><img src="./assets/galeria/pb-25.jpg" alt="Retrato de menino com cachorro em preto e cinza no bra&#231;o" loading="lazy" width="572" height="574" /></figure>
+      <figure class="g-item" data-g="pb"><img src="./assets/galeria/pb-29.jpg" alt="Tigre nas costas em realismo preto e cinza" loading="lazy" width="574" height="577" /></figure>
+      <figure class="g-item" data-g="pb"><img src="./assets/galeria/pb-30.jpg" alt="Coruja em bra&#231;o fechado de realismo preto e cinza" loading="lazy" width="398" height="562" /></figure>
+      <figure class="g-item" data-g="pb"><img src="./assets/galeria/pb-31.jpg" alt="Drag&#227;o oriental em bra&#231;o fechado preto e cinza" loading="lazy" width="424" height="579" /></figure>
+      <figure class="g-item" data-g="pb"><img src="./assets/galeria/pb-32.jpg" alt="Le&#227;o e b&#250;ssola em bra&#231;o fechado preto e cinza" loading="lazy" width="399" height="555" /></figure>
+      <figure class="g-item" data-g="anime"><img src="./assets/galeria/anime-06.jpg" alt="Ichigo, de Bleach, em anime colorido na coxa" loading="lazy" width="587" height="579" /></figure>
+      <figure class="g-item" data-g="anime"><img src="./assets/galeria/anime-04.jpg" alt="Tanjiro, de Demon Slayer, em anime colorido no antebra&#231;o" loading="lazy" width="490" height="582" /></figure>
+      <figure class="g-item" data-g="anime"><img src="./assets/galeria/anime-10.jpg" alt="Sung Jin-woo, de Solo Leveling, em anime colorido na perna" loading="lazy" width="584" height="582" /></figure>
+      <figure class="g-item" data-g="anime"><img src="./assets/galeria/anime-09.jpg" alt="Ichigo com m&#225;scara, de Bleach, em anime colorido na panturrilha" loading="lazy" width="489" height="575" /></figure>
+      <figure class="g-item" data-g="anime"><img src="./assets/galeria/anime-05.jpg" alt="Zenitsu, de Demon Slayer, em anime colorido na perna" loading="lazy" width="548" height="577" /></figure>
+      <figure class="g-item" data-g="anime"><img src="./assets/galeria/anime-08.jpg" alt="Light Yagami, de Death Note, em anime colorido no bra&#231;o" loading="lazy" width="438" height="578" /></figure>
+      <figure class="g-item" data-g="anime"><img src="./assets/galeria/anime-11.jpg" alt="Luffy, de One Piece, em anime colorido na panturrilha" loading="lazy" width="437" height="578" /></figure>
+      <figure class="g-item" data-g="anime"><img src="./assets/galeria/anime-12.jpg" alt="Naruto e Jiraiya em anime colorido na perna" loading="lazy" width="579" height="577" /></figure>
+      <figure class="g-item" data-g="anime"><img src="./assets/galeria/anime-07.jpg" alt="Alucard e Vegeta em anime colorido na coxa" loading="lazy" width="579" height="579" /></figure>
+      <figure class="g-item" data-g="anime"><img src="./assets/galeria/anime-13.jpg" alt="Spider-Man e Venom em estilo HQ colorido na perna" loading="lazy" width="582" height="580" /></figure>
+      <figure class="g-item" data-g="anime"><img src="./assets/galeria/anime-34.jpg" alt="Venom em estilo HQ no antebra&#231;o" loading="lazy" width="431" height="580" /></figure>
     </div>
     <div class="gal-foot">
       <p class="gal-count" id="gal-count" aria-live="polite"></p>
-      <button class="btn btn-line" id="ver-mais" type="button" hidden>Ver mais trabalhos</button>
       <a class="btn btn-gold" href="#orcamento" data-track="portfolio_orcamento">Quero uma tatuagem assim →</a>
     </div>
   </div>
