@@ -18,10 +18,23 @@
   var pagina = clean(location.pathname.split('/').filter(Boolean)[0]) || 'home';
   var ref = '(ref: ' + [store.utm_source, store.utm_medium || 'na', store.utm_campaign || 'na', pagina].join('/') + ')';
 
+  // Links internos (home -> /piercing/, /tatuagem/...) levam a origem na URL; sem isso o formulario
+  // da pagina de destino gravava "direto" mesmo vindo do hub.
+  function propagarUtm(a, h) {
+    if (!h || h.charAt(0) === '#' || /^(mailto:|tel:|javascript:)/i.test(h)) return;
+    var u = new URL(a.href);
+    if (u.origin !== location.origin || u.searchParams.has('utm_source')) return;
+    if (!/(\/|\.html?)$/i.test(u.pathname)) return;
+    u.searchParams.set('utm_source', store.utm_source);
+    if (store.utm_medium) u.searchParams.set('utm_medium', store.utm_medium);
+    if (store.utm_campaign) u.searchParams.set('utm_campaign', store.utm_campaign);
+    a.href = u.toString();
+  }
+
   function aplicar(a) {
     try {
       var h = a.getAttribute('href') || '';
-      if (h.indexOf('wa.me') === -1) return;
+      if (h.indexOf('wa.me') === -1) { propagarUtm(a, h); return; }
       var u = new URL(a.href);
       var texto = u.searchParams.get('text') || 'Oi! Vim pelo site.';
       if (texto.indexOf('(ref:') !== -1) return;
@@ -29,7 +42,7 @@
       a.href = u.toString().replace(/\+/g, '%20');
     } catch (e) {}
   }
-  function varrer() { document.querySelectorAll('a[href*="wa.me"]').forEach(aplicar); }
+  function varrer() { document.querySelectorAll("a[href]").forEach(aplicar); }
 
   varrer();
   // links montados por JS (href alterado depois) — idempotente por causa do teste de "(ref:"
