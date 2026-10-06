@@ -26,7 +26,7 @@
     'curso-tatuagem': { ico: '🎓', t: 'Curso de Tatuagem', d: 'Com o Rafa — peça informações', tipo: 'wa', msg: 'Oi! Vim pelo link da bio e quero saber do curso de tatuagem com o Rafa.' },
     'modas':          { ico: '👗', t: 'Moda', d: 'Moda feminina', tipo: 'int', href: '/modas/' },
     'sexshop':        { ico: '🔥', t: 'Sex Shop', d: 'Produtos e atendimento discreto', tipo: 'int', href: '/sexshop/' },
-    'mapa':           { ico: '📍', t: 'Como chegar', d: 'Av. Andrade Neves, 365 · Centro', tipo: 'ext', href: 'https://share.google/MZhn2SoMy7AFTXnsM' },
+    'mapa':           { ico: '📍', t: 'Como chegar', d: 'Av. Andrade Neves, 365 · Centro', tipo: 'ext', href: 'https://maps.app.goo.gl/2E81mJEjPFfpqrZh8' },
     'ig-debby':       { ico: '📸', t: 'Instagram da Debby', d: '@debbypiercing', tipo: 'ext', href: 'https://instagram.com/debbypiercing' },
     'ig-rafa':        { ico: '📸', t: 'Instagram do Rafa', d: '@rafa_tattos', tipo: 'ext', href: 'https://instagram.com/rafa_tattos' }
   };
