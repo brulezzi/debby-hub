@@ -95,8 +95,13 @@
     .box.acc summary h3{margin:0;color:var(--gold)}
     .box.acc summary .step-tag{margin:0 12px 0 0;flex:none}
     .box.acc[open] summary{margin-bottom:12px}
-    .care .box.acc summary{justify-content:flex-start;flex-wrap:wrap;gap:6px 0;padding-right:28px;position:relative}
-    .care .box.acc summary::after{position:absolute;right:0;top:2px}
+    .care .box.acc summary{display:block;position:relative;padding-right:30px}
+    .care .box.acc summary::after{position:absolute;right:0;top:0;font-size:1.6rem}
+    .box.acc summary .step-tag{margin:0 0 12px}
+    .box.acc summary h3{font-size:clamp(1.5rem,1.7vw,1.9rem);margin:0 0 6px}
+    .teaser{margin:0;color:var(--muted);font-size:.92rem;line-height:1.45;font-weight:400}
+    .box.acc{transition:border-color .2s}
+    .box.acc:hover,.box.acc[open]{border-color:rgba(223,183,108,.5)}
     .two .box.acc summary{justify-content:space-between}
     .case-tabs{display:none;justify-content:center;gap:8px;margin-bottom:18px}
     .swipe-hint{display:none;color:var(--muted);font-size:13px;margin:-8px 0 14px}
@@ -106,6 +111,8 @@
     .subnav-in{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;padding:8px max(16px,calc((100% - 1440px)/2 + 16px));-webkit-overflow-scrolling:touch;scroll-snap-type:x proximity}
     .subnav-in::-webkit-scrollbar{display:none}
     .subnav a{flex:none;scroll-snap-align:center;text-decoration:none;font:700 13px var(--f-body);color:var(--muted);padding:8px 14px;border-radius:999px;border:1px solid transparent;white-space:nowrap;transition:color .2s,background .2s,border-color .2s}
+    .subnav-in a:first-child{margin-left:auto}.subnav-in a:last-child{margin-right:auto}
+    @media (min-width:861px){.subnav a{flex:1 1 auto;text-align:center}}
     .subnav a:hover{color:var(--text)}
     .subnav a[aria-current="true"]{color:#17120a;background:var(--gold);border-color:var(--gold)}
     .subnav a.destaque:not([aria-current="true"]){color:var(--gold);border-color:rgba(223,183,108,.45)}
@@ -232,7 +239,7 @@
     .box li::before{content:"✓";color:var(--gold);margin-right:8px;font-weight:800}
 
     /* CUIDADOS */
-    .care{display:grid;grid-template-columns:repeat(2,1fr);gap:clamp(14px,2vw,32px);margin-bottom:clamp(14px,2vw,32px)}
+    .care{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(14px,1.6vw,26px);align-items:start}
     .care .box{text-align:left}
     .care .box ul,.two .box ul{display:block}
     .care .box li+li,.two .box li+li{margin-top:12px}
@@ -242,7 +249,8 @@
     .care .box li b,.two .box li b{color:var(--text)}
     .two .box{text-align:left}
     .step-tag{display:inline-block;font-size:12px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:#17120a;background:var(--gold);border-radius:6px;padding:4px 10px;margin-bottom:12px}
-    @media (max-width:760px){.care{grid-template-columns:1fr}}
+    @media (max-width:1100px){.care{grid-template-columns:repeat(2,1fr)}}
+    @media (max-width:640px){.care{grid-template-columns:1fr}}
     /* FAQ */
     .faq{max-width:min(960px,100%);margin:0 auto;text-align:left}
     details{border-bottom:1px solid var(--border);padding-block:clamp(16px,1.6vw,24px)}
@@ -326,7 +334,7 @@
       .gal-foot{margin-top:14px}
       .js .case-tabs{display:flex}
       .js .case{display:none}
-      .js .case.on{display:block;max-width:420px;margin-inline:auto}
+      .js .case.on{display:block;width:100%;max-width:480px;margin-inline:auto}
       .cmp-hint{margin-top:14px}
       .steps{gap:10px}
       .steps li{display:grid;grid-template-columns:48px 1fr;align-items:start;text-align:left;padding:14px 16px}
@@ -718,9 +726,6 @@
 
       <p class="q-err" id="q-err" role="alert" hidden></p>
     </div>
-    <p class="note">Prefere falar direto?
-      <a href="#" data-wa data-track="orcamento_whatsapp" style="color:var(--gold);font-weight:800">Chamar no WhatsApp do estúdio</a>
-    </p>
   </div>
 </section>
 
@@ -734,41 +739,38 @@
     </div>
 
     <div class="care">
-      <details class="box acc rv"><summary><span class="step-tag">1 · Antes da sessão</span><h3>Prepare-se para a sessão</h3></summary><ul>
+      <details class="box acc rv"><summary><span class="step-tag">1 · Antes da sessão</span><h3>Prepare-se para a sessão</h3><p class="teaser">Pele hidratada, sono e o que evitar antes de vir.</p></summary><ul>
           <li><b>Hidrate a pele</b> nos dias anteriores. Pele hidratada recebe melhor o pigmento e responde melhor à pomada anestésica, se você optar por ela.</li>
           <li><b>Durma bem e se alimente</b> antes de vir. Sessão longa com o estômago vazio aumenta a chance de tontura.</li>
           <li><b>Não beba álcool</b> no dia: ele deixa a pele mais sensível e o sangramento maior, e por isso a sessão não é feita.</li>
           <li><b>Evite sol e bronzeamento</b> na região. Pele queimada ou descascando precisa esperar.</li>
           <li><b>Use roupa confortável</b> que deixe a área à mostra.</li>
         </ul></details>
-      <details class="box acc rv d1"><summary><span class="step-tag">2 · No dia</span><h3>Logo depois da sessão</h3></summary><ul>
+      <details class="box acc rv d1"><summary><span class="step-tag">2 · No dia</span><h3>Logo depois da sessão</h3><p class="teaser">Como lavar e proteger nas primeiras horas.</p></summary><ul>
           <li>Eu cubro a tatuagem com <b>plástico filme</b> para proteger no trajeto. Retire quando eu orientar.</li>
           <li>Em casa, <b>lave a região com sabão neutro</b> e as mãos bem limpas, com água morna ou fria, sem esfregar. Isso tira o excesso de plasma e de tinta.</li>
           <li><b>Seque dando batidinhas</b> com papel toalha limpo. Toalha de banho acumula bactéria.</li>
           <li>É normal ficar <b>vermelho, quente e sensível</b> nas primeiras horas.</li>
         </ul></details>
-      <details class="box acc rv d2"><summary><span class="step-tag">3 · Primeiros dias</span><h3>Hidratar e não mexer</h3></summary><ul>
+      <details class="box acc rv d2"><summary><span class="step-tag">3 · Primeiros dias</span><h3>Hidratar e não mexer</h3><p class="teaser">Hidratação, alimentação e o que não fazer.</p></summary><ul>
           <li>No dia seguinte, <b>passe um creme hidratante</b> para a pele, em camada fina, só o que a pele absorver. Excesso abafa e atrapalha.</li>
           <li>Repita a limpeza e a hidratação algumas vezes por dia, <b>conforme eu orientar</b> para a sua tatuagem.</li>
           <li><b>Evite carne de porco, chocolate e ovo por cerca de uma semana.</b> É a minha recomendação para a cicatrização.</li>
           <li><b>Não coce e não arranque casquinhas.</b> Descamar é normal. Arrancar tira tinta e deixa falha.</li>
           <li>Prefira <b>roupa folgada</b> sobre a região.</li>
         </ul></details>
-      <details class="box acc rv d3"><summary><span class="step-tag">4 · Até cicatrizar</span><h3>Proteja a tatuagem</h3></summary><ul>
+      <details class="box acc rv d3"><summary><span class="step-tag">4 · Até cicatrizar</span><h3>Proteja a tatuagem</h3><p class="teaser">Sol, água e retoque gratuito em até 45 dias.</p></summary><ul>
           <li>Por algumas semanas, evite <b>sol direto, piscina, mar, sauna e banheira</b>. Água parada e calor atrapalham a cicatrização.</li>
           <li>Depois de curada, use <b>protetor solar</b> sempre. O sol é o que mais desbota tatuagem com o tempo.</li>
           <li>Se precisar de ajuste, o <b>retoque é gratuito até 45 dias</b>. Fale com o estúdio para agendar.</li>
         </ul></details>
-    </div>
-
-    <div class="two">
-      <details class="box acc rv"><summary><h3>Procure ajuda se</h3></summary><ul>
+      <details class="box acc rv"><summary><span class="step-tag">5 · Atenção</span><h3>Procure ajuda se</h3><p class="teaser">Sinais de que é hora de falar comigo e procurar um médico.</p></summary><ul>
           <li>A vermelhidão, o inchaço ou o calor <b>aumentam</b> depois dos primeiros dias</li>
           <li>Sair <b>pus</b> ou a região ficar com cheiro forte</li>
           <li>Você tiver <b>febre</b> ou a dor piorar em vez de melhorar</li>
         </ul>
         <p class="note" style="text-align:left;margin-top:12px">Nesses casos, chame o estúdio e procure atendimento médico. Não tente tratar em casa.</p></details>
-      <details class="box acc rv d1"><summary><h3>Biossegurança</h3></summary><ul>
+      <details class="box acc rv d1"><summary><span class="step-tag">6 · Segurança</span><h3>Biossegurança</h3><p class="teaser">Material descartável, higiene e regras de atendimento.</p></summary><ul>
           <li>Material 100% descartável, com filme e luvas</li>
           <li>Tintas de marcas regularizadas</li>
           <li>Higienização completa entre um cliente e outro</li>
