@@ -888,3 +888,4 @@ body .vitrine-grid .joia-card{scroll-snap-align:start}
 .menores-acc[open] summary::after{content:"−"}
 .menores-acc .menores-split{padding:6px 0 20px}
 .urg-note{color:var(--muted);font-size:14px;max-width:520px;margin:0 auto 18px!important}
+.qz-aviso{background:rgba(223,183,108,.1);border:1px solid rgba(223,183,108,.35);color:var(--gold);border-radius:12px;padding:10px 14px;font-size:13px;margin:0 0 10px}

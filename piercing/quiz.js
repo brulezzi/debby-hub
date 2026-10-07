@@ -73,6 +73,7 @@
   // ---------- fluxo ----------
   function telas() {
     var t = [{ id: 'tipos' }];
+    if (estado.tipos.length && estado.tipos.indexOf('AVALIACAO') === -1) t.push({ id: 'saude' });
     ['PERFURACAO', 'TROCA_JOIA', 'REMOCAO', 'MICRODERMAL', 'SURFACE', 'LOBULOPLASTIA', 'PIERCING_DENTE'].forEach(function (id) {
       if (estado.tipos.indexOf(id) === -1) return;
       if (id === 'PERFURACAO' || id === 'TROCA_JOIA' || id === 'REMOCAO') {
@@ -86,7 +87,8 @@
         t.push({ id: 'dente' });
       }
     });
-    t.push({ id: 'saude' }, { id: 'contato' }, { id: 'resumo' });
+    if (estado.tipos.indexOf('AVALIACAO') !== -1) t.push({ id: 'saude' });
+    t.push({ id: 'contato' }, { id: 'resumo' });
     return t;
   }
 
@@ -232,7 +234,11 @@
       var o0 = el('option', null, 'Escolha uma joia…'); o0.value = ''; o0.disabled = true; sel.appendChild(o0);
       var porMat = {};
       js.forEach(function (j) { (porMat[j.material] = porMat[j.material] || []).push(j); });
-      Object.keys(MATERIAL_LABEL).forEach(function (m) {
+      var sensivel = estado.primeira === 'sim' || estado.pele === 'sim';
+      if (sensivel) area.appendChild(el('p', 'qz-aviso', '⚑ Para você, o titânio é o material mais indicado (primeira vez ou pele sensível). Mostramos ele primeiro.'));
+      var ordem = Object.keys(MATERIAL_LABEL);
+      if (sensivel) ordem = ['TITANIO', 'ACO', 'PVD_GOLD'];
+      ordem.forEach(function (m) {
         if (!porMat[m]) return;
         var og = document.createElement('optgroup'); og.label = '── ' + MATERIAL_LABEL[m] + ' ──';
         porMat[m].sort(function (a, b) { return a.preco_faixa - b.preco_faixa || a.nome.localeCompare(b.nome, 'pt-BR'); });
@@ -289,7 +295,7 @@
       });
       area.appendChild(box3);
     } else if (tela.id === 'saude') {
-      titulo('Duas perguntas rápidas');
+      titulo('Duas perguntas rápidas', 'Elas ajudam a gente a indicar a joia certa para você.');
       [['primeira', 'É a sua primeira vez fazendo piercing?', 'Sim, primeira vez', 'Não, já fiz antes'],
        ['pele', 'Você tem pele sensível ou alergia a metal?', 'Sim', 'Não / Não sei']].forEach(function (q) {
         area.appendChild(el('p', 'qz-grupo', q[1]));
@@ -372,7 +378,10 @@
       document.getElementById('titanio-alerta').classList.remove('hidden');
       document.getElementById('sucesso-titulo').innerText = 'Ficha recebida! Uma dica antes de vir:';
     }
-    document.getElementById('btn-whatsapp').href = 'https://wa.me/' + NUMERO_WHATSAPP_ESTUDIO + '?text=' + encodeURIComponent(textoWhats(titanio));
+    var urlWa = 'https://wa.me/' + NUMERO_WHATSAPP_ESTUDIO + '?text=' + encodeURIComponent(textoWhats(titanio));
+    document.getElementById('btn-whatsapp').href = urlWa;
+    // O lead já está salvo: abre o WhatsApp sozinho (o botão continua na tela se o navegador bloquear)
+    setTimeout(function () { window.location.href = urlWa; }, 1200);
     enviando = false;
   }
 
