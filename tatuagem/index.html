@@ -52,7 +52,7 @@
     }
     *{box-sizing:border-box;margin:0;padding:0}
     /* Tamanhos fluidos: a base do texto cresce com a tela (16px no celular até ~20px em monitor grande) */
-    html{scroll-behavior:smooth;scroll-padding-top:70px;font-size:clamp(16px,.35vw + 14.6px,20px)}
+    html{scroll-behavior:smooth;scroll-padding-top:112px;font-size:clamp(16px,.35vw + 14.6px,20px)}
     body{background:var(--bg);color:var(--text);font-family:var(--f-body);font-size:1rem;line-height:1.65;-webkit-font-smoothing:antialiased;text-align:center}
     img{max-width:100%;display:block}
     a{color:inherit}
@@ -64,7 +64,7 @@
     em{font-style:normal;color:var(--gold)}
     .eyebrow{display:inline-block;font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);border:1px solid rgba(223,183,108,.3);border-radius:999px;padding:6px 14px;margin-bottom:18px}
     .lead{color:var(--muted);font-size:clamp(1.05rem,.5vw + .95rem,1.35rem);max-width:min(78ch,100%);margin-inline:auto}
-    section{padding-block:clamp(56px,8vw,120px)}
+    section{padding-block:clamp(48px,6vw,90px)}
     .alt{background:var(--bg-soft)}
     .sec-head{max-width:1000px;margin:0 auto clamp(30px,4vw,56px)}
     .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font:800 15px var(--f-body);text-decoration:none;border-radius:10px;padding:15px 26px;border:1px solid transparent;cursor:pointer;transition:transform .15s,background .15s,box-shadow .2s}
@@ -88,6 +88,32 @@
     .nav .links{display:flex;gap:4px;flex-wrap:wrap;justify-content:flex-end}
     .nav .links a{text-decoration:none;font-size:13px;font-weight:600;color:var(--muted);padding:6px 10px;border-radius:8px}
     .nav .links a:hover,.nav .links a[aria-current]{color:var(--gold)}
+
+    /* CUIDADOS em seções que abrem e fecham (no celular começam fechadas; no desktop, abertas) */
+    .box.acc{border:1px solid var(--border);padding:clamp(18px,2vw,28px) clamp(18px,2vw,32px);text-align:left}
+    .box.acc summary{align-items:center;font-size:inherit}
+    .box.acc summary h3{margin:0;color:var(--gold)}
+    .box.acc summary .step-tag{margin:0 12px 0 0;flex:none}
+    .box.acc[open] summary{margin-bottom:12px}
+    .care .box.acc summary{justify-content:flex-start;flex-wrap:wrap;gap:6px 0;padding-right:28px;position:relative}
+    .care .box.acc summary::after{position:absolute;right:0;top:2px}
+    .two .box.acc summary{justify-content:space-between}
+    .case-tabs{display:none;justify-content:center;gap:8px;margin-bottom:18px}
+    .swipe-hint{display:none;color:var(--muted);font-size:13px;margin:-8px 0 14px}
+
+    /* BARRA DE SEÇÕES: rola de lado no celular, marca onde você está e leva a qualquer parte sem travar */
+    .subnav{position:sticky;top:var(--nav-h,52px);z-index:19;background:rgba(11,11,13,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--border)}
+    .subnav-in{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;padding:8px max(16px,calc((100% - 1440px)/2 + 16px));-webkit-overflow-scrolling:touch;scroll-snap-type:x proximity}
+    .subnav-in::-webkit-scrollbar{display:none}
+    .subnav a{flex:none;scroll-snap-align:center;text-decoration:none;font:700 13px var(--f-body);color:var(--muted);padding:8px 14px;border-radius:999px;border:1px solid transparent;white-space:nowrap;transition:color .2s,background .2s,border-color .2s}
+    .subnav a:hover{color:var(--text)}
+    .subnav a[aria-current="true"]{color:#17120a;background:var(--gold);border-color:var(--gold)}
+    .subnav a.destaque:not([aria-current="true"]){color:var(--gold);border-color:rgba(223,183,108,.45)}
+    .soft-cta{margin-top:26px;color:var(--muted);font-size:clamp(.95rem,.3vw + .9rem,1.1rem)}
+    .soft-cta a{color:var(--gold);font-weight:800}
+    /* botão flutuante: só aparece depois que a pessoa viu o trabalho e como funciona, e some quando ela já está no orçamento */
+    .sticky-wa{opacity:0;transform:translateY(16px);pointer-events:none;transition:opacity .3s,transform .3s}
+    .sticky-wa.on{opacity:1;transform:none;pointer-events:auto}
 
     /* HERO */
     .hero{position:relative;padding-block:56px 70px;overflow:hidden;background:radial-gradient(60% 55% at 50% 0%,rgba(223,183,108,.16),transparent 70%)}
@@ -226,6 +252,30 @@
     details[open] summary::after{transform:rotate(45deg)}
     details p{color:var(--muted);margin-top:10px;font-size:clamp(1rem,.3vw + .94rem,1.2rem)}
 
+    /* QUIZ DE ORÇAMENTO: uma pergunta por tela, botões grandes, 100% tocável no celular */
+    .quiz{max-width:min(760px,100%);margin:0 auto;background:var(--card);border:1px solid rgba(223,183,108,.35);border-radius:16px;padding:clamp(22px,4vw,48px)}
+    .q-top{display:flex;align-items:center;gap:12px;margin-bottom:clamp(20px,3vw,32px)}
+    .q-bar{flex:1;height:6px;border-radius:99px;background:rgba(255,255,255,.1);overflow:hidden}
+    .q-bar i{display:block;height:100%;width:0;background:var(--gold);transition:width .35s ease}
+    .q-back{flex:none;width:40px;height:40px;border-radius:50%;border:1px solid var(--border);background:var(--bg);color:var(--text);font-size:22px;line-height:1;cursor:pointer}
+    .q-back:hover{border-color:var(--gold);color:var(--gold)}
+    .q-count{flex:none;font-size:13px;color:var(--muted);min-width:7ch;text-align:right}
+    .q-step{animation:rise .35s ease both}
+    .q-step h3{font-size:clamp(1.9rem,3.6vw,2.8rem);margin-bottom:clamp(16px,2vw,24px);color:var(--text)}
+    .q-opts{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+    .q-opts-3{grid-template-columns:repeat(3,1fr)}
+    .q-opt{font:800 clamp(.95rem,.3vw + .9rem,1.1rem) var(--f-body);color:var(--text);background:var(--bg);border:1px solid var(--border);border-radius:12px;padding:16px 10px;min-height:58px;cursor:pointer;transition:border-color .15s,background .15s,color .15s,transform .15s}
+    .q-opt:hover{border-color:var(--gold);transform:translateY(-2px)}
+    .q-opt[aria-pressed="true"]{background:var(--gold);border-color:var(--gold);color:#17120a}
+    .q-opt:focus-visible,.q-back:focus-visible,.q-skip:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+    .q-step input,.q-step textarea{width:100%;font:inherit;font-size:1.1rem;color:var(--text);background:var(--bg);border:1px solid var(--border);border-radius:12px;padding:16px;margin-bottom:14px;text-align:center}
+    .q-step textarea{min-height:130px;resize:vertical;text-align:left}
+    .q-note{background:rgba(223,183,108,.1);border:1px solid rgba(223,183,108,.35);border-radius:10px;padding:12px 14px;font-size:14px;margin:0 auto 16px;max-width:52ch}
+    .q-actions{display:flex;flex-direction:column;align-items:center;gap:10px;margin-top:6px}
+    .q-skip{background:none;border:0;color:var(--muted);font:600 14px var(--f-body);text-decoration:underline;cursor:pointer;padding:8px}
+    .q-err{color:#ff9a8a;font-size:14px;margin-top:12px}
+    @media (max-width:520px){.q-opts-3{grid-template-columns:repeat(2,1fr)}.q-opts-idade{grid-template-columns:1fr}.q-count{min-width:0}}
+    @media (prefers-reduced-motion:reduce){html:not(.fm) .q-step{animation:none}html:not(.fm) .q-bar i,html:not(.fm) .q-opt{transition:none}}
     /* FORM */
     .form-card{background:var(--card);border:1px solid rgba(223,183,108,.35);border-radius:16px;padding:clamp(20px,3vw,48px);max-width:min(980px,100%);margin:0 auto;text-align:left}
     .form-grid{display:grid;grid-template-columns:1fr 1fr;column-gap:clamp(14px,2vw,28px)}
@@ -259,6 +309,35 @@
     }
     @media (max-width:1180px) and (min-width:861px){.gallery{column-count:4}}
     @media (max-width:520px){.gallery{column-count:2}}
+
+    /* CELULAR: página bem mais curta. Trabalhos viram carrossel de deslizar; cobertura mostra um caso por vez;
+       "como funciona" vira lista compacta; menos espaço entre as seções. Nada de conteúdo é removido. */
+    @media (max-width:860px){
+      section{padding-block:44px}
+      .sec-head{margin-bottom:22px}
+      h2{font-size:clamp(2rem,8.2vw,2.6rem)}
+      .hero{padding-block:36px 44px}
+      .hero .portrait-wrap{width:150px;margin-bottom:16px}
+      .proof{margin-top:26px;padding-top:20px}
+      .swipe-hint{display:block}
+      .gallery{display:flex;column-count:auto;overflow-x:auto;gap:10px;scroll-snap-type:x mandatory;padding-bottom:12px;margin-inline:-16px;padding-inline:16px;scrollbar-width:thin;-webkit-overflow-scrolling:touch}
+      .g-item{flex:0 0 64%;margin:0;scroll-snap-align:start}
+      .g-item[hidden]{display:none!important}
+      .gal-foot{margin-top:14px}
+      .js .case-tabs{display:flex}
+      .js .case{display:none}
+      .js .case.on{display:block;max-width:420px;margin-inline:auto}
+      .cmp-hint{margin-top:14px}
+      .steps{gap:10px}
+      .steps li{display:grid;grid-template-columns:48px 1fr;align-items:start;text-align:left;padding:14px 16px}
+      .steps li::before{grid-row:1/3;font-size:2.4rem;line-height:1}
+      .steps b{margin:0 0 2px;font-size:1.02rem}
+      .steps li:hover{transform:none}
+      .price td{padding:12px 4px}
+      .chips{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:16px}
+      .chip{border-radius:12px;padding:9px 10px;font-size:12px;text-align:center}
+      .duo{margin-top:20px}
+    }
     @media (max-width:480px){.steps{grid-template-columns:1fr}.form-card{padding:20px}.proof{gap:6px}.sticky-wa{padding:11px 16px;font-size:13px;right:12px}}
     /* Quem pede "reduzir movimento" no sistema vê tudo parado. ?motion=1 na URL (classe .fm) ignora isso, só para prévia. */
     @media (prefers-reduced-motion:reduce){
@@ -269,6 +348,7 @@
       html:not(.fm).js .hero .wrap>*{opacity:1;transform:none;animation:none}
       html:not(.fm) .hero h1 em{animation:none;color:var(--gold);background:none;-webkit-background-clip:border-box;background-clip:border-box}
       html:not(.fm) .w>span{transform:none;transition:none}
+      html:not(.fm) .sticky-wa,html:not(.fm) .subnav a{transition:none}
     }
   </style>
 
@@ -286,13 +366,22 @@
   <div class="wrap">
     <a class="brand" href="../">← Estúdio da Debby</a>
     <div class="links">
-      <a href="#portfolio">Trabalhos</a>
-      <a href="#cobertura">Cobertura</a>
-      <a href="#valores">Valores</a>
-      <a href="#cuidados">Cuidados</a>
-      <a href="#faq">Dúvidas</a>
-      <a href="#orcamento" class="keep">Orçamento</a>
+      <a href="../piercing/" class="keep">Piercing</a>
+      <a href="../modas/">Moda</a>
     </div>
+  </div>
+</nav>
+<nav class="subnav" id="subnav" aria-label="Seções da página">
+  <div class="subnav-in">
+    <a href="#portfolio">Trabalhos</a>
+    <a href="#cobertura">Cobertura</a>
+    <a href="#sobre">Quem sou</a>
+    <a href="#como">Como funciona</a>
+    <a href="#valores">Valores</a>
+    <a href="#faq">Dúvidas</a>
+    <a href="#orcamento" class="destaque">Orçamento</a>
+    <a href="#cuidados">Cuidados</a>
+    <a href="#local">Onde fica</a>
   </div>
 </nav>
 
@@ -307,8 +396,8 @@
     <h1>Tatuagem que <em id="palavra">fica</em></h1>
     <p class="lead">Eu sou o Rafa. Tatuo há 15 anos, com mais de 3 mil trabalhos e duas convenções ganhas. Realismo colorido, fine line, cobertura e anime, num ambiente exclusivo no Centro de Campinas.</p>
     <div class="actions">
-      <a class="btn btn-gold" href="#orcamento" data-track="hero_orcamento">Pedir meu orçamento →</a>
-      <a class="btn btn-line" href="#portfolio" data-track="hero_trabalhos">Ver trabalhos</a>
+      <a class="btn btn-gold" href="#portfolio" data-track="hero_trabalhos">Ver trabalhos →</a>
+      <a class="btn btn-line" href="#orcamento" data-track="hero_orcamento">Já sei o que quero</a>
     </div>
     <div class="proof">
       <div><b data-count="15">15</b><span>anos de estrada</span></div>
@@ -344,6 +433,7 @@
       <button class="tab" role="tab" data-filtro="todos" aria-selected="false">Todos <span>(61)</span></button>
     </div>
     <p class="tab-desc" id="tab-desc" aria-live="polite"></p>
+    <p class="swipe-hint" aria-hidden="true">Deslize para o lado para ver mais →</p>
 
     <div class="gallery" id="galeria">
       <figure class="g-item" data-g="colorido"><img src="./assets/galeria/colorido-02.jpg" alt="Anubis com pir&#226;mides em realismo colorido, tatuagem na panturrilha" decoding="async" width="435" height="582" /></figure>
@@ -424,8 +514,9 @@
       <p class="lead">Muita gente acha que tatuagem não dá para cobrir. Na maioria dos casos dá, e o resultado pode ficar melhor do que o desenho original. Avalio cada caso junto com você e explico o processo e o valor antes de começar.</p>
     </div>
 
+    <div class="case-tabs" id="case-tabs" role="tablist" aria-label="Casos de cobertura"><button type="button" class="tab" role="tab" data-case="0" aria-selected="true">Antebraço</button><button type="button" class="tab" role="tab" data-case="1" aria-selected="false">Costas</button><button type="button" class="tab" role="tab" data-case="2" aria-selected="false">Mão</button></div>
     <div class="cases">
-      <div class="case rv">
+      <div class="case rv on" data-i="0">
         <div class="cmp" data-cmp>
           <img class="depois" src="./assets/cobertura-1-depois-b.jpg" alt="Antebraço depois da cobertura, águia em realismo" decoding="async" />
           <img class="antes" src="./assets/cobertura-1-antes.jpg" alt="Antebraço antes da cobertura, tatuagem antiga de andorinha e rosa" decoding="async" />
@@ -435,7 +526,7 @@
         </div>
         <h3>Antebraço</h3>
       </div>
-      <div class="case rv d1">
+      <div class="case rv" data-i="1">
         <div class="cmp" data-cmp>
           <img class="depois" src="./assets/cobertura-2-depois.jpg" alt="Costas depois da cobertura, guerreiro gladiador realista" decoding="async" />
           <img class="antes" src="./assets/cobertura-2-antes.jpg" alt="Costas antes da cobertura, dragão antigo com estêncil do novo desenho" decoding="async" />
@@ -445,7 +536,7 @@
         </div>
         <h3>Costas</h3>
       </div>
-      <div class="case rv d2">
+      <div class="case rv" data-i="2">
         <div class="cmp" data-cmp>
           <img class="depois" src="./assets/cobertura-3-depois.jpg" alt="Mão depois da cobertura, rosto feminino realista" decoding="async" />
           <img class="antes" src="./assets/cobertura-3-antes.jpg" alt="Mão antes da cobertura, tatuagem antiga desgastada" decoding="async" />
@@ -516,86 +607,12 @@
       <span class="chip">Remarcação com 2 dias de antecedência</span>
       <span class="chip">Retoque gratuito até 45 dias</span>
     </div>
+    <p class="soft-cta rv">Já viu o suficiente? <a href="#orcamento" data-track="valores_orcamento">Peça seu orçamento</a>. Se ainda tem dúvida, as perguntas mais comuns estão logo abaixo.</p>
   </div>
 </section>
 
-<!-- 7. CUIDADOS E SEGURANÇA -->
-<section class="alt" id="cuidados">
-  <div class="wrap">
-    <div class="sec-head rv">
-      <div class="eyebrow">Cuidados</div>
-      <h2>Do dia da sessão até a tatuagem cicatrizar</h2>
-      <p class="lead">Uma tatuagem bonita depende de 50% do tatuador e de 50% de como você cuida dela. Este é o passo a passo geral. No fim da sessão, passo as orientações específicas para a sua pele e para o seu desenho, e elas valem mais do que este resumo.</p>
-    </div>
-
-    <div class="care">
-      <div class="box rv">
-        <span class="step-tag">1 · Antes da sessão</span>
-        <h3>Prepare-se para a sessão</h3>
-        <ul>
-          <li><b>Hidrate a pele</b> nos dias anteriores. Pele hidratada recebe melhor o pigmento e responde melhor à pomada anestésica, se você optar por ela.</li>
-          <li><b>Durma bem e se alimente</b> antes de vir. Sessão longa com o estômago vazio aumenta a chance de tontura.</li>
-          <li><b>Não beba álcool</b> no dia: ele deixa a pele mais sensível e o sangramento maior, e por isso a sessão não é feita.</li>
-          <li><b>Evite sol e bronzeamento</b> na região. Pele queimada ou descascando precisa esperar.</li>
-          <li><b>Use roupa confortável</b> que deixe a área à mostra.</li>
-        </ul>
-      </div>
-      <div class="box rv d1">
-        <span class="step-tag">2 · No dia</span>
-        <h3>Logo depois da sessão</h3>
-        <ul>
-          <li>Eu cubro a tatuagem com <b>plástico filme</b> para proteger no trajeto. Retire quando eu orientar.</li>
-          <li>Em casa, <b>lave a região com sabão neutro</b> e as mãos bem limpas, com água morna ou fria, sem esfregar. Isso tira o excesso de plasma e de tinta.</li>
-          <li><b>Seque dando batidinhas</b> com papel toalha limpo. Toalha de banho acumula bactéria.</li>
-          <li>É normal ficar <b>vermelho, quente e sensível</b> nas primeiras horas.</li>
-        </ul>
-      </div>
-      <div class="box rv d2">
-        <span class="step-tag">3 · Primeiros dias</span>
-        <h3>Hidratar e não mexer</h3>
-        <ul>
-          <li>No dia seguinte, <b>passe um creme hidratante</b> para a pele, em camada fina, só o que a pele absorver. Excesso abafa e atrapalha.</li>
-          <li>Repita a limpeza e a hidratação algumas vezes por dia, <b>conforme eu orientar</b> para a sua tatuagem.</li>
-          <li><b>Evite carne de porco, chocolate e ovo por cerca de uma semana.</b> É a minha recomendação para a cicatrização.</li>
-          <li><b>Não coce e não arranque casquinhas.</b> Descamar é normal. Arrancar tira tinta e deixa falha.</li>
-          <li>Prefira <b>roupa folgada</b> sobre a região.</li>
-        </ul>
-      </div>
-      <div class="box rv d3">
-        <span class="step-tag">4 · Até cicatrizar</span>
-        <h3>Proteja a tatuagem</h3>
-        <ul>
-          <li>Por algumas semanas, evite <b>sol direto, piscina, mar, sauna e banheira</b>. Água parada e calor atrapalham a cicatrização.</li>
-          <li>Depois de curada, use <b>protetor solar</b> sempre. O sol é o que mais desbota tatuagem com o tempo.</li>
-          <li>Se precisar de ajuste, o <b>retoque é gratuito até 45 dias</b>. Fale com o estúdio para agendar.</li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="two">
-      <div class="box rv">
-        <h3>Procure ajuda se</h3>
-        <ul>
-          <li>A vermelhidão, o inchaço ou o calor <b>aumentam</b> depois dos primeiros dias</li>
-          <li>Sair <b>pus</b> ou a região ficar com cheiro forte</li>
-          <li>Você tiver <b>febre</b> ou a dor piorar em vez de melhorar</li>
-        </ul>
-        <p class="note" style="text-align:left;margin-top:12px">Nesses casos, chame o estúdio e procure atendimento médico. Não tente tratar em casa.</p>
-      </div>
-      <div class="box rv d1">
-        <h3>Biossegurança</h3>
-        <ul>
-          <li>Material 100% descartável, com filme e luvas</li>
-          <li>Tintas de marcas regularizadas</li>
-          <li>Higienização completa entre um cliente e outro</li>
-        </ul>
-        <p class="note" style="text-align:left;margin-top:12px">Menores: a partir de 16 anos, com autorização dos pais ou responsável. Pode levar até 3 acompanhantes e filmar a sessão.</p>
-      </div>
-    </div>
-  </div>
-</section>
 <!-- 8. FAQ -->
-<section id="faq">
+<section class="alt" id="faq">
   <div class="wrap">
     <div class="sec-head rv">
       <div class="eyebrow">Dúvidas</div>
@@ -614,106 +631,152 @@
 </section>
 
 <!-- 9. ORÇAMENTO -->
-<section class="alt" id="orcamento">
+<section id="orcamento">
   <div class="wrap">
     <div class="sec-head rv">
       <div class="eyebrow">Orçamento</div>
       <h2>Conta a sua ideia. A gente cuida do resto.</h2>
-      <p class="lead">A equipe do estúdio recebe seu pedido, faz a triagem e chama você no WhatsApp com o meu orçamento.</p>
+      <p class="lead">Responda umas perguntas rápidas, leva menos de 1 minuto. No final, a conversa abre direto comigo no WhatsApp, já com tudo preenchido.</p>
     </div>
 
-    <div class="form-card rv">
-      <form id="form-lead" novalidate>
-        <div class="form-grid">
-        <div class="fg">
-          <label for="nome">Seu nome</label>
-          <input type="text" id="nome" autocomplete="name" required />
-        </div>
-        <div class="fg">
-          <label for="whatsapp">Seu WhatsApp (com DDD)</label>
-          <input type="tel" id="whatsapp" autocomplete="tel" inputmode="tel" placeholder="(19) 99999-9999" required />
-        </div>
-        <div class="fg">
-          <label for="estilo">Que estilo você quer?</label>
-          <select id="estilo" required>
-            <option value="">Escolha…</option>
-            <option>Realismo colorido</option>
-            <option>Fine line</option>
-            <option>Cobertura</option>
-            <option>Realismo preto e cinza</option>
-            <option>Anime</option>
-            <option>Outro / ainda não sei</option>
-          </select>
-        </div>
-        <div class="fg full" id="grupo-cobertura" hidden>
-          <fieldset>
-            <legend>Já existe tatuagem no local?</legend>
-            <div class="radios">
-              <label><input type="radio" name="tem_tattoo_local" value="sim" /> Sim, quero cobrir</label>
-              <label><input type="radio" name="tem_tattoo_local" value="nao" /> Não</label>
-            </div>
-          </fieldset>
-        </div>
-        <div class="fg">
-          <label for="regiao">Região do corpo</label>
-          <select id="regiao" required>
-            <option value="">Escolha…</option>
-            <option>Braço</option><option>Antebraço</option><option>Ombro</option><option>Costas</option>
-            <option>Peito</option><option>Costela</option><option>Perna / coxa</option><option>Panturrilha</option>
-            <option>Mão</option><option>Pescoço</option><option>Pé</option><option>Outra</option>
-          </select>
-        </div>
-        <div class="fg">
-          <label for="tamanho">Tamanho aproximado</label>
-          <select id="tamanho" required>
-            <option value="">Escolha…</option>
-            <option>Até 5 cm</option><option>5 a 10 cm</option><option>10 a 20 cm</option>
-            <option>20 a 30 cm</option><option>30 cm ou mais</option><option>Fechamento (braço, costas, perna)</option><option>Não sei</option>
-          </select>
-        </div>
-        <div class="fg">
-          <fieldset>
-            <legend>Você tem menos de 18 anos?</legend>
-            <div class="radios">
-              <label><input type="radio" name="menor" value="nao" checked /> Não</label>
-              <label><input type="radio" name="menor" value="sim" /> Sim</label>
-            </div>
-          </fieldset>
-        </div>
-        <div class="warn" id="aviso-menor" hidden>Atendemos a partir de 16 anos, com autorização dos pais ou responsável, que precisa estar presente ou autorizar pelo estúdio.</div>
-        <div class="fg full">
-          <label for="ideia">Conta a sua ideia</label>
-          <textarea id="ideia" maxlength="600" placeholder="O que você quer tatuar, referências, cores…"></textarea>
-          <p class="hint">Você pode mandar fotos e referências depois, direto no WhatsApp.</p>
-        </div>
-        
-        <div class="fg full">
-          <fieldset>
-            <legend>Você já tatuou comigo antes?</legend>
-            <div class="radios">
-              <label><input type="radio" name="ja_cliente" value="nao" checked /> Não, é a primeira vez</label>
-              <label><input type="radio" name="ja_cliente" value="sim" /> Sim, já sou cliente</label>
-            </div>
-          </fieldset>
-        </div>
-        </div>
-        <button type="submit" class="btn btn-gold" id="btn-enviar" style="width:100%">Enviar pedido de orçamento →</button>
-        <p class="hint" style="margin-top:12px">Usamos seus dados só para falar sobre o seu orçamento. Não pedimos informações de saúde aqui; a ficha de saúde é preenchida no estúdio.</p>
-      </form>
-
-      <div class="ok" id="sucesso" hidden>
-        <h3>Pedido recebido!</h3>
-        <p>Nossa equipe vai te chamar no WhatsApp com o orçamento. Para adiantar, você pode mandar suas referências agora:</p>
-        <a class="btn btn-wa" id="btn-whatsapp" target="_blank" rel="noopener" data-track="sucesso_whatsapp">Continuar no WhatsApp →</a>
+    <div class="quiz rv" id="quiz">
+      <div class="q-top">
+        <button type="button" class="q-back" id="q-back" aria-label="Voltar" hidden>‹</button>
+        <div class="q-bar" aria-hidden="true"><i id="q-prog"></i></div>
+        <span class="q-count" id="q-count"></span>
       </div>
-    </div>
 
+      <div class="q-step" data-step="origem" hidden>
+        <h3>Como você chegou até aqui?</h3>
+        <div class="q-opts">
+          <button type="button" class="q-opt" data-field="origem" data-v="debby">Instagram da Debby</button>
+          <button type="button" class="q-opt" data-field="origem" data-v="rafa">Instagram do Rafa</button>
+          <button type="button" class="q-opt" data-field="origem" data-v="indicacao">Indicação de alguém</button>
+          <button type="button" class="q-opt" data-field="origem" data-v="google">Pesquisei no Google</button>
+          <button type="button" class="q-opt" data-field="origem" data-v="carteira">Já tatuei com o Rafa</button>
+          <button type="button" class="q-opt" data-field="origem" data-v="outro">Outro</button>
+        </div>
+      </div>
+
+      <div class="q-step" data-step="idade" hidden>
+        <h3>Quantos anos você tem?</h3>
+        <div class="q-opts q-opts-3 q-opts-idade">
+          <button type="button" class="q-opt" data-field="idade" data-v="menos16">Menos de 16</button>
+          <button type="button" class="q-opt" data-field="idade" data-v="16-17">16 ou 17</button>
+          <button type="button" class="q-opt" data-field="idade" data-v="18+">18 ou mais</button>
+        </div>
+      </div>
+
+      <div class="q-step" data-step="nome" hidden>
+        <h3>Qual é o seu nome?</h3>
+        <p class="q-note" id="q-note-idade" hidden></p>
+        <input type="text" id="q-nome" autocomplete="given-name" maxlength="60" placeholder="Seu nome" aria-label="Seu nome" />
+        <button type="button" class="btn btn-gold q-next" data-next>Continuar →</button>
+      </div>
+
+      <div class="q-step" data-step="corpo" hidden>
+        <h3>Em que parte do corpo?</h3>
+        <div class="q-opts q-opts-3">
+          <button type="button" class="q-opt" data-field="corpo" data-v="Braço">Braço</button>
+          <button type="button" class="q-opt" data-field="corpo" data-v="Antebraço">Antebraço</button>
+          <button type="button" class="q-opt" data-field="corpo" data-v="Ombro">Ombro</button>
+          <button type="button" class="q-opt" data-field="corpo" data-v="Costas">Costas</button>
+          <button type="button" class="q-opt" data-field="corpo" data-v="Peito">Peito</button>
+          <button type="button" class="q-opt" data-field="corpo" data-v="Costela">Costela</button>
+          <button type="button" class="q-opt" data-field="corpo" data-v="Perna / coxa">Perna / coxa</button>
+          <button type="button" class="q-opt" data-field="corpo" data-v="Panturrilha">Panturrilha</button>
+          <button type="button" class="q-opt" data-field="corpo" data-v="Mão">Mão</button>
+          <button type="button" class="q-opt" data-field="corpo" data-v="Pescoço">Pescoço</button>
+          <button type="button" class="q-opt" data-field="corpo" data-v="Pé">Pé</button>
+          <button type="button" class="q-opt" data-field="corpo" data-v="Outra região">Outra</button>
+        </div>
+      </div>
+
+      <div class="q-step" data-step="ideia" hidden>
+        <h3>Qual é a sua ideia?</h3>
+        <textarea id="q-ideia" maxlength="500" placeholder="Conte o que você quer tatuar, o estilo, as cores…" aria-label="Sua ideia"></textarea>
+        <p class="hint">As fotos de referência você me manda depois, direto no WhatsApp.</p>
+        <div class="q-actions">
+          <button type="button" class="btn btn-gold q-next" data-next>Continuar →</button>
+          <button type="button" class="q-skip" data-skip>Ainda não sei</button>
+        </div>
+      </div>
+
+      <div class="q-step" data-step="contato" hidden>
+        <h3>Seu WhatsApp, para eu te achar</h3>
+        <input type="tel" id="q-fone" autocomplete="tel" inputmode="tel" placeholder="(19) 99999-9999" aria-label="Seu WhatsApp com DDD" />
+        <p class="hint">Uso só para falar do seu orçamento. Não peço nenhuma informação de saúde aqui.</p>
+        <button type="button" class="btn btn-gold" id="q-enviar" style="width:100%">Falar comigo no WhatsApp →</button>
+      </div>
+
+      <div class="q-step" data-step="pronto" hidden>
+        <h3>Tudo certo!</h3>
+        <p class="hint" style="margin-bottom:18px">Estou abrindo o WhatsApp com as suas respostas. Se não abrir sozinho, toque no botão:</p>
+        <a class="btn btn-wa" id="q-wa" target="_blank" rel="noopener" data-track="quiz_whatsapp">Abrir o WhatsApp →</a>
+        <p style="margin-top:16px"><button type="button" class="q-skip" id="q-reiniciar">Refazer as respostas</button></p>
+      </div>
+
+      <p class="q-err" id="q-err" role="alert" hidden></p>
+    </div>
     <p class="note">Prefere falar direto?
       <a href="#" data-wa data-track="orcamento_whatsapp" style="color:var(--gold);font-weight:800">Chamar no WhatsApp do estúdio</a>
     </p>
   </div>
 </section>
 
+<!-- 7. CUIDADOS E SEGURANÇA -->
+<section class="alt" id="cuidados">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <div class="eyebrow">Cuidados</div>
+      <h2>Do dia da sessão até a tatuagem cicatrizar</h2>
+      <p class="lead">Uma tatuagem bonita depende de 50% do tatuador e de 50% de como você cuida dela. Este é o passo a passo geral. No fim da sessão, passo as orientações específicas para a sua pele e para o seu desenho, e elas valem mais do que este resumo.</p>
+    </div>
+
+    <div class="care">
+      <details class="box acc rv"><summary><span class="step-tag">1 · Antes da sessão</span><h3>Prepare-se para a sessão</h3></summary><ul>
+          <li><b>Hidrate a pele</b> nos dias anteriores. Pele hidratada recebe melhor o pigmento e responde melhor à pomada anestésica, se você optar por ela.</li>
+          <li><b>Durma bem e se alimente</b> antes de vir. Sessão longa com o estômago vazio aumenta a chance de tontura.</li>
+          <li><b>Não beba álcool</b> no dia: ele deixa a pele mais sensível e o sangramento maior, e por isso a sessão não é feita.</li>
+          <li><b>Evite sol e bronzeamento</b> na região. Pele queimada ou descascando precisa esperar.</li>
+          <li><b>Use roupa confortável</b> que deixe a área à mostra.</li>
+        </ul></details>
+      <details class="box acc rv d1"><summary><span class="step-tag">2 · No dia</span><h3>Logo depois da sessão</h3></summary><ul>
+          <li>Eu cubro a tatuagem com <b>plástico filme</b> para proteger no trajeto. Retire quando eu orientar.</li>
+          <li>Em casa, <b>lave a região com sabão neutro</b> e as mãos bem limpas, com água morna ou fria, sem esfregar. Isso tira o excesso de plasma e de tinta.</li>
+          <li><b>Seque dando batidinhas</b> com papel toalha limpo. Toalha de banho acumula bactéria.</li>
+          <li>É normal ficar <b>vermelho, quente e sensível</b> nas primeiras horas.</li>
+        </ul></details>
+      <details class="box acc rv d2"><summary><span class="step-tag">3 · Primeiros dias</span><h3>Hidratar e não mexer</h3></summary><ul>
+          <li>No dia seguinte, <b>passe um creme hidratante</b> para a pele, em camada fina, só o que a pele absorver. Excesso abafa e atrapalha.</li>
+          <li>Repita a limpeza e a hidratação algumas vezes por dia, <b>conforme eu orientar</b> para a sua tatuagem.</li>
+          <li><b>Evite carne de porco, chocolate e ovo por cerca de uma semana.</b> É a minha recomendação para a cicatrização.</li>
+          <li><b>Não coce e não arranque casquinhas.</b> Descamar é normal. Arrancar tira tinta e deixa falha.</li>
+          <li>Prefira <b>roupa folgada</b> sobre a região.</li>
+        </ul></details>
+      <details class="box acc rv d3"><summary><span class="step-tag">4 · Até cicatrizar</span><h3>Proteja a tatuagem</h3></summary><ul>
+          <li>Por algumas semanas, evite <b>sol direto, piscina, mar, sauna e banheira</b>. Água parada e calor atrapalham a cicatrização.</li>
+          <li>Depois de curada, use <b>protetor solar</b> sempre. O sol é o que mais desbota tatuagem com o tempo.</li>
+          <li>Se precisar de ajuste, o <b>retoque é gratuito até 45 dias</b>. Fale com o estúdio para agendar.</li>
+        </ul></details>
+    </div>
+
+    <div class="two">
+      <details class="box acc rv"><summary><h3>Procure ajuda se</h3></summary><ul>
+          <li>A vermelhidão, o inchaço ou o calor <b>aumentam</b> depois dos primeiros dias</li>
+          <li>Sair <b>pus</b> ou a região ficar com cheiro forte</li>
+          <li>Você tiver <b>febre</b> ou a dor piorar em vez de melhorar</li>
+        </ul>
+        <p class="note" style="text-align:left;margin-top:12px">Nesses casos, chame o estúdio e procure atendimento médico. Não tente tratar em casa.</p></details>
+      <details class="box acc rv d1"><summary><h3>Biossegurança</h3></summary><ul>
+          <li>Material 100% descartável, com filme e luvas</li>
+          <li>Tintas de marcas regularizadas</li>
+          <li>Higienização completa entre um cliente e outro</li>
+        </ul>
+        <p class="note" style="text-align:left;margin-top:12px">Menores: a partir de 16 anos, com autorização dos pais ou responsável. Pode levar até 3 acompanhantes e filmar a sessão.</p></details>
+    </div>
+  </div>
+</section>
 <!-- 10. LOCAL -->
 <section id="local">
   <div class="wrap">
@@ -743,8 +806,8 @@
   <button class="next" type="button" aria-label="Próxima foto">›</button>
 </div>
 
-<a class="btn btn-wa sticky-wa" href="#" data-wa data-track="sticky_whatsapp">WhatsApp</a>
+<a class="btn btn-gold sticky-wa" id="cta-flutuante" href="#orcamento" data-track="sticky_orcamento" aria-hidden="true" tabindex="-1">Pedir orçamento</a>
 
-<script src="./script.js?v=20261006c"></script>
+<script src="./script.js?v=20261007h"></script>
 </body>
 </html>
