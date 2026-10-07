@@ -59,6 +59,16 @@
   </script>
 
   <link rel="stylesheet" href="./style.css" />
+<style id="menu-unico">
+.sitenav-links a[aria-current]{color:var(--gold,#dfb76c)}
+.g-more{padding:40px 0 8px}
+.g-more h2{font-size:clamp(20px,2.4vw,26px);margin:0 0 16px}
+.g-more-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:12px}
+.g-more-grid a{display:flex;flex-direction:column;gap:4px;padding:16px;border:1px solid var(--border,rgba(255,255,255,.12));border-radius:14px;background:rgba(255,255,255,.03);text-decoration:none;color:inherit}
+.g-more-grid a b{color:var(--gold,#dfb76c);font-size:16px}
+.g-more-grid a span{font-size:13px;opacity:.75}
+.g-more-grid a:hover{border-color:var(--gold,#dfb76c)}
+</style>
 </head>
 <body>
 
@@ -68,7 +78,8 @@
     <button class="sitenav-burger" onclick="document.getElementById('sitenav').classList.toggle('open')" aria-label="Menu">☰</button>
     <div class="sitenav-links">
       <a href="../">🏠 Início</a>
-      <a href="../piercing/">💎 Piercing</a>
+      <a href="../piercing/" aria-current="page">💎 Piercing</a>
+      <a href="../tatuagem/">🖋️ Tatuagem</a>
       <a href="../modas/">👗 Moda Feminina</a>
       <a href="../sexshop/">🌹 Sex Shop</a>
     </div>
@@ -176,6 +187,15 @@
   </section>
 
 </main>
+
+<section class="g-more"><div class="container"><h2>Continue explorando</h2><div class="g-more-grid">
+<a href="../piercing/"><b>💎 Piercing</b><span>Joias, materiais e check-in</span></a>
+<a href="../tatuagem/"><b>🖋️ Tatuagem</b><span>Trabalhos do Rafa e orçamento</span></a>
+<a href="../cuidados-piercing/"><b>📖 Guia de cuidados</b><span>Como cuidar de cada perfuração</span></a>
+<a href="../mitos-verdades-piercing/"><b>🧐 Mitos e verdades</b><span>O que é lenda e o que é fato</span></a>
+<a href="../titanio-aco-pvd-gold/"><b>✨ Aço, titânio e PVD</b><span>Qual material combina com você</span></a>
+<a href="../biosseguranca-piercing/"><b>🛡️ Biossegurança</b><span>Como esterilizamos tudo</span></a>
+</div></div></section>
 
 <footer class="g-footer">
   <div class="container">

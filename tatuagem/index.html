@@ -87,6 +87,7 @@
     .nav a.brand{text-decoration:none;font-weight:800;font-size:14px;color:var(--muted)}
     .nav .links{display:flex;gap:4px;flex-wrap:wrap;justify-content:flex-end}
     .nav .links a{text-decoration:none;font-size:13px;font-weight:600;color:var(--muted);padding:6px 10px;border-radius:8px}
+    @media (max-width:560px){.nav a.brand .bt{display:none}.nav .links a{padding:6px 7px}}
     .nav .links a:hover,.nav .links a[aria-current]{color:var(--gold)}
 
     /* CUIDADOS em seções que abrem e fecham (no celular começam fechadas; no desktop, abertas) */
@@ -372,10 +373,11 @@
 
 <nav class="nav">
   <div class="wrap">
-    <a class="brand" href="../">← Estúdio da Debby</a>
+    <a class="brand" href="../">← <span class="bt">Estúdio da Debby</span></a>
     <div class="links">
       <a href="../piercing/" class="keep">Piercing</a>
-      <a href="../modas/">Moda</a>
+      <a href="../modas/" class="keep">Moda</a>
+      <a href="../sexshop/" class="keep">Sex Shop</a>
     </div>
   </div>
 </nav>
