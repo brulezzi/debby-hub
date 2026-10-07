@@ -545,7 +545,7 @@ document.addEventListener('click',function(e){
         var wrap = document.createElement('div');
         wrap.className = 'joia-img-wrap';
         var img = document.createElement('img');
-        img.loading = 'lazy';
+        img.decoding = 'async';
         img.alt = j.nome;
         img.src = j.foto_url;
         wrap.appendChild(img);
@@ -594,7 +594,7 @@ document.addEventListener('click',function(e){
       item.type = 'button';
       item.className = 'perf-item';
       var img = document.createElement('img');
-      img.loading = 'lazy';
+      img.decoding = 'async';
       img.src = l.foto_url;
       img.alt = l.nome;
       var span = document.createElement('span');
@@ -639,7 +639,7 @@ document.addEventListener('click',function(e){
         var wrap = document.createElement('div');
         wrap.className = 'joia-img-wrap';
         var img = document.createElement('img');
-        img.loading = 'lazy';
+        img.decoding = 'async';
         img.alt = j.nome;
         img.src = j.foto_url;
         wrap.appendChild(img);

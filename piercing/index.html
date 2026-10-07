@@ -42,7 +42,7 @@
   }
   </script>
 
-  <link rel="stylesheet" href="./style.css" />
+  <link rel="stylesheet" href="./style.css?v=20261007d" />
   <style>
 
     /* ========== UTILITÁRIOS ========== */
@@ -757,6 +757,17 @@
     </div>
   </div>
 </nav>
+<nav class="subnav" id="subnav" aria-label="Seções da página">
+  <div class="subnav-in">
+    <a href="#perfuracoes">Locais</a>
+    <a href="#estilos">Joias</a>
+    <a href="#materiais">Materiais</a>
+    <a href="#como">Como funciona</a>
+    <a href="#faq">Dúvidas</a>
+    <a href="#checkin" class="destaque">Check-in</a>
+    <a href="#local">Onde fica</a>
+  </div>
+</nav>
 
 <!-- ============================
      HERO
@@ -843,7 +854,7 @@
         <span>clientes por mês</span>
       </div>
       <div class="desejo-num">
-        <strong>25mil</strong>
+        <strong>28mil</strong>
         <span>seguidores no Instagram</span>
       </div>
     </div>
@@ -893,6 +904,7 @@
     <div class="vitrine-tabs" id="vitrine-tabs"></div>
     <div class="vitrine-prices" id="vitrine-prices"></div>
     <div class="vitrine-grid" id="vitrine-grid"></div>
+    <p class="vitrine-dica">Deslize para o lado para ver mais →</p>
 
     <div style="text-align:center;padding-top:4px;">
       <a href="https://wa.me/5519988404390?text=Oi%21+Quero+ver+mais+modelos+de+joias" target="_blank" class="btn-secondary">Não achei o que quero → chamar no WhatsApp</a>
@@ -1048,6 +1060,7 @@
       <p>Palavras de quem passou pelo estúdio — sem filtro, sem edição.</p>
     </div>
 
+    <p class="depo-dica">Deslize para ver mais →</p>
     <div class="depo-grid">
       <div class="depo-card">
         <div class="depo-stars">★★★★★</div>
@@ -1127,7 +1140,7 @@
 <!-- ============================
      COMO FUNCIONA — 4 PASSOS
 ============================= -->
-<section class="section process">
+<section class="section process" id="como">
   <div class="container">
     <div class="section-heading">
       <div class="eyebrow-pill">Sem complicação</div>
@@ -1168,24 +1181,11 @@
 <!-- ============================
      URGÊNCIA LEVE
 ============================= -->
-<section class="section urgencia-section">
-  <div class="container">
-    <div class="urgencia-card">
-      <div class="urgencia-icon-big">🕐</div>
-      <div class="urgencia-texto">
-        <strong>Sábados costumam ter mais movimento</strong>
-        <p>O atendimento é por ordem de chegada. Se você quer escolher com calma e sem pressa, chegue mais cedo — especialmente nos sábados. Alguns modelos de joia também podem acabar durante o dia.</p>
-      </div>
-      <a href="#checkin" class="btn-primary">Preparar minha chegada →</a>
-    </div>
-  </div>
-</section>
-
 <!-- ============================
      MENORES DE IDADE
 ============================= -->
-<section class="section minors">
-  <div class="container menores-split">
+<section class="section minors" id="menores">
+  <div class="container"><details class="menores-acc"><summary>👶 Menor de idade pode fazer? Veja as regras</summary><div class="menores-split">
     <div class="menores-copy">
       <div class="eyebrow-pill">Menores de idade</div>
       <h2>Menor pode fazer — mas tem regras que não abrimos exceção.</h2>
@@ -1202,8 +1202,7 @@
         <li><span class="ok">◆</span> Titânio fortemente recomendado para crianças pequenas</li>
       </ul>
     </div>
-  </div>
-</section>
+  </div></details></div></section>
 
 <!-- ============================
      FAQ
@@ -1272,17 +1271,6 @@
 <!-- ============================
      CHECK-IN INTERMEDIÁRIO
 ============================= -->
-<section class="section" style="background:#111217;">
-  <div class="container" style="max-width:760px;text-align:center;">
-    <div class="eyebrow-pill" style="margin:0 auto 16px;">Agilize sua chegada</div>
-    <h2>Já decidiu? Então para de ler e vem.</h2>
-    <p style="color:var(--muted);margin:12px 0 28px;font-size:16px;line-height:1.65;">
-      Preenche o check-in antes de sair de casa. Não é agendamento — é só um aviso para a equipe já saber quem você é e o que você quer quando chegar. Você chega, fala seu nome, e a gente cuida do resto.
-    </p>
-    <a href="#checkin" class="btn-primary">Preencher o pré-check-in →</a>
-  </div>
-</section>
-
 <!-- ============================
      PRÉ-CHECK-IN FORM
 ============================= -->
@@ -1320,167 +1308,14 @@
 
     <div class="form-box-v2">
       <h3>Prepare sua chegada</h3>
-      <p>Menos de 1 minuto. Sem compromisso — você paga só no estúdio.</p>
+      <p>Responda em poucos toques. Sem compromisso — você paga só no estúdio.</p>
 
-      <form id="form-lead">
-        <div class="form-group">
-          <label for="nome">Seu nome completo</label>
-          <input type="text" id="nome" name="nome" placeholder="Ex: Ana Silva" required />
-        </div>
-        <div class="form-group">
-          <label for="whatsapp">Seu WhatsApp</label>
-          <input type="tel" id="whatsapp" name="whatsapp" placeholder="(19) 99999-9999" required />
-        </div>
-        <div class="form-group">
-          <label for="perfuracao">Onde você quer colocar o piercing?</label>
-          <select id="perfuracao" name="perfuracao" required>
-            <option value="" disabled selected>Selecione o local...</option>
-            <optgroup label="👃 Rosto">
-              <option value="Nostril">Nostril</option>
-              <option value="Duplo Nostril ×2">Duplo Nostril ×2</option>
-              <option value="Septo">Septo</option>
-              <option value="Bridge">Bridge</option>
-              <option value="Sobrancelha">Sobrancelha</option>
-              <option value="Dimple">Dimple</option>
-              <option value="Monroe">Monroe</option>
-              <option value="Medusa">Medusa</option>
-              <option value="Medusa Vertical">Medusa Vertical</option>
-              <option value="Labret Central">Labret Central</option>
-              <option value="Labret Lateral">Labret Lateral</option>
-              <option value="Labret Vertical">Labret Vertical</option>
-              <option value="Angel Fangs">Angel Fangs</option>
-              <option value="Snake Bites ×2">Snake Bites ×2</option>
-              <option value="Spider Bites ×2">Spider Bites ×2</option>
-              <option value="Smiley">Smiley</option>
-              <option value="Ponta da Língua">Ponta da Língua</option>
-              <option value="Meio da Língua">Meio da Língua</option>
-            </optgroup>
-            <optgroup label="👂 Orelha">
-              <option value="Lóbulo">Lóbulo</option>
-              <option value="Lóbulo ×2">Lóbulo ×2</option>
-              <option value="Lóbulo 2">Lóbulo 2</option>
-              <option value="Lóbulo 3">Lóbulo 3</option>
-              <option value="Helix">Helix</option>
-              <option value="Duplo Helix">Duplo Helix</option>
-              <option value="Anti Helix">Anti Helix</option>
-              <option value="Mid Helix">Mid Helix</option>
-              <option value="Tragus">Tragus</option>
-              <option value="Anti Tragus">Anti Tragus</option>
-              <option value="Conch">Conch</option>
-              <option value="Daith">Daith</option>
-              <option value="Flat">Flat</option>
-              <option value="Rook">Rook</option>
-              <option value="Snug">Snug</option>
-              <option value="Transversal">Transversal</option>
-              <option value="Californiano">Californiano</option>
-              <option value="Australianos">Australianos</option>
-              <option value="Minions">Minions</option>
-            </optgroup>
-            <optgroup label="💪 Corpo">
-              <option value="Umbigo">Umbigo</option>
-              <option value="Umbigo Vertical">Umbigo Vertical</option>
-              <option value="Mamilo">Mamilo</option>
-              <option value="Mamilo ×2">Mamilo ×2</option>
-              <option value="Íntimo Christina">Íntimo Christina</option>
-              <option value="Íntimo Clitóris">Íntimo Clitóris</option>
-            </optgroup>
-            <optgroup label="── Outros serviços ──">
-              <option value="Microdermal">Microdermal</option>
-              <option value="Surface">Surface</option>
-              <option value="Lobuloplastia">Lobuloplastia</option>
-              <option value="Remoção de joia">Remoção de joia</option>
-              <option value="Outro">Outro / ainda estou decidindo</option>
-            </optgroup>
-          </select>
-        </div>
-        <!-- TIPO: nova perfuração ou troca — só aparece quando relevante -->
-        <div class="form-group" id="grupo-tipo-perf" style="display:none">
-          <label>É uma perfuração nova ou troca de joia?</label>
-          <div class="radio-group">
-            <label class="radio-option"><input type="radio" name="tipo_perf" value="nova" /> Nova perfuração</label>
-            <label class="radio-option"><input type="radio" name="tipo_perf" value="troca" /> Troca de joia (piercing já cicatrizado)</label>
-          </div>
-        </div>
-
-        <!-- AVISO regiões restritas: nova perfuração + joia decorada bloqueada -->
-        <div class="form-group" id="grupo-restrito" style="display:none">
-          <div id="texto-restrito" style="background:rgba(251,191,36,0.08);border:1px solid rgba(251,191,36,0.35);border-radius:12px;padding:12px 16px;font-size:13px;color:#fbbf24;">
-            ⚠️ Para essa região, a perfuração nova é feita com a <strong>joia Tradicional</strong>. Após 30 dias de cicatrização você pode trocar para qualquer modelo. A equipe te explica tudo ao chegar (valor confirmado no estúdio).
-          </div>
-          <input type="hidden" id="estilo-restrito" name="estilo-restrito" value="Aço Tradicional (perfuração nova — troca permitida após 30 dias)" />
-        </div>
-
-        <!-- GRUPO A: joia livre — perfurações padrão e mamilo/lóbulo -->
-        <div class="form-group" id="grupo-joia" style="display:none">
-          <label for="estilo">Qual joia você prefere?</label>
-          <select id="estilo" name="estilo">
-            <option value="" disabled selected>Escolha uma opção...</option>
-          </select>
-        </div>
-
-        <!-- GRUPO B: microdermal / surface — tipo de serviço com valores travados -->
-        <div class="form-group" id="grupo-micro" style="display:none">
-          <label id="label-micro" for="estilo-micro">Qual serviço você precisa?</label>
-          <select id="estilo-micro" name="estilo-micro">
-            <option value="" disabled selected>Selecione o tipo...</option>
-            <option id="opcao-micro-completo" value="Instalação completa (joia inclusa)">Instalação completa (joia inclusa)</option>
-            <option value="Troca de topo">Troca de topo</option>
-            <option value="Remoção total">Remoção total</option>
-            <option value="Remoção do topo">Remoção do topo</option>
-          </select>
-        </div>
-
-        <!-- GRUPO C: lobuloplastia — preço fixo informativo -->
-        <div class="form-group" id="grupo-lobu" style="display:none">
-          <div style="background:rgba(223,183,108,0.08);border:1px solid rgba(223,183,108,0.3);border-radius:12px;padding:12px 16px;font-size:13px;color:var(--gold);font-weight:700;">
-            ✂️ Lobuloplastia — valor confirmado no estúdio
-          </div>
-        </div>
-
-        <!-- GRUPO E: remoção de joia -->
-        <div class="form-group" id="grupo-remocao" style="display:none">
-          <div style="background:rgba(223,183,108,0.08);border:1px solid rgba(223,183,108,0.3);border-radius:12px;padding:12px 16px;font-size:13px;color:var(--gold);font-weight:700;">
-            ✂️ Remoção de joia — valor confirmado no estúdio
-          </div>
-        </div>
-
-        <!-- GRUPO D: "outro" -->
-        <div class="form-group" id="grupo-outro" style="display:none">
-          <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);border-radius:12px;padding:12px 16px;font-size:13px;color:var(--muted);">
-            A equipe vai te orientar na escolha da joia e do local ao chegar no estúdio.
-          </div>
-        </div>
-        <div class="form-group">
-          <label>É a sua primeira vez fazendo piercing?</label>
-          <div class="radio-group">
-            <label class="radio-option"><input type="radio" name="primeira_vez" value="sim" required /> Sim, primeira vez</label>
-            <label class="radio-option"><input type="radio" name="primeira_vez" value="nao" /> Não, já fiz antes</label>
-          </div>
-        </div>
-        <div class="form-group">
-          <label>Você tem pele sensível ou alergia a metal?</label>
-          <div class="radio-group">
-            <label class="radio-option"><input type="radio" name="pele_sensivel" value="sim" required /> Sim</label>
-            <label class="radio-option"><input type="radio" name="pele_sensivel" value="nao" /> Não / Não sei</label>
-          </div>
-        </div>
-
-        <input type="hidden" id="segmento" name="segmento" value="piercing" />
-        <input type="hidden" id="utm_source" name="utm_source" value="" />
-        <input type="hidden" id="utm_medium" name="utm_medium" value="" />
-        <input type="hidden" id="utm_campaign" name="utm_campaign" value="" />
-        <input type="hidden" id="utm_content" name="utm_content" value="" />
-
-        <button type="submit" id="btn-enviar" class="btn-submit">
-          Avisar a recepção e ir ao estúdio →
-        </button>
-
-        <div class="form-garantias">
+      <div id="quiz-checkin" class="quiz-checkin" aria-live="polite"><noscript>Ative o JavaScript ou fale com a gente pelo WhatsApp.</noscript></div>
+      <div class="form-garantias qz-garantias">
           <span>✓ Sem agendamento obrigatório</span>
           <span>✓ Paga só no estúdio</span>
           <span>✓ Pode cancelar quando quiser</span>
-        </div>
-      </form>
+      </div>
 
       <div id="checkin-sucesso" class="checkin-sucesso hidden">
         <div class="sucesso-icon">✓</div>
@@ -1503,6 +1338,7 @@
   <div class="container">
     <div class="eyebrow-pill" style="margin:0 auto 20px;">Pronta?</div>
     <h2>Você já pensou nisso mais de uma vez.<br/><em>Isso já é sinal o suficiente.</em></h2>
+    <p class="urg-note">O atendimento é por ordem de chegada. Se você quer escolher com calma e sem pressa, chegue mais cedo — especialmente nos sábados. Alguns modelos de joia também podem acabar durante o dia.</p>
     <p>Mais de 1000 pessoas por mês aparecem aqui e saem com o piercing que queriam — sem drama, sem enrolação, sem arrependimento. A próxima pode ser você.</p>
     <div class="cta-btns">
       <a href="#checkin" class="btn-primary">Preencher o pré-check-in →</a>
@@ -1526,7 +1362,7 @@
 <!-- ============================
      LOCALIZAÇÃO
 ============================= -->
-<section class="section location">
+<section class="section location" id="local">
   <div class="container">
     <div class="section-heading">
       <div class="eyebrow-pill">Como chegar</div>
@@ -1565,7 +1401,10 @@
   </div>
 </footer>
 
-<script src="./script.js"></script>
+<a class="btn-primary sticky-cta" id="cta-flutuante" href="#checkin" aria-hidden="true" tabindex="-1">Fazer meu check-in</a>
+<script src="./script.js?v=20261007b"></script>
+<script src="./quiz.js?v=20261007a"></script>
+<script src="./nav.js?v=20261007a"></script>
 <script src="../assets/js/utm-ref.js"></script>
 </body>
 </html>

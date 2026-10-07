@@ -305,7 +305,7 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   // ---------- Navegação: barra de seções, "onde estou" e botão flutuante ----------
-  const navTopo = document.querySelector(".nav");
+  const navTopo = document.querySelector(".sitenav");
   const subnav = document.getElementById("subnav");
   function ajustaAltura() { if (navTopo) document.documentElement.style.setProperty("--nav-h", navTopo.offsetHeight + "px"); }
   ajustaAltura();

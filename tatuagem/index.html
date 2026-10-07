@@ -82,13 +82,6 @@
     .js .rv.d1{transition-delay:.08s}.js .rv.d2{transition-delay:.16s}.js .rv.d3{transition-delay:.24s}
 
     /* NAV */
-    .nav{position:sticky;top:0;z-index:20;background:rgba(11,11,13,.88);backdrop-filter:blur(10px);border-bottom:1px solid var(--border)}
-    .nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-block:12px}
-    .nav a.brand{text-decoration:none;font-weight:800;font-size:14px;color:var(--muted)}
-    .nav .links{display:flex;gap:4px;flex-wrap:wrap;justify-content:flex-end}
-    .nav .links a{text-decoration:none;font-size:13px;font-weight:600;color:var(--muted);padding:6px 10px;border-radius:8px}
-    @media (max-width:560px){.nav a.brand .bt{display:none}.nav .links a{padding:6px 7px}}
-    .nav .links a:hover,.nav .links a[aria-current]{color:var(--gold)}
 
     /* CUIDADOS em seções que abrem e fecham (no celular começam fechadas; no desktop, abertas) */
     .box.acc{border:1px solid var(--border);padding:clamp(18px,2vw,28px) clamp(18px,2vw,32px);text-align:left}
@@ -107,7 +100,17 @@
     .case-tabs{display:none;justify-content:center;gap:8px;margin-bottom:18px}
     .swipe-hint{display:none;color:var(--muted);font-size:13px;margin:-8px 0 14px}
 
-    /* BARRA DE SEÇÕES: rola de lado no celular, marca onde você está e leva a qualquer parte sem travar */
+    /* BARRA DE SEÇÕES: rola de lado no celular, marca onde você está e leva a qualquer parte sem travar */
+    .sitenav{position:sticky;top:0;z-index:20;background:rgba(11,11,13,.96);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+    .sitenav-inner{display:flex;align-items:center;justify-content:space-between;gap:8px;padding-block:12px}
+    .sitenav-brand{font-size:12px;font-weight:900;letter-spacing:2px;color:var(--gold);text-transform:uppercase;white-space:nowrap;text-decoration:none}
+    .sitenav-burger{background:none;border:1px solid rgba(255,255,255,.15);border-radius:8px;color:var(--text);font-size:16px;line-height:1;padding:7px 12px;cursor:pointer}
+    .sitenav-links{display:none;position:absolute;top:100%;left:0;right:0;flex-direction:column;padding:6px max(16px,calc((100% - 1440px)/2 + 16px)) 10px;background:rgba(11,11,13,.98);border-bottom:1px solid var(--border)}
+    .sitenav.open .sitenav-links{display:flex}
+    .sitenav-links a{padding:13px 0;font-size:15px;font-weight:700;color:var(--muted);border-bottom:1px solid rgba(255,255,255,.06);text-decoration:none}
+    .sitenav-links a:last-child{border-bottom:none}
+    .sitenav-links a:hover,.sitenav-links a[aria-current]{color:var(--gold)}
+    @media (min-width:861px){.sitenav-burger{display:none}.sitenav-links{display:flex;position:static;flex-direction:row;gap:22px;padding:0;background:none;border:none}.sitenav-links a{border:none;font-size:13px;padding:0}}
     .subnav{position:sticky;top:var(--nav-h,52px);z-index:19;background:rgba(11,11,13,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--border)}
     .subnav-in{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;padding:8px max(16px,calc((100% - 1440px)/2 + 16px));-webkit-overflow-scrolling:touch;scroll-snap-type:x proximity}
     .subnav-in::-webkit-scrollbar{display:none}
@@ -312,8 +315,7 @@
       .cases{grid-template-columns:1fr;max-width:420px;margin-inline:auto}
       .steps{grid-template-columns:1fr 1fr}
       .two{grid-template-columns:1fr}
-      .form-grid{grid-template-columns:1fr}
-      .nav .links a:not(.keep){display:none}
+      .form-grid{grid-template-columns:1fr}
       .gallery{column-count:3}
     }
     @media (max-width:1180px) and (min-width:861px){.gallery{column-count:4}}
@@ -329,7 +331,7 @@
       .hero .portrait-wrap{width:150px;margin-bottom:16px}
       .proof{margin-top:26px;padding-top:20px}
       .swipe-hint{display:block}
-      .gallery{display:flex;column-count:auto;overflow-x:auto;gap:10px;scroll-snap-type:x mandatory;padding-bottom:12px;margin-inline:-16px;padding-inline:16px;scrollbar-width:thin;-webkit-overflow-scrolling:touch}
+      .gallery{display:flex;column-count:auto;overflow-x:auto;gap:10px;scroll-snap-type:x mandatory;align-items:flex-start;padding-bottom:12px;margin-inline:-16px;padding-inline:16px;scrollbar-width:thin;-webkit-overflow-scrolling:touch}
       .g-item{flex:0 0 64%;margin:0;scroll-snap-align:start}
       .g-item[hidden]{display:none!important}
       .gal-foot{margin-top:14px}
@@ -371,13 +373,16 @@
 </head>
 <body>
 
-<nav class="nav">
-  <div class="wrap">
-    <a class="brand" href="../">← <span class="bt">Estúdio da Debby</span></a>
-    <div class="links">
-      <a href="../piercing/" class="keep">Piercing</a>
-      <a href="../modas/" class="keep">Moda</a>
-      <a href="../sexshop/" class="keep">Sex Shop</a>
+<nav class="sitenav" id="sitenav">
+  <div class="wrap sitenav-inner">
+    <a href="../" class="sitenav-brand">← Estúdio da Debby</a>
+    <button class="sitenav-burger" type="button" onclick="document.getElementById('sitenav').classList.toggle('open')" aria-label="Menu" aria-controls="sitenav-links">☰</button>
+    <div class="sitenav-links" id="sitenav-links">
+      <a href="../">🏠 Início</a>
+      <a href="../piercing/">💎 Piercing</a>
+      <a href="../tatuagem/" aria-current="page">🖋️ Tatuagem</a>
+      <a href="../modas/">👗 Moda Feminina</a>
+      <a href="../sexshop/">🌹 Sex Shop</a>
     </div>
   </div>
 </nav>
@@ -812,6 +817,6 @@
 
 <a class="btn btn-gold sticky-wa" id="cta-flutuante" href="#orcamento" data-track="sticky_orcamento" aria-hidden="true" tabindex="-1">Pedir orçamento</a>
 
-<script src="./script.js?v=20261007h"></script>
+<script src="./script.js?v=20261007i"></script>
 </body>
 </html>
