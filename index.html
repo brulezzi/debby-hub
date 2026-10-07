@@ -475,12 +475,14 @@
     }
     .team-foto img { width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block; transition: transform .3s; }
     .team-card:hover .team-foto img { transform: scale(1.04); }
-    .team-info { padding: 16px 14px 20px; }
+    .team-card { display: flex; flex-direction: column; }
+    .team-info { padding: 16px 14px 20px; flex: 1; display: flex; flex-direction: column; align-items: center; }
+    .team-role { display: block; line-height: 1.35; min-height: 2.7em; display: flex; align-items: center; justify-content: center; }
     .team-info strong { display: block; font-size: 16px; font-weight: 900; margin-bottom: 3px; }
     .team-info span { font-size: 12px; color: var(--muted); }
     .team-vertical {
       display: inline-block;
-      margin-top: 8px;
+      margin-top: 4px;
       font-size: 11px;
       font-weight: 800;
       color: var(--gold);
@@ -493,7 +495,8 @@
       align-items: center;
       justify-content: center;
       gap: 6px;
-      margin-top: 10px;
+      margin-top: auto;
+      padding-top: 12px;
       font-size: 12px;
       font-weight: 700;
       color: var(--green);
@@ -664,7 +667,7 @@
       .team-info strong { font-size: 14px; }
       .team-info span { font-size: 11px; }
       .team-vertical { font-size: 10px; padding: 2px 8px; margin-top: 6px; }
-      .team-wa { font-size: 13px; margin-top: 8px; min-height: 44px; display: flex; align-items: center; justify-content: center; gap: 6px; padding: 4px 0; }
+      .team-wa { font-size: 13px; margin-top: auto; min-height: 44px; display: flex; align-items: center; justify-content: center; gap: 6px; padding: 4px 0; }
 
       /* Depoimentos */
       .depo-card { padding: 18px 16px; border-radius: 14px; gap: 8px; }
@@ -823,7 +826,7 @@
         </div>
         <div class="team-info">
           <strong>Debby</strong>
-          <span>Fundadora · Piercer</span>
+          <span class="team-role">Fundadora · Piercer</span>
           <div class="team-vertical">💎 Piercing</div>
           <a href="https://wa.me/5519988404390?text=Oi%20Debby%2C%20vim%20pelo%20site!" class="team-wa" data-track="team-wa-debby">📱 WhatsApp</a>
         </div>
@@ -834,7 +837,7 @@
         </div>
         <div class="team-info">
           <strong>Rafa</strong>
-          <span>Tatuador · Realismo colorido</span>
+          <span class="team-role">Tatuador · Realismo colorido</span>
           <div class="team-vertical">🖋️ Tatuagem</div>
           <a href="./tatuagem/#orcamento" class="team-wa" data-track="team-orcamento-rafa">📝 Pedir orçamento</a>
         </div>
@@ -845,7 +848,7 @@
         </div>
         <div class="team-info">
           <strong>Kauê</strong>
-          <span>Administração & Marketing</span>
+          <span class="team-role">Administração & Marketing</span>
           <div class="team-vertical">📊 Adm · Marketing</div>
           <a href="https://wa.me/5519988404390?text=Oi%20Ka%C3%AA%2C%20vim%20pelo%20site!" class="team-wa" data-track="team-wa-kaue">📱 WhatsApp</a>
         </div>
@@ -856,7 +859,7 @@
         </div>
         <div class="team-info">
           <strong>Hernandez</strong>
-          <span>Vendedor</span>
+          <span class="team-role">Vendedor</span>
           <div class="team-vertical">🛍️ Vendas</div>
           <a href="https://wa.me/5519988404390?text=Oi%2C%20vim%20pelo%20site!" class="team-wa" data-track="team-wa-hernandez">📱 WhatsApp</a>
         </div>
