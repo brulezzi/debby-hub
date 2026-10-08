@@ -722,6 +722,19 @@
       if(el){gtag('event','click',{event_category:'cta',event_label:el.dataset.track});}
     });
   </script>
+  <style id="polimento-mobile">
+    .footer-links a{display:inline-flex;align-items:center;min-height:44px;padding:0 6px}
+    @media (max-width:860px){
+      .section-heading{text-align:center;margin-inline:auto}
+      .section-heading .label{font-size:11px}
+      .prova-copy{text-align:center}
+      .vertical-tag,.tag-walk,.tag-agenda,.hero-badge-walk,.hero-badge-agenda{font-size:11px}
+      .vertical-link{font-size:12px}
+      body .time-grid{display:flex;grid-template-columns:none;overflow-x:auto;scroll-snap-type:x mandatory;gap:12px;padding-bottom:6px;margin-inline:-15px;padding-inline:15px;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+      body .time-grid::-webkit-scrollbar{display:none}
+      body .time-grid .team-card{flex:0 0 64%;scroll-snap-align:start}
+    }
+  </style>
 </head>
 <body>
 
@@ -819,7 +832,7 @@
       <h2>Profissionais que<br/><em>entendem você.</em></h2>
       <p>Cada uma com sua especialidade. Todas dedicadas a fazer você sair melhor do que entrou.</p>
     </div>
-    <div class="time-grid">
+    <div class="time-grid" data-carousel>
       <div class="team-card reveal reveal-delay-1">
         <div class="team-foto">
           <img src="./assets/fotos/estudio/equipe-debby.jpeg" alt="Debby — Piercing" />
@@ -1046,5 +1059,6 @@
 </script>
 
 <script src="assets/js/utm-ref.js"></script>
+<script src="./assets/js/carousel.js?v=20261008a"></script>
 </body>
 </html>

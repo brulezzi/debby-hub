@@ -62,7 +62,7 @@ h1, h2, h3 { font-weight: 900; letter-spacing: -0.5px; }
 
 /* ── corpo ── */
 .guide-body{ padding:44px 0 64px; display:grid; grid-template-columns:220px 1fr; gap:48px; align-items:start; }
-@media (max-width:860px){ .guide-body{ grid-template-columns:1fr; } }
+@media (max-width:860px){ .guide-body{ grid-template-columns:minmax(0,1fr); } }
 
 .toc{ position:sticky; top:80px; background:var(--card); border:1px solid var(--border); border-radius:14px; padding:18px; }
 @media (max-width:860px){ .toc{ position:static; } }

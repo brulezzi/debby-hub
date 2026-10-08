@@ -58,7 +58,7 @@
   }
   </script>
 
-  <link rel="stylesheet" href="./style.css" />
+  <link rel="stylesheet" href="./style.css?v=20261008a" />
 <style id="menu-unico">
 .sitenav-links a[aria-current]{color:var(--gold,#dfb76c)}
 .g-more{padding:40px 0 8px}
@@ -68,6 +68,7 @@
 .g-more-grid a b{color:var(--gold,#dfb76c);font-size:16px}
 .g-more-grid a span{font-size:13px;opacity:.75}
 .g-more-grid a:hover{border-color:var(--gold,#dfb76c)}
+@media (max-width:860px){.g-more-grid{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:12px;padding-bottom:6px;margin-inline:-4%;padding-inline:4%;-webkit-overflow-scrolling:touch;scrollbar-width:none}.g-more-grid::-webkit-scrollbar{display:none}.g-more-grid a{flex:0 0 74%;scroll-snap-align:start}.g-more h2{text-align:center}.g-more-grid a{min-height:88px}}
 </style>
 </head>
 <body>
@@ -202,7 +203,7 @@
 
 </main>
 
-<section class="g-more"><div class="container"><h2>Continue explorando</h2><div class="g-more-grid">
+<section class="g-more"><div class="container"><h2>Continue explorando</h2><div class="g-more-grid" data-carousel>
 <a href="../piercing/"><b>💎 Piercing</b><span>Joias, materiais e check-in</span></a>
 <a href="../tatuagem/"><b>🖋️ Tatuagem</b><span>Trabalhos do Rafa e orçamento</span></a>
 <a href="../cuidados-piercing/"><b>📖 Guia de cuidados</b><span>Como cuidar de cada perfuração</span></a>
@@ -218,5 +219,6 @@
   </div>
 </footer>
 
+<script src="../assets/js/carousel.js?v=20261008a"></script>
 </body>
 </html>

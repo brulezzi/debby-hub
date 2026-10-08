@@ -911,3 +911,14 @@ body .vitrine-grid .joia-card{scroll-snap-align:start}
   body .passo h3{font-size:15px}
   body .passo p{font-size:12.5px}
 }
+
+/* ===== Polimento mobile (2026-10-08): centralização, fontes e toque ===== */
+body .joia-badge,body .joia-wa,body .material-tag,body .passo-tag{font-size:12px}
+body .joia-wa{display:flex;align-items:center;justify-content:center;min-height:40px}
+.vprice{min-height:40px;display:inline-flex;align-items:center}
+.sitenav-brand,.sitenav-burger{min-height:44px;display:inline-flex;align-items:center}
+@media (max-width:860px){
+  body .section-heading,body .desejo-copy,body .titanio-destaque-copy,body .menores-copy,body .checkin-copy-2>.eyebrow-pill,body .checkin-copy-2>h2,body .checkin-copy-2>p{text-align:center}
+  body .section-heading{margin-inline:auto}
+  body .titanio-destaque-copy .btn-primary{display:block;text-align:center}
+}

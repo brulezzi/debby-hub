@@ -42,7 +42,7 @@
   }
   </script>
 
-  <link rel="stylesheet" href="./style.css?v=20261008a" />
+  <link rel="stylesheet" href="./style.css?v=20261008c" />
   <style>
 
     /* ========== UTILITÁRIOS ========== */
@@ -872,7 +872,7 @@
       <p>Chegue com a ideia na cabeça. Isso agiliza o atendimento — e a equipe já te ajuda a escolher a joia certa para aquele lugar.</p>
     </div>
     <!-- Preenchido ao vivo por script.js via catalogo-publico (Fase B do plano do Catálogo) -->
-    <div class="perf-grid" id="perf-grid"></div>
+    <div class="perf-grid" id="perf-grid" data-carousel></div>
     <p class="swipe-dica">Deslize para o lado para ver mais →</p>
 
     <!-- Modal: joias compatíveis com o local clicado (populado ao vivo pela Edge Function catalogo-publico) -->
@@ -904,7 +904,7 @@
 
     <div class="vitrine-tabs" id="vitrine-tabs"></div>
     <div class="vitrine-prices" id="vitrine-prices"></div>
-    <div class="vitrine-grid" id="vitrine-grid"></div>
+    <div class="vitrine-grid" id="vitrine-grid" data-carousel></div>
     <p class="vitrine-dica">Deslize para o lado para ver mais →</p>
 
     <div style="text-align:center;padding-top:4px;">
@@ -925,7 +925,7 @@
     </div>
 
     <p class="swipe-dica">Deslize para ver os 3 materiais →</p>
-    <div class="materiais-grid">
+    <div class="materiais-grid" data-carousel>
       <div class="material-card">
         <div class="material-foto"><img src="./assets/aco-45.webp" alt="Joia em aço cirúrgico" /></div>
         <div>
@@ -1065,7 +1065,7 @@
     </div>
 
     <p class="depo-dica">Deslize para ver mais →</p>
-    <div class="depo-grid">
+    <div class="depo-grid" data-carousel>
       <div class="depo-card">
         <div class="depo-stars">★★★★★</div>
         <p class="depo-texto">"Nossa, já foi? Achei que ia doer muito mais. A Debby é muito leve na mão — nem deu tempo de sentir nada."</p>
@@ -1409,6 +1409,7 @@
 <script src="./script.js?v=20261007b"></script>
 <script src="./quiz.js?v=20261007c"></script>
 <script src="./nav.js?v=20261008a"></script>
+<script src="../assets/js/carousel.js?v=20261008a"></script>
 <script src="../assets/js/utm-ref.js"></script>
 </body>
 </html>
