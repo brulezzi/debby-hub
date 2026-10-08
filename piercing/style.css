@@ -889,3 +889,25 @@ body .vitrine-grid .joia-card{scroll-snap-align:start}
 .menores-acc .menores-split{padding:6px 0 20px}
 .urg-note{color:var(--muted);font-size:14px;max-width:520px;margin:0 auto 18px!important}
 .qz-aviso{background:rgba(223,183,108,.1);border:1px solid rgba(223,183,108,.35);color:var(--gold);border-radius:12px;padding:10px 14px;font-size:13px;margin:0 0 10px}
+
+/* ===== Página mais curta no celular (2026-10-08) ===== */
+.swipe-dica{display:none;text-align:center;color:var(--muted);font-size:13px;margin:6px 0 12px}
+.tit-more{margin-top:20px}
+.tit-more summary{cursor:pointer;font-weight:800;color:var(--gold);padding:14px 18px;border:1px solid rgba(223,183,108,.45);border-radius:14px;list-style:none;text-align:center;min-height:44px}
+.tit-more summary::-webkit-details-marker{display:none}
+.tit-more[open] summary{margin-bottom:14px}
+@media (max-width:860px){
+  .swipe-dica{display:block}
+  body .perf-grid{display:grid;grid-auto-flow:column;grid-template-columns:none;grid-template-rows:repeat(2,auto);grid-auto-columns:clamp(120px,36%,170px);gap:10px;overflow-x:auto;scroll-snap-type:x proximity;padding-bottom:10px;margin-inline:-4%;padding-inline:4%;-webkit-overflow-scrolling:touch;scrollbar-width:thin}
+  body .perf-grid .perf-item{scroll-snap-align:start}
+  body .materiais-grid{display:flex;grid-template-columns:none;overflow-x:auto;scroll-snap-type:x mandatory;gap:12px;padding-bottom:12px;margin-inline:-4%;padding-inline:4%;-webkit-overflow-scrolling:touch;scrollbar-width:thin}
+  body .materiais-grid .material-card{flex:0 0 86%;scroll-snap-align:start}
+  body .desejo-numeros{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+  body .desejo-num,body .desejo-num.destaque-num{padding:14px 8px;text-align:center}
+  body .desejo-num strong,body .desejo-num.destaque-num strong{font-size:26px}
+  body .desejo-num span{font-size:11px}
+  body .passos-grid{grid-template-columns:repeat(2,1fr);gap:10px}
+  body .passo{padding:14px 12px}
+  body .passo h3{font-size:15px}
+  body .passo p{font-size:12.5px}
+}

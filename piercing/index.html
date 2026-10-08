@@ -42,7 +42,7 @@
   }
   </script>
 
-  <link rel="stylesheet" href="./style.css?v=20261007e" />
+  <link rel="stylesheet" href="./style.css?v=20261008a" />
   <style>
 
     /* ========== UTILITÁRIOS ========== */
@@ -873,6 +873,7 @@
     </div>
     <!-- Preenchido ao vivo por script.js via catalogo-publico (Fase B do plano do Catálogo) -->
     <div class="perf-grid" id="perf-grid"></div>
+    <p class="swipe-dica">Deslize para o lado para ver mais →</p>
 
     <!-- Modal: joias compatíveis com o local clicado (populado ao vivo pela Edge Function catalogo-publico) -->
     <div class="local-modal-overlay" id="local-modal-overlay">
@@ -923,6 +924,7 @@
       <p>Não é detalhe — é a diferença entre cicatrizar com tranquilidade ou ter dor de cabeça desnecessária. A equipe te ajuda a escolher na hora, mas saber antes já coloca você à frente.</p>
     </div>
 
+    <p class="swipe-dica">Deslize para ver os 3 materiais →</p>
     <div class="materiais-grid">
       <div class="material-card">
         <div class="material-foto"><img src="./assets/aco-45.webp" alt="Joia em aço cirúrgico" /></div>
@@ -1008,7 +1010,8 @@
         <a href="#checkin" class="btn-primary" style="margin-top:8px;">Quero titânio — preencher check-in →</a>
       </div>
 
-      <div class="titanio-razoes">
+      <details class="tit-more" id="tit-more"><summary>Ver os 5 motivos para escolher titânio</summary>
+<div class="titanio-razoes">
         <div class="titanio-razao">
           <div class="titanio-razao-icon">🛡️</div>
           <div class="titanio-razao-texto">
@@ -1045,6 +1048,7 @@
           </div>
         </div>
       </div>
+</details>
     </div>
   </div>
 </section>
@@ -1404,7 +1408,7 @@
 <a class="btn-primary sticky-cta" id="cta-flutuante" href="#checkin" aria-hidden="true" tabindex="-1">Fazer meu check-in</a>
 <script src="./script.js?v=20261007b"></script>
 <script src="./quiz.js?v=20261007c"></script>
-<script src="./nav.js?v=20261007a"></script>
+<script src="./nav.js?v=20261008a"></script>
 <script src="../assets/js/utm-ref.js"></script>
 </body>
 </html>

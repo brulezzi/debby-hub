@@ -7,6 +7,10 @@
   var cta = document.getElementById('cta-flutuante');
   if (!subnav) return;
 
+  // motivos do titânio: abertos no desktop, recolhidos no celular
+  var tm = document.getElementById('tit-more');
+  if (tm && window.innerWidth > 860) tm.setAttribute('open', '');
+
   var links = Array.prototype.slice.call(subnav.querySelectorAll('a[href^="#"]'));
   var secoes = links.map(function (a) { return document.getElementById(a.getAttribute('href').slice(1)); });
   var secComo = document.getElementById('como');
