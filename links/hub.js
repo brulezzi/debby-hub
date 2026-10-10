@@ -56,7 +56,11 @@
   document.title = perfil.nome + ' — Estúdio da Debby';
 
   /* GA4: sessao atribuida a origem do hub (a URL usa p/fmt/c, nao utm_*) */
-  gtag('config', 'G-WYRS5RBYGM', { campaign_source: perfilId, campaign_medium: fmt, campaign_name: camp });
+  /* O agrupamento padrao de canais do GA4 so reconhece mediums conhecidos (social, cpc, organic...): 'bio', 'story' e 'reel'
+     caiam em "Unassigned" (56% das sessoes em 05-09/10/2026). Ao GA4 mandamos medium 'social' (Instagram) e o formato real
+     em campaign_content. O banco (leads_hub) e os links seguem com o medium granular (bio/story/reel) da convencao UTM. */
+  var MEDIO_GA = { bio: 'social', story: 'social', reel: 'social' };
+  gtag('config', 'G-WYRS5RBYGM', { campaign_source: perfilId, campaign_medium: MEDIO_GA[fmt] || fmt, campaign_name: camp, campaign_content: fmt });
   gtag('set', 'user_properties', { perfil_origem: perfilId });
 
   var refBase = perfilId + '/' + fmt + '/' + camp;
