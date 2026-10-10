@@ -381,7 +381,7 @@
     var urlWa = 'https://wa.me/' + NUMERO_WHATSAPP_ESTUDIO + '?text=' + encodeURIComponent(textoWhats(titanio));
     document.getElementById('btn-whatsapp').href = urlWa;
     // O lead já está salvo: abre o WhatsApp sozinho (o botão continua na tela se o navegador bloquear)
-    setTimeout(function () { window.location.href = urlWa; }, 1200);
+    setTimeout(function () { window.location.href = urlWa; }, 2000);
     enviando = false;
   }
 

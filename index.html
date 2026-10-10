@@ -509,6 +509,12 @@
       gap: 40px;
       align-items: start;
     }
+    .como-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+    .como-step { background: var(--card); border: 1px solid var(--border); border-radius: 20px; padding: 24px 20px; }
+    .como-step span { display: inline-flex; width: 32px; height: 32px; align-items: center; justify-content: center; border-radius: 50%; background: var(--gold); color: #111; font-weight: 900; margin-bottom: 12px; }
+    .como-step h3 { font-size: 17px; font-weight: 900; margin-bottom: 8px; }
+    .como-step p { color: var(--muted); font-size: 14px; line-height: 1.6; }
+    @media (max-width: 768px) { .como-grid { grid-template-columns: 1fr; } }
     .horario-card {
       background: var(--card);
       border: 1px solid var(--border);
@@ -973,8 +979,8 @@
             <a href="./tatuagem/#orcamento" class="team-wa" style="justify-content:flex-start;font-size:14px;" data-track="horario-orcamento-tatuagem">
               🖋️ Tatuagem — pedir orçamento
             </a>
-            <a href="https://wa.me/5519988404390" class="team-wa" style="justify-content:flex-start;font-size:14px;" data-track="horario-wa-piercing">
-              📱 Piercing — (19) 98840-4390
+            <a href="./piercing/#checkin" class="team-wa" style="justify-content:flex-start;font-size:14px;" data-track="horario-checkin-piercing">
+              💎 Piercing — ver joias e fazer check-in
             </a>
           </div>
         </div>
@@ -1002,6 +1008,23 @@
   </div>
 </section>
 
+<!-- COMO FUNCIONA -->
+<section class="section" id="como-funciona">
+  <div class="container">
+    <div class="section-heading">
+      <div class="label">Sem complicação</div>
+      <h2>Como funciona <em>o piercing.</em></h2>
+    </div>
+    <div class="como-grid">
+      <div class="como-step"><span>1</span><h3>Veja e escolha</h3><p>Confira locais, joias e valores na página de piercing e preencha o pré-check-in.</p></div>
+      <div class="como-step"><span>2</span><h3>Venha ao estúdio</h3><p>Sem agendamento: atendimento por ordem de chegada. Traga um documento.</p></div>
+      <div class="como-step"><span>3</span><h3>Pague e assine</h3><p>Pix, cartão ou dinheiro no caixa. O termo é digital, enviado pelo WhatsApp.</p></div>
+      <div class="como-step"><span>4</span><h3>Faça e cuide</h3><p>Você sai com o piercing feito e os cuidados de cicatrização no seu WhatsApp.</p></div>
+    </div>
+    <p style="text-align:center;margin-top:28px;"><a href="./piercing/#checkin" class="btn-primary" data-track="como-checkin">📋 Fazer meu check-in →</a></p>
+  </div>
+</section>
+
 <!-- CTA FINAL -->
 <section class="cta-final">
   <div class="container">
@@ -1009,8 +1032,8 @@
     <h2>O primeiro passo<br/>é <em>você querer.</em></h2>
     <p>Venha do jeito que você está. A gente cuida do resto.</p>
     <div class="actions">
-      <a href="https://wa.me/5519988404390?text=Oi%20Debby%2C%20vim%20pelo%20site%20e%20quero%20saber%20mais!" class="btn-primary" data-track="cta-final-wa">
-        💬 Falar no WhatsApp
+      <a href="./piercing/#checkin" class="btn-primary" data-track="cta-final-checkin">
+        📋 Fazer meu check-in
       </a>
       <a href="./piercing/" class="btn-secondary" data-track="cta-final-piercing">
         Ver joias de piercing →
