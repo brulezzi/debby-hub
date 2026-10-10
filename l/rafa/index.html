@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Abrindo… — Estúdio da Debby</title>
+<meta name="robots" content="noindex, nofollow" />
+<meta name="theme-color" content="#09090b" />
+<noscript><meta http-equiv="refresh" content="0;url=/links/rafa/" /></noscript>
+<style>
+  html,body{height:100%;margin:0;background:#09090b;color:#f4f1ea;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}
+  body{display:grid;place-items:center;text-align:center;padding:24px}
+  p{margin:0 0 14px;color:#a8a8a8}
+  a{color:#dfb76c;font-weight:700}
+</style>
+</head>
+<body>
+<main>
+  <p>Abrindo o Estúdio da Debby…</p>
+  <p><a href="/links/rafa/">Se não abrir sozinho, toque aqui</a></p>
+</main>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-WYRS5RBYGM"></script>
+<script>
+(function () {
+  window.dataLayer = window.dataLayer || [];
+  function gtag() { dataLayer.push(arguments); }
+  window.gtag = gtag;
+  var SLUG = "rafa";
+  var DESTINO = "/links/rafa/";
+  var FONTE = "rafa", MEIO = "bio", CAMP = "hub";
+
+  var u = new URL(DESTINO, location.origin);
+  // repassa parâmetros que a rede social acrescente (ex.: fbclid) sem sobrescrever o rastreio do destino
+  new URLSearchParams(location.search).forEach(function (v, k) { if (!u.searchParams.has(k)) u.searchParams.set(k, v); });
+  var P = u.searchParams;
+  var fonte = P.get('utm_source') || P.get('p') || FONTE;
+  var meio = P.get('utm_medium') || P.get('fmt') || MEIO;
+  var camp = P.get('utm_campaign') || P.get('c') || CAMP;
+
+  var feito = false;
+  function ir() { if (feito) return; feito = true; location.replace(u.toString()); }
+
+  try {
+    gtag('js', new Date());
+    // mesma atribuição que o hub /links/ usa: sem isso a sessão ficaria "referral" e o UTM do destino não valeria
+    var MEDIO_GA = { bio: 'social', story: 'social', reel: 'social' };
+    gtag('config', "G-WYRS5RBYGM", { send_page_view: false, campaign_source: fonte, campaign_medium: MEDIO_GA[meio] || meio, campaign_name: camp, campaign_content: meio });
+    gtag('event', 'link_curto', { link_slug: SLUG, event_callback: ir, event_timeout: 800 });
+    setTimeout(ir, 900);
+  } catch (e) { ir(); }
+})();
+</script>
+</body>
+</html>
