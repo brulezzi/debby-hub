@@ -16,5 +16,7 @@ jobs:
           curl --proto '=https' -fsS -X POST \
             https://estudiodadebbypiercing.com.br/hooks/deploy-debby-hub \
             -H "X-Deploy-Token: ${{ secrets.DEPLOY_TOKEN }}" \
-            --max-time 30
+            --connect-timeout 15 \
+            --max-time 60 \
+            --retry 2 --retry-delay 10 --retry-connrefused
           echo "Webhook disparado com sucesso"
